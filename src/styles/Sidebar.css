@@ -1,4 +1,6 @@
 #SidebarContainer {
   width: 135px;
   height: 100%;
+  background-color: var(--ghost-white);
+  border-right: 1px solid rgb(from var(--twilight-indigo) r g b / 0.5);
 }

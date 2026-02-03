@@ -1,3 +1,22 @@
 #HeaderContainer {
   height: 50px;
+  background-color: var(--twilight-indigo);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#HeaderLogo {
+  width: 200px;
+  height: 34px;
+  margin-left: 10px;
+}
+
+#Version {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: bold;
+  color: var(--white);
+  padding: 0;
+  margin-bottom: 30px;
+  margin-right: 10px;
 }
