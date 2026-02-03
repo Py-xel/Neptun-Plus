@@ -3,7 +3,7 @@ import Meta from './Meta';
 
 export default function MainContainer() {
   return (
-    <div>
+    <div id="Main">
       <Header />
       <Meta />
     </div>

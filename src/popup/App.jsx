@@ -3,7 +3,7 @@ import MainContainer from '../components/MainContainer';
 
 export default function App() {
   return (
-    <div>
+    <div id="App">
       <MainContainer />
     </div>
   );
