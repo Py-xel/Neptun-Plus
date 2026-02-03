@@ -1,4 +1,7 @@
 :root {
   height: 500px;
   width: 400px;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
