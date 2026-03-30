@@ -1,0 +1,44 @@
+#Sidebar_Button {
+  display: flex;
+  gap: 5px;
+  padding-top: 10px;
+  background-color: var(--ghost-white);
+  border-right: solid 1px var(--blue-highlight);
+}
+
+#Sidebar_Button a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-sizing: border-box;
+  width: 90%;
+  padding: 10px 12px;
+  border-radius: 8px;
+
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  text-decoration: none;
+
+  color: var(--twilight-indigo);
+  transition: all 0.15s ease;
+}
+
+#Sidebar_Button a:hover {
+  background-color: var(--blue-highlight);
+  color: var(--twilight-indigo);
+}
+
+#Sidebar_Button a.active {
+  background-color: var(--twilight-indigo);
+  color: var(--white);
+}
+
+#Sidebar_Button a:active {
+  transform: scale(0.98);
+}
+
+#Sidebar_Button i {
+  text-align: center;
+  font-size: 14px;
+}

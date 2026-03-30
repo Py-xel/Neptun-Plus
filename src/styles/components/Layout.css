@@ -1,0 +1,28 @@
+#Layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#Layout_Body {
+  display: flex;
+  flex: 1;
+}
+
+#Layout_Body > *:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 30%;
+}
+
+#Layout_Content {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 75%;
+  gap: 16px;
+
+  padding: 16px;
+  overflow-y: auto;
+  background-color: var(--white);
+}

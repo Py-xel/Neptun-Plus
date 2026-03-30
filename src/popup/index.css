@@ -4,6 +4,7 @@
   --white: #ffffffff;
   --cool-steel: #9c9c9fff;
   --twilight-indigo: #213055ff;
+  --blue-highlight: #abafc8;
 
   /* NOTIFICATION COLORS */
   --electric-red: #ff2113ff;
@@ -18,15 +19,9 @@
 }
 
 html,
-#root,
 body,
-#App,
-#Main,
-#ContentContainer {
+#root {
   height: 100%;
-}
-
-body {
   margin: 0;
   padding: 0;
   border: 0;
