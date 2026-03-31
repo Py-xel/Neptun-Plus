@@ -1,0 +1,214 @@
+{
+  "A Tan Kapuja Buddhista Főiskola": {
+    "website": "https://host.sdakft.hu/tkbfhw/",
+    "supported": true
+  },
+  "Állatorvostudományi Egyetem": {
+    "website": "https://neptun.univet.hu/ate_hw/",
+    "supported": true
+  },
+  "Apor Vilmos Katolikus Főiskola": {
+    "website": "https://neptun.avkf.hu/",
+    "supported": false
+  },
+  "Bhaktivedanta Hittudományi Főiskola": {
+    "website": "https://host.sdakft.hu/bhfhw/",
+    "supported": true
+  },
+  "Brenner János Hittudományi Főiskola": {
+    "website": "https://host.sdakft.hu/bjhfhw/",
+    "supported": true
+  },
+  "Budapesti Corvinus Egyetem": {
+    "website": "https://neptun3r.web.uni-corvinus.hu/",
+    "supported": true
+  },
+  "Budapesti Gazdaságtudományi Egyetem": {
+    "website": "https://neptun11.uni-bge.hu/",
+    "supported": true
+  },
+  "Budapesti Metropolitan Egyetem": {
+    "website": "https://neptunweb2.metropolitan.hu/",
+    "supported": true
+  },
+  "Budapesti Műszaki és Gazdaságtudományi Egyetem": {
+    "website": "https://neptun.bme.hu/",
+    "supported": true
+  },
+  "Debreceni Egyetem": {
+    "website": "https://www-h-ng.neptun.unideb.hu/",
+    "supported": true
+  },
+  "Debreceni Református Hittudományi Egyetem": {
+    "website": "https://host.sdakft.hu/drhehw/",
+    "supported": true
+  },
+  "Dunaújvárosi Egyetem": {
+    "website": "https://nappw.dfad.duf.hu/",
+    "supported": true
+  },
+  "Edutus Egyetem": {
+    "website": "https://neptun.edutus.hu/",
+    "supported": true
+  },
+  "Eötvös József Főiskola": {
+    "website": "https://neptun.ejf.hu/",
+    "supported": true
+  },
+  "Eötvös Loránd Tudományegyetem": {
+    "website": "https://neptun.elte.hu/",
+    "supported": false
+  },
+  "Eszterházy Károly Katolikus Egyetem": {
+    "website": "https://neptunh.uni-eszterhazy.hu/",
+    "supported": true
+  },
+  "Gábor Dénes Egyetem": {
+    "website": "https://neptun.gde.hu/",
+    "supported": true
+  },
+  "Gál Ferenc Egyetem": {
+    "website": "https://host.sdakft.hu/gfehw/",
+    "supported": true
+  },
+  "Károli Gáspár Református Egyetem": {
+    "website": "https://neptun.kre.hu/",
+    "supported": true
+  },
+  "Kodolányi János Egyetem": {
+    "website": "https://neptun.kodolanyi.hu/",
+    "supported": true
+  },
+  "Kolozsvári Protestáns Teológiai Intézet": {
+    "website": "https://proteo.hu/",
+    "supported": false
+  },
+  "Liszt Ferenc Zeneművészeti Egyetem": {
+    "website": "https://neptun.lfze.hu/",
+    "supported": true
+  },
+  "Magyar Agrár- és Élettudományi Egyetem": {
+    "website": "https://hallgato.uni-mate.hu/",
+    "supported": true
+  },
+  "Magyar Képzőművészeti Egyetem": {
+    "website": "https://mke-neptun.mke.hu/",
+    "supported": false
+  },
+  "Magyar Táncművészeti Egyetem": {
+    "website": "https://host.sdakft.hu/mtfhw",
+    "supported": true
+  },
+  "Magyar Testnevelési és Sporttudományi Egyetem": {
+    "website": "https://neptun.tf.hu/",
+    "supported": true
+  },
+  "Milton Friedman Egyetem": {
+    "website": "https://neptun.uni-milton.hu/",
+    "supported": true
+  },
+  "Miskolci Egyetem": {
+    "website": "https://neptunweb1.uni-miskolc.hu/",
+    "supported": true
+  },
+  "Moholy-Nagy Művészeti Egyetem": {
+    "website": "https://host.sdakft.hu/momehw/",
+    "supported": true
+  },
+  "Nemzeti Közszolgálati Egyetem": {
+    "website": "https://neptunweb.uni-nke.hu/",
+    "supported": true
+  },
+  "Nemzeti Kutatási, Fejlesztési és Innovációs Hivatal": {
+    "website": "",
+    "supported": false
+  },
+  "Nemzetközi Üzleti Főiskola (IBS)": {
+    "website": "https://neptun.ibs-b.hu/",
+    "supported": true
+  },
+  "Neumann János Egyetem": {
+    "website": "https://neptun.nje.hu/",
+    "supported": true
+  },
+  "Nyíregyházi Egyetem": {
+    "website": "https://neptunweb.nye.hu/",
+    "supported": true
+  },
+  "Óbudai Egyetem": {
+    "website": "https://neptun.uni-obuda.hu/",
+    "supported": true
+  },
+  "Országos Rabbiképző-Zsidó Egyetem": {
+    "website": "https://neptun.or-zse.hu/",
+    "supported": true
+  },
+  "Pannon Egyetem": {
+    "website": "https://neptun-ws01.uni-pannon.hu/",
+    "supported": true
+  },
+  "Pázmány Péter Katolikus Egyetem": {
+    "website": "https://neptun2.ppke.hu/",
+    "supported": true
+  },
+  "Pécsi Tudományegyetem": {
+    "website": "https://neptun-web1.tr.pte.hu/",
+    "supported": true
+  },
+  "Sapientia Erdélyi Magyar Tudományegyetem": {
+    "website": "https://host.sdakft.hu/semtehw/",
+    "supported": false
+  },
+  "Sapientia Szerzetesi Hittudományi Főiskola": {
+    "website": "https://neptun3r.sapientia.hu/",
+    "supported": true
+  },
+  "Semmelweis Egyetem": {
+    "website": "https://neptunweb.semmelweis.hu/",
+    "supported": true
+  },
+  "Soproni Egyetem": {
+    "website": "https://neptun3r.uni-sopron.hu/",
+    "supported": true
+  },
+  "Széchenyi István Egyetem": {
+    "website": "https://neptun-hweb.sze.hu/",
+    "supported": true
+  },
+  "Szegedi Tudományegyetem": {
+    "website": "https://neptun.szte.hu/",
+    "supported": true
+  },
+  "Szent Atanáz Görög Katolikus Hittudományi Főiskola": {
+    "website": "https://neptun.szentatanaz.hu/",
+    "supported": true
+  },
+  "Szent Pál Akadémia": {
+    "website": "https://neptun.szpa.hu/",
+    "supported": false
+  },
+  "Színház- és Filmművészeti Egyetem": {
+    "website": "https://host.sdakft.hu/szfehw/",
+    "supported": true
+  },
+  "Tokaj-Hegyalja Egyetem": {
+    "website": "https://neptun.unithe.hu/",
+    "supported": true
+  },
+  "Tomori Pál Főiskola": {
+    "website": "https://host.sdakft.hu/tpfhw/",
+    "supported": true
+  },
+  "Veszprémi Érseki Főiskola": {
+    "website": "https://neptun.vhf.hu/",
+    "supported": true
+  },
+  "Wekerle Sándor Üzleti Főiskola": {
+    "website": "https://neptun.wsne.hu/",
+    "supported": true
+  },
+  "Wesley János Lelkészképző Főiskola": {
+    "website": "https://host.sdakft.hu/wjlfhw/",
+    "supported": null
+  }
+}
