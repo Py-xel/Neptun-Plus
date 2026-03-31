@@ -10,11 +10,15 @@ export default function Sidebar() {
     <nav id="Sidebar_Button">
       <NavLink to="/">
         <i class="fa-solid fa-house" />
-        <span>{t('home')}</span>
+        <span>{t('Sidebar.home')}</span>
       </NavLink>
       <NavLink to="Interface">
         <i class="fa-solid fa-window-restore" />
-        <span>{t('interface')}</span>
+        <span>{t('Sidebar.interface')}</span>
+      </NavLink>
+      <NavLink to="System">
+        <i class="fa-solid fa-gear" />
+        <span>{t('Sidebar.system')}</span>
       </NavLink>
     </nav>
   );
