@@ -1,4 +1,10 @@
 {
-  "home": "Home",
-  "interface": "Interface"
+  "Sidebar": {
+    "home": "Home",
+    "interface": "Interface",
+    "system": "System"
+  },
+  "Content": {
+    "selectUniversity": "Select your university"
+  }
 }

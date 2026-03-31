@@ -1,4 +1,10 @@
 {
-  "home": "Főoldal",
-  "interface": "Kezelőfelület"
+  "Sidebar": {
+    "home": "Főoldal",
+    "interface": "Kezelőfelület",
+    "system": "Rendszer"
+  },
+  "Content": {
+    "selectUniversity": "Válaszd ki az egyetemed"
+  }
 }
