@@ -19,7 +19,6 @@
 #Layout_Content {
   display: flex;
   flex-direction: column;
-  flex: 0 0 75%;
 
   padding: 12px;
   overflow-y: auto;
@@ -31,5 +30,23 @@
   font-size: 1.5em;
   font-weight: 800;
   color: var(--title-black);
-  margin: 5px;
+  margin: 5px 5px 8px 0px;
+}
+
+#Layout_Content select {
+  background-color: var(--ghost-white);
+  min-height: 40px;
+  max-width: 100%;
+
+  border: 1px solid var(--blue-highlight);
+  border-radius: 6px;
+
+  padding: 0 16px;
+  color: var(--twighlight-indigo);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+
+  appearance: none;
+  outline: none;
+  cursor: pointer;
 }
