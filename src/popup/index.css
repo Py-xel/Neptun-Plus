@@ -13,7 +13,7 @@
   --tropical-mint: #00dea4ff;
 
   height: 500px;
-  width: 512px;
+  width: 592px;
   margin: 0;
   padding: 0;
   border: 0;
@@ -22,7 +22,6 @@
 html,
 body,
 #root {
-  height: 100%;
   margin: 0;
   padding: 0;
   border: 0;
