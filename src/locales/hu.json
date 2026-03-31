@@ -5,6 +5,11 @@
     "system": "Rendszer"
   },
   "Content": {
-    "selectUniversity": "Válaszd ki az egyetemed"
+    "selectUniversity": "Válaszd ki az egyetemed",
+    "periods": "Időszakok",
+    "type": "Típus",
+    "startDate": "Kezdete",
+    "endDate": "Vége",
+    "remaining": "Hátralévő"
   }
 }

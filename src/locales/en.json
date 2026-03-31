@@ -5,6 +5,11 @@
     "system": "System"
   },
   "Content": {
-    "selectUniversity": "Select your university"
+    "selectUniversity": "Select your university",
+    "periods": "Periods",
+    "type": "Type",
+    "startDate": "Start",
+    "endDate": "End",
+    "remaining": "Remaining"
   }
 }
