@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div>
       <h1>{t('Content.selectUniversity')}</h1>
-      <select id="universityDropdown">
+      <select>
         {universityNames.map((name) => (
           <option key={name} value={name}>
             {t(`${name}`)}
