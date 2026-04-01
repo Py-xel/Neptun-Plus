@@ -11,18 +11,19 @@
   --electric-red: #ff2113ff;
   --bright-indigo: #0943d9ff;
   --tropical-mint: #00dea4ff;
-
-  height: 500px;
-  width: 592px;
-  margin: 0;
-  padding: 0;
-  border: 0;
 }
 
 html,
 body,
 #root {
+  height: 492px;
+  max-height: 492px;
+
+  width: 592px;
+  max-width: 592px;
+
   margin: 0;
   padding: 0;
   border: 0;
+  overflow: hidden;
 }
