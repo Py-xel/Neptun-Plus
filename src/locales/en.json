@@ -10,6 +10,11 @@
     "type": "Type",
     "startDate": "Start",
     "endDate": "End",
-    "remaining": "Remaining"
+    "remaining": "Remaining",
+    "general": "General",
+    "unfilledSurvey": "Hide 'unfilled survey' notification",
+    "showDownload": "Show file download progress",
+    "position": "Position",
+    "customWidget": "Use custom widgets"
   }
 }

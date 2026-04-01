@@ -10,6 +10,11 @@
     "type": "Típus",
     "startDate": "Kezdete",
     "endDate": "Vége",
-    "remaining": "Hátralévő"
+    "remaining": "Hátralévő",
+    "general": "Általános",
+    "unfilledSurvey": "'Kitöltetlen kérdőív' értesítés elrejtése",
+    "showDownload": "Fájl letöltési folyamat megjelenítése",
+    "position": "Elhelyezés",
+    "customWidget": "Egyéni widget használata"
   }
 }
