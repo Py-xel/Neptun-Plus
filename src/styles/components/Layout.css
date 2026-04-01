@@ -36,6 +36,12 @@
   font-weight: 800;
 }
 
+#Layout_Content p {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  color: var(--title-black);
+}
+
 #Layout_Content select {
   appearance: none;
   -webkit-appearance: none;
