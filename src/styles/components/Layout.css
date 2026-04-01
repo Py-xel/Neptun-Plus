@@ -1,29 +1,32 @@
 #Layout {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 492px;
 }
 
 #Layout_Body {
   display: flex;
   flex: 1;
+  overflow: hidden;
+  min-height: 0;
 }
 
 #Layout_Body > *:first-child {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 0 0 30%;
+  flex: 0 0 25%;
 }
 
 #Layout_Content {
-  display: flex;
-  flex-direction: column;
-  max-height: 100%;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
 
   padding: 0px 12px 12px 12px;
-  overflow-y: auto;
   background-color: var(--white);
+  display: flex;
+  flex-direction: column;
 }
 
 #Layout_Content h1 {
@@ -44,33 +47,71 @@
   border-radius: 6px;
 
   padding: 0 16px;
-  color: var(--twighlight-indigo);
+  color: var(--twilight-indigo);
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
 
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   outline: none;
   cursor: pointer;
+
+  /* Dropdown Chevron */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23213055' d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 14px;
 }
 
 #Layout_Content table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  border: 1px solid #d3d3d3ff;
+  overflow: hidden;
+
   font-family: sans-serif;
   font-size: 12px;
+  width: 100%;
 }
 
 #Layout_Content th {
-  background-color: #f4f4f4;
+  background-color: #f2f3fbff;
   text-align: left;
   padding: 12px;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid var(--blue-highlight);
 }
 
 #Layout_Content td {
   padding: 12px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #d3d3d3ff;
 }
 
 #Layout_Content tr:hover {
-  background-color: #fafafa;
+  background-color: #f5f6fcff;
+}
+
+/* Remove bottom border from the last row */
+#Layout_Content tr:last-child td {
+  border-bottom: none;
+}
+
+/* -- Scrollbar customization -- */
+#Layout_Content::-webkit-scrollbar {
+  width: 10px;
+}
+
+#Layout_Content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#Layout_Content::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 20px;
+  border: 2px solid white;
+}
+
+#Layout_Content::-webkit-scrollbar-thumb:hover {
+  background-color: var(--blue-highlight);
 }

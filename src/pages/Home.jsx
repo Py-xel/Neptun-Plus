@@ -49,18 +49,6 @@ export default function Home() {
             <td>2026.02.15 23:59</td>
             <td>114 Nap</td>
           </tr>
-          <tr>
-            <td>Bejelentkezési időszak</td>
-            <td>2026.02.09 9:00</td>
-            <td>2026.02.15 23:59</td>
-            <td>114 Nap</td>
-          </tr>
-          <tr>
-            <td>Bejelentkezési időszak</td>
-            <td>2026.02.09 9:00</td>
-            <td>2026.02.15 23:59</td>
-            <td>114 Nap</td>
-          </tr>
         </tbody>
       </table>
     </div>
