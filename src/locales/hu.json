@@ -1,16 +1,9 @@
 {
   "Sidebar": {
-    "home": "Főoldal",
     "interface": "Kezelőfelület",
     "system": "Rendszer"
   },
   "Content": {
-    "selectUniversity": "Válaszd ki az egyetemed",
-    "periods": "Időszakok",
-    "type": "Típus",
-    "startDate": "Kezdete",
-    "endDate": "Vége",
-    "remaining": "Hátralévő",
     "general": "Általános",
     "unfilledSurvey": "'Kitöltetlen kérdőív' értesítés elrejtése",
     "showDownload": "Fájl letöltési folyamat megjelenítése",

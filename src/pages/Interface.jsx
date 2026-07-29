@@ -1,8 +1,7 @@
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-
-import Toggle_Button from '../components/Toggle_Button';
-import Grid_Picker from '../components/Grid_Picker';
+import { useTranslation } from 'react-i18next';
+import Grid_Picker from '@/components/Grid_Picker';
+import Toggle_Button from '@/components/Toggle_Button';
 
 export default function Interface() {
   const { t } = useTranslation();

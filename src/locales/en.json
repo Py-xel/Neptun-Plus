@@ -1,16 +1,9 @@
 {
   "Sidebar": {
-    "home": "Home",
     "interface": "Interface",
     "system": "System"
   },
   "Content": {
-    "selectUniversity": "Select your university",
-    "periods": "Periods",
-    "type": "Type",
-    "startDate": "Start",
-    "endDate": "End",
-    "remaining": "Remaining",
     "general": "General",
     "unfilledSurvey": "Hide 'unfilled survey' notification",
     "showDownload": "Show file download progress",

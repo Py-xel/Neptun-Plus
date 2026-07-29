@@ -1,7 +1,6 @@
-import { NavLink } from 'react-router-dom';
+import '@/styles/components/Sidebar.css';
 import { useTranslation } from 'react-i18next';
-
-import '../styles/components/Sidebar.css';
+import { NavLink } from 'react-router-dom';
 
 export default function Sidebar() {
   const { t } = useTranslation();
@@ -9,10 +8,6 @@ export default function Sidebar() {
   return (
     <nav id="Sidebar_Button">
       <NavLink to="/">
-        <i class="fa-solid fa-house" />
-        <span>{t('Sidebar.home')}</span>
-      </NavLink>
-      <NavLink to="Interface">
         <i class="fa-solid fa-window-restore" />
         <span>{t('Sidebar.interface')}</span>
       </NavLink>

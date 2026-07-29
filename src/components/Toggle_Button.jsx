@@ -1,4 +1,4 @@
-import '../styles/components/Toggle_Button.css';
+import '@/styles/components/Toggle_Button.css';
 
 export default function Toggle_Button({ enabled, setEnabled, id }) {
   return (

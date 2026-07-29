@@ -1,6 +1,5 @@
+import '@/styles/components/Grid_Picker.css';
 import { useTranslation } from 'react-i18next';
-
-import '../styles/components/Grid_Picker.css';
 
 export default function PositionPicker({ selected, onSelect }) {
   const { t } = useTranslation();
