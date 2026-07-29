@@ -6,6 +6,28 @@
   align-items: center;
 }
 
+#HeaderExtras {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+
+  gap: 4px;
+  margin-right: 5px;
+}
+
+#HeaderInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+
+#HeaderInfo i {
+  font-size: 14px;
+  color: white;
+  margin-left: 3px;
+}
+
 #HeaderLogo {
   width: 180px;
   height: 30px;
@@ -17,6 +39,5 @@
   font-weight: bold;
   color: var(--white);
   padding: 0;
-  margin-bottom: 30px;
-  margin-right: 10px;
+  margin: 0px;
 }

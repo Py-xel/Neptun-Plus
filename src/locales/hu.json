@@ -8,6 +8,7 @@
     "unfilledSurvey": "'Kitöltetlen kérdőív' értesítés elrejtése",
     "showDownload": "Fájl letöltési folyamat megjelenítése",
     "position": "Elhelyezés",
-    "customWidget": "Egyéni widget használata"
+    "customWidget": "Egyéni widget használata",
+    "infsession": "Végtelen munkamenet"
   }
 }

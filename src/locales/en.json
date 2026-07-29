@@ -8,6 +8,7 @@
     "unfilledSurvey": "Hide 'unfilled survey' notification",
     "showDownload": "Show file download progress",
     "position": "Position",
-    "customWidget": "Use custom widgets"
+    "customWidget": "Use custom widgets",
+    "infsession": "Disable session kick"
   }
 }
