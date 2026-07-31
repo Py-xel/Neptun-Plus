@@ -27,7 +27,7 @@
   align-items: center;
   flex-direction: row;
 
-  position: fixed;
+  position: absolute;
   width: 172px;
   height: 97px;
   right: 40px;
