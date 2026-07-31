@@ -1,10 +1,40 @@
 .shortcutContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+  gap: 6px;
+
   width: 100%;
   box-sizing: border-box;
   padding: 4px;
   border: 1px solid var(--twilight-indigo);
   border-radius: 8px;
   background-color: var(--white);
+}
+
+.shortcutContainer i {
+  font-size: 20px;
+  color: var(--twilight-indigo);
+
+  margin: 2px;
+  cursor: pointer;
+}
+
+.addShortcutButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.addShortcutButton i {
+  font-size: 20px;
+  margin: 0;
 }
 
 .shortcutCard {
@@ -22,21 +52,8 @@
 }
 
 .shortcutCard i {
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
-}
-
-.shortcutIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  min-width: 26px;
-  border: 1px solid var(--twilight-indigo);
-  border-radius: 6px;
-  background-color: var(--white);
-  flex-shrink: 0;
 }
 
 .shortcutField {
@@ -45,7 +62,7 @@
 }
 
 .nameField {
-  flex: 0 0 125px;
+  flex: 0 0 120px;
 }
 
 .linkField {
