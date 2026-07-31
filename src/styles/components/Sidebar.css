@@ -1,7 +1,9 @@
 #Sidebar_Button {
   display: flex;
+  flex-direction: column;
   gap: 5px;
   padding-top: 10px;
+  padding-bottom: 10px;
   background-color: var(--ghost-white);
   border-right: solid 1px var(--blue-highlight);
 }
@@ -41,4 +43,8 @@
 #Sidebar_Button i {
   text-align: center;
   font-size: 14px;
+}
+
+#ExtensionSettings {
+  margin-top: auto;
 }

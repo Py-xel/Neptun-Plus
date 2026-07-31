@@ -8,12 +8,16 @@ export default function Sidebar() {
   return (
     <nav id="Sidebar_Button">
       <NavLink to="/">
-        <i class="fa-solid fa-window-restore" />
+        <i class="fa-solid fa-desktop" />
         <span>{t('Sidebar.interface')}</span>
       </NavLink>
       <NavLink to="System">
         <i class="fa-solid fa-gear" />
         <span>{t('Sidebar.system')}</span>
+      </NavLink>
+      <NavLink to="Settings" id="ExtensionSettings">
+        <i class="fa-solid fa-sliders" />
+        <span>{t('Sidebar.settings')}</span>
       </NavLink>
     </nav>
   );
