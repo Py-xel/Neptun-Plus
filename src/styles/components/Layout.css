@@ -102,7 +102,7 @@
 
 /* -- Scrollbar -- */
 #Layout_Content::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 #Layout_Content::-webkit-scrollbar-track {
