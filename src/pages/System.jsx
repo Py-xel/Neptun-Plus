@@ -9,10 +9,10 @@ export default function System() {
 
   return (
     <div>
-      <h1>{t('Content.general')}</h1>
+      <h1>{t('Content.System.general')}</h1>
       <div className="toggleCombo">
-        <p>{t('Content.infsession')}</p>
-        <Toggle_Button enabled={infsession} setEnabled={setInfsession} id="setting.unfilledSurvey" />
+        <p>{t('Content.System.infsession')}</p>
+        <Toggle_Button enabled={infsession} setEnabled={setInfsession} showInfo={false} />
       </div>
     </div>
   );
