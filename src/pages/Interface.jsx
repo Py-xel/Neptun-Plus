@@ -1,7 +1,8 @@
+import Grid_Picker from '@/components/Grid_Picker';
+import Shortcut from '@/components/Shortcut';
+import Toggle_Button from '@/components/Toggle_Button';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Grid_Picker from '@/components/Grid_Picker';
-import Toggle_Button from '@/components/Toggle_Button';
 
 export default function Interface() {
   const { t } = useTranslation();
@@ -34,6 +35,7 @@ export default function Interface() {
         <p>{t('Content.Interface.customShortcuts')}</p>
         <Toggle_Button enabled={customShortcut} setEnabled={setCustomShortcut} />
       </div>
+      <Shortcut />
     </div>
   );
 }

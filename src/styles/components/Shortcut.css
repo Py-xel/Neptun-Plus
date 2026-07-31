@@ -1,0 +1,77 @@
+.shortcutContainer {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px;
+  border: 1px solid var(--twilight-indigo);
+  border-radius: 8px;
+  background-color: var(--white);
+}
+
+.shortcutCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 56px;
+  height: 56px;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  border: 1px solid var(--blue-highlight);
+  border-radius: 6px;
+  background-color: var(--ghost-white);
+}
+
+.shortcutCard i {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.shortcutIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  border: 1px solid var(--twilight-indigo);
+  border-radius: 6px;
+  background-color: var(--white);
+  flex-shrink: 0;
+}
+
+.shortcutField {
+  display: flex;
+  min-width: 0;
+}
+
+.nameField {
+  flex: 0 0 125px;
+}
+
+.linkField {
+  flex: 1 1 auto;
+}
+
+.shortcutName,
+.shortcutLink {
+  width: 100%;
+  border: 1px solid var(--blue-highlight);
+  border-radius: 6px;
+  padding: 7px 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  color: var(--title-black);
+  background-color: var(--white);
+  box-sizing: border-box;
+}
+
+.shortcutName:focus,
+.shortcutLink:focus {
+  outline: none;
+  border-color: var(--twilight-indigo);
+}
+
+.shortcutName::placeholder,
+.shortcutLink::placeholder {
+  color: var(--cool-steel);
+}
