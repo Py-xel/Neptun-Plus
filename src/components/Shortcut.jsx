@@ -6,14 +6,17 @@ export default function Shortcut() {
   const [cards, setCards] = useState([{ id: 0 }]);
 
   const addCard = () => {
-    setCards((prev) => [...prev, { id: prev.length }]);
+    setCards((prev) => [...prev, { id: prev[prev.length - 1].id + 1 }]);
+  };
+
+  const removeCard = (cardId) => {
+    setCards((prev) => prev.filter((card) => card.id !== cardId));
   };
 
   return (
     <div className="shortcutContainer">
-      {cards.map((card) => (
+      {cards.map((card, index) => (
         <div key={card.id} className="shortcutCard">
-          <i className="fa-solid fa-bars" />
           <Icon_Picker />
           <div className="shortcutField nameField">
             <input type="text" className="shortcutName" placeholder="Name" />
@@ -21,6 +24,11 @@ export default function Shortcut() {
           <div className="shortcutField linkField">
             <input type="text" className="shortcutLink" placeholder="https://www.example.com/" />
           </div>
+          {index > 0 && (
+            <button type="button" className="removeShortcutButton" onClick={() => removeCard(card.id)} aria-label="Remove shortcut">
+              <i className="fa-solid fa-remove" />
+            </button>
+          )}
         </div>
       ))}
 
