@@ -121,5 +121,5 @@
 
 .shortcutName::placeholder,
 .shortcutLink::placeholder {
-  color: var(--cool-steel);
+  color: #666666;
 }
