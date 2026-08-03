@@ -35,7 +35,7 @@ export default function Interface() {
         <p>{t('Content.Interface.customShortcuts')}</p>
         <Toggle_Button enabled={customShortcut} setEnabled={setCustomShortcut} />
       </div>
-      <Shortcut />
+      <Shortcut disabled={!customShortcut} />
     </div>
   );
 }

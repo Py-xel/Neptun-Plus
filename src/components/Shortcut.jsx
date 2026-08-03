@@ -2,7 +2,7 @@ import '@/styles/components/Shortcut.css';
 import { useState } from 'react';
 import Icon_Picker from '@/components/Icon_Picker';
 
-export default function Shortcut() {
+export default function Shortcut({ disabled = false }) {
   const [cards, setCards] = useState([{ id: 0 }]);
 
   const addCard = () => {
@@ -14,7 +14,13 @@ export default function Shortcut() {
   };
 
   return (
-    <div className="shortcutContainer">
+    <div
+      className="shortcutContainer"
+      style={{
+        opacity: disabled ? 0.45 : 1,
+        pointerEvents: disabled ? 'none' : 'auto',
+        transition: 'opacity 0.2s ease',
+      }}>
       {cards.map((card, index) => (
         <div key={card.id} className="shortcutCard">
           <Icon_Picker />
