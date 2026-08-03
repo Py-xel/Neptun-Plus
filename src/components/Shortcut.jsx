@@ -1,8 +1,10 @@
+import Icon_Picker from '@/components/Icon_Picker';
 import '@/styles/components/Shortcut.css';
 import { useState } from 'react';
-import Icon_Picker from '@/components/Icon_Picker';
+import { useTranslation } from 'react-i18next';
 
 export default function Shortcut({ disabled = false }) {
+  const { t } = useTranslation();
   const [cards, setCards] = useState([{ id: 0 }]);
   const [removingCardIds, setRemovingCardIds] = useState([]);
 
@@ -32,10 +34,10 @@ export default function Shortcut({ disabled = false }) {
         <div key={card.id} className={`shortcutCard${removingCardIds.includes(card.id) ? ' removing' : ''}`}>
           <Icon_Picker />
           <div className="shortcutField nameField">
-            <input type="text" className="shortcutName" placeholder="Name" />
+            <input type="text" className="shortcutName" placeholder={t('Content.Interface.name')} />
           </div>
           <div className="shortcutField linkField">
-            <input type="text" className="shortcutLink" placeholder="https://www.example.com/" />
+            <input type="text" className="shortcutLink" placeholder={t('Content.Interface.link')} />
           </div>
           {index > 0 && (
             <button type="button" className="removeShortcutButton" onClick={() => removeCard(card.id)} aria-label="Remove shortcut">

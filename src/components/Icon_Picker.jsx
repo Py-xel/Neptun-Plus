@@ -2,7 +2,7 @@ import '@/styles/components/Icon_Picker.css';
 import { useEffect, useRef, useState } from 'react';
 import icons from '@/data/icons.json';
 
-export default function Icon_Picker({ initialIcon = 'face-laugh-beam', onSelect }) {
+export default function Icon_Picker({ initialIcon = 'file-lines', onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIcon, setSelectedIcon] = useState(initialIcon);
   const containerRef = useRef(null);
