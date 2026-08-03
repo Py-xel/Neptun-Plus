@@ -6,9 +6,9 @@
   width: 100%;
   box-sizing: border-box;
   padding: 6px;
-  border: 1px solid var(--blue-highlight);
+  border: 1px solid var(--twilight-indigo);
   border-radius: 10px;
-  background: linear-gradient(180deg, var(--white) 0%, var(--ghost-white) 100%);
+  background: var(--ghost-white);
 }
 
 .shortcutContainer i {
@@ -37,9 +37,18 @@
   background-color: rgba(69, 87, 166, 0.06);
 }
 
+.addShortcutButton:hover i,
+.addShortcutButton i:hover {
+  color: var(--twilight-indigo);
+}
+
 .addShortcutButton i {
-  font-size: 18px;
+  font-size: 17px;
+  color: rgb(73, 84, 112);
   margin: 0;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .shortcutCard {
@@ -70,11 +79,11 @@
   background: transparent;
   padding: 0;
   cursor: pointer;
-  color: var(--twilight-indigo);
 }
 
 .removeShortcutButton i {
   font-size: 13px;
+  color: var(--electric-red);
   margin: 0;
 }
 

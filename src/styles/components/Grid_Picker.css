@@ -15,7 +15,6 @@
 .grid-square {
   aspect-ratio: 1 / 0.7;
   border: 1px solid var(--twilight-indigo);
-  border-radius: 2px;
   cursor: pointer;
   background: var(--ghost-white);
   transition: background 0.2s;
@@ -23,20 +22,21 @@
 
 /* Round corners of each grid section */
 .grid-square:nth-child(1) {
-  border-top-left-radius: 6px;
+  border-top-left-radius: 5px;
 }
 .grid-square:nth-child(2) {
-  border-top-right-radius: 6px;
+  border-top-right-radius: 5px;
 }
 .grid-square:nth-child(3) {
-  border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 5px;
 }
 .grid-square:nth-child(4) {
-  border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 5px;
 }
 
 .grid-square:hover {
-  border-color: #aaa;
+  border: solid 1px #4d94ff;
+  background-color: #d8e8ff;
 }
 
 .grid-square.active {

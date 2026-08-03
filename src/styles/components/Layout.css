@@ -23,13 +23,13 @@
   flex-direction: column;
   flex: 1;
   min-height: 0;
-  padding: 0px 12px 12px 12px;
+  padding: 8px 12px 12px 12px;
   background-color: var(--white);
   overflow-y: auto;
 }
 
 #Layout_Content h1 {
-  margin: 8px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
   color: var(--title-black);
   font-family: 'Source Sans 3', sans-serif;
   font-size: 1.6em;
