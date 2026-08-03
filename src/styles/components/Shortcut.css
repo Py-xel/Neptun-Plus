@@ -107,8 +107,7 @@
 .shortcutName:focus,
 .shortcutLink:focus {
   outline: none;
-  border-color: var(--twilight-indigo);
-  box-shadow: 0 0 0 2px rgba(69, 87, 166, 0.12);
+  border: solid 2px #4d94ff;
 }
 
 .shortcutName::placeholder,

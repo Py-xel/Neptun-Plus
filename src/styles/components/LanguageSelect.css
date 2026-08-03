@@ -10,6 +10,15 @@
   padding: 0;
   cursor: pointer;
   border-radius: 4px;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.LanguageOption:hover {
+  opacity: 0.8;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
 }
 
 .LanguageOption.active {
@@ -18,4 +27,5 @@
 
 .LanguageOption img {
   display: block;
+  transition: transform 0.2s ease;
 }

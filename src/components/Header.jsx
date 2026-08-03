@@ -8,7 +8,9 @@ export default function Header() {
       <div id="HeaderExtras">
         <div id="HeaderInfo">
           <p id="Version">v1.0</p>
-          <i class="fa-brands fa-github"></i>
+          <a id="GithubIcon" href="https://github.com/Py-xel/Neptun-Plus" target="_blank">
+            <i class="fa-brands fa-github" />
+          </a>
         </div>
         <LanguageSelect />
       </div>

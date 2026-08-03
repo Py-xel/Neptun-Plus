@@ -41,3 +41,15 @@
   padding: 0;
   margin: 0px;
 }
+
+#GithubIcon i {
+  color: var(--white);
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease,
+    filter 0.2s ease;
+}
+
+#GithubIcon i:hover {
+  color: #000000;
+}
