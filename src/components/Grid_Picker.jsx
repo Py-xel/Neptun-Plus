@@ -16,7 +16,7 @@ export default function PositionPicker({ selected, onSelect, disabled = false })
       <span className="grid-label">{t('Content.Interface.layout')}</span>
       <div className="grid-picker">
         {positions.map((pos) => (
-          <div key={pos} className={`grid-square ${selected === pos ? 'active' : ''}`} onClick={() => onSelect(pos)} title={pos.toUpperCase()} />
+          <div key={pos} className={`grid-square ${selected === pos ? 'active' : ''}`} onClick={() => onSelect(pos)} />
         ))}
       </div>
     </div>
