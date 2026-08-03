@@ -9,6 +9,9 @@
   border: 1px solid var(--twilight-indigo);
   border-radius: 10px;
   background: var(--ghost-white);
+  transition:
+    gap 0.2s ease,
+    padding 0.2s ease;
 }
 
 .shortcutContainer i {
@@ -29,7 +32,8 @@
   cursor: pointer;
   transition:
     border-color 0.2s ease,
-    background-color 0.2s ease;
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .addShortcutButton:hover {
@@ -64,6 +68,41 @@
   border-radius: 8px;
   background-color: var(--white);
   box-shadow: 0 1px 3px rgba(35, 45, 75, 0.08);
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  animation: shortcutCardIn 0.2s ease both;
+}
+
+.shortcutCard.removing {
+  animation: shortcutCardOut 0.2s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes shortcutCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shortcutCardOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
 }
 
 .shortcutCard i {

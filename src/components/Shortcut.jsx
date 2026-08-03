@@ -4,13 +4,20 @@ import Icon_Picker from '@/components/Icon_Picker';
 
 export default function Shortcut({ disabled = false }) {
   const [cards, setCards] = useState([{ id: 0 }]);
+  const [removingCardIds, setRemovingCardIds] = useState([]);
 
   const addCard = () => {
     setCards((prev) => [...prev, { id: prev[prev.length - 1].id + 1 }]);
   };
 
+  /* Additional timeout so card removal anim can play */
   const removeCard = (cardId) => {
-    setCards((prev) => prev.filter((card) => card.id !== cardId));
+    setRemovingCardIds((prev) => [...prev, cardId]);
+
+    window.setTimeout(() => {
+      setCards((prev) => prev.filter((card) => card.id !== cardId));
+      setRemovingCardIds((prev) => prev.filter((id) => id !== cardId));
+    }, 200);
   };
 
   return (
@@ -22,7 +29,7 @@ export default function Shortcut({ disabled = false }) {
         transition: 'opacity 0.2s ease',
       }}>
       {cards.map((card, index) => (
-        <div key={card.id} className="shortcutCard">
+        <div key={card.id} className={`shortcutCard${removingCardIds.includes(card.id) ? ' removing' : ''}`}>
           <Icon_Picker />
           <div className="shortcutField nameField">
             <input type="text" className="shortcutName" placeholder="Name" />
