@@ -8,7 +8,7 @@ export default defineManifest({
   icons: {
     48: 'public/Neptun_Plus_Logo.png',
   },
-  permissions: ['contentSettings'],
+  permissions: ['contentSettings', 'storage'],
   action: {
     default_icon: {
       48: 'public/Neptun_Plus_Logo.png',
