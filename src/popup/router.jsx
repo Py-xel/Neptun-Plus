@@ -1,8 +1,8 @@
-import { createMemoryRouter } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import Interface from '@/pages/Interface';
-import System from '@/pages/System';
 import Settings from '@/pages/Settings';
+import System from '@/pages/System';
+import { createMemoryRouter } from 'react-router-dom';
 
 export const router = createMemoryRouter([
   {
