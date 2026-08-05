@@ -142,7 +142,8 @@
 .shortcutName:focus,
 .shortcutLink:focus {
   outline: none;
-  border: solid 2px #4d94ff;
+  border-color: #4d94ff;
+  box-shadow: 0 0 0 1px #4d94ff;
 }
 
 .shortcutName::placeholder,
