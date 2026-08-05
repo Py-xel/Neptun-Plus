@@ -30,7 +30,9 @@
     },
     "Settings": {
       "extensionSettings": "Extension settings",
-      "hideInfo": "Hide hints for settings"
+      "hideInfo": "Hide hints for settings",
+      "resetLabel": "Reset extension settings to their original defaults.",
+      "resetButton": "Reset settings"
     }
   }
 }

@@ -30,7 +30,9 @@
     },
     "Settings": {
       "extensionSettings": "Bővítmény beállítások",
-      "hideInfo": "Beállításokhoz tartozó tippek elrejtése"
+      "hideInfo": "Beállításokhoz tartozó tippek elrejtése",
+      "resetLabel": "A bővítmény beállításainak visszaállítása alapértelmezettre.",
+      "resetButton": "Beállítások visszaállítása"
     }
   }
 }

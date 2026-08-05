@@ -2,6 +2,7 @@ import i18n from '@/popup/i18n';
 import { useEffect, useState } from 'react';
 
 const STORAGE_KEY = 'settings';
+const RESET_EVENT = 'neptun-plus-reset-storage';
 
 export const CATEGORIES = {
   INTERFACE: 'interface',
@@ -34,7 +35,27 @@ export function useStorage(category, key, defaultValue) {
   const [value, setValue] = useState(defaultValue);
   const [loading, setLoading] = useState(true);
 
+  async function resetAllSettings() {
+    if (typeof chrome !== 'undefined' && chrome.storage?.local) {
+      await chrome.storage.local.remove(STORAGE_KEY);
+    }
+
+    setValue(defaultValue);
+    window.dispatchEvent(new Event(RESET_EVENT));
+
+    if (i18n.isInitialized) {
+      await i18n.changeLanguage('hu');
+    }
+  }
+
   useEffect(() => {
+    const handleStorageReset = () => {
+      setValue(defaultValue);
+      setLoading(false);
+    };
+
+    window.addEventListener(RESET_EVENT, handleStorageReset);
+
     async function load() {
       const result = await chrome.storage.local.get(STORAGE_KEY);
       const settings = result[STORAGE_KEY] || {};
@@ -53,6 +74,10 @@ export function useStorage(category, key, defaultValue) {
     }
 
     load();
+
+    return () => {
+      window.removeEventListener(RESET_EVENT, handleStorageReset);
+    };
   }, [category, key, defaultValue]);
 
   async function updateValue(newValue) {
@@ -76,5 +101,5 @@ export function useStorage(category, key, defaultValue) {
     }
   }
 
-  return [value, updateValue, loading];
+  return [value, updateValue, loading, resetAllSettings];
 }
