@@ -11,6 +11,11 @@
   --electric-red: #ff2113ff;
   --bright-indigo: #0943d9ff;
   --tropical-mint: #00dea4ff;
+
+  /* WARNING COLORS */
+  --ghost-red: #fbf2f2;
+  --twilight-red: #b92a2a;
+  --cool-red: #d43046;
 }
 
 html,

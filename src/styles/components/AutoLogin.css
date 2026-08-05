@@ -1,0 +1,49 @@
+.credentialsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+}
+
+.credentialsInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.credentialsLabel {
+  font-family: 'Lato', sans-serif;
+  font-size: 11px;
+  color: var(--title-black);
+  font-weight: 600;
+}
+
+.credentialsInput input {
+  height: 30px;
+  width: 175px;
+
+  padding: 3px;
+
+  border-radius: 5px;
+  border: solid 1px var(--blue-highlight);
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  color: var(--title-black);
+  background-color: var(--ghost-white);
+  box-sizing: border-box;
+}
+
+.credentialsInput input:focus {
+  outline: none;
+  border-color: #4d94ff;
+  box-shadow: 0 0 0 1px #4d94ff;
+}
+
+.credentialsInput input::placeholder {
+  color: #666666;
+}

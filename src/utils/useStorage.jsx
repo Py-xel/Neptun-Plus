@@ -19,6 +19,8 @@ export const KEYS = {
 
   SYSTEM: {
     INFINITE_SESSION: 'infinite-session',
+    AUTO_LOGIN: 'auto-login',
+    ACCEPTED_WARNING: 'accepted-warning',
   },
 
   EXTENSION_SETTINGS: {
