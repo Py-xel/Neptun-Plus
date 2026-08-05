@@ -5,7 +5,7 @@ export default function Toggle_Button({ enabled, setEnabled, showInfo = true }) 
   const [showPreview, setShowPreview] = useState(false);
 
   return (
-    <div className="toggleContainer" style={{ position: 'relative' }}>
+    <div className="toggleContainer">
       <label className="switch">
         <input type="checkbox" checked={enabled} onChange={() => setEnabled(!enabled)} />
         <span className="slider"></span>
