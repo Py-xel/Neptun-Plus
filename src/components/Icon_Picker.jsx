@@ -8,6 +8,10 @@ export default function Icon_Picker({ initialIcon = 'file-lines', onSelect }) {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    setSelectedIcon(initialIcon);
+  }, [initialIcon]);
+
+  useEffect(() => {
     if (!isOpen) return undefined;
 
     const handlePointerDown = (event) => {

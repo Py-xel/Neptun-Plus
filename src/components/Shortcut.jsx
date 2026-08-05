@@ -1,15 +1,51 @@
 import Icon_Picker from '@/components/Icon_Picker';
 import '@/styles/components/Shortcut.css';
-import { useState } from 'react';
+import { CATEGORIES, KEYS, useStorage } from '@/utils/useStorage';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export default function Shortcut({ disabled = false }) {
   const { t } = useTranslation();
-  const [cards, setCards] = useState([{ id: 0 }]);
+  const [savedShortcuts, setSavedShortcuts, loading] = useStorage(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHORTCUTS, []);
+  const [cards, setCards] = useState([]);
   const [removingCardIds, setRemovingCardIds] = useState([]);
 
+  useEffect(() => {
+    if (loading) return;
+
+    if (Array.isArray(savedShortcuts) && savedShortcuts.length > 0) {
+      const normalized = savedShortcuts.map((shortcut, index) => ({
+        id: shortcut.id ?? index,
+        icon: shortcut.icon ?? 'file-lines',
+        name: shortcut.name ?? '',
+        link: shortcut.link ?? '',
+      }));
+      setCards(normalized);
+    } else {
+      setCards([]);
+    }
+  }, [loading, savedShortcuts]);
+
+  const persistCards = (nextCards) => {
+    const normalized = nextCards.map((card, index) => ({
+      id: card.id ?? index,
+      icon: card.icon ?? 'file-lines',
+      name: card.name ?? '',
+      link: card.link ?? '',
+    }));
+
+    setCards(normalized);
+    setSavedShortcuts(normalized);
+  };
+
   const addCard = () => {
-    setCards((prev) => [...prev, { id: prev[prev.length - 1].id + 1 }]);
+    const nextId = cards.length > 0 ? Math.max(...cards.map((card) => card.id), 0) + 1 : 1;
+    persistCards([...cards, { id: nextId, icon: 'file-lines', name: '', link: '' }]);
+  };
+
+  const updateCard = (cardId, updates) => {
+    const nextCards = cards.map((card) => (card.id === cardId ? { ...card, ...updates } : card));
+    persistCards(nextCards);
   };
 
   /* Additional timeout so card removal anim can play */
@@ -17,7 +53,11 @@ export default function Shortcut({ disabled = false }) {
     setRemovingCardIds((prev) => [...prev, cardId]);
 
     window.setTimeout(() => {
-      setCards((prev) => prev.filter((card) => card.id !== cardId));
+      setCards((prevCards) => {
+        const nextCards = prevCards.filter((card) => card.id !== cardId);
+        persistCards(nextCards);
+        return nextCards;
+      });
       setRemovingCardIds((prev) => prev.filter((id) => id !== cardId));
     }, 200);
   };
@@ -32,18 +72,16 @@ export default function Shortcut({ disabled = false }) {
       }}>
       {cards.map((card, index) => (
         <div key={card.id} className={`shortcutCard${removingCardIds.includes(card.id) ? ' removing' : ''}`}>
-          <Icon_Picker />
+          <Icon_Picker initialIcon={card.icon} onSelect={(icon) => updateCard(card.id, { icon })} />
           <div className="shortcutField nameField">
-            <input type="text" className="shortcutName" placeholder={t('Content.Interface.name')} />
+            <input type="text" value={card.name} className="shortcutName" placeholder={t('Content.Interface.name')} onChange={(event) => updateCard(card.id, { name: event.target.value })} />
           </div>
           <div className="shortcutField linkField">
-            <input type="text" className="shortcutLink" placeholder={t('Content.Interface.link')} />
+            <input type="text" value={card.link} className="shortcutLink" placeholder={t('Content.Interface.link')} onChange={(event) => updateCard(card.id, { link: event.target.value })} />
           </div>
-          {index > 0 && (
-            <button type="button" className="removeShortcutButton" onClick={() => removeCard(card.id)} aria-label="Remove shortcut">
-              <i className="fa-solid fa-remove" />
-            </button>
-          )}
+          <button type="button" className="removeShortcutButton" onClick={() => removeCard(card.id)} aria-label="Remove shortcut">
+            <i className="fa-solid fa-remove" />
+          </button>
         </div>
       ))}
 
