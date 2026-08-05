@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   gap: 5px;
 }
 
@@ -11,9 +10,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  min-width: 410px;
-  max-width: 410px;
 }
 
 .toggleContainer {

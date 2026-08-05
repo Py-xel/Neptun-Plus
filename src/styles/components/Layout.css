@@ -26,6 +26,7 @@
   padding: 8px 12px 12px 12px;
   background-color: var(--white);
   overflow-y: auto;
+  scrollbar-gutter: stable;
 }
 
 #Layout_Content h1 {
