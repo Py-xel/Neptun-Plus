@@ -1,14 +1,36 @@
 {
   "Sidebar": {
     "interface": "Interface",
-    "system": "System"
+    "system": "System",
+    "settings": "Settings"
   },
   "Content": {
-    "general": "General",
-    "unfilledSurvey": "Hide 'unfilled survey' notification",
-    "showDownload": "Show file download progress",
-    "position": "Position",
-    "customWidget": "Use custom widgets",
-    "infsession": "Disable session kick"
+    "Interface": {
+      "general": "General",
+      "unfilledSurvey": "Hide banner notifications",
+      "itemList": "Show all items in lists",
+      "fileDownload": "File download",
+      "showDownload": "Show file downloader",
+      "layout": "Layout",
+      "shortcuts": "Shortcuts",
+      "customShortcuts": "Use custom shortcuts",
+      "name": "Name",
+      "link": "https://www.example.com/"
+    },
+    "System": {
+      "general": "General",
+      "infsession": "Infinite session",
+      "autologin": "Auto-fill login credentials",
+      "studentLogin": "Login credentials",
+      "loginName": "Login name",
+      "password": "Password",
+      "warningTitle": "Warning!",
+      "warningText": "Saved credentials are stored locally and are <bold>not securely protected</bold>.<br/><br/>While they are obfuscated using client-side encryption, a competent threat actor with access to your device or browser data may be able to gain access to them.",
+      "warningAccept": "I understand."
+    },
+    "Settings": {
+      "extensionSettings": "Extension settings",
+      "hideInfo": "Hide hints for settings"
+    }
   }
 }

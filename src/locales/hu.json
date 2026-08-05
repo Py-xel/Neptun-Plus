@@ -1,14 +1,36 @@
 {
   "Sidebar": {
     "interface": "Kezelőfelület",
-    "system": "Rendszer"
+    "system": "Rendszer",
+    "settings": "Beállítások"
   },
   "Content": {
-    "general": "Általános",
-    "unfilledSurvey": "'Kitöltetlen kérdőív' értesítés elrejtése",
-    "showDownload": "Fájl letöltési folyamat megjelenítése",
-    "position": "Elhelyezés",
-    "customWidget": "Egyéni widget használata",
-    "infsession": "Végtelen munkamenet"
+    "Interface": {
+      "general": "Általános",
+      "unfilledSurvey": "Szalagcím értesítések elrejtése",
+      "itemList": "Összes listás elem megjelenítése",
+      "fileDownload": "Fájl letöltés",
+      "showDownload": "Fájl-letöltő megjelenítése",
+      "layout": "Elhelyezés",
+      "shortcuts": "Gyorsgombok",
+      "customShortcuts": "Egyéni gyorsgomb használata",
+      "name": "Név",
+      "link": "https://www.példa.hu/"
+    },
+    "System": {
+      "general": "Általános",
+      "infsession": "Végtelen munkamenet",
+      "autologin": "Bejelentkezési adatok automatikus kitöltése",
+      "studentLogin": "Bejelentkezési adatok",
+      "loginName": "Azonosító",
+      "password": "Jelszó",
+      "warningTitle": "Figyelem!",
+      "warningText": "A bejelentkezési adatok helyben kerülnek tárolásra, és <bold>nincsenek biztonságosan levédve</bold>.<br/><br/>Bár kliensoldali titkosítással vannak elrejtve, egy kompetens támadó, aki hozzáfér eszközéhez vagy böngészője adataihoz, képes lehet hozzáférni ezekhez az adatokhoz is.",
+      "warningAccept": "Megértettem."
+    },
+    "Settings": {
+      "extensionSettings": "Bővítmény beállítások",
+      "hideInfo": "Beállításokhoz tartozó tippek elrejtése"
+    }
   }
 }
