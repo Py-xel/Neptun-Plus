@@ -17,7 +17,11 @@
   border: 1px solid var(--twilight-indigo);
   cursor: pointer;
   background: var(--ghost-white);
-  transition: background 0.2s;
+  transition: background 0s;
+}
+
+.grid-square.animated {
+  transition: background 0.2s ease;
 }
 
 /* Round corners of each grid section */

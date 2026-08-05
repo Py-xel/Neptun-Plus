@@ -1,9 +1,18 @@
+import { useAnimationGate } from '@/hooks/useAnimationGate';
 import '@/styles/components/Grid_Picker.css';
 import { useTranslation } from 'react-i18next';
 
 export default function PositionPicker({ selected, onSelect, disabled = false }) {
   const { t } = useTranslation();
   const positions = ['tl', 'tr', 'bl', 'br'];
+  const { isAnimating, triggerAnimation } = useAnimationGate(320);
+
+  const handleSelect = (pos) => {
+    if (pos === selected) return;
+
+    onSelect(pos);
+    triggerAnimation();
+  };
 
   return (
     <div
@@ -16,7 +25,7 @@ export default function PositionPicker({ selected, onSelect, disabled = false })
       <span className="grid-label">{t('Content.Interface.layout')}</span>
       <div className="grid-picker">
         {positions.map((pos) => (
-          <div key={pos} className={`grid-square ${selected === pos ? 'active' : ''}`} onClick={() => onSelect(pos)} />
+          <div key={pos} className={`grid-square ${selected === pos ? 'active' : ''}${isAnimating ? ' animated' : ''}`} onClick={() => handleSelect(pos)} />
         ))}
       </div>
     </div>

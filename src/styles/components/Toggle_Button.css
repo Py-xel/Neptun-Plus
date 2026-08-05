@@ -86,7 +86,7 @@
   right: 0;
   bottom: 0;
   background-color: #e9e9ea;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0s ease-in-out;
   border-radius: 24px;
 }
 
@@ -98,10 +98,18 @@
   left: 2px;
   bottom: 2px;
   background-color: white;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 2;
+}
+
+.slider--animated {
+  transition: background-color 0.3s ease-in-out;
+}
+
+.slider--animated:before {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 input:checked + .slider {
