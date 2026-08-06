@@ -31,4 +31,6 @@ body,
   padding: 0;
   border: 0;
   overflow: hidden;
+
+  caret-color: var(--twilight-indigo);
 }
