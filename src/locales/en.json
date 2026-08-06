@@ -2,6 +2,7 @@
   "Sidebar": {
     "interface": "Interface",
     "system": "System",
+    "info": "Info",
     "settings": "Settings"
   },
   "Content": {
@@ -27,6 +28,12 @@
       "warningTitle": "Warning!",
       "warningText": "Saved credentials are stored locally and are <bold>not securely protected</bold>.<br/><br/>While they are obfuscated using client-side encryption, a competent threat actor with access to your device or browser data may be able to gain access to them.",
       "warningAccept": "I understand."
+    },
+    "Info": {
+      "supportedUni": "List of supported universities",
+      "search": "Search",
+      "name": "Name",
+      "supported": "Supported"
     },
     "Settings": {
       "extensionSettings": "Extension settings",

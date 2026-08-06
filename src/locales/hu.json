@@ -2,6 +2,7 @@
   "Sidebar": {
     "interface": "Kezelőfelület",
     "system": "Rendszer",
+    "info": "Információ",
     "settings": "Beállítások"
   },
   "Content": {
@@ -27,6 +28,12 @@
       "warningTitle": "Figyelem!",
       "warningText": "A bejelentkezési adatok helyben kerülnek tárolásra, és <bold>nincsenek biztonságosan levédve</bold>.<br/><br/>Bár kliensoldali titkosítással vannak elrejtve, egy kompetens támadó, aki hozzáfér eszközéhez vagy böngészője adataihoz, képes lehet hozzáférni ezekhez az adatokhoz is.",
       "warningAccept": "Megértettem."
+    },
+    "Info": {
+      "supportedUni": "Támogatott egyetemek listája",
+      "search": "Keresés",
+      "name": "Név",
+      "supported": "Támogatott"
     },
     "Settings": {
       "extensionSettings": "Bővítmény beállítások",
