@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import Info from '@/pages/Info';
 import Interface from '@/pages/Interface';
 import Settings from '@/pages/Settings';
 import System from '@/pages/System';
@@ -16,6 +17,10 @@ export const router = createMemoryRouter([
       {
         path: 'System',
         element: <System />,
+      },
+      {
+        path: 'Info',
+        element: <Info />,
       },
       {
         path: 'Settings',

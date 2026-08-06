@@ -15,6 +15,10 @@ export default function Sidebar() {
         <i class="fa-solid fa-gear" />
         <span>{t('Sidebar.system')}</span>
       </NavLink>
+      <NavLink to="Info">
+        <i class="fa-solid fa-circle-info" />
+        <span>{t('Sidebar.info')}</span>
+      </NavLink>
       <NavLink to="Settings" id="ExtensionSettings">
         <i class="fa-solid fa-sliders" />
         <span>{t('Sidebar.settings')}</span>
