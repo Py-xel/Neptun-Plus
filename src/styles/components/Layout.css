@@ -71,37 +71,6 @@
   font-size: 12px;
 }
 
-#Layout_Content table {
-  width: 100%;
-  border: 1px solid #d3d3d3ff;
-  border-radius: 12px;
-  border-collapse: separate;
-  border-spacing: 0;
-  overflow: hidden;
-  font-family: sans-serif;
-  font-size: 12px;
-}
-
-#Layout_Content th {
-  padding: 12px;
-  background-color: #f2f3fbff;
-  border-bottom: 2px solid var(--blue-highlight);
-  text-align: left;
-}
-
-#Layout_Content td {
-  padding: 12px;
-  border-bottom: 1px solid #d3d3d3ff;
-}
-
-#Layout_Content tr:hover {
-  background-color: #f5f6fcff;
-}
-
-#Layout_Content tr:last-child td {
-  border-bottom: none;
-}
-
 /* -- Scrollbar -- */
 #Layout_Content::-webkit-scrollbar {
   width: 8px;
