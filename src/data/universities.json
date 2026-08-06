@@ -122,12 +122,12 @@
   "Magyar Táncművészeti Egyetem": {
     "website": "https://host.sdakft.hu/mtfhw",
     "supported": true,
-    "en_name": ""
+    "en_name": "Hungarian Dance University"
   },
   "Magyar Testnevelési és Sporttudományi Egyetem": {
     "website": "https://neptun.tf.hu/",
     "supported": true,
-    "en_name": "Hungarian Dance University"
+    "en_name": "Hungarian University of Sports Science"
   },
   "Milton Friedman Egyetem": {
     "website": "https://neptun.uni-milton.hu/",
@@ -148,11 +148,6 @@
     "website": "https://neptunweb.uni-nke.hu/",
     "supported": true,
     "en_name": "National Public Service University"
-  },
-  "Nemzeti Kutatási, Fejlesztési és Innovációs Hivatal": {
-    "website": "",
-    "supported": false,
-    "en_name": ""
   },
   "Nemzetközi Üzleti Főiskola (IBS)": {
     "website": "https://neptun.ibs-b.hu/",
@@ -261,7 +256,7 @@
   },
   "Wesley János Lelkészképző Főiskola": {
     "website": "https://host.sdakft.hu/wjlfhw/",
-    "supported": null,
+    "supported": true,
     "en_name": "John Wesley Theological College"
   }
 }
