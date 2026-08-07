@@ -44,33 +44,6 @@
   color: var(--title-black);
 }
 
-#Layout_Content select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  outline: none;
-  cursor: pointer;
-
-  width: 100%;
-  max-width: 100%;
-  min-height: 40px;
-  padding: 0 44px 0 16px;
-
-  /* Dropdown Chevron */
-  background-color: var(--ghost-white);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23213055' d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
-  background-size: 14px;
-
-  border: 1px solid var(--blue-highlight);
-  border-radius: 6px;
-
-  color: var(--twilight-indigo);
-  font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
-}
-
 /* -- Scrollbar -- */
 #Layout_Content::-webkit-scrollbar {
   width: 8px;

@@ -1,0 +1,37 @@
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px dashed var(--blue-highlight);
+  border-radius: 8px;
+
+  width: 100%;
+
+  background: transparent;
+  padding: 8px 0;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.addButton:hover {
+  border-color: var(--twilight-indigo);
+  background-color: rgba(69, 87, 166, 0.06);
+}
+
+.addButton:hover i,
+.addButton i:hover {
+  color: var(--twilight-indigo);
+}
+
+.addButton i {
+  font-size: 17px;
+  color: rgb(73, 84, 112);
+  margin: 0;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}

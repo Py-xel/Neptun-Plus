@@ -1,49 +1,87 @@
 .credentialsContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
-
   flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+
+  border: 1px solid var(--twilight-indigo);
+  border-radius: 10px;
+  background: var(--ghost-white);
 }
 
-.credentialsInput {
+.credentialCard {
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  flex-direction: column;
-  margin-top: 10px;
   gap: 10px;
+  width: 100%;
+  height: 95px;
+  padding: 10px;
+  box-sizing: border-box;
+
+  border: 1px solid var(--blue-highlight);
+  border-radius: 8px;
+  background-color: var(--white);
+  box-shadow: 0 1px 3px rgba(35, 45, 75, 0.08);
 }
 
-.credentialsLabel {
-  font-family: 'Lato', sans-serif;
-  font-size: 11px;
-  color: var(--title-black);
-  font-weight: 600;
-}
-
-.credentialsInput input {
-  height: 30px;
+.credentialCard input {
   width: 175px;
-
+  height: 32px;
   padding: 3px;
+  box-sizing: border-box;
 
-  border-radius: 5px;
-  border: solid 1px var(--blue-highlight);
+  border: 1px solid var(--blue-highlight);
+  border-radius: 6px;
+  padding: 7px 8px;
+  background-color: var(--ghost-white);
+
+  margin-bottom: 5px;
+
   font-family: 'Lato', sans-serif;
   font-size: 13px;
   color: var(--title-black);
-  background-color: var(--ghost-white);
-  box-sizing: border-box;
 }
 
-.credentialsInput input:focus {
+.credentialCard input:focus {
   outline: none;
   border-color: #4d94ff;
   box-shadow: 0 0 0 1px #4d94ff;
 }
 
-.credentialsInput input::placeholder {
+.credentialCard input::placeholder {
   color: #666666;
+}
+
+.leftSide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+}
+
+.inputFields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: row;
+
+  gap: 6px;
+}
+
+.removeCardButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+
+  font-size: 13px;
+  color: var(--electric-red);
+  margin: 0;
 }

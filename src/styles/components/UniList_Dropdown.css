@@ -1,0 +1,43 @@
+.uniListDropdownWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.uniListDropdown {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  cursor: pointer;
+
+  width: 100%;
+  max-width: 100%;
+  min-height: 40px;
+
+  padding: 0 44px 0 16px;
+
+  background-color: var(--ghost-white);
+  border: 1px solid var(--blue-highlight);
+  border-radius: 8px;
+
+  color: var(--twilight-indigo);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+
+.uniListDropdown:focus {
+  border-color: #4d94ff;
+  box-shadow: 0 0 0 1px #4d94ff;
+}
+
+.uniListDropdownChevron {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+
+  pointer-events: none;
+
+  color: var(--blue-highlight);
+  font-size: 12px;
+}
