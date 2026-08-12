@@ -1,6 +1,6 @@
-import Grid_Picker from '@/components/Grid_Picker';
-import Shortcut from '@/components/Shortcut';
-import Toggle_Button from '@/components/Toggle_Button';
+import Grid_Picker from '@/components/interface/Grid_Picker';
+import Shortcut from '@/components/interface/Shortcut';
+import Toggle_Button from '@/components/general/Toggle_Button';
 import { CATEGORIES, KEYS, useStorage } from '@/utils/useStorage';
 import { useTranslation } from 'react-i18next';
 
@@ -16,25 +16,13 @@ export default function Interface() {
   return (
     <div>
       <h1>{t('Content.Interface.general')}</h1>
-      <div className="toggleCombo">
-        <p>{t('Content.Interface.unfilledSurvey')}</p>
-        <Toggle_Button enabled={hideHeader} setEnabled={setHideHeader} />
-      </div>
-      <div className="toggleCombo">
-        <p>{t('Content.Interface.itemList')}</p>
-        <Toggle_Button enabled={itemList} setEnabled={setItemList} />
-      </div>
+      <Toggle_Button label={t('Content.Interface.unfilledSurvey')} enabled={hideHeader} setEnabled={setHideHeader} />
+      <Toggle_Button label={t('Content.Interface.itemList')} enabled={itemList} setEnabled={setItemList} />
       <h1>{t('Content.Interface.fileDownload')}</h1>
-      <div className="toggleCombo">
-        <p>{t('Content.Interface.showDownload')}</p>
-        <Toggle_Button enabled={showDownload} setEnabled={setShowDownload} />
-      </div>
+      <Toggle_Button label={t('Content.Interface.showDownload')} enabled={showDownload} setEnabled={setShowDownload} />
       <Grid_Picker selected={gridPosition} onSelect={setGridPosition} disabled={!showDownload} />
       <h1>{t('Content.Interface.shortcuts')}</h1>
-      <div className="toggleCombo">
-        <p>{t('Content.Interface.customShortcuts')}</p>
-        <Toggle_Button enabled={customShortcut} setEnabled={setCustomShortcut} />
-      </div>
+      <Toggle_Button label={t('Content.Interface.customShortcuts')} enabled={customShortcut} setEnabled={setCustomShortcut} />
       <Shortcut disabled={!customShortcut} />
     </div>
   );

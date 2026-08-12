@@ -1,8 +1,9 @@
-import AddButton from '@/components/AddButton';
-import '@/styles/components/AutoLogin.css';
+import AddButton from '@/components/general/AddButton';
+import UniList_Dropdown from '@/components/system/UniList_Dropdown';
+import DisableWrapper from '@/hooks/DisableWrapper';
+import '@/styles/components/system/AutoLogin.css';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import UniList_Dropdown from '@/components/UniList_Dropdown';
 
 export default function AutoLogin({ disabled = false }) {
   const { t } = useTranslation();
@@ -13,13 +14,7 @@ export default function AutoLogin({ disabled = false }) {
   };
 
   return (
-    <div
-      className="credentialsContainer"
-      style={{
-        opacity: disabled ? 0.45 : 1,
-        pointerEvents: disabled ? 'none' : 'auto',
-        transition: 'opacity 0.2s ease',
-      }}>
+    <DisableWrapper disabled={disabled} className="credentialsContainer">
       {cards.map((card) => (
         <div key={card.id} className="credentialCard">
           <div className="leftSide">
@@ -36,6 +31,6 @@ export default function AutoLogin({ disabled = false }) {
       ))}
 
       <AddButton onClick={addCard} />
-    </div>
+    </DisableWrapper>
   );
 }

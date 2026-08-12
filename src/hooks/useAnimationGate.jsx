@@ -1,9 +1,17 @@
 import { useCallback, useEffect, useState } from 'react';
 
-/* Temporarily enables animations after user interaction
-and prevents transitions from playing during state hydration. */
+/**
+ * Temporarily enables animations after user interaction
+ * and prevents transitions from playing during state hydration.
+ *
+ * @param {number} duration - duration in milliseconds.
+ * @returns {{
+ *   isAnimating: boolean,
+ *   triggerAnimation: () => void
+ * }}
+ */
 
-export function useAnimationGate(duration = 300) {
+export function UseAnimationGate(duration) {
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {

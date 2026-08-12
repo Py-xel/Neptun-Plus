@@ -1,5 +1,5 @@
-import '@/styles/components/Header.css';
-import LanguageSelect from '@/components/LanguageSelect';
+import LanguageSelect from '@/components/header/LanguageSelect';
+import '@/styles/components/header/Header.css';
 
 export default function Header() {
   return (

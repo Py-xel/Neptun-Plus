@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import '@/styles/components/UniList_Dropdown.css';
+import '@/styles/components/system/UniList_Dropdown.css';
 import data from '@/data/universities.json';
 
 export default function UniList_Dropdown() {

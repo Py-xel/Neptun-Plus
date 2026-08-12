@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import '@/styles/components/info/Searchbar.css';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import '@/styles/components/Searchbar.css';
 
 export default function Searchbar({ onSearch }) {
   const { t } = useTranslation();
+
   const [value, setValue] = useState('');
   const inputRef = useRef(null);
 

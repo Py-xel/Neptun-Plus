@@ -1,4 +1,4 @@
-import '@/styles/components/Warning.css';
+import '@/styles/components/system/Warning.css';
 import { useTranslation, Trans } from 'react-i18next';
 
 export default function Warning({ onAccept }) {

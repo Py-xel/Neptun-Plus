@@ -1,4 +1,4 @@
-import '@/styles/components/LanguageSelect.css';
+import '@/styles/components/header/LanguageSelect.css';
 import { CATEGORIES, KEYS, useStorage } from '@/utils/useStorage';
 
 export default function LanguageSelect() {

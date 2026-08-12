@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
 import universities from '@/data/universities.json';
-import '@/styles/components/UniList.css';
+import '@/styles/components/info/UniList.css';
+import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function UniList({ search = '', lang = 'hu' }) {
   const { t } = useTranslation();
@@ -12,19 +12,12 @@ export default function UniList({ search = '', lang = 'hu' }) {
       enName: info.en_name || '',
       supported: info.supported,
     }));
-    const q = search.trim().toLowerCase();
-    if (!q) return entries;
-    return entries.filter((u) => {
-      return (u.huName && u.huName.toLowerCase().includes(q)) || (u.enName && u.enName.toLowerCase().includes(q));
+    const query = search.trim().toLowerCase();
+    if (!query) return entries;
+    return entries.filter((university) => {
+      return (university.huName && university.huName.toLowerCase().includes(query)) || (university.enName && university.enName.toLowerCase().includes(query));
     });
   }, [search]);
-
-  const supportedLabel = (supported) => {
-    if (supported === null || supported === undefined) return lang === 'en' ? 'Unknown' : 'Ismeretlen';
-    const isSupported = <i class="checkmark fa-solid fa-check" />;
-    const notSupported = <i class="xmark fa-solid fa-x" />;
-    return supported ? isSupported : notSupported;
-  };
 
   return (
     <div className="uniList">
@@ -39,7 +32,9 @@ export default function UniList({ search = '', lang = 'hu' }) {
           {list.map((u) => (
             <tr key={u.huName}>
               <td>{lang === 'en' && u.enName ? u.enName : u.huName}</td>
-              <td>{supportedLabel(u.supported)}</td>
+              <td>
+                <i className={u.supported ? 'checkmark fa-solid fa-check' : 'xmark fa-solid fa-x'} />
+              </td>
             </tr>
           ))}
         </tbody>

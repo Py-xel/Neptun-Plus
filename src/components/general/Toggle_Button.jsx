@@ -1,10 +1,10 @@
-import { useAnimationGate } from '@/hooks/useAnimationGate';
-import '@/styles/components/Toggle_Button.css';
+import { UseAnimationGate } from '@/hooks/UseAnimationGate';
+import '@/styles/components/general/Toggle_Button.css';
 import { useState } from 'react';
 
-export default function Toggle_Button({ enabled, setEnabled, showInfo = true }) {
+export default function Toggle_Button({ enabled, setEnabled, label, showInfo = true }) {
   const [showPreview, setShowPreview] = useState(false);
-  const { isAnimating, triggerAnimation } = useAnimationGate(320);
+  const { isAnimating, triggerAnimation } = UseAnimationGate(320);
 
   const handleToggle = (event) => {
     const nextValue = event.target.checked;
@@ -17,15 +17,16 @@ export default function Toggle_Button({ enabled, setEnabled, showInfo = true }) 
   };
 
   return (
-    <div className="optionContainer">
+    <div className="toggleCombo">
+      {label && <p>{label}</p>}
       <div className="toggleContainer">
         <label className="switch">
           <input type="checkbox" checked={enabled} onChange={handleToggle} />
           <span className={`slider${isAnimating ? ' slider--animated' : ''}`} />
         </label>
+        {showInfo && <i className="fa-regular fa-circle-question" onMouseEnter={() => setShowPreview(true)} onMouseLeave={() => setShowPreview(false)} />}
+        {showPreview && <div className="previewWindow" />}
       </div>
-      {showInfo && <i className="fa-regular fa-circle-question" onMouseEnter={() => setShowPreview(true)} onMouseLeave={() => setShowPreview(false)} />}
-      {showPreview && <div className="previewWindow" />}
     </div>
   );
 }

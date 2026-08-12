@@ -1,6 +1,5 @@
-import Searchbar from '@/components/Searchbar';
-import UniList from '@/components/UniList';
-import '@/styles/components/UniList.css';
+import Searchbar from '@/components/info/Searchbar';
+import UniList from '@/components/info/UniList';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 

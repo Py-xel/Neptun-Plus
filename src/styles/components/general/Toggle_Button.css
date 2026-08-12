@@ -1,11 +1,3 @@
-.optionContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  gap: 5px;
-}
-
 .toggleCombo {
   display: flex;
   flex-direction: row;
@@ -25,41 +17,6 @@
   font-size: 12px;
 
   cursor: help;
-}
-
-.previewWindow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-
-  position: absolute;
-  width: 172px;
-  height: 97px;
-  right: 20px;
-  border: solid 1px var(--twilight-indigo);
-  border-radius: 6px;
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    0 6px 12px rgba(0, 0, 0, 0.1),
-    0 12px 24px rgba(0, 0, 0, 0.1),
-    0 24px 48px rgba(0, 0, 0, 0.1);
-
-  pointer-events: none;
-  z-index: 99;
-  opacity: 0;
-  animation: previewFadeIn 0.2s ease forwards;
-}
-
-@keyframes previewFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .switch {
@@ -115,4 +72,39 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(20px);
+}
+
+.previewWindow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  position: absolute;
+  width: 172px;
+  height: 97px;
+  right: 30px;
+  border: solid 1px var(--twilight-indigo);
+  border-radius: 6px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 6px 12px rgba(0, 0, 0, 0.1),
+    0 12px 24px rgba(0, 0, 0, 0.1),
+    0 24px 48px rgba(0, 0, 0, 0.1);
+
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0;
+  animation: previewFadeIn 0.2s ease forwards;
+}
+
+@keyframes previewFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

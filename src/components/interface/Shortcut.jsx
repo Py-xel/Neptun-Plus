@@ -1,5 +1,6 @@
-import Icon_Picker from '@/components/Icon_Picker';
-import '@/styles/components/Shortcut.css';
+import Icon_Picker from '@/components/interface/Icon_Picker';
+import DisableWrapper from '@/hooks/DisableWrapper';
+import '@/styles/components/interface/Shortcut.css';
 import { CATEGORIES, KEYS, useStorage } from '@/utils/useStorage';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -63,13 +64,7 @@ export default function Shortcut({ disabled = false }) {
   };
 
   return (
-    <div
-      className="shortcutContainer"
-      style={{
-        opacity: disabled ? 0.45 : 1,
-        pointerEvents: disabled ? 'none' : 'auto',
-        transition: 'opacity 0.2s ease',
-      }}>
+    <DisableWrapper disabled={disabled} className="shortcutContainer">
       {cards.map((card, index) => (
         <div key={card.id} className={`shortcutCard${removingCardIds.includes(card.id) ? ' removing' : ''}`}>
           <Icon_Picker initialIcon={card.icon} onSelect={(icon) => updateCard(card.id, { icon })} />
@@ -88,6 +83,6 @@ export default function Shortcut({ disabled = false }) {
       <button type="button" className="addShortcutButton" onClick={addCard} aria-label="Add shortcut">
         <i className="fa-solid fa-circle-plus" />
       </button>
-    </div>
+    </DisableWrapper>
   );
 }

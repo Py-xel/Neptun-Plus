@@ -1,5 +1,5 @@
 import i18n from '@/popup/i18n';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const STORAGE_KEY = 'settings';
 const RESET_EVENT = 'neptun-plus-reset-storage';
@@ -16,6 +16,7 @@ export const KEYS = {
     SHOW_FULL_ITEMLIST: 'show-full-itemlist',
     SHOW_DOWNLOAD: 'show-download',
     USE_SHORTCUTS: 'use-shortcuts',
+    SHORTCUTS: 'shortcuts',
     GRID_POSITION: 'grid-position',
   },
 
@@ -32,15 +33,21 @@ export const KEYS = {
 };
 
 export function useStorage(category, key, defaultValue) {
+  /* REPLACE WITH STREAMLINED ERROR HANDLING! */
+  if (!category || !key) {
+    throw new Error(`useStorage requires both category and key. Received category=${category} key=${key}`);
+  }
+
   const [value, setValue] = useState(defaultValue);
   const [loading, setLoading] = useState(true);
+  const defaultValueRef = useRef(defaultValue);
 
   async function resetAllSettings() {
     if (typeof chrome !== 'undefined' && chrome.storage?.local) {
       await chrome.storage.local.remove(STORAGE_KEY);
     }
 
-    setValue(defaultValue);
+    setValue(defaultValueRef.current);
     window.dispatchEvent(new Event(RESET_EVENT));
 
     if (i18n.isInitialized) {
@@ -50,7 +57,7 @@ export function useStorage(category, key, defaultValue) {
 
   useEffect(() => {
     const handleStorageReset = () => {
-      setValue(defaultValue);
+      setValue(defaultValueRef.current);
       setLoading(false);
     };
 
@@ -59,7 +66,7 @@ export function useStorage(category, key, defaultValue) {
     async function load() {
       const result = await chrome.storage.local.get(STORAGE_KEY);
       const settings = result[STORAGE_KEY] || {};
-      const storedValue = settings?.[category]?.[key] ?? defaultValue;
+      const storedValue = settings?.[category]?.[key] ?? defaultValueRef.current;
 
       setValue(storedValue);
 
@@ -78,7 +85,7 @@ export function useStorage(category, key, defaultValue) {
     return () => {
       window.removeEventListener(RESET_EVENT, handleStorageReset);
     };
-  }, [category, key, defaultValue]);
+  }, [category, key]);
 
   async function updateValue(newValue) {
     setValue(newValue);
@@ -101,5 +108,13 @@ export function useStorage(category, key, defaultValue) {
     }
   }
 
-  return [value, updateValue, loading, resetAllSettings];
+  const storageApi = [value, updateValue, loading, resetAllSettings];
+  Object.assign(storageApi, {
+    value,
+    updateValue,
+    loading,
+    resetAllSettings,
+  });
+
+  return storageApi;
 }

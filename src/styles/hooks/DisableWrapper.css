@@ -1,0 +1,5 @@
+.disabled-state {
+  opacity: 0.45;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}

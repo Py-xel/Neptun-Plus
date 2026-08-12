@@ -1,4 +1,4 @@
-import '@/styles/components/AddButton.css';
+import '@/styles/components/general/AddButton.css';
 
 export default function AddButton({ onClick }) {
   return (

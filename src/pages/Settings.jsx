@@ -1,5 +1,5 @@
-import Toggle_Button from '@/components/Toggle_Button';
-import ResetSettings from '@/components/ResetSettings';
+import Toggle_Button from '@/components/general/Toggle_Button';
+import ResetSettings from '@/components/settings/ResetSettings';
 import { CATEGORIES, KEYS, useStorage } from '@/utils/useStorage';
 import { useTranslation } from 'react-i18next';
 
@@ -11,10 +11,7 @@ export default function Settings() {
   return (
     <div>
       <h1>{t('Content.Settings.extensionSettings')}</h1>
-      <div className="toggleCombo">
-        <p>{t('Content.Settings.hideInfo')}</p>
-        <Toggle_Button enabled={settingsInfo} setEnabled={setSettingsInfo} showInfo={false} />
-      </div>
+      <Toggle_Button label={t('Content.Settings.hideInfo')} enabled={settingsInfo} setEnabled={setSettingsInfo} showInfo={false} />
       <ResetSettings />
     </div>
   );
