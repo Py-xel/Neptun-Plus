@@ -43,7 +43,7 @@ export default function AutoLogin({ disabled = false }) {
             <button type="button" className="removeCardButton" onClick={() => removeCard(card.id)}>
               <i className="fa-solid fa-remove" />
             </button>
-            <button type="button" className="saveCardButton" onClick={() => removeCard(card.id)}>
+            <button type="button" className="saveCardButton">
               <i className="fa-solid fa-floppy-disk" />
             </button>
           </div>
