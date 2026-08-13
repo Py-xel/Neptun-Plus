@@ -65,25 +65,6 @@
   animation: iconPickerFadeIn 0.2s ease forwards;
 }
 
-/* -- Scrollbar -- */
-.iconPickerWindow::-webkit-scrollbar {
-  width: 8px;
-}
-
-.iconPickerWindow::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.iconPickerWindow::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1;
-  border: 2px solid white;
-  border-radius: 20px;
-}
-
-.iconPickerWindow::-webkit-scrollbar-thumb:hover {
-  background-color: var(--blue-highlight);
-}
-
 .iconOption {
   display: flex;
   align-items: center;
@@ -117,4 +98,23 @@
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
+}
+
+/* -- Scrollbar -- */
+.iconPickerWindow::-webkit-scrollbar {
+  width: 8px;
+}
+
+.iconPickerWindow::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.iconPickerWindow::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border: 2px solid white;
+  border-radius: 20px;
+}
+
+.iconPickerWindow::-webkit-scrollbar-thumb:hover {
+  background-color: var(--blue-highlight);
 }

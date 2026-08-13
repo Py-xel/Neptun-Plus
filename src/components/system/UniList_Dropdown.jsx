@@ -1,14 +1,17 @@
-import { useMemo, useState } from 'react';
-import '@/styles/components/system/UniList_Dropdown.css';
 import data from '@/data/universities.json';
+import '@/styles/components/system/UniList_Dropdown.css';
+import { useMemo, useState } from 'react';
 
-export default function UniList_Dropdown() {
+export default function UniList_Dropdown({ lang = 'hu' }) {
   const supportedUniversities = useMemo(
     () =>
       Object.entries(data)
         .filter(([, university]) => university.supported)
-        .map(([name]) => ({ value: name, label: name })),
-    [],
+        .map(([huName, university]) => ({
+          value: huName,
+          label: lang === 'en' && university.en_name ? university.en_name : huName,
+        })),
+    [lang],
   );
 
   const [selectedUniversity, setSelectedUniversity] = useState(supportedUniversities[0]?.value ?? '');

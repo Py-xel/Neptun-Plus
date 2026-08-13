@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 100%;
   padding: 6px;
   box-sizing: border-box;
 
@@ -15,7 +14,6 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 100%;
   height: 95px;
   padding: 10px;
   box-sizing: border-box;
@@ -24,34 +22,6 @@
   border-radius: 8px;
   background-color: var(--white);
   box-shadow: 0 1px 3px rgba(35, 45, 75, 0.08);
-}
-
-.credentialCard input {
-  width: 175px;
-  height: 32px;
-  padding: 3px;
-  box-sizing: border-box;
-
-  border: 1px solid var(--blue-highlight);
-  border-radius: 6px;
-  padding: 7px 8px;
-  background-color: var(--ghost-white);
-
-  margin-bottom: 5px;
-
-  font-family: 'Lato', sans-serif;
-  font-size: 13px;
-  color: var(--title-black);
-}
-
-.credentialCard input:focus {
-  outline: none;
-  border-color: #4d94ff;
-  box-shadow: 0 0 0 1px #4d94ff;
-}
-
-.credentialCard input::placeholder {
-  color: #666666;
 }
 
 .leftSide {
@@ -68,20 +38,40 @@
   align-items: center;
 
   flex-direction: row;
+  flex: 1;
 
   gap: 6px;
 }
 
-.removeCardButton {
+.inputFields .inputContainer {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+}
+
+.actionButtonContainer {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.removeCardButton,
+.saveCardButton {
   border: none;
   background: transparent;
   padding: 0;
-  cursor: pointer;
-
-  font-size: 13px;
-  color: var(--electric-red);
   margin: 0;
+  cursor: pointer;
+}
+
+.removeCardButton {
+  color: var(--electric-red);
+}
+
+.saveCardButton {
+  color: var(--bright-indigo);
 }

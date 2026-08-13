@@ -1,6 +1,8 @@
 .uniListDropdownWrapper {
   position: relative;
   width: 100%;
+
+  margin-top: 5px;
 }
 
 .uniListDropdown {
@@ -12,7 +14,7 @@
 
   width: 100%;
   max-width: 100%;
-  min-height: 40px;
+  min-height: 35px;
 
   padding: 0 44px 0 16px;
 
@@ -40,4 +42,23 @@
 
   color: var(--blue-highlight);
   font-size: 12px;
+}
+
+/* -- Scrollbar -- */
+.uniListDropdown::-webkit-scrollbar {
+  width: 8px;
+}
+
+.uniListDropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.uniListDropdown::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border: 2px solid white;
+  border-radius: 20px;
+}
+
+.uniListDropdown::-webkit-scrollbar-thumb:hover {
+  background-color: var(--blue-highlight);
 }

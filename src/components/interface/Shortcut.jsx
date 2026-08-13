@@ -1,4 +1,5 @@
 import Icon_Picker from '@/components/interface/Icon_Picker';
+import InputField from '@/components/general/InputField';
 import DisableWrapper from '@/hooks/DisableWrapper';
 import '@/styles/components/interface/Shortcut.css';
 import { CATEGORIES, KEYS, useStorage } from '@/utils/useStorage';
@@ -68,12 +69,8 @@ export default function Shortcut({ disabled = false }) {
       {cards.map((card, index) => (
         <div key={card.id} className={`shortcutCard${removingCardIds.includes(card.id) ? ' removing' : ''}`}>
           <Icon_Picker initialIcon={card.icon} onSelect={(icon) => updateCard(card.id, { icon })} />
-          <div className="shortcutField nameField">
-            <input type="text" value={card.name} className="shortcutName" placeholder={t('Content.Interface.name')} onChange={(event) => updateCard(card.id, { name: event.target.value })} />
-          </div>
-          <div className="shortcutField linkField">
-            <input type="text" value={card.link} className="shortcutLink" placeholder={t('Content.Interface.link')} onChange={(event) => updateCard(card.id, { link: event.target.value })} />
-          </div>
+          <InputField icon={'fa-regular fa-user'} value={card.name} placeholder={t('Content.Interface.name')} onChange={(event) => updateCard(card.id, { name: event.target.value })} />
+          <InputField icon={'fa-regular fa-circle-right'} value={card.link} placeholder={t('Content.Interface.link')} onChange={(event) => updateCard(card.id, { link: event.target.value })} />
           <button type="button" className="removeShortcutButton" onClick={() => removeCard(card.id)} aria-label="Remove shortcut">
             <i className="fa-solid fa-remove" />
           </button>
