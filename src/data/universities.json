@@ -10,7 +10,7 @@
     "en_name": "University of Veterinary Medicine"
   },
   "Apor Vilmos Katolikus Főiskola": {
-    "website": "https://neptun.avkf.hu/hallgatoiangular/",
+    "website": "https://neptun.avkf.hu/",
     "supported": false,
     "en_name": "Apor Vilmos Catholic College"
   },
@@ -25,37 +25,27 @@
     "en_name": "Brenner János Theological College"
   },
   "Budapesti Corvinus Egyetem": {
-    "website": "https://neptun3r.web.uni-corvinus.hu/hallgatoi/",
+    "website": "https://neptun3r.web.uni-corvinus.hu/",
     "supported": true,
     "en_name": "Corvinus University of Budapest"
   },
   "Budapesti Gazdaságtudományi Egyetem": {
-    "website": [
-      "https://neptun11.uni-bge.hu/",
-      "https://neptun12.uni-bge.hu/",
-      "https://neptun13.uni-bge.hu/",
-      "https://neptun14.uni-bge.hu/",
-      "https://neptun15.uni-bge.hu/",
-      "https://neptun16.uni-bge.hu/",
-      "https://neptun17.uni-bge.hu/",
-      "https://neptun18.uni-bge.hu/"
-    ],
+    "website": "https://neptun11.uni-bge.hu/",
     "supported": true,
     "en_name": "Budapest University of Economics and Business"
   },
   "Budapesti Metropolitan Egyetem": {
-    "website": ["https://neptunweb1.metropolitan.hu/hallgato/", "https://neptunweb2.metropolitan.hu/hallgato/"],
-
+    "website": "https://neptunweb2.metropolitan.hu/",
     "supported": true,
     "en_name": "Budapest Metropolitan University"
   },
   "Budapesti Műszaki és Gazdaságtudományi Egyetem": {
-    "website": "https://neptun.bme.hu/hallgatoi/",
+    "website": "https://neptun.bme.hu/",
     "supported": true,
     "en_name": "Budapest University of Technology and Economics"
   },
   "Debreceni Egyetem": {
-    "website": "https://www-h-ng.neptun.unideb.hu/hallgato_ng/",
+    "website": "https://www-h-ng.neptun.unideb.hu/",
     "supported": true,
     "en_name": "Debrecen University"
   },
@@ -65,17 +55,17 @@
     "en_name": "Debrecen Reformed Theological University"
   },
   "Dunaújvárosi Egyetem": {
-    "website": "https://nappw.dfad.duf.hu/hallgato_ng/",
+    "website": "https://nappw.dfad.duf.hu/",
     "supported": true,
     "en_name": "Dunaújváros University"
   },
   "Edutus Egyetem": {
-    "website": "https://neptun.edutus.hu/hallgato/",
+    "website": "https://neptun.edutus.hu/",
     "supported": true,
     "en_name": "Edutus University"
   },
   "Eötvös József Főiskola": {
-    "website": "https://neptun.ejf.hu/hallgato_ng/",
+    "website": "https://neptun.ejf.hu/",
     "supported": true,
     "en_name": "Eötvös József College"
   },
@@ -85,12 +75,12 @@
     "en_name": "Eötvös Loránd University"
   },
   "Eszterházy Károly Katolikus Egyetem": {
-    "website": "https://neptunh.uni-eszterhazy.hu/Hallgato",
+    "website": "https://neptunh.uni-eszterhazy.hu/",
     "supported": true,
     "en_name": "Eszterházy Károly Catholic University"
   },
   "Gábor Dénes Egyetem": {
-    "website": "https://neptun.gde.hu/hallgato/",
+    "website": "https://neptun.gde.hu/",
     "supported": true,
     "en_name": "Gábor Dénes University"
   },
@@ -100,32 +90,32 @@
     "en_name": "Gál Ferenc University"
   },
   "Károli Gáspár Református Egyetem": {
-    "website": "https://neptun.kre.hu/hallgato/",
+    "website": "https://neptun.kre.hu/",
     "supported": true,
     "en_name": "Károli Gáspár University of the Reformed Church in Hungary"
   },
   "Kodolányi János Egyetem": {
-    "website": "https://neptun.kodolanyi.hu/hallgato_NG/",
+    "website": "https://neptun.kodolanyi.hu/",
     "supported": true,
     "en_name": "Kodolányi János University"
   },
   "Kolozsvári Protestáns Teológiai Intézet": {
-    "website": "https://neptun.proteo.hu/hallgato",
+    "website": "https://proteo.hu/",
     "supported": false,
     "en_name": "Protestant Theological Institute of Cluj-Napoca"
   },
   "Liszt Ferenc Zeneművészeti Egyetem": {
-    "website": "https://neptun.lfze.hu/hallgato/",
+    "website": "https://neptun.lfze.hu/",
     "supported": true,
     "en_name": "Liszt Ferenc Academy of Music"
   },
   "Magyar Agrár- és Élettudományi Egyetem": {
-    "website": "https://hallgato.uni-mate.hu/hallgato_ng/",
+    "website": "https://hallgato.uni-mate.hu/",
     "supported": true,
     "en_name": "Hungarian University of Agriculture and Life Sciences"
   },
   "Magyar Képzőművészeti Egyetem": {
-    "website": "https://mke-neptun.mke.hu/hallgato/",
+    "website": "https://mke-neptun.mke.hu/",
     "supported": false,
     "en_name": "Hungarian University of Fine Arts"
   },
@@ -135,17 +125,17 @@
     "en_name": "Hungarian Dance University"
   },
   "Magyar Testnevelési és Sporttudományi Egyetem": {
-    "website": "https://neptun.tf.hu/hallgato/",
+    "website": "https://neptun.tf.hu/",
     "supported": true,
     "en_name": "Hungarian University of Sports Science"
   },
   "Milton Friedman Egyetem": {
-    "website": "https://neptun.uni-milton.hu/hallgato/",
+    "website": "https://neptun.uni-milton.hu/",
     "supported": true,
     "en_name": "Milton Friedman University"
   },
   "Miskolci Egyetem": {
-    "website": ["neptunweb1.uni-miskolc.hu/hallgato_ng/", "neptunweb2.uni-miskolc.hu/hallgato_ng/"],
+    "website": "https://neptunweb1.uni-miskolc.hu/",
     "supported": true,
     "en_name": "Miskolc University"
   },
@@ -155,17 +145,17 @@
     "en_name": "Moholy-Nagy University of Art and Design"
   },
   "Nemzeti Közszolgálati Egyetem": {
-    "website": "https://neptunweb.uni-nke.hu/hallgato_ng/",
+    "website": "https://neptunweb.uni-nke.hu/",
     "supported": true,
     "en_name": "National Public Service University"
   },
   "Nemzetközi Üzleti Főiskola (IBS)": {
-    "website": "https://neptun.ibs-b.hu/student/",
+    "website": "https://neptun.ibs-b.hu/",
     "supported": true,
     "en_name": "International Business School"
   },
   "Neumann János Egyetem": {
-    "website": "https://neptun.nje.hu/hallgato/",
+    "website": "https://neptun.nje.hu/",
     "supported": true,
     "en_name": "John von Neumann University"
   },
@@ -175,22 +165,22 @@
     "en_name": "Nyíregyháza University"
   },
   "Óbudai Egyetem": {
-    "website": "https://neptun.uni-obuda.hu/ujhallgato/",
+    "website": "https://neptun.uni-obuda.hu/",
     "supported": true,
     "en_name": "Óbudai University"
   },
   "Országos Rabbiképző-Zsidó Egyetem": {
-    "website": "https://neptun.or-zse.hu/hallgato/",
+    "website": "https://neptun.or-zse.hu/",
     "supported": true,
     "en_name": "University of Jewish Studies"
   },
   "Pannon Egyetem": {
-    "website": "https://neptun-ws01.uni-pannon.hu/hallgato/",
+    "website": "https://neptun-ws01.uni-pannon.hu/",
     "supported": true,
     "en_name": "Pannon University"
   },
   "Pázmány Péter Katolikus Egyetem": {
-    "website": ["https://neptun2.ppke.hu/hallgato_uj/", "https://neptun3.ppke.hu/hallgato_uj/"],
+    "website": "https://neptun2.ppke.hu/",
     "supported": true,
     "en_name": "Pázmány Péter Catholic University"
   },
@@ -205,37 +195,37 @@
     "en_name": "Sapientia Hungarian University of Transylvania"
   },
   "Sapientia Szerzetesi Hittudományi Főiskola": {
-    "website": "https://neptun3r.sapientia.hu/hallgato/",
+    "website": "https://neptun3r.sapientia.hu/",
     "supported": true,
     "en_name": "Sapientia College of Theology of Religious Orders"
   },
   "Semmelweis Egyetem": {
-    "website": "https://neptunweb.semmelweis.hu/hallgato/",
+    "website": "https://neptunweb.semmelweis.hu/",
     "supported": true,
     "en_name": "Semmelweis University"
   },
   "Soproni Egyetem": {
-    "website": "https://neptun3r.uni-sopron.hu/hallgato_ng/",
+    "website": "https://neptun3r.uni-sopron.hu/",
     "supported": true,
     "en_name": "Sopron University"
   },
   "Széchenyi István Egyetem": {
-    "website": "https://neptun-hweb.sze.hu/hallgato_ng/",
+    "website": "https://neptun-hweb.sze.hu/",
     "supported": true,
     "en_name": "Széchenyi István University"
   },
   "Szegedi Tudományegyetem": {
-    "website": "https://neptun.szte.hu/hallgato/",
+    "website": "https://neptun.szte.hu/",
     "supported": true,
     "en_name": "University of Szeged"
   },
   "Szent Atanáz Görög Katolikus Hittudományi Főiskola": {
-    "website": "https://neptun.szentatanaz.hu/hallgato/",
+    "website": "https://neptun.szentatanaz.hu/",
     "supported": true,
     "en_name": "St Athanasius Greek-Catholic Theological Institute"
   },
   "Szent Pál Akadémia": {
-    "website": "https://neptun.szpa.hu/hallgato/",
+    "website": "https://neptun.szpa.hu/",
     "supported": false,
     "en_name": ""
   },
@@ -245,7 +235,7 @@
     "en_name": "Saint Paul Academy"
   },
   "Tokaj-Hegyalja Egyetem": {
-    "website": "https://neptun.unithe.hu/hallgato/",
+    "website": "https://neptun.unithe.hu/",
     "supported": true,
     "en_name": "Tokaj-Hegyalja University"
   },
@@ -255,12 +245,12 @@
     "en_name": "Tomori Pál College"
   },
   "Veszprémi Érseki Főiskola": {
-    "website": "https://neptun.vhf.hu/hallgato_ng/",
+    "website": "https://neptun.vhf.hu/",
     "supported": true,
     "en_name": "Archiepiscopal College of Veszprém"
   },
   "Wekerle Sándor Üzleti Főiskola": {
-    "website": "https://neptun.wsne.hu/hallgato/",
+    "website": "https://neptun.wsne.hu/",
     "supported": true,
     "en_name": "Wekerle Sándor Business College"
   },
