@@ -1,0 +1,19 @@
+:root {
+  /* BASE COLORS */
+  --ghost-white: #f2f3fbff;
+  --white: #ffffffff;
+  --cool-steel: #9c9c9fff;
+  --twilight-indigo: #213055ff;
+  --blue-highlight: #abafc8;
+  --title-black: #222222ff;
+
+  /* ICON COLORS */
+  --electric-red: #ff2113ff;
+  --bright-indigo: #0943d9ff;
+  --tropical-mint: #00dea4ff;
+
+  /* WARNING COLORS */
+  --ghost-red: #fbf2f2;
+  --twilight-red: #b92a2a;
+  --cool-red: #d43046;
+}
