@@ -27,7 +27,7 @@ neptun-login-form > .login-right > neptun-language-dropdown.neptun-language-drop
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 5px;
 }
 
 .np_leftSide {
@@ -47,7 +47,7 @@ neptun-login-form > .login-right > neptun-language-dropdown.neptun-language-drop
 }
 
 .np_logo {
-  width: 20px;
+  width: 17px;
 }
 
 .np_title {
