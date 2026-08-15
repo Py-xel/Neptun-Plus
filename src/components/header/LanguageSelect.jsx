@@ -1,5 +1,6 @@
 import '@/styles/components/header/LanguageSelect.css';
-import { CATEGORIES, KEYS, useStorage } from '@/utils/useStorage';
+import { useStorage } from '@/utils/componentStorage';
+import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 
 export default function LanguageSelect() {
   const [selectedLanguage, setSelectedLanguage] = useStorage(CATEGORIES.EXTENSION_SETTINGS, KEYS.EXTENSION_SETTINGS.LANGUAGE, 'hu');

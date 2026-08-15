@@ -1,7 +1,8 @@
+import Toggle_Button from '@/components/general/Toggle_Button';
 import Grid_Picker from '@/components/interface/Grid_Picker';
 import Shortcut from '@/components/interface/Shortcut';
-import Toggle_Button from '@/components/general/Toggle_Button';
-import { CATEGORIES, KEYS, useStorage } from '@/utils/useStorage';
+import { useStorage } from '@/utils/componentStorage';
+import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { useTranslation } from 'react-i18next';
 
 export default function Interface() {

@@ -35,6 +35,7 @@ function createStatus() {
   const container = document.getElementsByClassName('neptun-language-dropdown')[0];
 
   if (!container) {
+    /* Add error handling */
     return false;
   }
 

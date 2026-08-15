@@ -1,8 +1,9 @@
-import Icon_Picker from '@/components/interface/Icon_Picker';
 import InputField from '@/components/general/InputField';
+import Icon_Picker from '@/components/interface/Icon_Picker';
 import DisableWrapper from '@/hooks/DisableWrapper';
 import '@/styles/components/interface/Shortcut.css';
-import { CATEGORIES, KEYS, useStorage } from '@/utils/useStorage';
+import { useStorage } from '@/utils/componentStorage';
+import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 

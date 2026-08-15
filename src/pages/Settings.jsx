@@ -1,6 +1,7 @@
 import Toggle_Button from '@/components/general/Toggle_Button';
 import ResetSettings from '@/components/settings/ResetSettings';
-import { CATEGORIES, KEYS, useStorage } from '@/utils/useStorage';
+import { useStorage } from '@/utils/componentStorage';
+import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { useTranslation } from 'react-i18next';
 
 export default function Settings() {

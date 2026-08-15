@@ -1,41 +1,13 @@
 import i18n from '@/popup/i18n';
+import { CATEGORIES, KEYS, STORAGE_KEY } from '@/utils/dataSchema';
 import { useEffect, useRef, useState } from 'react';
 
-const STORAGE_KEY = 'settings';
 const RESET_EVENT = 'neptun-plus-reset-storage';
 
-export const CATEGORIES = {
-  INTERFACE: 'interface',
-  SYSTEM: 'system',
-  EXTENSION_SETTINGS: 'extension-settings',
-};
-
-export const KEYS = {
-  INTERFACE: {
-    DISABLE_HEADERS: 'disable-headers',
-    SHOW_FULL_ITEMLIST: 'show-full-itemlist',
-    SHOW_DOWNLOAD: 'show-download',
-    USE_SHORTCUTS: 'use-shortcuts',
-    SHORTCUTS: 'shortcuts',
-    GRID_POSITION: 'grid-position',
-  },
-
-  SYSTEM: {
-    INFINITE_SESSION: 'infinite-session',
-    AUTO_LOGIN: 'auto-login',
-    ACCEPTED_WARNING: 'accepted-warning',
-  },
-
-  EXTENSION_SETTINGS: {
-    LANGUAGE: 'language',
-    HIDE_HINTS: 'hide-hints',
-  },
-};
-
 export function useStorage(category, key, defaultValue) {
-  /* REPLACE WITH STREAMLINED ERROR HANDLING! */
+  /* Add error handling */
   if (!category || !key) {
-    throw new Error(`useStorage requires both category and key. Received category=${category} key=${key}`);
+    return false;
   }
 
   const [value, setValue] = useState(defaultValue);
