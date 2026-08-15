@@ -34,7 +34,7 @@ neptun-login-form > .login-right > neptun-language-dropdown.neptun-language-drop
 
   width: max-content;
   height: fit-content;
-  gap: 8px;
+  gap: 4px;
 
   background-color: var(--ghost-white);
   border-radius: 8px;
