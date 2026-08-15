@@ -79,6 +79,8 @@ function createStatus() {
   const statusText = document.createElement('span');
   statusText.className = 'np_statusText';
   statusText.textContent = i18n.t('Content_Script.connected');
+
+  statusDot.appendChild(statusPing);
   statusDot.appendChild(statusSolid);
   statusInner.appendChild(statusDot);
   statusInner.appendChild(statusText);
