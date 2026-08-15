@@ -38,14 +38,14 @@ function createStatus() {
 
   // Logo and title
   const header = document.createElement('div');
-  header.className = 'np_header';
+  header.className = 'np_statusHeader';
 
   const icon = document.createElement('img');
-  icon.className = 'np_logo';
+  icon.className = 'np_statusLogo';
   icon.src = chrome.runtime.getURL('/Neptun_Plus_Logo_Wireframe.png');
 
   const title = document.createElement('p');
-  title.className = 'np_title';
+  title.className = 'np_statusTitle';
   title.textContent = 'Neptun Plus';
 
   header.append(icon, title);

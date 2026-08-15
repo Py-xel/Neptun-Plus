@@ -42,7 +42,7 @@ neptun-login-form > .login-right > neptun-language-dropdown.neptun-language-drop
   overflow: hidden;
 }
 
-.np_header {
+.np_statusHeader {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -66,11 +66,11 @@ neptun-login-form > .login-right > neptun-language-dropdown.neptun-language-drop
   gap: 0px;
 }
 
-.np_logo {
+.np_statusLogo {
   width: 17px;
 }
 
-.np_title {
+.np_statusTitle {
   font-size: 14px;
   font-weight: 600;
   margin: 0;
