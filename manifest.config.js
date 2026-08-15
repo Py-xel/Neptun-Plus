@@ -3,7 +3,7 @@ import pkg from './package.json';
 import universities from './src/data/universities.json';
 
 // Dynamically load university links from json
-const supportedUrls = Object.values(universities)
+const allURLs = Object.values(universities)
   .filter((university) => university.supported)
   .flatMap((university) => {
     const websites = Array.isArray(university.website) ? university.website : [university.website];
@@ -19,10 +19,10 @@ export default defineManifest({
   name: pkg.name,
   version: pkg.version,
   icons: {
-    48: 'public/Neptun_Plus_Logo.png',
+    48: 'Neptun_Plus_Logo.png',
   },
   permissions: ['contentSettings', 'storage', 'scripting'],
-  host_permissions: supportedUrls,
+  host_permissions: allURLs,
   web_accessible_resources: [
     {
       resources: ['public/*'],
@@ -31,16 +31,13 @@ export default defineManifest({
   ],
   content_scripts: [
     {
-      matches: supportedUrls,
+      matches: allURLs,
       js: ['src/content-scripts/Status.js'],
       css: ['src/styles/content-scripts/Status.css'],
       run_at: 'document_start',
     },
   ],
   action: {
-    default_icon: {
-      48: 'public/Neptun_Plus_Logo.png',
-    },
     default_popup: 'src/popup/index.html',
   },
 });
