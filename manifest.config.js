@@ -32,7 +32,7 @@ export default defineManifest({
   content_scripts: [
     {
       matches: allURLs,
-      js: ['src/content-scripts/Status.js'],
+      js: ['src/content-scripts/Status.js', 'src/content-scripts/interface/DisableHeaders.js'],
       css: ['src/styles/content-scripts/Status.css'],
       run_at: 'document_start',
     },

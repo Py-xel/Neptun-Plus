@@ -1,4 +1,5 @@
-import { CATEGORIES, KEYS, readStorageValue, observeStorageChange } from '@/utils/contentScriptStorage';
+import { CATEGORIES, KEYS } from '@/utils/dataSchema';
+import { readStorageValue, observeStorageChange } from '@/utils/contentScriptStorage';
 
 function getHideHeaderSetting() {
   return readStorageValue(CATEGORIES.INTERFACE, KEYS.INTERFACE.DISABLE_HEADERS, false);
