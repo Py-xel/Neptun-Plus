@@ -4,31 +4,25 @@ import { observeMutations } from '@/utils/utility';
 
 const NEXT_VISIBLE_BUTTON_SELECTOR = 'button#next-visible-button';
 
-function clickNextVisibleButtons() {
+/* Add error handling */
+function applyItemListSetting(enabled) {
   document.querySelectorAll(NEXT_VISIBLE_BUTTON_SELECTOR).forEach((button) => {
-    if (!(button instanceof HTMLElement) || button.dataset.npAutoClickHandled === 'true') {
+    if (!(button instanceof HTMLElement)) {
       return;
     }
 
-    button.dataset.npAutoClickHandled = 'true';
+    if (!enabled) {
+      delete button.dataset.npClicked;
+      return;
+    }
+
+    if (button.dataset.npClicked === 'true') {
+      return;
+    }
+
+    button.dataset.npClicked = 'true';
     button.click();
   });
-}
-
-function applyItemListSetting(enabled) {
-  const buttons = document.querySelectorAll(NEXT_VISIBLE_BUTTON_SELECTOR);
-
-  if (!enabled) {
-    buttons.forEach((button) => {
-      if (button instanceof HTMLElement) {
-        delete button.dataset.npAutoClickHandled;
-      }
-    });
-
-    return;
-  }
-
-  clickNextVisibleButtons();
 }
 
 function ItemList() {
@@ -39,7 +33,6 @@ function ItemList() {
   };
 
   update();
-
   observeMutations(update);
 
   observeStorageChange(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_FULL_ITEMLIST, (newValue) => {
