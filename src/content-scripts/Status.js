@@ -1,52 +1,42 @@
 import universities from '@/data/universities.json';
 import i18n, { syncHtmlLanguage } from '@/i18n';
+import { normalizeUrl, addNavigationListeners, observeMutations } from '@/utils/utility';
 
-function normalizeUrl(url) {
-  try {
-    const parsedUrl = new URL(url);
-    const normalizedPath = parsedUrl.pathname.replace(/\/+$/, '');
-    return `${parsedUrl.origin}${normalizedPath || '/'}`;
-  } catch {
-    return url;
-  }
-}
+const LANGUAGE_DROPDOWN = 'neptun-language-dropdown';
+const HEADER = 'main-header-right';
+const SUPPORTED_SITE_ROOTS = Object.values(universities)
+  .filter(({ supported }) => supported)
+  .flatMap(({ website }) => {
+    const websites = Array.isArray(website) ? website : [website];
 
-const allowedLoginUrls = new Set(
-  Object.values(universities)
-    .filter((university) => university.supported)
-    .flatMap((university) => {
-      const websites = Array.isArray(university.website) ? university.website : [university.website];
-      return websites.filter((url) => url && typeof url === 'string').map((url) => `${normalizeUrl(url).replace(/\/+$/, '')}/login`);
-    }),
-);
-
-function shouldRun() {
-  const currentUrl = normalizeUrl(window.location.href);
-  return allowedLoginUrls.has(currentUrl);
-}
+    return websites.filter((url) => typeof url === 'string' && url).map(normalizeUrl);
+  });
 
 function createStatus() {
-  if (!shouldRun()) {
+  const currentUrl = normalizeUrl(window.location.href);
+
+  const isSupportedSite = SUPPORTED_SITE_ROOTS.some((root) => currentUrl === root || currentUrl.startsWith(`${root}/`));
+
+  if (!isSupportedSite) {
+    /* Add error handling */
     return false;
   }
 
   syncHtmlLanguage();
 
-  const container = document.getElementsByClassName('neptun-language-dropdown')[0];
+  const isLoginPage = currentUrl.endsWith('/login');
 
-  if (!container) {
-    /* Add error handling */
+  const container = isLoginPage ? document.getElementsByClassName(LANGUAGE_DROPDOWN)[0] : document.getElementById(HEADER);
+
+  if (!container || container.querySelector('.np_statusContainer')) {
     return false;
   }
 
-  if (container.querySelector('.np_statusContainer')) {
-    return true;
-  }
-
+  // Container
   const statusContainer = document.createElement('div');
-  statusContainer.className = 'np_statusContainer';
+  statusContainer.className = `np_statusContainer${isLoginPage ? '' : ' np_statusContainer--nonLogin'}`;
 
-  // Logo and Title
+  // Logo and title
   const header = document.createElement('div');
   header.className = 'np_header';
 
@@ -58,10 +48,9 @@ function createStatus() {
   title.className = 'np_title';
   title.textContent = 'Neptun Plus';
 
-  header.appendChild(icon);
-  header.appendChild(title);
+  header.append(icon, title);
 
-  // Status Indicator
+  // Status indicator
   const statusOuter = document.createElement('span');
   statusOuter.className = 'np_statusOuter';
 
@@ -81,60 +70,19 @@ function createStatus() {
   statusText.className = 'np_statusText';
   statusText.textContent = i18n.t('Content_Script.connected');
 
-  statusDot.appendChild(statusPing);
-  statusDot.appendChild(statusSolid);
-  statusInner.appendChild(statusDot);
-  statusInner.appendChild(statusText);
-  statusOuter.appendChild(statusInner);
+  statusDot.append(statusPing, statusSolid);
+  statusInner.append(statusDot, statusText);
+  statusOuter.append(statusInner);
+  statusContainer.append(header, statusOuter);
+  container.append(statusContainer);
 
-  statusContainer.appendChild(header);
-  statusContainer.appendChild(statusOuter);
-  container.appendChild(statusContainer);
   return true;
 }
 
-function Status() {
-  const recheck = () => createStatus();
-
-  recheck();
-
-  const observer = new MutationObserver(() => {
-    recheck();
-  });
-
-  const root = document.body || document.documentElement;
-  if (root) {
-    observer.observe(root, {
-      childList: true,
-      subtree: true,
-      attributes: false,
-    });
-  }
-
-  const onNavigation = () => {
-    recheck();
-  };
-
-  window.addEventListener('popstate', onNavigation);
-  window.addEventListener('hashchange', onNavigation);
-
-  const originalPushState = history.pushState;
-  history.pushState = function (...args) {
-    const result = originalPushState.apply(this, args);
-    onNavigation();
-    return result;
-  };
-
-  const originalReplaceState = history.replaceState;
-  history.replaceState = function (...args) {
-    const result = originalReplaceState.apply(this, args);
-    onNavigation();
-    return result;
-  };
-}
+createStatus();
+observeMutations(createStatus);
+addNavigationListeners(createStatus);
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', Status);
-} else {
-  Status();
+  document.addEventListener('DOMContentLoaded', createStatus, { once: true });
 }
