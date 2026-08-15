@@ -41,5 +41,8 @@
       "resetLabel": "A bővítmény beállításainak visszaállítása alapértelmezettre.",
       "resetButton": "Beállítások visszaállítása"
     }
+  },
+  "Content_Script": {
+    "connected": "Kapcsolódva"
   }
 }

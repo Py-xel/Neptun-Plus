@@ -1,4 +1,5 @@
 import universities from '@/data/universities.json';
+import i18n, { syncHtmlLanguage } from '@/i18n';
 
 function normalizeUrl(url) {
   try {
@@ -28,6 +29,8 @@ function createStatus() {
   if (!shouldRun()) {
     return false;
   }
+
+  syncHtmlLanguage();
 
   const container = document.getElementsByClassName('neptun-language-dropdown')[0];
 
@@ -75,9 +78,7 @@ function createStatus() {
 
   const statusText = document.createElement('span');
   statusText.className = 'np_statusText';
-  statusText.textContent = 'Connected';
-
-  statusDot.appendChild(statusPing);
+  statusText.textContent = i18n.t('Content_Script.connected');
   statusDot.appendChild(statusSolid);
   statusInner.appendChild(statusDot);
   statusInner.appendChild(statusText);

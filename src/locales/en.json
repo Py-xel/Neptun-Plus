@@ -41,5 +41,8 @@
       "resetLabel": "Reset extension settings to their original defaults.",
       "resetButton": "Reset settings"
     }
+  },
+  "Content_Script": {
+    "connected": "Connected"
   }
 }
