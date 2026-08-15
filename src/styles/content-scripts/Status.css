@@ -6,13 +6,33 @@ neptun-login-form > .login-right > neptun-language-dropdown.neptun-language-drop
   justify-content: space-between;
 }
 
+#main-header-right {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 7px;
+}
+
+/* Preserve dimensions because Status shifts this */
+#neptun-logo {
+  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
+}
+
+/* Shift position when anywhere besides login page */
+.np_statusContainer--nonLogin {
+  position: relative;
+  transform: translateY(-6px);
+}
+
 .np_statusContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  align-self: center;
 
-  width: fit-content;
+  width: max-content;
   height: fit-content;
   gap: 8px;
 
