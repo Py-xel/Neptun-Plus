@@ -1,46 +1,31 @@
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { readStorageValue, observeStorageChange } from '@/utils/contentScriptStorage';
+import { observeMutations } from '@/utils/utility';
 
-function getHideHeaderSetting() {
-  return readStorageValue(CATEGORIES.INTERFACE, KEYS.INTERFACE.DISABLE_HEADERS, false);
-}
+const HEADER_SELECTOR = 'neptun-notification-bar.notification-bar';
 
 function applyHideHeader(enabled) {
-  const headers = document.querySelectorAll('neptun-notification-bar.notification-bar');
-
-  headers.forEach((header) => {
+  document.querySelectorAll(HEADER_SELECTOR).forEach((header) => {
     header.style.display = enabled ? 'none' : '';
   });
 }
 
 async function updateHeaderVisibility() {
-  const enabled = await getHideHeaderSetting();
-  applyHideHeader(enabled);
+  const enabled = await readStorageValue(CATEGORIES.INTERFACE, KEYS.INTERFACE.DISABLE_HEADERS, false);
+
+  applyHideHeader(Boolean(enabled));
 }
 
-function HideHeaders() {
+function initHideHeaders() {
   updateHeaderVisibility();
 
-  const observer = new MutationObserver(() => {
-    updateHeaderVisibility();
-  });
+  observeMutations(updateHeaderVisibility);
 
-  const root = document.body || document.documentElement;
-  if (root) {
-    observer.observe(root, {
-      childList: true,
-      subtree: true,
-      attributes: false,
-    });
-  }
-
-  observeStorageChange(CATEGORIES.INTERFACE, KEYS.INTERFACE.DISABLE_HEADERS, () => {
-    updateHeaderVisibility();
-  });
+  observeStorageChange(CATEGORIES.INTERFACE, KEYS.INTERFACE.DISABLE_HEADERS, updateHeaderVisibility);
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', HideHeaders);
+  document.addEventListener('DOMContentLoaded', initHideHeaders, { once: true });
 } else {
-  HideHeaders();
+  initHideHeaders();
 }
