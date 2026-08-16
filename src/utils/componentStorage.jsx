@@ -5,14 +5,15 @@ import { useEffect, useRef, useState } from 'react';
 const RESET_EVENT = 'neptun-plus-reset-storage';
 
 export function useStorage(category, key, defaultValue) {
-  /* Add error handling */
-  if (!category || !key) {
-    return false;
-  }
+  const isConfigured = Boolean(category && key);
 
   const [value, setValue] = useState(defaultValue);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(isConfigured);
   const defaultValueRef = useRef(defaultValue);
+
+  useEffect(() => {
+    defaultValueRef.current = defaultValue;
+  }, [defaultValue]);
 
   async function resetAllSettings() {
     if (typeof chrome !== 'undefined' && chrome.storage?.local) {
@@ -28,6 +29,11 @@ export function useStorage(category, key, defaultValue) {
   }
 
   useEffect(() => {
+    if (!isConfigured) {
+      // TODO: Add error handling
+      return undefined;
+    }
+
     const handleStorageReset = () => {
       setValue(defaultValueRef.current);
       setLoading(false);
@@ -36,6 +42,12 @@ export function useStorage(category, key, defaultValue) {
     window.addEventListener(RESET_EVENT, handleStorageReset);
 
     async function load() {
+      if (typeof chrome === 'undefined' || !chrome.storage?.local) {
+        // TODO: Add error handling
+        setLoading(false);
+        return;
+      }
+
       const result = await chrome.storage.local.get(STORAGE_KEY);
       const settings = result[STORAGE_KEY] || {};
       const storedValue = settings?.[category]?.[key] ?? defaultValueRef.current;
@@ -57,10 +69,20 @@ export function useStorage(category, key, defaultValue) {
     return () => {
       window.removeEventListener(RESET_EVENT, handleStorageReset);
     };
-  }, [category, key]);
+  }, [category, isConfigured, key]);
 
   async function updateValue(newValue) {
+    if (!isConfigured) {
+      // TODO: Add error handling
+      return;
+    }
+
     setValue(newValue);
+
+    if (typeof chrome === 'undefined' || !chrome.storage?.local) {
+      // TODO: Add error handling
+      return;
+    }
 
     const result = await chrome.storage.local.get(STORAGE_KEY);
     const settings = result[STORAGE_KEY] || {};
@@ -81,12 +103,15 @@ export function useStorage(category, key, defaultValue) {
   }
 
   const storageApi = [value, updateValue, loading, resetAllSettings];
-  Object.assign(storageApi, {
-    value,
-    updateValue,
-    loading,
-    resetAllSettings,
-  });
+  storageApi.value = value;
+  storageApi.updateValue = updateValue;
+  storageApi.loading = loading;
+  storageApi.resetAllSettings = resetAllSettings;
+
+  if (!isConfigured) {
+    // TODO: Add error handling
+    return [defaultValue, async () => undefined, true, async () => undefined];
+  }
 
   return storageApi;
 }
