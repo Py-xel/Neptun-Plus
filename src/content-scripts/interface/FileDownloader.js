@@ -9,29 +9,25 @@ export function createDownloader() {
   const appRoot = document.querySelector('app-root');
 
   if (!appRoot) {
+    // TODO: Add error handling
     return false;
   }
 
   const appRootHasContent = appRoot.childElementCount > 0 || (appRoot.textContent || '').trim().length > 0;
 
   if (!appRootHasContent) {
+    // TODO: Add error handling
     return false;
   }
 
   const container = document.createElement('div');
   container.className = 'np_downloadContainer';
 
+  const chevron = document.createElement('i');
+  chevron.className = 'np_downloadChevron fa-solid fa-chevron-up';
+
   const header = document.createElement('div');
   header.className = 'np_downloadHeader';
-
-  const headerInner = document.createElement('div');
-  headerInner.className = 'np_downloadHeaderInner';
-
-  const main = document.createElement('div');
-  main.className = 'np_downloadMain';
-
-  const footer = document.createElement('div');
-  footer.className = 'np_downloadFooter';
 
   const icon = document.createElement('i');
   icon.className = 'np_downloadIcon fa-solid fa-download';
@@ -40,10 +36,35 @@ export function createDownloader() {
   title.className = 'np_downloadTitle';
   title.textContent = 'Download';
 
-  headerInner.append(icon, title);
-  header.append(headerInner);
-  container.append(header, main, footer);
+  header.append(icon, title);
+  container.append(chevron, header);
   body.append(container);
+
+  let state = 'closed';
+  function setState(nextState) {
+    state = nextState;
+
+    container.classList.toggle('np_downloadExpanded_Half', state === 'half');
+    container.classList.toggle('np_downloadExpanded_Full', state === 'full');
+    chevron.classList.toggle('np_downloadChevronDown', state === 'full');
+    header.classList.toggle('np_downloadStage_Header', state === 'full');
+  }
+
+  chevron.addEventListener('click', () => {
+    switch (state) {
+      case 'closed':
+        setState('half');
+        break;
+
+      case 'half':
+        setState('full');
+        break;
+
+      case 'full':
+        setState('closed');
+        break;
+    }
+  });
 
   return true;
 }
