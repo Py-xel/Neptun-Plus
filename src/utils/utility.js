@@ -1,3 +1,13 @@
+/* Create DOM element */
+export function createElement(tag, className, textContent = null) {
+  const element = document.createElement(tag);
+  element.className = className;
+  if (textContent) {
+    element.textContent = textContent;
+  }
+  return element;
+}
+
 /* Normalize URL path by removing trailing slashes */
 export function normalizeUrl(url) {
   try {

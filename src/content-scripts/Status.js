@@ -1,6 +1,6 @@
 import universities from '@/data/universities.json';
-import i18n, { syncHtmlLanguage } from '@/i18n';
-import { normalizeUrl, addNavigationListeners, observeMutations } from '@/utils/utility';
+import i18n from '@/i18n';
+import { createElement, normalizeUrl, addNavigationListeners, observeMutations } from '@/utils/utility';
 
 const LANGUAGE_DROPDOWN = 'neptun-language-dropdown';
 const HEADER = 'main-header-right';
@@ -18,11 +18,9 @@ function createStatus() {
   const isSupportedSite = SUPPORTED_SITE_ROOTS.some((root) => currentUrl === root || currentUrl.startsWith(`${root}/`));
 
   if (!isSupportedSite) {
-    /* Add error handling */
+    // TODO: Add error handling
     return false;
   }
-
-  syncHtmlLanguage();
 
   const isLoginPage = currentUrl.endsWith('/login');
 
@@ -33,42 +31,23 @@ function createStatus() {
   }
 
   // Container
-  const statusContainer = document.createElement('div');
-  statusContainer.className = `np_statusContainer${isLoginPage ? '' : ' np_statusContainer--nonLogin'}`;
+  const statusContainer = createElement('div', `np_statusContainer${isLoginPage ? '' : ' np_statusContainer--nonLogin'}`);
 
   // Logo and title
-  const header = document.createElement('div');
-  header.className = 'np_statusHeader';
-
-  const icon = document.createElement('img');
-  icon.className = 'np_statusLogo';
+  const header = createElement('div', 'np_statusHeader');
+  const icon = createElement('img', 'np_statusLogo');
   icon.src = chrome.runtime.getURL('/Neptun_Plus_Logo_Wireframe.png');
-
-  const title = document.createElement('p');
-  title.className = 'np_statusTitle';
-  title.textContent = 'Neptun Plus';
+  const title = createElement('p', 'np_statusTitle', 'Neptun Plus');
 
   header.append(icon, title);
 
   // Status indicator
-  const statusOuter = document.createElement('span');
-  statusOuter.className = 'np_statusOuter';
-
-  const statusInner = document.createElement('span');
-  statusInner.className = 'np_statusInner';
-
-  const statusDot = document.createElement('span');
-  statusDot.className = 'np_statusDot';
-
-  const statusPing = document.createElement('span');
-  statusPing.className = 'np_statusPing';
-
-  const statusSolid = document.createElement('span');
-  statusSolid.className = 'np_statusSolid';
-
-  const statusText = document.createElement('span');
-  statusText.className = 'np_statusText';
-  statusText.textContent = i18n.t('Content_Script.connected');
+  const statusOuter = createElement('span', 'np_statusOuter');
+  const statusInner = createElement('span', 'np_statusInner');
+  const statusDot = createElement('span', 'np_statusDot');
+  const statusPing = createElement('span', 'np_statusPing');
+  const statusSolid = createElement('span', 'np_statusSolid');
+  const statusText = createElement('span', 'np_statusText', i18n.t('Content_Script.connected'));
 
   statusDot.append(statusPing, statusSolid);
   statusInner.append(statusDot, statusText);

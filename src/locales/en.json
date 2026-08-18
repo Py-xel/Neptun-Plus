@@ -43,6 +43,9 @@
     }
   },
   "Content_Script": {
-    "connected": "Connected"
+    "connected": "Connected",
+    "downloads": "Downloads",
+    "downloading": "Downloading",
+    "completed": "Completed"
   }
 }
