@@ -1,8 +1,3 @@
-import { syncHtmlLanguage } from '@/i18n';
-
-/* i18n */
-syncHtmlLanguage();
-
 /* Font Awesome */
 if (!document.querySelector('link[data-np-fa]')) {
   const faCss = document.createElement('link');

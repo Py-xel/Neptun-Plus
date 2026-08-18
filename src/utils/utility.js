@@ -38,7 +38,7 @@ export function addNavigationListeners(callback) {
 }
 
 /* Create mutation observer */
-export function observeMutations(callback) {
+export function observeMutations(callback, options = {}) {
   const observer = new MutationObserver(callback);
   const root = document.body || document.documentElement;
 
@@ -46,6 +46,7 @@ export function observeMutations(callback) {
     observer.observe(root, {
       childList: true,
       subtree: true,
+      ...options,
     });
   }
 
