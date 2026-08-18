@@ -25,7 +25,7 @@ export default defineManifest({
   host_permissions: allURLs,
   web_accessible_resources: [
     {
-      resources: ['public/*', 'public/icons/*'],
+      resources: ['public/*', 'public/shortcut_icons/*'],
       matches: ['https://*/*'],
     },
   ],
