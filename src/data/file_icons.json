@@ -32,5 +32,6 @@
   { "name": "icon_xls.png", "type": ".xls" },
   { "name": "icon_xlsx.png", "type": ".xlsx" },
   { "name": "icon_xml.png", "type": ".xml" },
-  { "name": "icon_zip.png", "type": ".zip" }
+  { "name": "icon_zip.png", "type": ".zip" },
+  { "name": "icon_zip.png", "type": ".7z" }
 ]
