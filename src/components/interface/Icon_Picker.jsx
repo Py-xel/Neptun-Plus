@@ -1,4 +1,4 @@
-import icons from '@/data/icons.json';
+import icons from '@/data/shortcut_icons.json';
 import '@/styles/components/interface/Icon_Picker.css';
 import { useEffect, useRef, useState } from 'react';
 
