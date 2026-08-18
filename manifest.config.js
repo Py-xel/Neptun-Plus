@@ -25,15 +25,21 @@ export default defineManifest({
   host_permissions: allURLs,
   web_accessible_resources: [
     {
-      resources: ['public/*'],
+      resources: ['public/*', 'public/icons/*'],
       matches: ['https://*/*'],
     },
   ],
   content_scripts: [
     {
       matches: allURLs,
-      js: ['src/content-scripts/Status.js', 'src/content-scripts/interface/DisableHeaders.js', 'src/content-scripts/interface/ItemList.js'],
-      css: ['src/styles/content-scripts/Status.css'],
+      js: [
+        'src/content-scripts/Global.js',
+        'src/content-scripts/Status.js',
+        'src/content-scripts/interface/DisableHeaders.js',
+        'src/content-scripts/interface/ItemList.js',
+        'src/content-scripts/interface/FileDownloader.js',
+      ],
+      css: ['src/styles/content-scripts/Status.css', 'src/styles/content-scripts/FileDownloader.css'],
       run_at: 'document_start',
     },
   ],
