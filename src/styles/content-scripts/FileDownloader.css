@@ -9,7 +9,7 @@
   flex-direction: column;
 
   left: 50%;
-  bottom: 20px;
+  bottom: 15px;
 
   width: var(--circle-size);
   height: var(--circle-size);
@@ -46,7 +46,7 @@
 
 .np-download-expanded-full {
   width: 420px;
-  height: 500px;
+  height: 525px;
   border-radius: 20px;
 
   transition:
@@ -125,10 +125,12 @@
   justify-content: flex-start;
   align-items: flex-start;
 
+  flex-direction: column;
+
   width: 100%;
   height: 100%;
 
-  padding: 10px;
+  gap: 14px;
 
   overflow-y: scroll;
 }
@@ -159,9 +161,101 @@
   color: #414244;
   text-transform: uppercase;
 
-  padding: 10px 0px 6px 12px;
+  padding: 14px 0px 6px 16px;
 }
 
 .np-download-footer {
   min-height: 40px;
+}
+
+/* File Card */
+.np-download-card-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  flex-direction: row;
+
+  height: max-content;
+  width: 100%;
+
+  gap: 15px;
+
+  /* scrollbar adds 8px already */
+  padding: 0px 4px 0px 12px;
+}
+
+.np-download-card-container-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.np-download-card-icon {
+  width: 46px;
+  height: auto;
+}
+
+.np-download-card-container-middle {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  flex-direction: column;
+
+  width: 100%;
+}
+
+.np-download-card-data-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: row;
+
+  gap: 4px;
+}
+
+.np-download-card-file-name {
+  font-family: 'Roboto';
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.np-download-card-byte-data {
+  font-family: 'Google Sans';
+  font-size: 11px;
+  font-weight: 600;
+  color: #686a6d;
+}
+
+.np-download-card-bar-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  width: 100%;
+  height: 5px;
+
+  margin-top: 6px;
+}
+
+.np-download-card-bar,
+.np-download-card-fill {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: inherit;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.np-download-card-bar {
+  background: rgb(214, 214, 216);
+}
+
+.np-download-card-fill {
+  height: inherit;
+  width: 50%;
+  background: #236fe9;
+  transition: width 0.1s linear;
+  z-index: 10;
 }

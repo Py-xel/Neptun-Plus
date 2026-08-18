@@ -1,7 +1,35 @@
 import i18n from '@/i18n';
 import { createElement } from '@/utils/utility';
 
-export function createDownloader() {
+function createCard(currentContainer) {
+  const cardContainer = createElement('div', 'np-download-card-container');
+  const containerLeft = createElement('div', 'np-download-card-container-left');
+  const icon = createElement('img', 'np-download-card-icon');
+  icon.src = chrome.runtime.getURL('icons/icon_pdf.png');
+  const containerMiddle = createElement('div', 'np-download-card-container-middle');
+  const fileName = createElement('p', 'np-download-card-file-name', 'Project_Requirements.pdf');
+  const dataContainer = createElement('div', 'np-download-card-data-container');
+  const currentBytes = createElement('p', 'np-download-card-byte-data', '8.4 MB');
+  const divider_1 = createElement('p', 'np-download-card-byte-data', '/');
+  const totalBytes = createElement('p', 'np-download-card-byte-data', '20.1 MB');
+  const divider_2 = createElement('p', 'np-download-card-byte-data', '•');
+  const streamBytes = createElement('p', 'np-download-card-byte-data', '6.7 MB/s');
+  const barContainer = createElement('div', 'np-download-card-bar-container');
+  const bar = createElement('div', 'np-download-card-bar');
+  const fill = createElement('div', 'np-download-card-fill');
+  const containerRight = createElement('div', 'np-download-card-container-right');
+  const cancelDownload = createElement('i', 'fa-solid fa-xmark');
+
+  currentContainer.append(cardContainer);
+  cardContainer.append(containerLeft, containerMiddle, containerRight);
+  containerLeft.append(icon);
+  containerMiddle.append(fileName, dataContainer, barContainer);
+  dataContainer.append(currentBytes, divider_1, totalBytes, divider_2, streamBytes);
+  barContainer.append(bar, fill);
+  containerRight.append(cancelDownload);
+}
+
+function createDownloader() {
   const body = document.body;
 
   if (!body || body.querySelector('.np-download-container')) {
@@ -35,6 +63,10 @@ export function createDownloader() {
   header.append(icon, title);
   container.append(chevron, header, currentTitle, currentContainer, completedTitle, completedContainer, footer);
   body.append(container);
+
+  createCard(currentContainer);
+  createCard(currentContainer);
+  createCard(currentContainer);
 
   let state = 'closed';
   const stateTransitions = {
