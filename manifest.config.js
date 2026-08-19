@@ -32,6 +32,7 @@ export default defineManifest({
   content_scripts: [
     {
       matches: allURLs,
+      world: 'ISOLATED',
       js: [
         'src/content-scripts/Global.js',
         'src/content-scripts/Status.js',
@@ -40,6 +41,12 @@ export default defineManifest({
         'src/content-scripts/interface/FileDownloader.js',
       ],
       css: ['src/styles/content-scripts/Status.css', 'src/styles/content-scripts/FileDownloader.css'],
+      run_at: 'document_start',
+    },
+    {
+      matches: allURLs,
+      world: 'MAIN',
+      js: ['src/content-scripts/Network.js'],
       run_at: 'document_start',
     },
   ],
