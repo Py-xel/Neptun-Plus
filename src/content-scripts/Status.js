@@ -45,6 +45,7 @@ function initializeStatus() {
     // TODO Add error handling
     return false;
   }
+
   createStatus();
   observeMutations(createStatus);
   addNavigationListeners(createStatus);
