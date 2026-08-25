@@ -1,5 +1,4 @@
 import i18n from 'i18next';
-import { observeMutations } from './utils/utility';
 
 import en from '@/locales/en.json';
 import hu from '@/locales/hu.json';
@@ -30,20 +29,22 @@ if (!i18n.isInitialized) {
 }
 
 if (typeof document !== 'undefined' && document.documentElement) {
-  observeMutations(
-    () => {
-      const newLang = getHtmlLanguage();
-      if (newLang !== i18n.language) {
-        i18n.changeLanguage(newLang);
-      }
-    },
-    {
-      childList: false,
-      subtree: false,
-      attributes: true,
-      attributeFilter: ['lang'],
-    },
-  );
+  new MutationObserver(() => {
+    const newLang = getHtmlLanguage();
+
+    // TODO Add proper logging
+    /* console.log('[i18n] HTML language:', newLang);
+    console.log('[i18n] Current i18n language:', i18n.language); */
+
+    if (newLang !== i18n.language) {
+      // TODO Add proper logging
+      /* console.log('[i18n] Changing language:', i18n.language, '→', newLang); */
+      i18n.changeLanguage(newLang);
+    }
+  }).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['lang'],
+  });
 }
 
 export default i18n;
