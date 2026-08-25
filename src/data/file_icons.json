@@ -14,6 +14,7 @@
   { "name": "icon_html.png", "type": ".html" },
   { "name": "icon_iso.png", "type": ".iso" },
   { "name": "icon_jpg.png", "type": ".jpg" },
+  { "name": "icon_jpg.png", "type": ".jpeg" },
   { "name": "icon_log.png", "type": ".log" },
   { "name": "icon_mkv.png", "type": ".mkv" },
   { "name": "icon_mov.png", "type": ".mov" },
