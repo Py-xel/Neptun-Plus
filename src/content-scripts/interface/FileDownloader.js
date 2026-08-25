@@ -1,5 +1,5 @@
 import i18n from '@/i18n';
-import { createElement, formatBytes, getDownloadIdentifier, getFileIconPath, observeMutations } from '@/utils/utility.js';
+import { createElement, formatBytes, getDownloadIdentifier, getFileIconPath, isOnLoginPage, isOnSupportedSite, observeMutations } from '@/utils/utility.js';
 
 const viewTransitions = {
   closed: { TOGGLE: 'full' },
@@ -302,25 +302,6 @@ function createDownloader() {
   return true;
 }
 
-function initializeDownloader() {
-  if (createDownloader()) return;
-
-  const observer = observeMutations(
-    () => {
-      if (createDownloader()) observer.disconnect();
-    },
-    {
-      childList: true,
-      subtree: true,
-    },
-  );
-
-  window.setTimeout(() => {
-    observer.disconnect();
-    createDownloader();
-  }, 5000);
-}
-
 function applyBarCompletion(fillBar, status) {
   fillBar.classList.remove('np-download-card-fill-complete', 'np-download-card-fill-fail');
 
@@ -338,8 +319,29 @@ function applyBarCompletion(fillBar, status) {
   }
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeDownloader, { once: true });
-} else {
-  initializeDownloader();
+function initializeDownloader() {
+  if (!isOnSupportedSite(window.location.href)) {
+    // TODO Add error handling
+    return false;
+  }
+
+  if (isOnLoginPage(window.location.href) || createDownloader()) {
+    // TODO Add error handling
+    return false;
+  }
+
+  observeMutations(
+    (observer) => {
+      if (createDownloader()) {
+        observer.disconnect();
+      }
+    },
+    {
+      childList: true,
+      subtree: true,
+    },
+    5000,
+  );
 }
+
+initializeDownloader();
