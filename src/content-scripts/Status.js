@@ -1,37 +1,24 @@
-import universities from '@/data/universities.json';
 import i18n from '@/i18n';
-import { createElement, normalizeUrl, addNavigationListeners, observeMutations } from '@/utils/utility';
+import { addNavigationListeners, createElement, isOnLoginPage, isOnSupportedSite, observeMutations } from '@/utils/utility';
 
 const LANGUAGE_DROPDOWN = 'neptun-language-dropdown';
 const HEADER = 'main-header-right';
-const SUPPORTED_SITE_ROOTS = Object.values(universities)
-  .filter(({ supported }) => supported)
-  .flatMap(({ website }) => {
-    const websites = Array.isArray(website) ? website : [website];
-
-    return websites.filter((url) => typeof url === 'string' && url).map(normalizeUrl);
-  });
 
 function createStatus() {
-  const currentUrl = normalizeUrl(window.location.href);
-
-  const isSupportedSite = SUPPORTED_SITE_ROOTS.some((root) => currentUrl === root || currentUrl.startsWith(`${root}/`));
-
-  if (!isSupportedSite) {
-    // TODO: Add error handling
+  if (!isOnSupportedSite(window.location.href)) {
+    // TODO Add error handling
     return false;
   }
 
-  const isLoginPage = currentUrl.endsWith('/login');
-
-  const container = isLoginPage ? document.getElementsByClassName(LANGUAGE_DROPDOWN)[0] : document.getElementById(HEADER);
+  const container = isOnLoginPage(window.location.href) ? document.getElementsByClassName(LANGUAGE_DROPDOWN)[0] : document.getElementById(HEADER);
 
   if (!container || container.querySelector('.np_statusContainer')) {
+    // TODO Add error handling
     return false;
   }
 
   // Container
-  const statusContainer = createElement('div', `np_statusContainer${isLoginPage ? '' : ' np_statusContainer--nonLogin'}`);
+  const statusContainer = createElement('div', `np_statusContainer${isOnLoginPage(window.location.href) ? '' : ' np_statusContainer--nonLogin'}`);
 
   // Logo and title
   const header = createElement('div', 'np_statusHeader');

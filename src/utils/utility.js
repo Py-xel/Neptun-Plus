@@ -1,4 +1,13 @@
 import fileIcons from '@/data/file_icons.json';
+import universities from '@/data/universities.json';
+
+const SUPPORTED_SITE_ROOTS = Object.values(universities)
+  .filter(({ supported }) => supported)
+  .flatMap(({ website }) => {
+    const websites = Array.isArray(website) ? website : [website];
+
+    return websites.filter((url) => typeof url === 'string' && url).map(normalizeUrl);
+  });
 
 /* Create DOM element */
 export function createElement(tag, className, textContent = null) {
@@ -8,6 +17,28 @@ export function createElement(tag, className, textContent = null) {
     element.textContent = textContent;
   }
   return element;
+}
+
+/* Normalize URL path by removing trailing slashes */
+export function normalizeUrl(url) {
+  try {
+    const parsedUrl = new URL(url);
+    const path = parsedUrl.pathname.replace(/\/+$/, '');
+
+    return `${parsedUrl.origin}${path || '/'}`;
+  } catch {
+    return url;
+  }
+}
+
+export function isOnLoginPage(url) {
+  return normalizeUrl(url).endsWith('/login');
+}
+
+export function isOnSupportedSite(url) {
+  const currentURL = normalizeUrl(url);
+
+  return SUPPORTED_SITE_ROOTS.some((root) => currentURL === root || currentURL.startsWith(`${root}/`));
 }
 
 /* Format byte data */
@@ -44,18 +75,6 @@ export function getFileExtension(fileName = '') {
 /* Build a stable identifier for a download */
 export function getDownloadIdentifier(downloadData = {}) {
   return `${downloadData.transport || 'unknown'}:${downloadData.url || 'unknown'}:${downloadData.fileName || 'download'}`;
-}
-
-/* Normalize URL path by removing trailing slashes */
-export function normalizeUrl(url) {
-  try {
-    const parsedUrl = new URL(url);
-    const path = parsedUrl.pathname.replace(/\/+$/, '');
-
-    return `${parsedUrl.origin}${path || '/'}`;
-  } catch {
-    return url;
-  }
 }
 
 /* Listen for popstate and hashchange */
