@@ -49,8 +49,6 @@ function initializeStatus() {
   createStatus();
   observeMutations(createStatus);
   addNavigationListeners(createStatus);
-
-  return true;
 }
 
 initializeStatus();

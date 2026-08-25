@@ -1,5 +1,5 @@
 import i18n from '@/i18n';
-import { createElement, formatBytes, getDownloadIdentifier, getFileIconPath, isOnLoginPage, isOnSupportedSite, observeMutations } from '@/utils/utility.js';
+import { createElement, formatBytes, getDownloadIdentifier, getFileIconPath, isOnLoginPage, isOnSupportedSite, observeMutations, addNavigationListeners } from '@/utils/utility.js';
 
 const viewTransitions = {
   closed: { TOGGLE: 'full' },
@@ -279,7 +279,7 @@ function createDownloader() {
     dispatch({ type: 'TOGGLE' });
   });
 
-  window.addEventListener('__np_download_event__', (event) => {
+  function handleDownloadEvent(event) {
     const download = event.detail || {};
 
     if (!download.url && !download.fileName) {
@@ -295,11 +295,19 @@ function createDownloader() {
       normalizedDownload.type === 'start' ? 'DOWNLOAD_STARTED' : normalizedDownload.type === 'complete' || normalizedDownload.type === 'error' ? 'DOWNLOAD_COMPLETED' : 'DOWNLOAD_UPDATED';
 
     dispatch({ type: actionType, download: normalizedDownload });
-  });
+  }
+
+  window.addEventListener('__np_download_event__', handleDownloadEvent);
 
   render(state);
 
-  return true;
+  return {
+    destroy() {
+      window.removeEventListener('__np_download_event__', handleDownloadEvent);
+      clearTimeout(titleRevealTimer);
+      container.remove();
+    },
+  };
 }
 
 function applyBarCompletion(fillBar, status) {
@@ -319,29 +327,20 @@ function applyBarCompletion(fillBar, status) {
   }
 }
 
+function updateDownloader() {
+  if (!isOnSupportedSite(window.location.href) || isOnLoginPage(window.location.href)) {
+    document.querySelector('.np-download-container')?.remove();
+    return;
+  }
+
+  createDownloader();
+}
+
 function initializeDownloader() {
-  if (!isOnSupportedSite(window.location.href)) {
-    // TODO Add error handling
-    return false;
-  }
+  updateDownloader();
 
-  if (isOnLoginPage(window.location.href) || createDownloader()) {
-    // TODO Add error handling
-    return false;
-  }
-
-  observeMutations(
-    (observer) => {
-      if (createDownloader()) {
-        observer.disconnect();
-      }
-    },
-    {
-      childList: true,
-      subtree: true,
-    },
-    5000,
-  );
+  observeMutations(updateDownloader);
+  addNavigationListeners(updateDownloader);
 }
 
 initializeDownloader();
