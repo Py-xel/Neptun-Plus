@@ -95,7 +95,7 @@ export function addNavigationListeners(callback) {
 }
 
 /* Create mutation observer */
-export function observeMutations(callback, options = {}) {
+export function observeMutations(callback, options = {}, disconnect = null) {
   const observer = new MutationObserver(callback);
   const root = document.body || document.documentElement;
 
@@ -105,6 +105,10 @@ export function observeMutations(callback, options = {}) {
       subtree: true,
       ...options,
     });
+  }
+
+  if (disconnect !== null) {
+    setTimeout(() => observer.disconnect(), disconnect);
   }
 
   return observer;
