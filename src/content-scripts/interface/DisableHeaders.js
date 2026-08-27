@@ -1,5 +1,5 @@
+import { observeStorageChange, readStorageValue } from '@/utils/contentScriptStorage';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
-import { readStorageValue, observeStorageChange } from '@/utils/contentScriptStorage';
 import { observeMutations } from '@/utils/utility';
 
 const HEADER_SELECTOR = 'neptun-notification-bar.notification-bar';
@@ -10,22 +10,22 @@ function applyHideHeader(enabled) {
   });
 }
 
-async function updateHeaderVisibility() {
+async function initialize() {
   const enabled = await readStorageValue(CATEGORIES.INTERFACE, KEYS.INTERFACE.DISABLE_HEADERS, false);
 
   applyHideHeader(Boolean(enabled));
-}
 
-function initHideHeaders() {
-  updateHeaderVisibility();
+  observeMutations(() => applyHideHeader(Boolean(enabled)));
 
-  observeMutations(updateHeaderVisibility);
+  observeStorageChange(CATEGORIES.INTERFACE, KEYS.INTERFACE.DISABLE_HEADERS, async () => {
+    const enabled = await readStorageValue(CATEGORIES.INTERFACE, KEYS.INTERFACE.DISABLE_HEADERS, false);
 
-  observeStorageChange(CATEGORIES.INTERFACE, KEYS.INTERFACE.DISABLE_HEADERS, updateHeaderVisibility);
+    applyHideHeader(Boolean(enabled));
+  });
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initHideHeaders, { once: true });
+  document.addEventListener('DOMContentLoaded', initialize, { once: true });
 } else {
-  initHideHeaders();
+  initialize();
 }
