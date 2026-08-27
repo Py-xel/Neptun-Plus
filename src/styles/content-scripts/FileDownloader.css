@@ -185,7 +185,7 @@
   height: max-content;
   width: 100%;
 
-  gap: 15px;
+  gap: 12px;
 
   /* scrollbar adds 8px already */
   padding: 0px 4px 0px 12px;
@@ -275,6 +275,8 @@
   width: 24px;
   height: 24px;
 
+  padding-right: 8px;
+
   font-size: 12px;
   color: var(--electric-red);
   pointer-events: auto;
@@ -312,5 +314,86 @@
 
 /* Footer */
 .np-download-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 13px;
+  color: rgb(65, 66, 68);
+
+  padding: 0px 12px;
+  border-top: 1px solid color-mix(in srgb, var(--twilight-indigo) 20%, transparent);
+
   min-height: 40px;
+}
+
+.np-download-count-total,
+.np-download-count-active {
+  font-family: 'Google Sans';
+  font-size: 12px;
+}
+
+.np-download-count-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 4px;
+
+  cursor: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+.np-download-delete-all {
+  cursor: pointer;
+  pointer-events: all;
+  color: rgb(255, 77, 66);
+}
+
+/* Info */
+.np-download-info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  opacity: 0;
+  transition: opacity 180ms 50ms cubic-bezier(0.55, 0, 0.5, 1);
+}
+
+.np-download-info-icon {
+  font-size: 42px;
+  color: rgb(77, 89, 119);
+}
+
+.np-download-info-title {
+  font-family: 'Google Sans';
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--title-black);
+
+  margin-top: 6px;
+  margin-bottom: 2px;
+}
+
+.np-download-info-desc {
+  font-family: 'Figtree';
+  font-weight: 500;
+  font-size: 13px;
+
+  color: rgb(97, 97, 99);
+}
+
+/* Download Action Bar 
+(By default this element has no gap between it and the bottom of the viewport which just looks ugly) 
+*/
+.data-table__action-bar {
+  bottom: 20px !important;
 }

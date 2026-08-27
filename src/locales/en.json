@@ -46,6 +46,10 @@
     "connected": "Connected",
     "downloads": "Downloads",
     "downloading": "Downloading",
-    "completed": "Completed"
+    "completed": "Completed",
+    "files": "Files",
+    "active": "Active",
+    "noDownloadTitle": "No downloads",
+    "noDownloadDesc": "There are no downloads to show."
   }
 }

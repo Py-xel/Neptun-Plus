@@ -46,6 +46,10 @@
     "connected": "Kapcsolódva",
     "downloads": "Letöltések",
     "downloading": "Letöltés alatt",
-    "completed": "Befejezve"
+    "completed": "Befejezve",
+    "files": "Fájl",
+    "active": "Aktív",
+    "noDownloadTitle": "Nincsenek letöltések",
+    "noDownloadDesc": "Nincs megjeleníthető letöltés."
   }
 }

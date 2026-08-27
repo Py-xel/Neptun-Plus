@@ -1,0 +1,7 @@
+/* Injected into the DOM when downloader is active */
+
+/* Default Action */
+.data-table__action-bar {
+  position: fixed !important;
+  right: 20px !important;
+}
