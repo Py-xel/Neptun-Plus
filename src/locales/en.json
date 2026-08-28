@@ -16,7 +16,19 @@
       "shortcuts": "Shortcuts",
       "customShortcuts": "Use custom shortcuts",
       "name": "Name",
-      "link": "https://www.example.com/"
+      "link": "https://www.example.com/",
+      "column_1": "Column I.",
+      "column_2": "Column II.",
+      "column_3": "Column III.",
+      "upcomingEvents": "Upcoming events",
+      "exams": "Exams",
+      "news": "News",
+      "toDo": "To do",
+      "averages": "Averages",
+      "debts": "Debts",
+      "results": "Results",
+      "messages": "Messages",
+      "advancement": "Advancement"
     },
     "System": {
       "general": "General",

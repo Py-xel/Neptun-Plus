@@ -16,7 +16,19 @@
       "shortcuts": "Gyorsgombok",
       "customShortcuts": "Egyéni gyorsgomb használata",
       "name": "Név",
-      "link": "https://www.példa.hu/"
+      "link": "https://www.példa.hu/",
+      "column_1": "I. Oszlop",
+      "column_2": "II. Oszlop",
+      "column_3": "III. Oszlop",
+      "upcomingEvents": "Közelgő események",
+      "exams": "Vizsgák",
+      "news": "Hírek",
+      "toDo": "Teendők",
+      "averages": "Átlagok",
+      "debts": "Tartozások",
+      "results": "Eredmények",
+      "messages": "Üzenetek",
+      "advancement": "Előrehaladás"
     },
     "System": {
       "general": "Általános",

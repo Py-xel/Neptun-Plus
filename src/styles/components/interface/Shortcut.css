@@ -1,3 +1,23 @@
+.shortcutMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+
+  width: 100%;
+}
+
+.shortcutWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+
+  width: 100%;
+}
+
 .shortcutContainer {
   display: flex;
   flex-direction: column;
@@ -14,11 +34,8 @@
     padding 0.2s ease;
 }
 
-.shortcutContainer i {
-  font-size: 18px;
+.shortcutContainer * > i {
   color: var(--twilight-indigo);
-  margin: 2px;
-  cursor: pointer;
 }
 
 .addShortcutButton {
@@ -80,6 +97,11 @@
   pointer-events: none;
 }
 
+.shortcutCard.hidden {
+  opacity: 0.4;
+  border: 1px solid var(--electric-red);
+}
+
 @keyframes shortcutCardOut {
   from {
     opacity: 1;
@@ -129,13 +151,10 @@
 .shortcutName,
 .shortcutLink {
   width: 100%;
-  border: 1px solid #d9def0;
-  border-radius: 6px;
   padding: 7px 8px;
   font-family: 'Lato', sans-serif;
-  font-size: 13px;
-  color: var(--title-black);
-  background-color: var(--ghost-white);
+  font-weight: 700;
+  color: var(--twilight-indigo) !important;
   box-sizing: border-box;
 }
 
@@ -149,4 +168,10 @@
 .shortcutName::placeholder,
 .shortcutLink::placeholder {
   color: #666666;
+}
+
+.shortcutColumn {
+  color: var(--black-title);
+  margin-top: 10px;
+  font-weight: 600;
 }
