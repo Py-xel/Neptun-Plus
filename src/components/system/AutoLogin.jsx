@@ -22,6 +22,23 @@ export default function AutoLogin({ disabled = false }) {
     setCards((prevCards) => prevCards.filter((card) => card.id !== cardId));
   };
 
+  async function pushCredentials(card) {
+    const response = await chrome.runtime.sendMessage({
+      type: 'SAVE_CREDENTIALS',
+      credentials: {
+        username: card.loginName,
+        password: card.password,
+      },
+    });
+
+    if (!response?.success) {
+      // TODO Add error handling
+      return false;
+    }
+
+    return true;
+  }
+
   return (
     <DisableWrapper disabled={disabled} className="credentialsContainer">
       {cards.map((card) => (
@@ -43,7 +60,7 @@ export default function AutoLogin({ disabled = false }) {
             <button type="button" className="removeCardButton" onClick={() => removeCard(card.id)}>
               <i className="fa-solid fa-remove" />
             </button>
-            <button type="button" className="saveCardButton">
+            <button type="button" className="saveCardButton" onClick={() => pushCredentials(card)}>
               <i className="fa-solid fa-floppy-disk" />
             </button>
           </div>

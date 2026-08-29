@@ -23,6 +23,10 @@ export default defineManifest({
   },
   permissions: ['contentSettings', 'storage', 'scripting'],
   host_permissions: allURLs,
+  background: {
+    service_worker: 'src/background.js',
+    type: 'module',
+  },
   web_accessible_resources: [
     {
       resources: ['public/*', 'public/shortcut_icons/*'],
