@@ -2,32 +2,62 @@
   "A Tan Kapuja Buddhista Főiskola": {
     "website": "https://host.sdakft.hu/tkbfhw/",
     "supported": true,
-    "en_name": "Dharma Gate Buddhist College"
+    "en_name": "Dharma Gate Buddhist College",
+    "id": "FI62370"
   },
-  "Állatorvostudományi Egyetem": {
-    "website": "https://neptun.univet.hu/ate_hw/",
-    "supported": true,
-    "en_name": "University of Veterinary Medicine"
+  "Adventista Teológia Főiskola": {
+    "website": "https://atf.etn.hu/",
+    "supported": false,
+    "en_name": "Adventist Theological College",
+    "id": "FI63573"
+  },
+  "Andrássi Gyula Budapesti Német Nyelvű Egyetem": {
+    "website": "https://aub.etn.hu/",
+    "supported": false,
+    "en_name": "Andrássy University Budapest",
+    "id": "FI65852"
   },
   "Apor Vilmos Katolikus Főiskola": {
     "website": "https://neptun.avkf.hu/hallgatoiangular/",
     "supported": false,
-    "en_name": "Apor Vilmos Catholic College"
+    "en_name": "Apor Vilmos Catholic College",
+    "id": "FI21962"
+  },
+  "Állatorvostudományi Egyetem": {
+    "website": "https://neptun.univet.hu/ate_hw/",
+    "supported": true,
+    "en_name": "University of Veterinary Medicine",
+    "id": "FI21261"
+  },
+  "Baptista Teológiai Akadémia": {
+    "website": "https://bta.etn.hu/",
+    "supported": false,
+    "en_name": "Baptist Theological Seminary",
+    "id": "FI46994"
   },
   "Bhaktivedanta Hittudományi Főiskola": {
     "website": "https://host.sdakft.hu/bhfhw/",
     "supported": true,
-    "en_name": "Bhaktivedanta Theological College"
+    "en_name": "Bhaktivedanta Theological College",
+    "id": "FI21010"
   },
   "Brenner János Hittudományi Főiskola": {
     "website": "https://host.sdakft.hu/bjhfhw/",
     "supported": true,
-    "en_name": "Brenner János Theological College"
+    "en_name": "Brenner János Theological College",
+    "id": "FI83335"
+  },
+  "Budapest Cirkuszművészeti és Kortárstánc Főiskola": {
+    "website": "https://bcdc.etn.hu/",
+    "supported": false,
+    "en_name": "Budapest Circus Art and Contemporary Dance College",
+    "id": "FI73150"
   },
   "Budapesti Corvinus Egyetem": {
     "website": "https://neptun3r.web.uni-corvinus.hu/hallgatoi/",
     "supported": true,
-    "en_name": "Corvinus University of Budapest"
+    "en_name": "Corvinus University of Budapest",
+    "id": "FI43814"
   },
   "Budapesti Gazdaságtudományi Egyetem": {
     "website": [
@@ -41,157 +71,224 @@
       "https://neptun18.uni-bge.hu/hallgato/"
     ],
     "supported": true,
-    "en_name": "Budapest University of Economics and Business"
+    "en_name": "Budapest University of Economics and Business",
+    "id": "FI82314"
   },
   "Budapesti Metropolitan Egyetem": {
     "website": ["https://neptunweb1.metropolitan.hu/hallgato/", "https://neptunweb1.metropolitan.hu/hallgato/"],
     "supported": true,
-    "en_name": "Budapest Metropolitan University"
+    "en_name": "Budapest Metropolitan University",
+    "id": "FI33842"
   },
   "Budapesti Műszaki és Gazdaságtudományi Egyetem": {
     "website": "https://neptun.bme.hu/hallgatoi/",
     "supported": true,
-    "en_name": "Budapest University of Technology and Economics"
+    "en_name": "Budapest University of Technology and Economics",
+    "id": "FI23344"
   },
   "Debreceni Egyetem": {
     "website": "https://www-h-ng.neptun.unideb.hu/hallgato_ng/",
     "supported": true,
-    "en_name": "Debrecen University"
+    "en_name": "Debrecen University",
+    "id": "FI17198"
   },
   "Debreceni Református Hittudományi Egyetem": {
     "website": "https://host.sdakft.hu/drhehw/",
     "supported": true,
-    "en_name": "Debrecen Reformed Theological University"
+    "en_name": "Debrecen Reformed Theological University",
+    "id": "FI12746"
   },
   "Dunaújvárosi Egyetem": {
     "website": "https://nappw.dfad.duf.hu/hallgato_ng/",
     "supported": true,
-    "en_name": "Dunaújváros University"
+    "en_name": "Dunaújváros University",
+    "id": "FI60345"
   },
   "Edutus Egyetem": {
     "website": "https://neptun.edutus.hu/hallgato/",
     "supported": true,
-    "en_name": "Edutus University"
+    "en_name": "Edutus University",
+    "id": "FI83139"
+  },
+  "Egri Hittudományi Főiskola": {
+    "website": "http://www.eghf.hu/",
+    "supported": false,
+    "en_name": "Theological College of Eger",
+    "id": "FI88165"
   },
   "Eötvös József Főiskola": {
     "website": "https://neptun.ejf.hu/hallgato_ng/",
     "supported": true,
-    "en_name": "Eötvös József College"
+    "en_name": "Eötvös József College",
+    "id": "FI51105"
   },
   "Eötvös Loránd Tudományegyetem": {
     "website": "https://neptun.elte.hu/Account/",
     "supported": false,
-    "en_name": "Eötvös Loránd University"
+    "en_name": "Eötvös Loránd University",
+    "id": "FI80798"
+  },
+  "Esztergomi Hittudományi Főiskola": {
+    "website": "https://eszhf.etn.hu/",
+    "supported": false,
+    "en_name": "Esztergomi Theological College",
+    "id": "FI23234"
   },
   "Eszterházy Károly Katolikus Egyetem": {
     "website": "https://neptunh.uni-eszterhazy.hu/Hallgato/",
     "supported": true,
-    "en_name": "Eszterházy Károly Catholic University"
+    "en_name": "Eszterházy Károly Catholic University",
+    "id": "FI10955"
+  },
+  "Evangélikus Hittudományi Egyetem": {
+    "website": "https://ehe.etn.hu/",
+    "supported": false,
+    "en_name": "Lutheran Theological University",
+    "id": "FI83342"
   },
   "Gábor Dénes Egyetem": {
     "website": "https://neptun.gde.hu/hallgato/",
     "supported": true,
-    "en_name": "Gábor Dénes University"
+    "en_name": "Gábor Dénes University",
+    "id": "FI54333"
   },
   "Gál Ferenc Egyetem": {
     "website": "https://host.sdakft.hu/gfehw/",
     "supported": true,
-    "en_name": "Gál Ferenc University"
+    "en_name": "Gál Ferenc University",
+    "id": "FI18580"
+  },
+  "IBS Nemzetközi Üzleti Főiskola": {
+    "website": "https://neptun.ibs-b.hu/student/",
+    "supported": true,
+    "en_name": "International Business School",
+    "id": "FI35200"
   },
   "Károli Gáspár Református Egyetem": {
     "website": "https://neptun.kre.hu/hallgato/",
     "supported": true,
-    "en_name": "Károli Gáspár University of the Reformed Church in Hungary"
+    "en_name": "Károli Gáspár University of the Reformed Church in Hungary",
+    "id": "FI44189"
   },
   "Kodolányi János Egyetem": {
     "website": "https://neptun.kodolanyi.hu/Hallgato_NG/",
     "supported": true,
-    "en_name": "Kodolányi János University"
+    "en_name": "Kodolányi János University",
+    "id": "FI29432"
   },
   "Kolozsvári Protestáns Teológiai Intézet": {
     "website": "https://neptun.proteo.hu/hallgato/",
     "supported": false,
-    "en_name": "Protestant Theological Institute of Cluj-Napoca"
+    "en_name": "Protestant Theological Institute of Cluj-Napoca",
+    "id": "U.P.18."
+  },
+  "Közép-európai Egyetem": {
+    "website": "https://www.ceu.hu/",
+    "supported": false,
+    "en_name": "Central European University",
+    "id": "FI27861"
   },
   "Liszt Ferenc Zeneművészeti Egyetem": {
     "website": "https://neptun.lfze.hu/hallgato/",
     "supported": true,
-    "en_name": "Liszt Ferenc Academy of Music"
+    "en_name": "Liszt Ferenc Academy of Music",
+    "id": "FI26840"
   },
   "Magyar Agrár- és Élettudományi Egyetem": {
     "website": "https://hallgato.uni-mate.hu/hallgato_ng/",
     "supported": true,
-    "en_name": "Hungarian University of Agriculture and Life Sciences"
+    "en_name": "Hungarian University of Agriculture and Life Sciences",
+    "id": "FI51129"
   },
   "Magyar Képzőművészeti Egyetem": {
     "website": "https://mke-neptun.mke.hu/hallgato/",
     "supported": false,
-    "en_name": "Hungarian University of Fine Arts"
+    "en_name": "Hungarian University of Fine Arts",
+    "id": "FI27524"
   },
   "Magyar Táncművészeti Egyetem": {
     "website": "https://host.sdakft.hu/mtfhw/",
     "supported": true,
-    "en_name": "Hungarian Dance University"
+    "en_name": "Hungarian Dance University",
+    "id": "FI41559"
   },
   "Magyar Testnevelési és Sporttudományi Egyetem": {
     "website": "https://neptun.tf.hu/hallgato/",
     "supported": true,
-    "en_name": "Hungarian University of Sports Science"
+    "en_name": "Hungarian University of Sports Science",
+    "id": "FI89399"
   },
   "Milton Friedman Egyetem": {
     "website": "https://neptun.uni-milton.hu/hallgato/",
     "supported": true,
-    "en_name": "Milton Friedman University"
+    "en_name": "Milton Friedman University",
+    "id": "FI83995"
   },
   "Miskolci Egyetem": {
     "website": ["https://neptunweb1.uni-miskolc.hu/hallgato_ng/", "https://neptunweb2.uni-miskolc.hu/hallgato_ng/"],
     "supported": true,
-    "en_name": "Miskolc University"
+    "en_name": "Miskolc University",
+    "id": "FI87515"
   },
   "Moholy-Nagy Művészeti Egyetem": {
     "website": "https://host.sdakft.hu/momehw/",
     "supported": true,
-    "en_name": "Moholy-Nagy University of Art and Design"
+    "en_name": "Moholy-Nagy University of Art and Design",
+    "id": "FI73435"
   },
   "Nemzeti Közszolgálati Egyetem": {
     "website": "https://neptunweb.uni-nke.hu/hallgato_ng/",
     "supported": true,
-    "en_name": "National Public Service University"
-  },
-  "Nemzetközi Üzleti Főiskola (IBS)": {
-    "website": "https://neptun.ibs-b.hu/student/",
-    "supported": true,
-    "en_name": "International Business School"
+    "en_name": "National Public Service University",
+    "id": "FI99859"
   },
   "Neumann János Egyetem": {
     "website": "https://neptun.nje.hu/hallgato/",
     "supported": true,
-    "en_name": "John von Neumann University"
+    "en_name": "John von Neumann University",
+    "id": "FI96377"
   },
   "Nyíregyházi Egyetem": {
     "website": "https://neptunweb.nye.hu/hallgato/",
     "supported": true,
-    "en_name": "Nyíregyháza University"
+    "en_name": "Nyíregyháza University",
+    "id": "FI74250"
+  },
+  "Országos Rabbiképző - Zsidó Egyetem": {
+    "website": "https://neptun.or-zse.hu/hallgato/",
+    "supported": true,
+    "en_name": "The Jewish Theological Seminary - University of Jewish Studies",
+    "id": "FI17624"
   },
   "Óbudai Egyetem": {
     "website": "https://neptun.uni-obuda.hu/ujhallgato/",
     "supported": true,
-    "en_name": "Óbudai University"
-  },
-  "Országos Rabbiképző-Zsidó Egyetem": {
-    "website": "https://neptun.or-zse.hu/hallgato/",
-    "supported": true,
-    "en_name": "University of Jewish Studies"
+    "en_name": "Óbudai University",
+    "id": "FI12904"
   },
   "Pannon Egyetem": {
     "website": ["https://neptun-ws01.uni-pannon.hu/hallgato/", "https://neptun-ws02.uni-pannon.hu/hallgato/", "https://neptun-ws03.uni-pannon.hu/hallgato/"],
     "supported": true,
-    "en_name": "Pannon University"
+    "en_name": "Pannon University",
+    "id": "FI80554"
+  },
+  "Pápai Református Teológiai Akadémia": {
+    "website": "https://prta.etn.hu/",
+    "supported": false,
+    "en_name": "Pápa Reformed Theological Seminary",
+    "id": "FI27751"
   },
   "Pázmány Péter Katolikus Egyetem": {
     "website": ["https://neptun2.ppke.hu/hallgato2_uj/", "https://neptun3.ppke.hu/hallgato2_uj/", "https://neptun3.ppke.hu/hallgato3_uj/"],
     "supported": true,
-    "en_name": "Pázmány Péter Catholic University"
+    "en_name": "Pázmány Péter Catholic University",
+    "id": "FI79633"
+  },
+  "Pécsi Püspöki Hittudományi Főiskola": {
+    "website": "https://phf.etn.hu",
+    "supported": false,
+    "en_name": "Episcopal Theological College of Pécs",
+    "id": "FI63810"
   },
   "Pécsi Tudományegyetem": {
     "website": [
@@ -202,76 +299,115 @@
       "https://neptun-web5.tr.pte.hu/hallgato/"
     ],
     "supported": true,
-    "en_name": "University of Pécs"
+    "en_name": "University of Pécs",
+    "id": "FI58544"
+  },
+  "Pünkösdi Teológiai Főiskola": {
+    "website": "https://ptf.etn.hu/",
+    "supported": false,
+    "en_name": "Pentecostal Theological College",
+    "id": "FI22732"
   },
   "Sapientia Erdélyi Magyar Tudományegyetem": {
     "website": "https://host.sdakft.hu/semtehw/",
     "supported": false,
-    "en_name": "Sapientia Hungarian University of Transylvania"
+    "en_name": "Sapientia Hungarian University of Transylvania",
+    "id": "U.P.19."
   },
   "Sapientia Szerzetesi Hittudományi Főiskola": {
     "website": "https://neptun3r.sapientia.hu/hallgato/",
     "supported": true,
-    "en_name": "Sapientia College of Theology of Religious Orders"
+    "en_name": "Sapientia College of Theology of Religious Orders",
+    "id": "FI47939"
+  },
+  "Sárospataki Református Hittudományi Egyetem": {
+    "website": "https://srhe.etn.hu/",
+    "supported": false,
+    "en_name": "Sárospatak Reformed Theological University",
+    "id": "FI32388"
   },
   "Semmelweis Egyetem": {
     "website": "https://neptunweb.semmelweis.hu/hallgato/",
     "supported": true,
-    "en_name": "Semmelweis University"
+    "en_name": "Semmelweis University",
+    "id": "FI62576"
+  },
+  "Sola Scriptura Teológiai Főiskola": {
+    "website": "https://sstf.etn.hu/",
+    "supported": false,
+    "en_name": "Sola Scriptura College of Theology",
+    "id": "FI70788"
   },
   "Soproni Egyetem": {
     "website": "https://neptun3r.uni-sopron.hu/hallgato_ng/",
     "supported": true,
-    "en_name": "Sopron University"
-  },
-  "Széchenyi István Egyetem": {
-    "website": "https://neptun-hweb.sze.hu/hallgato_ng/",
-    "supported": true,
-    "en_name": "Széchenyi István University"
+    "en_name": "Sopron University",
+    "id": "FI21120"
   },
   "Szegedi Tudományegyetem": {
     "website": "https://neptun.szte.hu/hallgato/",
     "supported": true,
-    "en_name": "University of Szeged"
+    "en_name": "University of Szeged",
+    "id": "FI62198"
   },
   "Szent Atanáz Görög Katolikus Hittudományi Főiskola": {
     "website": "https://neptun.szentatanaz.hu/hallgato/",
     "supported": true,
-    "en_name": "St Athanasius Greek-Catholic Theological Institute"
+    "en_name": "St Athanasius Greek-Catholic Theological Institute",
+    "id": "FI35925"
+  },
+  "Szent Bernát Hittudományi Főiskola": {
+    "website": "",
+    "supported": false,
+    "en_name": "Szent Bernát Theological College",
+    "id": "FI35860"
   },
   "Szent Pál Akadémia": {
     "website": "https://neptun.szpa.hu/hallgato/",
-    "supported": false,
-    "en_name": ""
+    "supported": true,
+    "en_name": "Saint Paul Academy",
+    "id": "FI67069"
+  },
+  "Széchenyi István Egyetem": {
+    "website": "https://neptun-hweb.sze.hu/hallgato_ng/",
+    "supported": true,
+    "en_name": "Széchenyi István University",
+    "id": "FI38696"
   },
   "Színház- és Filmművészeti Egyetem": {
     "website": "https://host.sdakft.hu/szfehw/",
     "supported": true,
-    "en_name": "Saint Paul Academy"
+    "en_name": "University of Theatre and Film Arts",
+    "id": "FI54876"
   },
   "Tokaj-Hegyalja Egyetem": {
     "website": "https://neptun.unithe.hu/hallgato/",
     "supported": true,
-    "en_name": "Tokaj-Hegyalja University"
+    "en_name": "Tokaj-Hegyalja University",
+    "id": "FI30164"
   },
   "Tomori Pál Főiskola": {
     "website": "https://host.sdakft.hu/tpfhw/",
     "supported": true,
-    "en_name": "Tomori Pál College"
+    "en_name": "Tomori Pál College",
+    "id": "FI44196"
   },
   "Veszprémi Érseki Főiskola": {
     "website": "https://neptun.vhf.hu/hallgato_ng/",
     "supported": true,
-    "en_name": "Archiepiscopal College of Veszprém"
+    "en_name": "Archiepiscopal College of Veszprém",
+    "id": "FI34533"
   },
   "Wekerle Sándor Üzleti Főiskola": {
     "website": "https://neptun.wsne.hu/hallgato/",
     "supported": true,
-    "en_name": "Wekerle Sándor Business College"
+    "en_name": "Wekerle Sándor Business College",
+    "id": "FI50782"
   },
   "Wesley János Lelkészképző Főiskola": {
     "website": "https://host.sdakft.hu/wjlfhw/",
     "supported": true,
-    "en_name": "John Wesley Theological College"
+    "en_name": "John Wesley Theological College",
+    "id": "FI62930"
   }
 }
