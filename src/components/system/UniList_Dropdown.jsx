@@ -1,8 +1,8 @@
 import data from '@/data/universities.json';
 import '@/styles/components/system/UniList_Dropdown.css';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 
-export default function UniList_Dropdown({ lang = 'hu' }) {
+export default function UniList_Dropdown({ lang = 'hu', value, onChange }) {
   const supportedUniversities = useMemo(
     () =>
       Object.entries(data)
@@ -14,11 +14,9 @@ export default function UniList_Dropdown({ lang = 'hu' }) {
     [lang],
   );
 
-  const [selectedUniversity, setSelectedUniversity] = useState(supportedUniversities[0]?.value ?? '');
-
   return (
     <div className="uniListDropdownWrapper">
-      <select className="uniListDropdown" value={selectedUniversity} onChange={(event) => setSelectedUniversity(event.target.value)}>
+      <select className="uniListDropdown" value={value ?? supportedUniversities[0]?.value ?? ''} onChange={(event) => onChange?.(event.target.value)}>
         {supportedUniversities.map((university) => (
           <option key={university.value} value={university.value}>
             {university.label}
@@ -29,3 +27,7 @@ export default function UniList_Dropdown({ lang = 'hu' }) {
     </div>
   );
 }
+
+export const getFirstSupportedUni = () => {
+  return Object.entries(data).find(([, university]) => university.supported)?.[0] ?? '';
+};

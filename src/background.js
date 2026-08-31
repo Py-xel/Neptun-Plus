@@ -14,7 +14,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 async function saveCredentials(credentials) {
-  // ! TEMPORARY
   const password = 'test-master-password';
   const salt = crypto.getRandomValues(new Uint8Array(16));
   const key = await deriveKey(password, salt);
@@ -26,6 +25,7 @@ async function saveCredentials(credentials) {
       salt: toBase64(salt),
       iv: encrypted.iv,
       ciphertext: encrypted.ciphertext,
+      uni: credentials.uni,
     },
   });
 }

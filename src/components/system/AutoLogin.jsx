@@ -1,6 +1,6 @@
 import AddButton from '@/components/general/AddButton';
 import InputField from '@/components/general/InputField';
-import UniList_Dropdown from '@/components/system/UniList_Dropdown';
+import UniList_Dropdown, { getFirstSupportedUni } from '@/components/system/UniList_Dropdown';
 import DisableWrapper from '@/hooks/DisableWrapper';
 import '@/styles/components/system/AutoLogin.css';
 import { useState } from 'react';
@@ -11,7 +11,7 @@ export default function AutoLogin({ disabled = false }) {
   const [cards, setCards] = useState([]);
 
   const addCard = () => {
-    setCards((prevCards) => [...prevCards, { id: prevCards.length + 1, loginName: '', password: '' }]);
+    setCards((prevCards) => [...prevCards, { id: prevCards.length + 1, loginName: '', password: '', uni: '' }]);
   };
 
   const updateCard = (cardId, updates) => {
@@ -28,6 +28,7 @@ export default function AutoLogin({ disabled = false }) {
       credentials: {
         username: card.loginName,
         password: card.password,
+        uni: card.uni == '' ? getFirstSupportedUni() : card.uni,
       },
     });
 
@@ -54,13 +55,18 @@ export default function AutoLogin({ disabled = false }) {
                 onChange={(e) => updateCard(card.id, { password: e.target.value })}
               />
             </div>
-            <UniList_Dropdown lang={i18n.language} />
+            <UniList_Dropdown lang={i18n.language} value={card.uni} onChange={(value) => updateCard(card.id, { uni: value })} />
           </div>
           <div className="actionButtonContainer">
             <button type="button" className="removeCardButton" onClick={() => removeCard(card.id)}>
               <i className="fa-solid fa-remove" />
             </button>
-            <button type="button" className="saveCardButton" onClick={() => pushCredentials(card)}>
+            <button
+              type="button"
+              className="saveCardButton"
+              onClick={() => {
+                pushCredentials(card);
+              }}>
               <i className="fa-solid fa-floppy-disk" />
             </button>
           </div>
