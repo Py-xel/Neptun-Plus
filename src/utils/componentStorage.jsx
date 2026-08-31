@@ -2,7 +2,7 @@ import i18n from '@/popup/i18n';
 import { CATEGORIES, KEYS, STORAGE_KEY } from '@/utils/dataSchema';
 import { useEffect, useRef, useState } from 'react';
 
-const RESET_EVENT = 'neptun-plus-reset-storage';
+const RESET_EVENT = 'np-reset-storage';
 
 export function useStorage(category, key, defaultValue) {
   const isConfigured = Boolean(category && key);
@@ -39,7 +39,30 @@ export function useStorage(category, key, defaultValue) {
       setLoading(false);
     };
 
+    const handleStorageChange = (changes, areaName) => {
+      if (areaName !== 'local' || !Object.prototype.hasOwnProperty.call(changes, STORAGE_KEY)) {
+        return;
+      }
+
+      const nextSettings = changes[STORAGE_KEY].newValue || {};
+      const nextValue = nextSettings?.[category]?.[key] ?? defaultValueRef.current;
+
+      setValue(nextValue);
+      setLoading(false);
+
+      if (category === CATEGORIES.EXTENSION_SETTINGS && key === KEYS.EXTENSION_SETTINGS.LANGUAGE) {
+        const normalizedLanguage = nextValue === 'en' || nextValue === 'hu' ? nextValue : 'hu';
+        if (normalizedLanguage !== i18n.language) {
+          void i18n.changeLanguage(normalizedLanguage);
+        }
+      }
+    };
+
     window.addEventListener(RESET_EVENT, handleStorageReset);
+
+    if (typeof chrome !== 'undefined' && chrome.storage?.local) {
+      chrome.storage.onChanged.addListener(handleStorageChange);
+    }
 
     async function load() {
       if (typeof chrome === 'undefined' || !chrome.storage?.local) {
@@ -68,6 +91,9 @@ export function useStorage(category, key, defaultValue) {
 
     return () => {
       window.removeEventListener(RESET_EVENT, handleStorageReset);
+      if (typeof chrome !== 'undefined' && chrome.storage?.local) {
+        chrome.storage.onChanged.removeListener(handleStorageChange);
+      }
     };
   }, [category, isConfigured, key]);
 
