@@ -23,5 +23,7 @@ export const KEYS = {
   EXTENSION_SETTINGS: {
     LANGUAGE: 'language',
     HIDE_HINTS: 'hide-hints',
+    ESTABLISHED: 'established',
+    VAULT_ACCESS: 'vault-access',
   },
 };

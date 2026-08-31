@@ -63,5 +63,10 @@
     "active": "Active",
     "noDownloadTitle": "No downloads",
     "noDownloadDesc": "There are no downloads to show."
+  },
+  "Vault": {
+    "passPlaceholder": "Password",
+    "passConfirmPlaceholder": "Confirm password",
+    "createDescription": "Create a new password to log in."
   }
 }

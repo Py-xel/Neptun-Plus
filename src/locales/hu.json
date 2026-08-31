@@ -63,5 +63,10 @@
     "active": "Aktív",
     "noDownloadTitle": "Nincsenek letöltések",
     "noDownloadDesc": "Nincs megjeleníthető letöltés."
+  },
+  "Vault": {
+    "passPlaceholder": "Jelszó",
+    "passConfirmPlaceholder": "Jelszó megerősítése",
+    "createDescription": "Készítsen egy új jelszót a belépéshez."
   }
 }
