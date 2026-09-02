@@ -44,3 +44,51 @@
   text-align: center;
   color: var(--cool-steel);
 }
+
+.np-vault-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 240px;
+  height: 30px;
+
+  padding: 0px 7px;
+
+  border-radius: 6px;
+  border: 0;
+  background-color: var(--tropical-mint);
+  color: var(--ghost-white);
+
+  font-family: 'Google Sans';
+  font-weight: 600;
+  font-size: 13px;
+
+  margin-top: 8px;
+
+  transition: background-color 150ms ease-in-out;
+
+  cursor: pointer;
+}
+
+.np-vault-submit:hover {
+  background-color: color-mix(in srgb, var(--tropical-mint) 80%, transparent);
+}
+
+.np-vault-submit:active {
+  border: 2px solid var(--ghost-white);
+}
+
+.np-vault-warning {
+  position: absolute;
+  bottom: 22%;
+
+  font-family: 'Figtree';
+  font-weight: 600;
+  font-size: 12px;
+
+  color: var(--cool-red);
+
+  margin: 0;
+  padding: 0;
+}

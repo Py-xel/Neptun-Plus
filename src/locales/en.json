@@ -38,7 +38,7 @@
       "loginName": "Login name",
       "password": "Password",
       "warningTitle": "Warning!",
-      "warningText": "Saved credentials are stored locally and are <bold>not securely protected</bold>.<br/><br/>While they are obfuscated using client-side encryption, a competent threat actor with access to your device or browser data may be able to gain access to them.",
+      "warningText": "Saved credentials are stored locally and are <bold>not securely protected</bold>.<br/><br/>A competent threat actor with access to your device or browser data may be able to gain access to them.",
       "warningAccept": "I understand."
     },
     "Info": {
@@ -67,6 +67,8 @@
   "Vault": {
     "passPlaceholder": "Password",
     "passConfirmPlaceholder": "Confirm password",
-    "createDescription": "Create a new password to log in."
+    "createDescription": "Create a new password to log in.",
+    "login": "Log in",
+    "passMismatch": "The given passwords do not match."
   }
 }

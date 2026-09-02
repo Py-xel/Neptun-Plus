@@ -38,7 +38,7 @@
       "loginName": "Azonosító",
       "password": "Jelszó",
       "warningTitle": "Figyelem!",
-      "warningText": "A bejelentkezési adatok helyben kerülnek tárolásra, és <bold>nincsenek biztonságosan levédve</bold>.<br/><br/>Bár kliensoldali titkosítással vannak elrejtve, egy kompetens támadó, aki hozzáfér eszközéhez vagy böngészője adataihoz, képes lehet hozzáférni ezekhez az adatokhoz is.",
+      "warningText": "A bejelentkezési adatok helyben kerülnek tárolásra, és <bold>nincsenek biztonságosan levédve</bold>.<br/><br/>Egy kompetens támadó, aki hozzáfér eszközéhez vagy böngészője adataihoz, képes lehet hozzáférni ezekhez az adatokhoz is.",
       "warningAccept": "Megértettem."
     },
     "Info": {
@@ -67,6 +67,8 @@
   "Vault": {
     "passPlaceholder": "Jelszó",
     "passConfirmPlaceholder": "Jelszó megerősítése",
-    "createDescription": "Készítsen egy új jelszót a belépéshez."
+    "createDescription": "Készítsen egy új jelszót a belépéshez.",
+    "login": "Belépés",
+    "passMismatch": "A megadott jelszavak nem egyeznek."
   }
 }
