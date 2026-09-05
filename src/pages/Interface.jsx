@@ -16,13 +16,13 @@ export default function Interface() {
 
   return (
     <div>
-      <h1>{t('Content.Interface.general')}</h1>
+      <h1 className="np-title">{t('Content.Interface.general')}</h1>
       <Toggle_Button label={t('Content.Interface.unfilledSurvey')} enabled={hideHeader} setEnabled={setHideHeader} />
       <Toggle_Button label={t('Content.Interface.itemList')} enabled={itemList} setEnabled={setItemList} />
-      <h1>{t('Content.Interface.fileDownload')}</h1>
+      <h1 className="np-title">{t('Content.Interface.fileDownload')}</h1>
       <Toggle_Button label={t('Content.Interface.showDownload')} enabled={showDownload} setEnabled={setShowDownload} />
       {/* <Grid_Picker selected={gridPosition} onSelect={setGridPosition} disabled={!showDownload} /> */}
-      <h1>{t('Content.Interface.shortcuts')}</h1>
+      <h1 className="np-title">{t('Content.Interface.shortcuts')}</h1>
       <Toggle_Button label={t('Content.Interface.customShortcuts')} enabled={customShortcut} setEnabled={setCustomShortcut} />
       <Shortcut disabled={!customShortcut} />
     </div>
