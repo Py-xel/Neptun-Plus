@@ -1,0 +1,59 @@
+@use '../global' as *;
+
+$sidebar-root-padding: 10px 0px 10px 0px;
+$sidebar-option-padding: 10px 12px;
+
+.np-sidebar-root {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  padding: $sidebar-root-padding;
+
+  background-color: $color_ghost-white;
+  border-right: solid 1px $color_pale-slate;
+
+  .np-option-container {
+    display: flex;
+    align-items: center;
+
+    font-family: $fontFamily_primary;
+    font-size: $fontSize_sidebar;
+    font-weight: $fontWeight_title;
+    text-decoration: none;
+
+    color: $color_twilight-indigo;
+
+    width: 90%;
+
+    gap: 4px;
+
+    box-sizing: border-box;
+    padding: $sidebar-option-padding;
+    border-radius: 6px;
+
+    transition:
+      background-color 0.15s ease-in-out,
+      color 0.1s ease-in-out;
+  }
+
+  .np-option-container i {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .np-option-container:hover {
+    background-color: $color_lavender-grey;
+    color: $color_twilight-indigo;
+  }
+
+  .np-option-container.active {
+    background-color: $color_twilight-indigo;
+    color: $color_white;
+  }
+
+  .np-extension-settings {
+    margin-top: auto;
+  }
+}
