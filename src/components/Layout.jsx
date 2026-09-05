@@ -1,15 +1,15 @@
 import Header from '@/components/header/Header';
 import Sidebar from '@/components/Sidebar';
-import '@/styles/components/Layout.css';
+import '@/styles/components/layout.css';
 import { Outlet } from 'react-router-dom';
 
 export default function Layout() {
   return (
-    <div id="Layout">
+    <div className="np-root">
       <Header />
-      <div id="Layout_Body">
+      <div className="np-body">
         <Sidebar />
-        <main id="Layout_Content">
+        <main className="np-content">
           <Outlet />
         </main>
       </div>
