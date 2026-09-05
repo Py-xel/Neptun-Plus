@@ -1,3 +1,9 @@
+/* POPUP */
+
+$popup_width: 592px;
+$popup_height: 492px;
+$popup_layout: 0;
+
 /* COLORS */
 
 $color_white: #ffffff;
@@ -7,7 +13,8 @@ $color_cool-steel: #9c9c9f;
 $color_black: #000000;
 $color_carbon-black: #222222;
 
-$color_pale-slate: #abafc8;
+$color_pale_slate: #cbd5e1;
+$color_lavender-grey: #abafc8;
 $color_twilight-indigo: #213055;
 $color_bright-indigo: #4338ca;
 
@@ -23,18 +30,35 @@ $color_mint-leaf: #10b981;
 $color_jade-green: #34c759;
 $color_alabaster-grey: #e9e9ea;
 
-/* FONTS */
+/* FONT-FAMILY */
 
-$font_primary: 'Source Sans 3', sans-serif;
-$font_secondary: 'Google Sans', sans-serif;
-$font_technical: 'Lato', sans-serif;
-$font_version: 'JetBrain Mono', ui-monospace;
+$fontFamily_primary: 'Source Sans 3', sans-serif;
+$fontFamily_secondary: 'Google Sans', sans-serif;
+$fontFamily_technical: 'Lato', sans-serif;
+$fontFamily_version: 'JetBrains Mono', ui-monospace;
 
 /* FONT-SIZES */
 
-$fontSize_title: 1.2rem;
+$fontSize_title: 1.3rem;
 $fontSize_description: 0.9rem;
 
 $fontSize_sidebar: 1rem;
 $fontSize_list: 0.75rem;
 $fontSize_technical: 0.7rem;
+$fontSize_version: 0.75rem;
+
+/* FONT-WEIGHTS */
+
+$fontWeight_title: 800;
+$fontWeight_description: 400;
+$fontWeight_technical: 600;
+$fontWeight_version: 500;
+
+/* SCROLLBAR */
+
+$scrollbar_width: 8px;
+$scrollbar_background: transparent;
+$scrollbar_thumb_background: $color_pale-slate;
+$scrollbar_thumb_border: 2px solid $color_white;
+$scrollbar_thumb_borderRadius: 20px;
+$scrollbar_thumb_hoverColor: $color_lavender-grey;

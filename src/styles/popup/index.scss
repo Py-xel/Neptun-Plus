@@ -1,0 +1,40 @@
+@use '../global' as *;
+
+html,
+body,
+#root {
+  min-width: $popup_width;
+  width: $popup_width;
+  max-width: $popup_width;
+
+  min-height: $popup_height;
+  height: $popup_height;
+  max-height: $popup_height;
+
+  margin: $popup_layout;
+  padding: $popup_layout;
+  border: $popup_layout;
+
+  overflow: hidden;
+  caret-color: $color_twilight-indigo;
+}
+
+/* -- Scrollbar -- */
+
+html > * ::-webkit-scrollbar {
+  width: $scrollbar_width;
+}
+
+html > * ::-webkit-scrollbar-track {
+  background: $scrollbar_background;
+}
+
+html > * ::-webkit-scrollbar-thumb {
+  background-color: $scrollbar_thumb_background;
+  border: $scrollbar_thumb_border;
+  border-radius: $scrollbar_thumb_borderRadius;
+}
+
+html > * ::-webkit-scrollbar-thumb:hover {
+  background-color: $scrollbar_thumb_hoverColor;
+}
