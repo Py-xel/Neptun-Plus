@@ -31,10 +31,9 @@ $header-logo-width: 180px;
 
     .np-header-info {
       display: flex;
-
       flex-direction: row;
 
-      gap: 2px;
+      gap: 3px;
 
       .np-version {
         font-family: $fontFamily_version;
@@ -46,8 +45,14 @@ $header-logo-width: 180px;
         margin: 0;
       }
 
+      .np-header-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
       .np-header-icon > * {
-        font-size: calc($fontSize_version + 0.05rem);
+        font-size: $fontSize_version;
         color: $color_ghost-white;
         transition: color 0.15s ease-in-out;
       }
