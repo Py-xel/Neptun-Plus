@@ -1,0 +1,60 @@
+@use '../../global' as *;
+
+$header-height: 50px;
+$header-logo-height: 30px;
+$header-logo-width: 180px;
+
+.np-header-root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: $header-height;
+
+  background-color: $color_twilight-indigo;
+
+  .np-logo {
+    height: $header-logo-height;
+    width: $header-logo-width;
+    margin-left: 10px;
+  }
+
+  .np-header-extras {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    flex-direction: column;
+
+    gap: 4px;
+    margin-right: 5px;
+
+    .np-header-info {
+      display: flex;
+
+      flex-direction: row;
+
+      gap: 2px;
+
+      .np-version {
+        font-family: $fontFamily_version;
+        font-size: $fontSize_version;
+        font-weight: $fontWeight_version;
+
+        color: $color_ghost-white;
+
+        margin: 0;
+      }
+
+      .np-header-icon > * {
+        font-size: calc($fontSize_version + 0.05rem);
+        color: $color_ghost-white;
+        transition: color 0.15s ease-in-out;
+      }
+
+      .np-header-icon:hover > * {
+        color: #000000;
+      }
+    }
+  }
+}

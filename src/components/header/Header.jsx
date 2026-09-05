@@ -1,14 +1,14 @@
 import LanguageSelect from '@/components/header/LanguageSelect';
-import '@/styles/components/header/Header.css';
+import '@/styles/components/header/header.css';
 
 export default function Header() {
   return (
-    <div id="HeaderContainer">
-      <img src="/Neptun_Plus_Logo_White.png" id="HeaderLogo" />
-      <div id="HeaderExtras">
-        <div id="HeaderInfo">
-          <p id="Version">v1.0</p>
-          <a id="GithubIcon" href="https://github.com/Py-xel/Neptun-Plus" target="_blank">
+    <div className="np-header-root">
+      <img className="np-logo" src="/Neptun_Plus_Logo_White.png" />
+      <div className="np-header-extras">
+        <div className="np-header-info">
+          <p className="np-version">v1.0</p>
+          <a className="np-header-icon" href="https://github.com/Py-xel/Neptun-Plus" target="_blank">
             <i class="fa-brands fa-github" />
           </a>
         </div>
