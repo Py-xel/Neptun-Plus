@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "build:css": "sass src/styles:dist/css --no-source-map --style=compressed",
+    "watch:css": "sass src/styles:dist/css --watch"
   },
   "dependencies": {
     "i18next": "^26.3.6",
