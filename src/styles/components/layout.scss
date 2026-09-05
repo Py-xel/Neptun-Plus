@@ -1,12 +1,18 @@
 @use '../global' as *;
 
+$content-padding: 8px 12px 12px 12px;
+
 .np-root {
   display: flex;
   flex-direction: column;
 
+  height: $popup_height;
+
   .np-body {
     display: flex;
     flex: 1;
+    min-height: 0;
+    overflow: hidden;
 
     .np-content {
       display: flex;
@@ -16,7 +22,7 @@
 
       position: relative;
 
-      padding: 8px 12px 12px 12px;
+      padding: $content-padding;
       background-color: var(--white);
 
       overflow: auto;
