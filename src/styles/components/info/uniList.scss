@@ -1,0 +1,98 @@
+@use '../../global' as *;
+
+$body-height: 300px;
+
+.np-uniList-container {
+  font-family: $fontFamily_secondary;
+  font-size: $fontSize_list;
+
+  width: 100%;
+
+  border: 1px solid $color_dust-grey;
+  border-radius: 12px;
+
+  margin-top: 10px;
+
+  & > table {
+    width: 100%;
+
+    border-collapse: collapse;
+    table-layout: fixed;
+
+    & thead {
+      display: table;
+
+      width: 100%;
+
+      table-layout: fixed;
+    }
+
+    & tbody {
+      display: block;
+
+      width: 100%;
+      max-height: $body-height;
+
+      overflow-y: auto;
+      scrollbar-gutter: stable;
+
+      & tr {
+        display: table;
+
+        width: 100%;
+
+        table-layout: fixed;
+      }
+    }
+
+    & th,
+    & td {
+      padding: 10px 12px;
+      box-sizing: border-box;
+
+      &:first-child {
+        width: calc(100% - 80px);
+      }
+
+      &:last-child {
+        width: 80px;
+        text-align: center;
+      }
+    }
+
+    & th {
+      text-align: left;
+
+      background: $color_ghost-white;
+      border-bottom: 2px solid $color_lavender-grey;
+
+      &:first-child {
+        border-top-left-radius: 12px;
+      }
+
+      &:last-child {
+        // Compensating for scrollbar in tbody
+        padding-right: 80px;
+        border-top-right-radius: 12px;
+      }
+    }
+
+    & td {
+      border-bottom: 1px solid rgba($color_black, 0.1);
+    }
+
+    & tbody tr:last-child {
+      & td {
+        border-bottom: none;
+      }
+    }
+  }
+
+  & .checkmark {
+    color: $color_mint-leaf;
+  }
+
+  & .xmark {
+    color: $color_hot-fuchsia;
+  }
+}

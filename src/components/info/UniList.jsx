@@ -1,5 +1,5 @@
 import universities from '@/data/universities.json';
-import '@/styles/components/info/UniList.css';
+import '@/styles/components/info/uniList.css';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -20,7 +20,7 @@ export default function UniList({ search = '', lang = 'hu' }) {
   }, [search]);
 
   return (
-    <div className="uniList">
+    <div className="np-uniList-container">
       <table>
         <thead>
           <tr>
