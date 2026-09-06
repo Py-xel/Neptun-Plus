@@ -1,0 +1,29 @@
+@use '../../global' as *;
+
+.np-language-container {
+  @include flex($align: center);
+
+  gap: 4px;
+
+  .np-language-option {
+    opacity: 0.5;
+
+    cursor: pointer;
+
+    @include transition(opacity 0.15s ease-in-out, transform 0.15s ease-in-out, filter 0.15s ease-in-out);
+
+    &:hover {
+      opacity: 0.8;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
+    }
+
+    &.active {
+      opacity: 1;
+    }
+
+    & > img {
+      display: block;
+      @include transition-full-ease($property: transform, $time: 0.2s);
+    }
+  }
+}
