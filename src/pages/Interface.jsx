@@ -1,6 +1,6 @@
 import Toggle_Button from '@/components/general/Toggle_Button';
 /* import Grid_Picker from '@/components/interface/Grid_Picker'; */
-import Shortcut from '@/components/interface/Shortcut';
+/* import Shortcut from '@/components/interface/Shortcut'; */
 import { useStorage } from '@/utils/componentStorage';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { useTranslation } from 'react-i18next';
@@ -24,7 +24,7 @@ export default function Interface() {
       {/* <Grid_Picker selected={gridPosition} onSelect={setGridPosition} disabled={!showDownload} /> */}
       <h1 className="np-title">{t('Content.Interface.shortcuts')}</h1>
       <Toggle_Button label={t('Content.Interface.customShortcuts')} enabled={customShortcut} setEnabled={setCustomShortcut} />
-      <Shortcut disabled={!customShortcut} />
+      {/* <Shortcut disabled={!customShortcut} /> */}
     </div>
   );
 }
