@@ -1,0 +1,55 @@
+@use '../../global' as *;
+
+$dropdown-height: 35px;
+$dropdown-padding-left: 16px;
+
+.np-uniList-dropdown-container {
+  position: relative;
+
+  width: 100%;
+
+  margin-top: 5px;
+
+  & > .np-uniList-dropdown {
+    width: 100%;
+    max-width: 100%;
+
+    min-height: $dropdown-height;
+
+    padding-left: $dropdown-padding-left;
+
+    font-family: $fontFamily_secondary;
+    font-size: $fontSize_list;
+    font-weight: $fontWeight_description;
+
+    color: $color_carbon-black;
+
+    border-radius: 8px;
+    border: 1px solid $color_pale-slate;
+
+    background-color: $color_ghost-white;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    outline: none;
+
+    cursor: pointer;
+
+    &:open {
+      border-color: $color_cornflower-blue;
+      box-shadow: 0 0 0 1px $color_cornflower-blue;
+    }
+  }
+
+  & .np-uniList-dropdown-chevron {
+    @include position-absolute($top: 50%, $right: 10px);
+    transform: translateY(-50%);
+
+    color: $color_dusk-blue;
+    font-size: $fontSize_list;
+
+    pointer-events: none;
+  }
+}
