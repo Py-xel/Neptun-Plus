@@ -1,0 +1,40 @@
+@use '../../global' as *;
+
+$button-padding: 8px 0px;
+$button-size: 1.05rem;
+
+.np-button-add {
+  @include flex-center-col;
+
+  border: 1px dashed $color_lavender-grey;
+  border-radius: 8px;
+
+  width: 100%;
+
+  background: transparent;
+
+  padding: $button-padding;
+
+  cursor: pointer;
+
+  @include transition(border-color 0.2s ease-in-out, background-color 0.2s ease-in-out, transform 0.2s ease-in-out);
+
+  & > * {
+    font-size: $button-size;
+
+    color: $color_dusk-blue;
+
+    margin: 0;
+
+    @include transition(color 0.2s ease-in-out, transform 0.2s ease-in-out);
+  }
+
+  &:hover {
+    border-color: $color_twilight-indigo;
+    background-color: rgba($color_ocean-twilight, 0.1);
+  }
+
+  &:hover > * {
+    color: $color_twilight-indigo;
+  }
+}
