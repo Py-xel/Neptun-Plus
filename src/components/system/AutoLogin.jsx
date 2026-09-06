@@ -2,7 +2,7 @@ import AddButton from '@/components/general/AddButton';
 import InputField from '@/components/general/InputField';
 import UniList_Dropdown, { getFirstSupportedUni } from '@/components/system/UniList_Dropdown';
 import DisableWrapper from '@/hooks/DisableWrapper';
-import '@/styles/components/system/AutoLogin.css';
+import '@/styles/components/system/autoLogin.css';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -41,11 +41,11 @@ export default function AutoLogin({ disabled = false }) {
   }
 
   return (
-    <DisableWrapper disabled={disabled} className="credentialsContainer">
+    <DisableWrapper disabled={disabled} className="np-credentials-container">
       {cards.map((card) => (
-        <div key={card.id} className="credentialCard">
-          <div className="leftSide">
-            <div className="inputFields">
+        <div key={card.id} className="np-credentials-card">
+          <div className="np-credentials-leftSide">
+            <div className="np-credentials-input-container">
               <InputField icon={'fa-regular fa-user'} value={card.loginName} placeholder={t('Content.System.loginName')} onChange={(e) => updateCard(card.id, { loginName: e.target.value })} />
               <InputField
                 icon={'fa-regular fa-eye-slash'}
@@ -57,13 +57,13 @@ export default function AutoLogin({ disabled = false }) {
             </div>
             <UniList_Dropdown lang={i18n.language} value={card.uni} onChange={(value) => updateCard(card.id, { uni: value })} />
           </div>
-          <div className="actionButtonContainer">
-            <button type="button" className="removeCardButton" onClick={() => removeCard(card.id)}>
+          <div className="np-action-button-container">
+            <button type="button" className="np-action-button-remove" onClick={() => removeCard(card.id)}>
               <i className="fa-solid fa-remove" />
             </button>
             <button
               type="button"
-              className="saveCardButton"
+              className="np-action-button-save"
               onClick={() => {
                 pushCredentials(card);
               }}>
