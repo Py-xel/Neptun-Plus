@@ -1,6 +1,7 @@
 @use '../global' as *;
 
 $content-padding: 8px 12px 12px 12px;
+$title-margin: 6px 0px 6px 0px;
 
 .np-root {
   display: flex;
@@ -36,6 +37,8 @@ $content-padding: 8px 12px 12px 12px;
         font-weight: $fontWeight_title;
 
         color: $color_carbon-black;
+
+        margin: $title-margin;
       }
 
       .np-description {
