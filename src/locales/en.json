@@ -54,6 +54,11 @@
       "resetButton": "Reset settings"
     }
   },
+  "Error": {
+    "error": "An error has occurred!",
+    "refresh": "Refresh extension",
+    "details": "Details:"
+  },
   "Content_Script": {
     "connected": "Connected",
     "downloads": "Downloads",

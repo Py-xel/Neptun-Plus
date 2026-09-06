@@ -54,6 +54,11 @@
       "resetButton": "Beállítások visszaállítása"
     }
   },
+  "Error": {
+    "error": "Hiba történt!",
+    "refresh": "Bővítmény frissítése",
+    "details": "Részletek:"
+  },
   "Content_Script": {
     "connected": "Kapcsolódva",
     "downloads": "Letöltések",
