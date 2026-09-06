@@ -18,7 +18,7 @@ export default function Toggle_Button({ enabled, setEnabled, label, showInfo = t
 
   return (
     <div className="toggleCombo">
-      {label && <p>{label}</p>}
+      {label && <p className="np-description">{label}</p>}
       <div className="toggleContainer">
         <label className="switch">
           <input type="checkbox" checked={enabled} onChange={handleToggle} />

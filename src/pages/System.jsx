@@ -14,7 +14,7 @@ export default function System() {
 
   return (
     <div>
-      <h1>{t('Content.System.general')}</h1>
+      <h1 className="np-title">{t('Content.System.general')}</h1>
       <Toggle_Button label={t('Content.System.infsession')} enabled={infsession} setEnabled={setInfsession} showInfo={false} />
       <Toggle_Button label={t('Content.System.autologin')} enabled={autoLogin} setEnabled={setAutoLogin} showInfo={false} />
       <AutoLogin disabled={!autoLogin} />
