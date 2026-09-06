@@ -62,3 +62,45 @@ $scrollbar_thumb_background: $color_pale-slate;
 $scrollbar_thumb_border: 2px solid $color_white;
 $scrollbar_thumb_borderRadius: 20px;
 $scrollbar_thumb_hoverColor: $color_lavender-grey;
+
+/* MIXINS */
+
+@mixin flex($justify: null, $align: null, $direction: null, $flex: null) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  flex: $flex;
+}
+
+@mixin flex-center-col($justify: center, $align: center, $direction: column, $flex: null) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  flex: $flex;
+}
+
+@mixin flex-center-row($justify: center, $align: center, $direction: row, $flex: null) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  flex: $flex;
+}
+
+@mixin position-absolute($top: null, $right: null, $bottom: null, $left: null) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin transition($transitions...) {
+  transition: $transitions;
+}
+
+@mixin transition-full-ease($property: null, $time: null) {
+  transition: $property $time ease-in-out;
+}
