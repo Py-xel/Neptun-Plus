@@ -4,22 +4,21 @@ $content-padding: 8px 12px 12px 12px;
 $title-margin: 6px 0px 6px 0px;
 
 .np-root {
-  display: flex;
-  flex-direction: column;
+  @include flex($direction: column);
 
   height: $popup_height;
 
   .np-body {
-    display: flex;
-    flex: 1;
+    @include flex($flex: 1);
     min-height: 0;
     overflow: hidden;
 
-    .np-content {
-      display: flex;
+    & > *:first-child {
+      @include flex-center-col($flex: 0 0 25%);
+    }
 
-      flex-direction: column;
-      flex: 1;
+    .np-content {
+      @include flex($direction: column, $flex: 1);
 
       position: relative;
 
@@ -50,12 +49,4 @@ $title-margin: 6px 0px 6px 0px;
       }
     }
   }
-}
-
-.np-body > *:first-child {
-  display: flex;
-  align-items: center;
-
-  flex-direction: column;
-  flex: 0 0 25%;
 }

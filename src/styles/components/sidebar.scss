@@ -4,8 +4,7 @@ $sidebar-root-padding: 10px 0px 10px 0px;
 $sidebar-option-padding: 10px 12px;
 
 .np-sidebar-root {
-  display: flex;
-  flex-direction: column;
+  @include flex($direction: column);
 
   gap: 5px;
 
@@ -15,8 +14,7 @@ $sidebar-option-padding: 10px 12px;
   border-right: solid 1px $color_pale-slate;
 
   .np-option-container {
-    display: flex;
-    align-items: center;
+    @include flex($align: center);
 
     font-family: $fontFamily_primary;
     font-size: $fontSize_sidebar;
@@ -33,26 +31,23 @@ $sidebar-option-padding: 10px 12px;
     padding: $sidebar-option-padding;
     border-radius: 6px;
 
-    transition:
-      background-color 0.15s ease-in-out,
-      color 0.1s ease-in-out;
-  }
+    @include transition(background-color 0.15s ease-in-out, color 0.1s ease-in-out);
 
-  .np-option-container i {
-    text-align: center;
-    font-size: 14px;
-  }
+    & i {
+      text-align: center;
+      font-size: 14px;
+    }
 
-  .np-option-container:hover {
-    background-color: $color_lavender-grey;
-    color: $color_twilight-indigo;
-  }
+    &:hover {
+      background-color: $color_lavender-grey;
+      color: $color_twilight-indigo;
+    }
 
-  .np-option-container.active {
-    background-color: $color_twilight-indigo;
-    color: $color_white;
+    &.active {
+      background-color: $color_twilight-indigo;
+      color: $color_white;
+    }
   }
-
   .np-extension-settings {
     margin-top: auto;
   }

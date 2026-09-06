@@ -5,9 +5,7 @@ $header-logo-height: 30px;
 $header-logo-width: 180px;
 
 .np-header-root {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex($justify: space-between, $align: center);
 
   height: $header-height;
 
@@ -20,18 +18,13 @@ $header-logo-width: 180px;
   }
 
   .np-header-extras {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-
-    flex-direction: column;
+    @include flex($justify: center, $align: flex-end, $direction: column);
 
     gap: 4px;
     margin-right: 5px;
 
     .np-header-info {
-      display: flex;
-      flex-direction: row;
+      @include flex($direction: row);
 
       gap: 3px;
 
@@ -46,19 +39,17 @@ $header-logo-width: 180px;
       }
 
       .np-header-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+        @include flex-center-col;
 
-      .np-header-icon > * {
-        font-size: $fontSize_version;
-        color: $color_ghost-white;
-        transition: color 0.15s ease-in-out;
-      }
+        & > * {
+          font-size: $fontSize_version;
+          color: $color_ghost-white;
+          @include transition-full-ease($property: color, $time: 0.15s);
+        }
 
-      .np-header-icon:hover > * {
-        color: #000000;
+        &:hover > * {
+          color: #000000;
+        }
       }
     }
   }

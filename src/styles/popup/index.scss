@@ -21,20 +21,22 @@ body,
 
 /* -- Scrollbar -- */
 
-html > * ::-webkit-scrollbar {
-  width: $scrollbar_width;
-}
+html {
+  & > * ::-webkit-scrollbar {
+    width: $scrollbar_width;
+  }
 
-html > * ::-webkit-scrollbar-track {
-  background: $scrollbar_background;
-}
+  & > * ::-webkit-scrollbar-track {
+    background: $scrollbar_background;
+  }
 
-html > * ::-webkit-scrollbar-thumb {
-  background-color: $scrollbar_thumb_background;
-  border: $scrollbar_thumb_border;
-  border-radius: $scrollbar_thumb_borderRadius;
-}
+  & > * ::-webkit-scrollbar-thumb {
+    background-color: $scrollbar_thumb_background;
+    border: $scrollbar_thumb_border;
+    border-radius: $scrollbar_thumb_borderRadius;
 
-html > * ::-webkit-scrollbar-thumb:hover {
-  background-color: $scrollbar_thumb_hoverColor;
+    &:hover {
+      background-color: $scrollbar_thumb_hoverColor;
+    }
+  }
 }
