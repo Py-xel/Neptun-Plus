@@ -1,5 +1,5 @@
 import { UseAnimationGate } from '@/hooks/UseAnimationGate';
-import '@/styles/components/general/Toggle_Button.css';
+import '@/styles/components/general/toggleButton.css';
 import { useState } from 'react';
 
 export default function Toggle_Button({ enabled, setEnabled, label, showInfo = true }) {
@@ -13,19 +13,20 @@ export default function Toggle_Button({ enabled, setEnabled, label, showInfo = t
 
     if (nextValue !== enabled) {
       triggerAnimation();
+      console.log('transition button!');
     }
   };
 
   return (
-    <div className="toggleCombo">
+    <div className="np-toggle-container">
       {label && <p className="np-description">{label}</p>}
-      <div className="toggleContainer">
-        <label className="switch">
+      <div className="np-switch-container">
+        <label className="np-switch">
           <input type="checkbox" checked={enabled} onChange={handleToggle} />
-          <span className={`slider${isAnimating ? ' slider--animated' : ''}`} />
+          <span className={`np-slider${isAnimating ? ' np-slider-animated' : ''}`} />
         </label>
         {showInfo && <i className="fa-regular fa-circle-question" onMouseEnter={() => setShowPreview(true)} onMouseLeave={() => setShowPreview(false)} />}
-        {showPreview && <div className="previewWindow" />}
+        {showPreview && <div className="np-preview-window" />}
       </div>
     </div>
   );

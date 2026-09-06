@@ -1,0 +1,121 @@
+@use '../../global' as *;
+
+$icon-size: 0.75rem;
+$switch-width: 44px;
+$switch-height: 24px;
+$slider-width: 20px;
+$slider-height: 20px;
+$preview-width: 172px;
+$preview-height: 97px;
+
+.np-toggle-container {
+  @include flex($justify: space-between, $align: center, $direction: row);
+
+  .np-switch-container {
+    @include flex-center-row;
+
+    gap: 5px;
+
+    & > i {
+      color: $color_twilight-indigo;
+      font-size: $icon-size;
+      cursor: help;
+    }
+
+    .np-switch {
+      position: relative;
+      display: inline-block;
+
+      width: $switch-width;
+      height: $switch-height;
+
+      input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .np-slider {
+        @include position-absolute($top: 0, $right: 0, $bottom: 0, $left: 0);
+
+        background-color: $color_alabaster-grey;
+        border-radius: 24px;
+        cursor: pointer;
+
+        @include transition(background-color, 0s ease-in-out);
+
+        &:before {
+          @include position-absolute($bottom: 2px, $left: 2px);
+
+          width: $slider-width;
+          height: $slider-height;
+
+          content: '';
+
+          background-color: $color_white;
+          border-radius: 50%;
+
+          box-shadow: 0 2px 4px rgba($color_black, 0.1);
+
+          @include transition(transform 0s cubic-bezier(0.4, 0, 0.2, 1));
+
+          z-index: 2;
+        }
+
+        &-animated {
+          @include transition-full-ease($property: background-color, $time: 0.3s);
+
+          &:before {
+            @include transition(transform 0.3s cubic-bezier(0.4, 0, 0.2, 1));
+          }
+        }
+      }
+
+      input:checked + .np-slider {
+        background-color: $color_jade-green;
+
+        &:before {
+          transform: translateX(20px);
+        }
+      }
+    }
+
+    .np-preview-window {
+      @include flex-center-row;
+      @include position-absolute;
+
+      width: $preview-width;
+      height: $preview-height;
+
+      right: 30px;
+
+      border: 1px solid $color_ocean-twilight;
+      border-radius: 6px;
+
+      opacity: 0;
+
+      box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        0 6px 12px rgba(0, 0, 0, 0.1),
+        0 12px 24px rgba(0, 0, 0, 0.1),
+        0 24px 48px rgba(0, 0, 0, 0.1);
+
+      pointer-events: none;
+
+      animation: fadeIn 0.2s ease forwards;
+
+      z-index: 3;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
