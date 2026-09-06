@@ -1,4 +1,4 @@
-import '@/styles/components/settings/ResetSettings.css';
+import '@/styles/components/settings/resetSettings.css';
 import { useStorage } from '@/utils/componentStorage';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { useTranslation } from 'react-i18next';
@@ -13,9 +13,9 @@ export default function ResetSettings() {
   };
 
   return (
-    <div className="resetContainer">
-      <label className="resetLabel">{t('Content.Settings.resetLabel')}</label>
-      <button className="resetButton" onClick={handleReset}>
+    <div className="np-reset-container">
+      <label className="np-reset-label">{t('Content.Settings.resetLabel')}</label>
+      <button className="np-reset-button" onClick={handleReset}>
         {t('Content.Settings.resetButton')}
       </button>
     </div>

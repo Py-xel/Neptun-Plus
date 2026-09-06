@@ -1,0 +1,52 @@
+@use '../../global' as *;
+
+$reset-padding: 6px 5px;
+
+.np-reset-container {
+  @include flex($justify: center, $align: flex-start, $direction: column);
+
+  position: absolute;
+
+  bottom: 15px;
+
+  gap: 4px;
+
+  & > .np-reset-label {
+    font-family: $fontFamily_technical;
+    font-size: $fontSize_technical;
+    font-weight: $fontWeight_technical;
+
+    color: $color_carbon-black;
+  }
+
+  & > .np-reset-button {
+    font-family: $fontFamily_technical;
+    font-size: $fontSize_technical;
+    font-weight: $fontWeight_technical;
+
+    color: $color_white;
+
+    background-color: $color_raspberry;
+
+    border: 1px solid $color_twilight-red;
+    border-radius: 5px;
+
+    padding: $reset-padding;
+
+    @include transition-full-ease($property: all, $time: 0.08s);
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color_hot-fuchsia;
+      border-color: $color_raspberry;
+      box-shadow: 0 2px 6px rgba($color_twilight-red, 0.2);
+    }
+
+    &:active {
+      background-color: rgba($color_twilight-red, 1);
+      border-color: rgba($color_twilight-red, 0.2);
+      box-shadow: inset 0 2px 4px rgba($color_carbon-black, 0.2);
+    }
+  }
+}
