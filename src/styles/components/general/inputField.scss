@@ -1,0 +1,51 @@
+@use '../../global' as *;
+
+$input-width: fit-content;
+$input-height: 30px;
+$input-padding: 0px 7px;
+$input-placeholder-size: 0.8rem;
+
+.np-input-container {
+  @include flex-center-row;
+
+  width: $input-width;
+  height: $input-height;
+
+  padding: $input-padding;
+
+  gap: 5px;
+
+  border-radius: 6px;
+  border: solid 1px $color_pale-slate;
+
+  background-color: $color_ghost-white;
+
+  & > i {
+    cursor: none;
+    pointer-events: none;
+  }
+
+  &:active,
+  &:focus-within {
+    border-color: $color_cornflower-blue;
+    box-shadow: 0 0 0 1px $color_cornflower-blue;
+  }
+
+  .np-input-field {
+    border: none;
+    border-radius: 6px;
+
+    width: 100%;
+
+    color: $color_carbon-black;
+    background-color: transparent;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    &::placeholder {
+      font-size: $input-placeholder-size;
+    }
+  }
+}

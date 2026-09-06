@@ -1,4 +1,4 @@
-import '@/styles/components/general/InputField.css';
+import '@/styles/components/general/inputField.css';
 import { useRef } from 'react';
 
 export default function InputField({ icon = 'none', placeholder, value, onChange, type = 'text' }) {
@@ -7,9 +7,9 @@ export default function InputField({ icon = 'none', placeholder, value, onChange
   const focusInput = () => inputRef.current && inputRef.current.focus();
 
   return (
-    <div className="inputContainer" onClick={focusInput}>
+    <div className="np-input-container" onClick={focusInput}>
       {icon && <i className={icon} />}
-      <input ref={inputRef} type={type} className="inputField" placeholder={placeholder} value={value} onChange={onChange} />
+      <input ref={inputRef} type={type} className="np-input-field" placeholder={placeholder} value={value} onChange={onChange} />
     </div>
   );
 }
