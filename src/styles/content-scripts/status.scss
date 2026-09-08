@@ -1,0 +1,143 @@
+@use '../global' as *;
+
+$neptun-logo-size: 48px;
+$font-special: 'Figtree';
+$status-container-padding: 8px;
+$logo-size: 1.05rem;
+$inner-container-color: $color_jade-green;
+$inner-container-padding: 4px 8px;
+$ping-outer-size: 10px;
+$ping-inner-size: 6px;
+
+neptun-login-form > .login-right > neptun-language-dropdown.neptun-language-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#main-header-right {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 7px;
+}
+
+/* Preserve dimensions because Status shifts this */
+#neptun-logo {
+  height: $neptun-logo-size;
+  min-height: $neptun-logo-size;
+  max-height: $neptun-logo-size;
+}
+
+.np-status-container {
+  @include flex-center-col;
+  align-self: center;
+
+  width: max-content;
+  height: fit-content;
+
+  gap: 4px;
+
+  background-color: $color_ghost-white;
+
+  border-radius: 8px;
+
+  padding: $status-container-padding;
+
+  overflow: hidden;
+
+  /* Shift position when anywhere besides login page */
+  &--nonLogin {
+    position: relative;
+    transform: translateY(-4px);
+  }
+
+  & .np-status-header {
+    @include flex-center-row;
+
+    gap: 5px;
+
+    & .np-status-logo {
+      width: $logo-size;
+    }
+
+    & .np-status-title {
+      font-family: $font-special;
+      font-size: $fontSize_description;
+      font-weight: $fontWeight_technical;
+
+      color: $color_twilight-indigo;
+    }
+  }
+
+  & .np-status-outer {
+    @include flex($align: center);
+    position: relative;
+
+    & .np-status-inner {
+      @include flex($align: center, $direction: row);
+
+      gap: 6px;
+
+      border-radius: 999px;
+
+      background-color: rgba($inner-container-color, 0.1);
+
+      padding: $inner-container-padding;
+
+      & .np-status-dot {
+        @include flex-center-row;
+
+        position: relative;
+
+        width: $ping-outer-size;
+        height: $ping-outer-size;
+
+        flex-shrink: 0;
+
+        & .np-status-ping {
+          @include flex;
+
+          position: absolute;
+
+          width: 100%;
+          height: 100%;
+
+          border-radius: 50%;
+
+          background-color: $color_jade-green;
+
+          opacity: 0.75;
+          animation: np-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        & .np-status-solid {
+          @include flex;
+
+          width: $ping-inner-size;
+          height: $ping-inner-size;
+
+          border-radius: 50%;
+
+          background-color: $color_jade-green;
+        }
+      }
+
+      & .np-status-text {
+        font-family: $font-special;
+        font-size: 0.6rem;
+        font-weight: $fontWeight_version;
+
+        color: $color_sea-green;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+@keyframes np-ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

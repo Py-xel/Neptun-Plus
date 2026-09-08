@@ -44,7 +44,7 @@ export default defineManifest({
         'src/content-scripts/interface/ItemList.js',
         'src/content-scripts/interface/FileDownloader.js',
       ],
-      css: ['src/styles/content-scripts/Status.css', 'src/styles/content-scripts/FileDownloader.css'],
+      css: ['src/styles/content-scripts/status.css', 'src/styles/content-scripts/fileDownloader.css'],
       run_at: 'document_start',
     },
     {

@@ -7,29 +7,29 @@ const HEADER = 'main-header-right';
 function createStatus() {
   const container = isOnLoginPage(window.location.href) ? document.getElementsByClassName(LANGUAGE_DROPDOWN)[0] : document.getElementById(HEADER);
 
-  if (!container || container.querySelector('.np_statusContainer')) {
+  if (!container || container.querySelector('.np-status-container')) {
     // TODO Add error handling
     return false;
   }
 
   // Container
-  const statusContainer = createElement('div', `np_statusContainer${isOnLoginPage(window.location.href) ? '' : ' np_statusContainer--nonLogin'}`);
+  const statusContainer = createElement('div', `np-status-container${isOnLoginPage(window.location.href) ? '' : ' np-status-container--nonLogin'}`);
 
   // Logo and title
-  const header = createElement('div', 'np_statusHeader');
-  const icon = createElement('img', 'np_statusLogo');
+  const header = createElement('div', 'np-status-header');
+  const icon = createElement('img', 'np-status-logo');
   icon.src = chrome.runtime.getURL('/Neptun_Plus_Logo_Wireframe.png');
-  const title = createElement('p', 'np_statusTitle', 'Neptun Plus');
+  const title = createElement('p', 'np-status-title', 'Neptun Plus');
 
   header.append(icon, title);
 
   // Status indicator
-  const statusOuter = createElement('span', 'np_statusOuter');
-  const statusInner = createElement('span', 'np_statusInner');
-  const statusDot = createElement('span', 'np_statusDot');
-  const statusPing = createElement('span', 'np_statusPing');
-  const statusSolid = createElement('span', 'np_statusSolid');
-  const statusText = createElement('span', 'np_statusText', i18n.t('Content_Script.connected'));
+  const statusOuter = createElement('span', 'np-status-outer');
+  const statusInner = createElement('span', 'np-status-inner');
+  const statusDot = createElement('span', 'np-status-dot');
+  const statusPing = createElement('span', 'np-status-ping');
+  const statusSolid = createElement('span', 'np-status-solid');
+  const statusText = createElement('span', 'np-status-text', i18n.t('Content_Script.connected'));
 
   statusDot.append(statusPing, statusSolid);
   statusInner.append(statusDot, statusText);
