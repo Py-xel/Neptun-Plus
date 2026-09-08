@@ -1,0 +1,401 @@
+@use '../global' as *;
+
+$circle-size: 40px;
+$dl-window-border-radius: 20px;
+$dl-half-window-width: 420px;
+$dl-half-window-height: 85px;
+$active-container-width: 100%;
+$active-container-height: 44px;
+$dl-full-window-width: 420px;
+$dl-full-window-height: 400px;
+$chevron-size: 0.9rem;
+$title-padding: 14px 0px 6px 16px;
+$title-height: 34px;
+$complete-container-padding: 8px 0px;
+$current-container-height: 44px;
+$card-container-padding: 0px 4px 0px 12px;
+$file-icon-size: 46px;
+$font-special: 'Roboto';
+$font-special_2: 'Figtree';
+$cancel-size: 24px;
+
+.np-download-container {
+  @include flex($direction: column);
+
+  position: fixed;
+
+  left: 50%;
+  bottom: 15px;
+
+  width: $circle-size;
+  height: $circle-size;
+
+  border: 1px solid color-mix(in srgb, $color_twilight-indigo 20%, transparent);
+  border-radius: $circle-size;
+
+  background-color: $color_white;
+
+  box-shadow:
+    0 4px 10px rgba($color_black, 0.05),
+    0 2px 10px rgba($color_black, 0.03);
+
+  transform: translateX(-50%);
+
+  @include transition(height 300ms cubic-bezier(0.55, 0, 0.5, 1), width 450ms 150ms cubic-bezier(0.65, 0, 0.35, 1), border-radius 400ms 150ms ease);
+
+  z-index: 999;
+
+  overflow: hidden;
+
+  /* Window: Half */
+  &.np-download-expanded-half {
+    width: $dl-half-window-width;
+    height: $dl-half-window-height;
+    border-radius: $dl-window-border-radius;
+
+    @include transition(width 300ms cubic-bezier(0.55, 0, 0.5, 1), height 400ms 150ms cubic-bezier(0.65, 0, 0.35, 1), border-radius 400ms ease);
+
+    & .np-download-content-completed-container,
+    & .np-download-footer {
+      display: none;
+    }
+
+    & .np-download-content-current-container {
+      position: relative;
+
+      width: $active-container-width;
+      height: $active-container-height;
+      min-height: $active-container-height;
+    }
+  }
+
+  /* Window: Full */
+  &.np-download-expanded-full {
+    width: $dl-full-window-width;
+    height: $dl-full-window-height;
+
+    border-radius: $dl-window-border-radius;
+
+    @include transition(width 300ms cubic-bezier(0.55, 0, 0.5, 1), height 400ms 150ms cubic-bezier(0.65, 0, 0.35, 1), border-radius 400ms ease);
+  }
+
+  /* Chevron */
+  & .np-download-chevron {
+    @include flex-center-row;
+    align-self: center;
+
+    min-height: $circle-size;
+    height: $circle-size;
+    min-width: $circle-size;
+    width: $circle-size;
+
+    margin-bottom: -15px;
+
+    cursor: pointer;
+
+    font-size: $chevron-size;
+
+    @include transition-full-ease($property: all, $time: 150ms);
+
+    z-index: 99;
+
+    &-down {
+      transform: rotate(180deg);
+    }
+  }
+
+  & .np-download-content-title {
+    @include flex($justify: flex-start, $align: center);
+
+    font-family: $fontFamily_secondary;
+    font-size: $fontSize-list;
+    font-weight: $fontWeight_title;
+
+    color: $color_carbon-black;
+
+    text-transform: uppercase;
+
+    padding: $title-padding;
+
+    box-sizing: border-box;
+
+    height: $title-height;
+
+    opacity: 1;
+
+    @include transition(height 150ms cubic-bezier(0.55, 0, 0.5, 1), padding 150ms cubic-bezier(0.55, 0, 0.5, 1), opacity 180ms 50ms cubic-bezier(0.55, 0, 0.5, 1));
+
+    user-select: none;
+    pointer-events: none;
+  }
+
+  & .np-download-content-completed-container {
+    @include flex($justify: flex-start, $align: flex-start, $direction: column);
+
+    width: 100%;
+
+    padding: $complete-container-padding;
+
+    gap: 8px;
+
+    height: 75%;
+
+    overflow-y: scroll;
+
+    /* Scrollbar */
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border: 2px solid white;
+      border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: $color_pale_slate;
+    }
+  }
+
+  & .np-download-content-current-container {
+    height: $current-container-height;
+    min-height: $current-container-height;
+
+    /* Scrollbar */
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border: 2px solid white;
+      border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: $color_pale_slate;
+    }
+  }
+
+  & > * .np-download-card-container {
+    @include flex($justify: flex-start, $align: center, $direction: row);
+
+    height: max-content;
+    width: 100%;
+
+    gap: 12px;
+
+    padding: $card-container-padding;
+
+    user-select: none;
+
+    &-complete {
+      opacity: 0.65;
+      cursor: none;
+      pointer-events: none;
+    }
+
+    &-completing {
+      animation: np-download-card-complete 250ms ease-out both;
+    }
+
+    & .np-download-card-icon {
+      width: $file-icon-size;
+      height: auto;
+    }
+
+    & .np-download-card-container-left {
+      @include flex-center-row;
+    }
+
+    & .np-download-card-container-middle {
+      @include flex($justify: center, $align: flex-start, $direction: column);
+
+      width: 100%;
+
+      & .np-download-card-data-container {
+        @include flex-center-row;
+
+        gap: 4px;
+      }
+
+      & .np-download-card-file-name {
+        font-family: $font-special;
+        font-size: $fontSize-list;
+        font-weight: $fontWeight_technical;
+      }
+
+      & .np-download-card-byte-data {
+        font-family: $fontFamily_secondary;
+        font-size: $fontSize_technical;
+        font-weight: $fontWeight_technical;
+
+        color: #686a6d;
+      }
+
+      & .np-download-card-bar-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+
+        width: 100%;
+        height: 5px;
+
+        margin-top: 6px;
+
+        & .np-download-card-bar,
+        & .np-download-card-fill {
+          grid-area: 1 / 1;
+
+          width: 100%;
+          height: inherit;
+
+          border-radius: 4px;
+
+          overflow: hidden;
+        }
+
+        & .np-download-card-bar {
+          background: rgb(214, 214, 216);
+        }
+
+        & .np-download-card-fill {
+          height: inherit;
+          width: 50%;
+
+          background: $color_cornflower-blue;
+
+          @include transition(width 0.1s linear);
+
+          z-index: 10;
+        }
+
+        & .np-download-card-fill-complete {
+          background: $color_mint-leaf;
+        }
+
+        & .np-download-card-fill-fail {
+          background: $color_hot-fuchsia;
+        }
+      }
+    }
+
+    & .np-download-card-container-right {
+      @include flex-center-row;
+
+      & .np-download-card-cancel {
+        @include flex($justify: center, $align: center);
+
+        width: $cancel-size;
+        height: $cancel-size;
+
+        padding-right: 8px;
+
+        font-size: $fontSize_list;
+        color: $color_hot-fuchsia;
+
+        pointer-events: auto;
+        cursor: pointer;
+      }
+    }
+  }
+  /* Footer */
+  & .np-download-footer {
+    @include flex($justify: space-between, $align: center);
+
+    font-size: $fontSize_description;
+    color: rgb(65, 66, 68);
+
+    padding: 0px 12px;
+
+    border-top: 1px solid color-mix(in srgb, $color_twilight-indigo 20%, transparent);
+
+    min-height: 40px;
+
+    & .np-download-count-total,
+    & .np-download-count-active {
+      font-family: $fontFamily_secondary;
+      font-size: $fontSize_description;
+    }
+
+    & .np-download-count-container {
+      @include flex-center-row;
+
+      gap: 4px;
+
+      cursor: none;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    & .np-download-delete-all {
+      color: $color_hot-fuchsia;
+
+      cursor: pointer;
+      pointer-events: all;
+    }
+  }
+
+  /* Info */
+  & .np-download-info-container {
+    @include flex-center-col;
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+    @include transition(opacity 180ms 50ms cubic-bezier(0.55, 0, 0.5, 1));
+
+    & .np-download-info-icon {
+      font-size: 42px;
+
+      color: rgb(77, 89, 119);
+    }
+
+    & .np-download-info-title {
+      font-family: $fontFamily_secondary;
+      font-weight: $fontWeight_technical;
+      font-size: $fontSize_sidebar;
+
+      color: $color_carbon-black;
+
+      margin-top: 6px;
+      margin-bottom: 2px;
+    }
+
+    & .np-download-info-desc {
+      font-family: $font-special_2;
+      font-weight: $fontWeight_version;
+      font-size: $fontSize_description;
+
+      color: rgb(97, 97, 99);
+    }
+  }
+}
+
+@keyframes np-download-card-complete {
+  from {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 0.65;
+  }
+}
+
+/* Download Action Bar */
+.data-table__action-bar {
+  bottom: 20px !important;
+}

@@ -1,5 +1,5 @@
 import i18n from '@/i18n';
-import actionBarStyles from '@/styles/content-scripts/ActionBar.css?inline';
+import actionBarStyles from '@/styles/content-scripts/actionBar.css?inline';
 import { observeStorageChange, readStorageValue } from '@/utils/contentScriptStorage';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { addNavigationListeners, createElement, formatBytes, getDownloadIdentifier, getFileIconPath, isOnLoginPage, isOnSupportedSite, observeMutations } from '@/utils/utility.js';
