@@ -2,6 +2,7 @@ import '@/styles/components/error/fallback.css';
 import { useTranslation } from 'react-i18next';
 
 function beautifyError(message: string): string {
+  const { t } = useTranslation();
   const now = new Date();
 
   const time = now.toLocaleTimeString('en-GB', {
@@ -11,7 +12,7 @@ function beautifyError(message: string): string {
     hour12: false,
   });
 
-  return `> [${time}] [ERROR] ${message}`;
+  return `> [${time}] [${t('Error.errorConsole')}] ${message}`;
 }
 
 type FallbackProps = {
