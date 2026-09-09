@@ -8,8 +8,8 @@ export default function Header() {
       <div className="np-header-extras">
         <div className="np-header-info">
           <p className="np-version">v1.0</p>
-          <a className="np-header-icon" href="https://github.com/Py-xel/Neptun-Plus" target="_blank">
-            <i class="fa-brands fa-github" />
+          <a className="np-header-icon" href="https://github.com/Py-xel/Neptun-Plus" target="_blank" rel="noreferrer">
+            <i className="fa-brands fa-github" />
           </a>
         </div>
         <LanguageSelect />
