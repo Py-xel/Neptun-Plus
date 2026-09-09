@@ -3,7 +3,12 @@ import '@/styles/components/info/uniList.css';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export default function UniList({ search = '', lang = 'hu' }) {
+type UniListProps = {
+  search: string;
+  lang: 'hu' | 'en';
+};
+
+export default function UniList({ search = '', lang = 'hu' }: UniListProps) {
   const { t } = useTranslation();
 
   const list = useMemo(() => {
@@ -14,9 +19,7 @@ export default function UniList({ search = '', lang = 'hu' }) {
     }));
     const query = search.trim().toLowerCase();
     if (!query) return entries;
-    return entries.filter((university) => {
-      return (university.huName && university.huName.toLowerCase().includes(query)) || (university.enName && university.enName.toLowerCase().includes(query));
-    });
+    return entries.filter(({ huName, enName }) => huName.toLowerCase().includes(query) || enName.toLowerCase().includes(query));
   }, [search]);
 
   return (

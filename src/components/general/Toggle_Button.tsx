@@ -1,14 +1,14 @@
 import '@/styles/components/general/toggleButton.css';
 import { useEffect, useState } from 'react';
 
-type ButtonProp = {
+type ButtonProps = {
   enabled: boolean;
   setEnabled: React.Dispatch<React.SetStateAction<boolean>>;
   label: string;
   showInfo?: boolean;
 };
 
-export default function Toggle_Button({ enabled, setEnabled, label, showInfo = true }: ButtonProp) {
+export default function Toggle_Button({ enabled, setEnabled, label, showInfo = true }: ButtonProps) {
   const [showPreview, setShowPreview] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 

@@ -1,7 +1,7 @@
 import '@/styles/components/general/inputField.css';
 import { useRef } from 'react';
 
-type InputProp = {
+type InputProps = {
   icon?: string;
   placeholder: string;
   value: string | number;
@@ -9,7 +9,7 @@ type InputProp = {
   type: 'text' | 'password';
 };
 
-export default function InputField({ icon = 'none', placeholder, value, onChange, type = 'text' }: InputProp) {
+export default function InputField({ icon = 'none', placeholder, value, onChange, type = 'text' }: InputProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const focusInput = () => inputRef.current?.focus();
