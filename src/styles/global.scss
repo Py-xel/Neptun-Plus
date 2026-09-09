@@ -43,25 +43,19 @@ $color_alabaster-grey: #e9e9ea;
 
 $fontFamily_primary: 'Source Sans 3', sans-serif;
 $fontFamily_secondary: 'Google Sans', sans-serif;
-$fontFamily_technical: 'Lato', sans-serif;
-$fontFamily_version: 'JetBrains Mono', ui-monospace;
+$fontFamily_tertiary: 'Figtree', sans-serif;
+$fontFamily_technical_1: 'Lato', sans-serif;
+$fontFamily_technical_2: 'Roboto', sans-serif;
+$fontFamily_mono: 'JetBrains Mono', ui-monospace, monospace;
 
 /* FONT-SIZES */
 
-$fontSize_title: 1.3rem;
-$fontSize_description: 0.85rem;
-
-$fontSize_sidebar: 1rem;
-$fontSize_list: 0.75rem;
-$fontSize_technical: 0.7rem;
-$fontSize_version: 0.75rem;
-
-/* FONT-WEIGHTS */
-
-$fontWeight_title: 800;
-$fontWeight_description: 400;
-$fontWeight_technical: 600;
-$fontWeight_version: 500;
+$fontSize_xl: 1.3rem; // 20.8px
+$fontSize_lg: 1.125rem; // 18px
+$fontSize_base: 1rem; // 16px
+$fontSize_md: 0.85rem; // 13.6px
+$fontSize_sm: 0.75rem; // 12px
+$fontSize_xs: 0.7rem; // 11.2px
 
 /* SCROLLBAR */
 
