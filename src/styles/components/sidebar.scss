@@ -17,8 +17,9 @@ $sidebar-option-padding: 10px 12px;
     @include flex($align: center);
 
     font-family: $fontFamily_primary;
-    font-size: $fontSize_sidebar;
-    font-weight: $fontWeight_title;
+    font-size: $fontSize_base;
+    font-weight: 800;
+
     text-decoration: none;
 
     color: $color_twilight-indigo;
@@ -35,7 +36,7 @@ $sidebar-option-padding: 10px 12px;
 
     & i {
       text-align: center;
-      font-size: 14px;
+      font-size: $fontSize_md;
     }
 
     &:hover {

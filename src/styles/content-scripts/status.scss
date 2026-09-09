@@ -1,7 +1,6 @@
 @use '../global' as *;
 
 $neptun-logo-size: 48px;
-$font-special: 'Figtree';
 $status-container-padding: 8px;
 $logo-size: 1.05rem;
 $inner-container-color: $color_jade-green;
@@ -61,9 +60,9 @@ neptun-login-form > .login-right > neptun-language-dropdown.neptun-language-drop
     }
 
     & .np-status-title {
-      font-family: $font-special;
-      font-size: $fontSize_description;
-      font-weight: $fontWeight_technical;
+      font-family: $fontFamily_tertiary;
+      font-size: $fontSize_md;
+      font-weight: 600;
 
       color: $color_twilight-indigo;
     }
@@ -123,9 +122,9 @@ neptun-login-form > .login-right > neptun-language-dropdown.neptun-language-drop
       }
 
       & .np-status-text {
-        font-family: $font-special;
+        font-family: $fontFamily_tertiary;
         font-size: 0.6rem;
-        font-weight: $fontWeight_version;
+        font-weight: 500;
 
         color: $color_sea-green;
         line-height: 1;

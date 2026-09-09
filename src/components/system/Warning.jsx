@@ -1,16 +1,16 @@
-import '@/styles/components/system/Warning.css';
+import '@/styles/components/system/warning.css';
 import { useTranslation, Trans } from 'react-i18next';
 
 export default function Warning({ onAccept }) {
   const { t } = useTranslation();
 
   return (
-    <div className="warningContainer">
-      <div className="warningHeader">
+    <div className="np-warning-container">
+      <div className="np-warning-header">
         <i className="fa-solid fa-triangle-exclamation" />
-        <h2 className="warningTitle">{t('Content.System.warningTitle')}</h2>
+        <h2 className="np-warning-title">{t('Content.System.warningTitle')}</h2>
       </div>
-      <p className="warningText">
+      <p className="np-warning-description">
         <Trans
           i18nKey="Content.System.warningText"
           components={{
@@ -19,7 +19,7 @@ export default function Warning({ onAccept }) {
           }}
         />
       </p>
-      <button className="warningAccept" onClick={onAccept}>
+      <button className="np-warning-accept" onClick={onAccept}>
         {t('Content.System.warningAccept')}
       </button>
     </div>

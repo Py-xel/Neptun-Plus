@@ -32,8 +32,8 @@ $title-margin: 6px 0px 6px 0px;
 
       .np-title {
         font-family: $fontFamily_primary;
-        font-size: $fontSize_title;
-        font-weight: $fontWeight_title;
+        font-size: $fontSize_xl;
+        font-weight: 800;
 
         color: $color_carbon-black;
 
@@ -42,8 +42,8 @@ $title-margin: 6px 0px 6px 0px;
 
       .np-description {
         font-family: $fontFamily_secondary;
-        font-size: $fontSize_description;
-        font-weight: $fontWeight_description;
+        font-size: $fontSize_md;
+        font-weight: 400;
 
         color: $color_black;
       }

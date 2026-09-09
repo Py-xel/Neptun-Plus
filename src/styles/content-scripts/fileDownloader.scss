@@ -15,8 +15,6 @@ $complete-container-padding: 8px 0px;
 $current-container-height: 44px;
 $card-container-padding: 0px 4px 0px 12px;
 $file-icon-size: 46px;
-$font-special: 'Roboto';
-$font-special_2: 'Figtree';
 $cancel-size: 24px;
 
 .np-download-container {
@@ -108,8 +106,8 @@ $cancel-size: 24px;
     @include flex($justify: flex-start, $align: center);
 
     font-family: $fontFamily_secondary;
-    font-size: $fontSize-list;
-    font-weight: $fontWeight_title;
+    font-size: $fontSize_sm;
+    font-weight: 800;
 
     color: $color_carbon-black;
 
@@ -229,15 +227,15 @@ $cancel-size: 24px;
       }
 
       & .np-download-card-file-name {
-        font-family: $font-special;
-        font-size: $fontSize-list;
-        font-weight: $fontWeight_technical;
+        font-family: $fontFamily_technical_2;
+        font-size: $fontSize_sm;
+        font-weight: 600;
       }
 
       & .np-download-card-byte-data {
         font-family: $fontFamily_secondary;
-        font-size: $fontSize_technical;
-        font-weight: $fontWeight_technical;
+        font-size: $fontSize_xs;
+        font-weight: 600;
 
         color: #686a6d;
       }
@@ -300,7 +298,7 @@ $cancel-size: 24px;
 
         padding-right: 8px;
 
-        font-size: $fontSize_list;
+        font-size: $fontSize_sm;
         color: $color_hot-fuchsia;
 
         pointer-events: auto;
@@ -312,7 +310,7 @@ $cancel-size: 24px;
   & .np-download-footer {
     @include flex($justify: space-between, $align: center);
 
-    font-size: $fontSize_description;
+    font-size: $fontSize_md;
     color: rgb(65, 66, 68);
 
     padding: 0px 12px;
@@ -324,7 +322,7 @@ $cancel-size: 24px;
     & .np-download-count-total,
     & .np-download-count-active {
       font-family: $fontFamily_secondary;
-      font-size: $fontSize_description;
+      font-size: $fontSize_md;
     }
 
     & .np-download-count-container {
@@ -366,8 +364,8 @@ $cancel-size: 24px;
 
     & .np-download-info-title {
       font-family: $fontFamily_secondary;
-      font-weight: $fontWeight_technical;
-      font-size: $fontSize_sidebar;
+      font-weight: 600;
+      font-size: $fontSize_base;
 
       color: $color_carbon-black;
 
@@ -376,9 +374,9 @@ $cancel-size: 24px;
     }
 
     & .np-download-info-desc {
-      font-family: $font-special_2;
-      font-weight: $fontWeight_version;
-      font-size: $fontSize_description;
+      font-family: $fontFamily_tertiary;
+      font-weight: 500;
+      font-size: $fontSize_md;
 
       color: rgb(97, 97, 99);
     }

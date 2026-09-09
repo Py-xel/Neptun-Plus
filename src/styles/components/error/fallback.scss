@@ -12,9 +12,7 @@ $refresh-padding: 6px 9px;
   width: $error-container-width;
   height: $error-container-height;
 
-  background-color: $color_twilight-indigo;
-
-  border: 1px solid $color_hot-fuchsia;
+  background-color: $color_espresso;
 
   & .np-error-header {
     @include flex-center-col;
@@ -33,16 +31,16 @@ $refresh-padding: 6px 9px;
 
     & .np-error-title {
       font-family: $fontFamily_primary;
-      font-size: $fontSize_description;
-      font-weight: $fontWeight_technical;
+      font-size: $fontSize_md;
+      font-weight: 600;
 
       color: $color_hot-fuchsia;
     }
 
     & button {
-      font-family: $fontFamily_technical;
-      font-size: $fontSize_technical;
-      font-weight: $fontWeight_technical;
+      font-family: $fontFamily_technical_1;
+      font-size: $fontSize_xs;
+      font-weight: 600;
 
       color: $color_white;
 
@@ -87,8 +85,8 @@ $refresh-padding: 6px 9px;
 
       & .np-error-subtext,
       & i {
-        font-size: $fontSize_technical;
-        font-weight: $fontWeight_technical;
+        font-size: $fontSize_xs;
+        font-weight: 600;
 
         color: $color_hot-fuchsia;
 
@@ -111,9 +109,9 @@ $refresh-padding: 6px 9px;
     overflow: auto;
 
     & .np-error-message {
-      font-family: $fontFamily_version;
-      font-size: $fontSize_technical;
-      font-weight: $fontWeight_technical;
+      font-family: $fontFamily_mono;
+      font-size: $fontSize_xs;
+      font-weight: 600;
 
       color: $color_hot-fuchsia;
     }

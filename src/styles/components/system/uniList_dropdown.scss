@@ -19,8 +19,8 @@ $dropdown-padding-left: 16px;
     padding-left: $dropdown-padding-left;
 
     font-family: $fontFamily_secondary;
-    font-size: $fontSize_list;
-    font-weight: $fontWeight_description;
+    font-size: $fontSize_sm;
+    font-weight: 400;
 
     color: $color_carbon-black;
 
@@ -48,7 +48,7 @@ $dropdown-padding-left: 16px;
     transform: translateY(-50%);
 
     color: $color_dusk-blue;
-    font-size: $fontSize_list;
+    font-size: $fontSize_sm;
 
     pointer-events: none;
   }

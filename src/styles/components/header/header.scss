@@ -29,9 +29,9 @@ $header-logo-width: 180px;
       gap: 3px;
 
       .np-version {
-        font-family: $fontFamily_version;
-        font-size: $fontSize_version;
-        font-weight: $fontWeight_version;
+        font-family: $fontFamily_mono;
+        font-size: $fontSize_sm;
+        font-weight: 500;
 
         color: $color_ghost-white;
 
@@ -42,7 +42,7 @@ $header-logo-width: 180px;
         @include flex-center-col;
 
         & > * {
-          font-size: $fontSize_version;
+          font-size: $fontSize_sm;
           color: $color_ghost-white;
           @include transition-full-ease($property: color, $time: 0.15s);
         }

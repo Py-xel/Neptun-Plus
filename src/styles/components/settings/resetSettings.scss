@@ -12,17 +12,17 @@ $reset-padding: 6px 5px;
   gap: 4px;
 
   & > .np-reset-label {
-    font-family: $fontFamily_technical;
-    font-size: $fontSize_technical;
-    font-weight: $fontWeight_technical;
+    font-family: $fontFamily_technical_1;
+    font-size: $fontSize_xs;
+    font-weight: 600;
 
     color: $color_carbon-black;
   }
 
   & > .np-reset-button {
-    font-family: $fontFamily_technical;
-    font-size: $fontSize_technical;
-    font-weight: $fontWeight_technical;
+    font-family: $fontFamily_technical_1;
+    font-size: $fontSize_xs;
+    font-weight: 600;
 
     color: $color_white;
 

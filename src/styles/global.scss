@@ -29,6 +29,7 @@ $color_dusty-mauve: #b14a56;
 $color_hot-fuchsia: #ff334b;
 $color_raspberry: #d43046;
 $color_twilight-red: #991b1b;
+$color_espresso: #542121;
 $color_coffee-bean: #0f0000;
 
 $color_mint-leaf: #10b981;
@@ -53,9 +54,37 @@ $fontFamily_mono: 'JetBrains Mono', ui-monospace, monospace;
 $fontSize_xl: 1.3rem; // 20.8px
 $fontSize_lg: 1.125rem; // 18px
 $fontSize_base: 1rem; // 16px
-$fontSize_md: 0.85rem; // 13.6px
+$fontSize_md: 0.875rem; // 14px
 $fontSize_sm: 0.75rem; // 12px
 $fontSize_xs: 0.7rem; // 11.2px
+
+/* OLD */
+
+/* $fontFamily_primary: 'Source Sans 3', sans-serif;
+$fontFamily_secondary: 'Google Sans', sans-serif;
+$fontFamily_technical: 'Lato', sans-serif;
+$fontFamily_version: 'JetBrains Mono', ui-monospace;
+
+$fontSize_title: 1.3rem;
+$fontSize_description: 0.85rem;
+
+$fontSize_sidebar: 1rem;
+$fontSize_list: 0.75rem;
+$fontSize_technical: 0.7rem;
+$fontSize_version: 0.75rem;
+
+$fontWeight_title: 800;
+$fontWeight_description: 400;
+$fontWeight_technical: 600;
+$fontWeight_version: 500; */
+
+/* LAYERS */
+
+$layer_global-overlay: 100;
+$layer_overlay: 20;
+$layer_foreground: 10;
+$layer_default: 0;
+$layer_background: -10;
 
 /* SCROLLBAR */
 
