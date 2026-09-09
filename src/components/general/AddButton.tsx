@@ -1,6 +1,10 @@
 import '@/styles/components/general/addButton.css';
 
-export default function AddButton({ onClick }) {
+type AddButtonProps = {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+};
+
+export default function AddButton({ onClick }: AddButtonProps) {
   return (
     <div>
       <button type="button" className="np-button-add" onClick={onClick}>

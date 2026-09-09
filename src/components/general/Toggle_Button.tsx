@@ -1,19 +1,35 @@
-import { UseAnimationGate } from '@/hooks/UseAnimationGate';
 import '@/styles/components/general/toggleButton.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function Toggle_Button({ enabled, setEnabled, label, showInfo = true }) {
+type ButtonProp = {
+  enabled: boolean;
+  setEnabled: React.Dispatch<React.SetStateAction<boolean>>;
+  label: string;
+  showInfo?: boolean;
+};
+
+export default function Toggle_Button({ enabled, setEnabled, label, showInfo = true }: ButtonProp) {
   const [showPreview, setShowPreview] = useState(false);
-  const { isAnimating, triggerAnimation } = UseAnimationGate(320);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const handleToggle = (event) => {
+  /* Reset isAnimating after 300ms */
+  useEffect(() => {
+    if (!isAnimating) return undefined; // TODO Add error handling
+
+    const timeoutId = window.setTimeout(() => {
+      setIsAnimating(false);
+    }, 300);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [isAnimating]);
+
+  const handleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
     const nextValue = event.target.checked;
 
     setEnabled(nextValue);
 
     if (nextValue !== enabled) {
-      triggerAnimation();
-      console.log('transition button!');
+      setIsAnimating(true);
     }
   };
 
