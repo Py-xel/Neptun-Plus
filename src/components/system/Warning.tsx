@@ -1,7 +1,11 @@
 import '@/styles/components/system/warning.css';
 import { useTranslation, Trans } from 'react-i18next';
 
-export default function Warning({ onAccept }) {
+type WarningProps = {
+  onAccept: () => void | Promise<void>;
+};
+
+export default function Warning({ onAccept }: WarningProps) {
   const { t } = useTranslation();
 
   return (

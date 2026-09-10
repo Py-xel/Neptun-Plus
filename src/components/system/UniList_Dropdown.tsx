@@ -2,7 +2,13 @@ import data from '@/data/universities.json';
 import '@/styles/components/system/uniList_dropdown.css';
 import { useMemo } from 'react';
 
-export default function UniList_Dropdown({ lang = 'hu', value, onChange }) {
+type UniList_DropdownProps = {
+  lang: 'hu' | 'en';
+  value: string;
+  onChange: (value: string) => void;
+};
+
+export default function UniList_Dropdown({ lang = 'hu', value, onChange }: UniList_DropdownProps) {
   const supportedUniversities = useMemo(
     () =>
       Object.entries(data)
@@ -16,7 +22,7 @@ export default function UniList_Dropdown({ lang = 'hu', value, onChange }) {
 
   return (
     <div className="np-uniList-dropdown-container">
-      <select className="np-uniList-dropdown" value={value ?? supportedUniversities[0]?.value ?? ''} onChange={(event) => onChange?.(event.target.value)}>
+      <select className="np-uniList-dropdown" value={value || supportedUniversities[0]?.value || ''} onChange={(event) => onChange(event.target.value)}>
         {supportedUniversities.map((university) => (
           <option key={university.value} value={university.value}>
             {university.label}
