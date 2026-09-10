@@ -1,13 +1,13 @@
 import Toggle_Button from '@/components/general/Toggle_Button';
 import ResetSettings from '@/components/settings/ResetSettings';
-import { useStorage } from '@/utils/componentStorage';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
+import { useSettings } from '@/utils/useSettings';
 import { useTranslation } from 'react-i18next';
 
 export default function Settings() {
   const { t } = useTranslation();
 
-  const [settingsInfo, setSettingsInfo] = useStorage(CATEGORIES.EXTENSION_SETTINGS, KEYS.EXTENSION_SETTINGS.HIDE_HINTS, false);
+  const { value: settingsInfo, setValue: setSettingsInfo } = useSettings(CATEGORIES.EXTENSION_SETTINGS, KEYS.EXTENSION_SETTINGS.HIDE_HINTS, false);
 
   return (
     <div>

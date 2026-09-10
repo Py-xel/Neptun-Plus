@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 type ButtonProps = {
   enabled: boolean;
-  setEnabled: React.Dispatch<React.SetStateAction<boolean>>;
+  setEnabled: (value: boolean) => void | Promise<void>;
   label: string;
   showInfo?: boolean;
 };

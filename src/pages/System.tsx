@@ -1,16 +1,16 @@
 import Toggle_Button from '@/components/general/Toggle_Button';
 import AutoLogin from '@/components/system/AutoLogin';
 import Warning from '@/components/system/Warning';
-import { useStorage } from '@/utils/componentStorage';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
+import { useSettings } from '@/utils/useSettings';
 import { useTranslation } from 'react-i18next';
 
 export default function System() {
   const { t } = useTranslation();
 
-  const [infsession, setInfsession] = useStorage(CATEGORIES.SYSTEM, KEYS.SYSTEM.INFINITE_SESSION, false);
-  const [autoLogin, setAutoLogin] = useStorage(CATEGORIES.SYSTEM, KEYS.SYSTEM.AUTO_LOGIN, false);
-  const [warningAccepted, setWarningAccepted] = useStorage(CATEGORIES.SYSTEM, KEYS.SYSTEM.ACCEPTED_WARNING, false);
+  const { value: infsession, setValue: setInfsession } = useSettings(CATEGORIES.SYSTEM, KEYS.SYSTEM.INFINITE_SESSION, false);
+  const { value: autoLogin, setValue: setAutoLogin } = useSettings(CATEGORIES.SYSTEM, KEYS.SYSTEM.AUTO_LOGIN, false);
+  const { value: warningAccepted, setValue: setWarningAccepted } = useSettings(CATEGORIES.SYSTEM, KEYS.SYSTEM.ACCEPTED_WARNING, false);
 
   return (
     <div>
