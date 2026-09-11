@@ -2,7 +2,7 @@ import AddButton from '@/components/general/AddButton';
 import InputField from '@/components/general/InputField';
 import UniList_Dropdown, { getFirstSupportedUni } from '@/components/system/UniList_Dropdown';
 import universities from '@/data/universities.json';
-import DisableWrapper from '@/hooks/DisableWrapper';
+import DisableWrapper from '@/components/general/DisableWrapper';
 import '@/styles/components/system/autoLogin.css';
 import { CATEGORIES, KEYS, normalizeLanguage, type AutoLoginCredential } from '@/utils/dataSchema';
 import { useSettings } from '@/utils/useSettings';
