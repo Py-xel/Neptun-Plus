@@ -37,6 +37,11 @@ $card-height: 95px;
     & > .np-credentials-leftSide {
       @include flex-center-col;
 
+      &.disabled {
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
       & > .np-credentials-input-container {
         @include flex-center-row($flex: 1);
 
@@ -59,6 +64,11 @@ $card-height: 95px;
         margin: 0;
 
         cursor: pointer;
+      }
+
+      & > .np-action-button-save:disabled {
+        cursor: not-allowed;
+        opacity: 0.3;
       }
 
       & > .np-action-button-remove {
