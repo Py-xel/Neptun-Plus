@@ -46,7 +46,7 @@ export default defineManifest({
     {
       matches: allURLs,
       world: 'MAIN',
-      js: ['src/content-scripts/Network.js'],
+      js: ['src/content-scripts/Network.ts'],
       run_at: 'document_start',
     },
   ],
