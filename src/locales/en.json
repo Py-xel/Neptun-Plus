@@ -12,23 +12,8 @@
       "itemList": "Show all items in lists",
       "fileDownload": "File download",
       "showDownload": "Show file downloader",
-      "layout": "Layout",
       "shortcuts": "Shortcuts",
-      "customShortcuts": "Use custom shortcuts",
-      "name": "Name",
-      "link": "https://www.example.com/",
-      "column_1": "Column I.",
-      "column_2": "Column II.",
-      "column_3": "Column III.",
-      "upcomingEvents": "Upcoming events",
-      "exams": "Exams",
-      "news": "News",
-      "toDo": "To do",
-      "averages": "Averages",
-      "debts": "Debts",
-      "results": "Results",
-      "messages": "Messages",
-      "advancement": "Advancement"
+      "customShortcuts": "Use custom shortcuts"
     },
     "System": {
       "general": "General",
@@ -69,12 +54,5 @@
     "active": "Active",
     "noDownloadTitle": "No downloads",
     "noDownloadDesc": "There are no downloads to show."
-  },
-  "Vault": {
-    "passPlaceholder": "Password",
-    "passConfirmPlaceholder": "Confirm password",
-    "createDescription": "Create a new password to log in.",
-    "login": "Log in",
-    "passMismatch": "The given passwords do not match."
   }
 }

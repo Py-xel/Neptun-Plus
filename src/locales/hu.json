@@ -12,23 +12,8 @@
       "itemList": "Összes listás elem megjelenítése",
       "fileDownload": "Fájl letöltés",
       "showDownload": "Fájl-letöltő megjelenítése",
-      "layout": "Elhelyezés",
       "shortcuts": "Gyorsgombok",
-      "customShortcuts": "Egyéni gyorsgomb használata",
-      "name": "Név",
-      "link": "https://www.példa.hu/",
-      "column_1": "I. Oszlop",
-      "column_2": "II. Oszlop",
-      "column_3": "III. Oszlop",
-      "upcomingEvents": "Közelgő események",
-      "exams": "Vizsgák",
-      "news": "Hírek",
-      "toDo": "Teendők",
-      "averages": "Átlagok",
-      "debts": "Tartozások",
-      "results": "Eredmények",
-      "messages": "Üzenetek",
-      "advancement": "Előrehaladás"
+      "customShortcuts": "Egyéni gyorsgomb használata"
     },
     "System": {
       "general": "Általános",
@@ -69,12 +54,5 @@
     "active": "Aktív",
     "noDownloadTitle": "Nincsenek letöltések",
     "noDownloadDesc": "Nincs megjeleníthető letöltés."
-  },
-  "Vault": {
-    "passPlaceholder": "Jelszó",
-    "passConfirmPlaceholder": "Jelszó megerősítése",
-    "createDescription": "Készítsen egy új jelszót a belépéshez.",
-    "login": "Belépés",
-    "passMismatch": "A megadott jelszavak nem egyeznek."
   }
 }
