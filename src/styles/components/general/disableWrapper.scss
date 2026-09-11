@@ -1,0 +1,9 @@
+@use '../../global' as *;
+
+.disabled-state {
+  opacity: 0.45;
+
+  pointer-events: none;
+
+  @include transition-full-ease($property: opacity, $time: 0.2s);
+}
