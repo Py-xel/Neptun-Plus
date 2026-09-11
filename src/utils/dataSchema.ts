@@ -18,6 +18,7 @@ export const KEYS = {
     INFINITE_SESSION: 'infinite-session',
     AUTO_LOGIN: 'auto-login',
     ACCEPTED_WARNING: 'accepted-warning',
+    CREDENTIALS: 'credentials',
   },
   EXTENSION_SETTINGS: {
     LANGUAGE: 'language',
@@ -32,6 +33,20 @@ export type ExtensionSettingsKey = (typeof KEYS.EXTENSION_SETTINGS)[keyof typeof
 
 export type StorageKey = InterfaceKey | SystemKey | ExtensionSettingsKey;
 
+export const SUPPORTED_LANGUAGES = ['hu', 'en'] as const;
+export type Language = (typeof SUPPORTED_LANGUAGES)[number];
+const DEFAULT_LANGUAGE: Language = 'hu';
+
+const isLanguage = (value: string): value is Language => {
+  return SUPPORTED_LANGUAGES.includes(value as Language);
+};
+
+export const normalizeLanguage = (language: string): Language => {
+  const baseLanguage = language.split('-')[0];
+
+  return isLanguage(baseLanguage) ? baseLanguage : DEFAULT_LANGUAGE;
+};
+
 export type SettingValueByKey = {
   [KEYS.INTERFACE.DISABLE_HEADERS]: boolean;
   [KEYS.INTERFACE.SHOW_FULL_ITEMLIST]: boolean;
@@ -42,9 +57,17 @@ export type SettingValueByKey = {
   [KEYS.SYSTEM.INFINITE_SESSION]: boolean;
   [KEYS.SYSTEM.AUTO_LOGIN]: boolean;
   [KEYS.SYSTEM.ACCEPTED_WARNING]: boolean;
+  [KEYS.SYSTEM.CREDENTIALS]: AutoLoginCredential[];
 
-  [KEYS.EXTENSION_SETTINGS.LANGUAGE]: string;
+  [KEYS.EXTENSION_SETTINGS.LANGUAGE]: Language;
   [KEYS.EXTENSION_SETTINGS.HIDE_HINTS]: boolean;
+};
+
+export type AutoLoginCredential = {
+  id: number;
+  loginName: string;
+  password: string;
+  universityId: string;
 };
 
 export type SettingValue<Key extends StorageKey> = SettingValueByKey[Key];
