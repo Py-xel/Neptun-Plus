@@ -35,7 +35,7 @@ export default defineManifest({
       world: 'ISOLATED',
       js: [
         'src/content-scripts/Global.js',
-        'src/content-scripts/Status.js',
+        'src/content-scripts/Status.ts',
         'src/content-scripts/interface/DisableHeaders.js',
         'src/content-scripts/interface/ItemList.js',
         'src/content-scripts/interface/FileDownloader.js',
