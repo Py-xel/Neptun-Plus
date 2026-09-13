@@ -1,7 +1,7 @@
 import en from '@/locales/en.json';
 import hu from '@/locales/hu.json';
-import { observeStorageChange, readStorageValue } from '@/utils/contentScriptStorage';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
+import { readSetting, subscribeToSetting } from '@/utils/settingsStore';
 import i18n from 'i18next';
 
 function normalizeLanguage(language) {
@@ -21,7 +21,7 @@ if (!i18n.isInitialized) {
 }
 
 async function loadStoredLanguage() {
-  const storedLanguage = await readStorageValue(CATEGORIES.EXTENSION_SETTINGS, KEYS.EXTENSION_SETTINGS.LANGUAGE, 'hu');
+  const storedLanguage = await readSetting(CATEGORIES.EXTENSION_SETTINGS, KEYS.EXTENSION_SETTINGS.LANGUAGE, 'hu');
   const language = normalizeLanguage(storedLanguage);
 
   if (language !== i18n.language) {
@@ -31,7 +31,7 @@ async function loadStoredLanguage() {
 
 loadStoredLanguage();
 
-observeStorageChange(CATEGORIES.EXTENSION_SETTINGS, KEYS.EXTENSION_SETTINGS.LANGUAGE, (newValue) => {
+subscribeToSetting(CATEGORIES.EXTENSION_SETTINGS, KEYS.EXTENSION_SETTINGS.LANGUAGE, (newValue) => {
   const language = normalizeLanguage(newValue);
 
   if (language !== i18n.language) {
