@@ -384,14 +384,12 @@ function createDownloader(): DownloaderController | null {
   }
 
   window.addEventListener('__np_download_event__', handleDownloadEvent);
-  const unsubscribe = subscribeToSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_DOWNLOAD, updateDownloader);
 
   render(state);
 
   return {
     destroy() {
       window.removeEventListener('__np_download_event__', handleDownloadEvent);
-      unsubscribe();
       clearTimeout(infoRevealTimer);
       container.remove();
     },
@@ -415,8 +413,8 @@ function applyBarCompletion(fillBar: HTMLElement, status: DownloadType | null | 
   }
 }
 
-async function updateDownloader() {
-  const enabled = await readSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_DOWNLOAD, false);
+async function updateDownloader(settingValue?: boolean) {
+  const enabled = settingValue ?? (await readSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_DOWNLOAD, false));
   const shouldEnable = Boolean(enabled && isSupportedURL(window.location.href) && !isLoginPage(window.location.href));
   updateActionBarStyles(shouldEnable);
 
@@ -430,12 +428,15 @@ async function updateDownloader() {
 }
 
 let downloader: DownloaderController | null = null;
+subscribeToSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_DOWNLOAD, (newValue) => {
+  void updateDownloader(newValue);
+});
 
 async function initializeDownloader() {
   await updateDownloader();
 
-  observeMutations(updateDownloader);
-  addNavigationListeners(updateDownloader);
+  observeMutations(() => void updateDownloader());
+  addNavigationListeners(() => void updateDownloader());
 }
 
 initializeDownloader();
