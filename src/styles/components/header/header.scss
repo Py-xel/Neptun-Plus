@@ -41,6 +41,8 @@ $header-logo-width: 180px;
       .np-header-icon {
         @include flex-center-col;
 
+        text-decoration: none;
+
         & > * {
           font-size: $fontSize_sm;
           color: $color_ghost-white;
