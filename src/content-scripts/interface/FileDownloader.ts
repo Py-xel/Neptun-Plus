@@ -1,8 +1,8 @@
 import i18n from '@/i18n';
 import actionBarStyles from '@/styles/content-scripts/actionBar.css?inline';
-import { observeStorageChange, readStorageValue } from '@/utils/contentScriptStorage';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
-import { addNavigationListeners, createElement, formatBytes, getDownloadIdentifier, getFileIconPath, isOnLoginPage, isOnSupportedSite, observeMutations } from '@/utils/utility.js';
+import { readSetting, subscribeToSetting } from '@/utils/settingsStore';
+import { addNavigationListeners, createElement, formatBytes, getDownloadID, getIconPath, isLoginPage, isSupportedURL, observeMutations } from '@/utils/utility';
 
 const viewTransitions = {
   closed: { TOGGLE: 'full' },
@@ -10,7 +10,34 @@ const viewTransitions = {
   full: { TOGGLE: 'closed' },
 };
 
-function createInitialState() {
+type DownloadType = 'start' | 'progress' | 'complete' | 'error';
+type DownloadView = keyof typeof viewTransitions;
+
+type Download = {
+  id: string;
+  type: DownloadType;
+  transport?: 'fetch' | 'xhr';
+  url?: string;
+  fileName?: string;
+  receivedBytes?: number;
+  totalBytes?: number;
+  speed?: number;
+  error?: string;
+  completionId?: number;
+};
+
+type CompletedDownload = Download & { completionId: number };
+
+type DownloaderState = {
+  view: DownloadView;
+  activeDownloads: Record<string, Download>;
+  completedDownloads: CompletedDownload[];
+  nextCompletionId: number;
+};
+
+type DownloadAction = { type: 'TOGGLE' } | { type: 'CLEAR_COMPLETED' } | { type: 'DOWNLOAD_STARTED' | 'DOWNLOAD_UPDATED' | 'DOWNLOAD_COMPLETED'; download: Download };
+
+function createInitialState(): DownloaderState {
   return {
     view: 'closed',
     activeDownloads: {},
@@ -19,8 +46,9 @@ function createInitialState() {
   };
 }
 
-function reducer(state, action) {
-  const nextView = viewTransitions[state.view]?.[action.type] || state.view;
+function reducer(state: DownloaderState, action: DownloadAction): DownloaderState {
+  const transitions = viewTransitions[state.view] as Partial<Record<DownloadAction['type'], DownloadView>>;
+  const nextView = transitions[action.type] ?? state.view;
 
   switch (action.type) {
     case 'TOGGLE': {
@@ -69,7 +97,7 @@ function reducer(state, action) {
   }
 }
 
-function abortDownload(downloadId) {
+function abortDownload(downloadId: string): void {
   window.dispatchEvent(
     new CustomEvent('__np_abort_download__', {
       detail: { id: downloadId },
@@ -78,7 +106,7 @@ function abortDownload(downloadId) {
   console.log('Abort download!');
 }
 
-function updateActionBarStyles(enabled) {
+function updateActionBarStyles(enabled: boolean): void {
   const styleId = 'np-action-bar-styles';
   const existingStyles = document.getElementById(styleId);
 
@@ -95,12 +123,18 @@ function updateActionBarStyles(enabled) {
   (document.head || document.documentElement).append(style);
 }
 
-function createCard(downloadData = {}, isCompleted = false) {
+type CardEntry = {
+  card: HTMLDivElement;
+  update: (download: Download) => void;
+  complete: (download: Download) => void;
+};
+
+function createCard(downloadData: Download, isCompleted = false): CardEntry {
   let completed = isCompleted;
   const cardContainer = createElement('div', 'np-download-card-container');
   const containerLeft = createElement('div', 'np-download-card-container-left');
   const icon = createElement('img', 'np-download-card-icon');
-  icon.src = getFileIconPath(downloadData.fileName || '');
+  icon.src = getIconPath(downloadData.fileName || '');
   const containerMiddle = createElement('div', 'np-download-card-container-middle');
   const fileName = createElement('p', 'np-download-card-file-name', downloadData.fileName || 'Download');
   const dataContainer = createElement('div', 'np-download-card-data-container');
@@ -129,32 +163,31 @@ function createCard(downloadData = {}, isCompleted = false) {
     cancelDownload.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
-      abortDownload(downloadData.id || getDownloadIdentifier(downloadData));
+      abortDownload(downloadData.id || getDownloadID(downloadData));
     });
   }
 
   /* Update only mutable values (only byte data) */
   return {
     card: cardContainer,
-    update(download) {
+    update(download: Download): void {
       currentBytes.textContent = formatBytes(download.receivedBytes || 0);
       totalBytes.textContent = formatBytes(download.totalBytes || 0);
 
-      const total = Number.isFinite(download.totalBytes) && download.totalBytes > 0 ? download.totalBytes : 0;
-      const received = Number.isFinite(download.receivedBytes) ? download.receivedBytes : 0;
+      const total = Number.isFinite(download.totalBytes) && (download.totalBytes ?? 0) > 0 ? (download.totalBytes ?? 0) : 0;
+      const received = Number.isFinite(download.receivedBytes) ? (download.receivedBytes ?? 0) : 0;
       const width = total > 0 ? `${Math.min((received / total) * 100, 100)}%` : '0%';
       fill.style.width = completed ? '100%' : width;
 
       if (completed) {
-        streamBytes.textContent = download.type === 'complete' ? 'Complete' : 'Failed';
-        applyBarCompletion(fill, download.type);
+        streamBytes.textContent = download.type === 'complete' ? `${i18n.t('Content_Script.complete')}` : `${i18n.t('Content_Script.failed')}`;
       } else {
         streamBytes.textContent = `${formatBytes(download.speed || 0)}/s`;
       }
 
       applyBarCompletion(fill, completed ? download.type : null);
     },
-    complete(download) {
+    complete(download: Download): void {
       completed = true;
       cardContainer.classList.add('np-download-card-container-complete', 'np-download-card-container-completing');
       cancelDownload.remove();
@@ -163,13 +196,17 @@ function createCard(downloadData = {}, isCompleted = false) {
   };
 }
 
-function createDownloader() {
+type DownloaderController = {
+  destroy: () => void;
+};
+
+function createDownloader(): DownloaderController | null {
   const body = document.body;
   const appRoot = document.querySelector('app-root');
 
   if (!body || !appRoot || body.querySelector('.np-download-container')) {
     // TODO Add error handling
-    return false;
+    return null;
   }
 
   const container = createElement('div', 'np-download-container');
@@ -198,62 +235,21 @@ function createDownloader() {
 
   /* State management */
   let state = createInitialState();
-  const activeCards = new Map();
-  const completedCards = new Map();
+  const activeCards = new Map<string, CardEntry>();
+  const completedCards = new Map<number, CardEntry>();
   let completedCardOrder = '';
-  let titleRevealTimer;
-  let titlesAreVisible;
-  let infoRevealTimer;
-  let infoIsVisible;
+  let infoRevealTimer: number | undefined;
+  let infoIsVisible = false;
 
-  function setTitleExpanded(title, expanded) {
-    title.style.height = expanded ? '34px' : '0px';
-    title.style.padding = expanded ? '14px 0px 6px 16px' : '0px';
-    title.style.opacity = expanded ? '1' : '0';
-  }
+  function updateTitleVisibility(nextView: DownloadView): void {
+    const titlesAreVisible = nextView === 'full';
 
-  function updateTitleVisibility(nextView) {
-    const shouldShowTitles = nextView === 'full';
-
-    if (shouldShowTitles === titlesAreVisible) return;
-
-    if (!shouldShowTitles) {
-      clearTimeout(titleRevealTimer);
-      titleRevealTimer = undefined;
-      titlesAreVisible = false;
-
-      for (const title of [currentTitle, completedTitle]) {
-        setTitleExpanded(title, false);
-        title.addEventListener(
-          'transitionend',
-          () => {
-            if (title.style.opacity === '0') title.style.display = 'none';
-          },
-          { once: true },
-        );
-      }
-
-      return;
-    }
-
-    titlesAreVisible = true;
     for (const title of [currentTitle, completedTitle]) {
-      title.style.display = 'flex';
-      setTitleExpanded(title, false);
+      title.classList.toggle('np-download-content-title-visible', titlesAreVisible);
     }
-
-    titleRevealTimer = window.setTimeout(() => {
-      titleRevealTimer = undefined;
-
-      requestAnimationFrame(() => {
-        if (titlesAreVisible) {
-          for (const title of [currentTitle, completedTitle]) setTitleExpanded(title, true);
-        }
-      });
-    }, 300);
   }
 
-  function updateDownloadCounts(nextState) {
+  function updateDownloadCounts(nextState: DownloaderState): void {
     const activeCount = Object.keys(nextState.activeDownloads).length;
     const totalCount = activeCount + nextState.completedDownloads.length;
 
@@ -261,7 +257,7 @@ function createDownloader() {
     countActive.textContent = `${activeCount} ${i18n.t('Content_Script.active')}`;
   }
 
-  function updateInfoVisibility(nextState) {
+  function updateInfoVisibility(nextState: DownloaderState): void {
     const hasNoDownloads = Object.keys(nextState.activeDownloads).length === 0 && nextState.completedDownloads.length === 0;
     const shouldShowInfo = nextState.view === 'full' && hasNoDownloads;
 
@@ -295,7 +291,7 @@ function createDownloader() {
     }, 300);
   }
 
-  function render(nextState) {
+  function render(nextState: DownloaderState): void {
     container.classList.toggle('np-download-expanded-closed', nextState.view === 'closed');
     container.classList.toggle('np-download-expanded-half', nextState.view === 'half');
     container.classList.toggle('np-download-expanded-full', nextState.view === 'full');
@@ -351,11 +347,11 @@ function createDownloader() {
         cardEntry.update(download);
       }
 
-      completedContainer.replaceChildren(...nextState.completedDownloads.map((download) => completedCards.get(download.completionId).card));
+      completedContainer.replaceChildren(...nextState.completedDownloads.map((download) => completedCards.get(download.completionId)?.card).filter((card): card is HTMLDivElement => Boolean(card)));
     }
   }
 
-  function dispatch(action) {
+  function dispatch(action: DownloadAction): void {
     state = reducer(state, action);
     render(state);
   }
@@ -368,16 +364,17 @@ function createDownloader() {
     dispatch({ type: 'CLEAR_COMPLETED' });
   });
 
-  function handleDownloadEvent(event) {
-    const download = event.detail || {};
+  function handleDownloadEvent(event: Event): void {
+    const download = (event as CustomEvent<Partial<Download>>).detail || {};
 
     if (!download.url && !download.fileName) {
       return;
     }
 
-    const normalizedDownload = {
+    const normalizedDownload: Download = {
       ...download,
-      id: download.id || getDownloadIdentifier(download),
+      id: download.id || getDownloadID(download),
+      type: download.type || 'progress',
     };
 
     const actionType =
@@ -387,20 +384,21 @@ function createDownloader() {
   }
 
   window.addEventListener('__np_download_event__', handleDownloadEvent);
+  const unsubscribe = subscribeToSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_DOWNLOAD, updateDownloader);
 
   render(state);
 
   return {
     destroy() {
       window.removeEventListener('__np_download_event__', handleDownloadEvent);
-      clearTimeout(titleRevealTimer);
+      unsubscribe();
       clearTimeout(infoRevealTimer);
       container.remove();
     },
   };
 }
 
-function applyBarCompletion(fillBar, status) {
+function applyBarCompletion(fillBar: HTMLElement, status: DownloadType | null | undefined): void {
   fillBar.classList.remove('np-download-card-fill-complete', 'np-download-card-fill-fail');
 
   switch (status) {
@@ -418,25 +416,26 @@ function applyBarCompletion(fillBar, status) {
 }
 
 async function updateDownloader() {
-  const enabled = await readStorageValue(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_DOWNLOAD, false);
-  const shouldEnable = enabled && isOnSupportedSite(window.location.href) && !isOnLoginPage(window.location.href);
+  const enabled = await readSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_DOWNLOAD, false);
+  const shouldEnable = Boolean(enabled && isSupportedURL(window.location.href) && !isLoginPage(window.location.href));
   updateActionBarStyles(shouldEnable);
 
   if (!shouldEnable) {
-    document.querySelector('.np-download-container')?.remove();
+    downloader?.destroy();
+    downloader = null;
     return;
   }
 
-  createDownloader();
+  downloader ??= createDownloader();
 }
+
+let downloader: DownloaderController | null = null;
 
 async function initializeDownloader() {
   await updateDownloader();
 
   observeMutations(updateDownloader);
   addNavigationListeners(updateDownloader);
-
-  observeStorageChange(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_DOWNLOAD, updateDownloader);
 }
 
 initializeDownloader();

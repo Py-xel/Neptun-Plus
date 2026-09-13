@@ -53,6 +53,8 @@
     "files": "Fájl",
     "active": "Aktív",
     "noDownloadTitle": "Nincsenek letöltések",
-    "noDownloadDesc": "Nincs megjeleníthető letöltés."
+    "noDownloadDesc": "Nincs megjeleníthető letöltés.",
+    "complete": "Befejezve",
+    "failed": "Sikertelen"
   }
 }

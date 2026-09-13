@@ -1,0 +1,14 @@
+/* Injected into the DOM when downloader is active */
+
+/* 
+* The footer and the action bar uses the same color and it becomes difficult to see when they overlap.
+* I've added a small border for visual clarity.
+*/
+
+/* Default Action */
+.data-table__action-bar {
+  position: fixed !important;
+  right: 20px !important;
+  border: 2px solid white;
+  border-radius: 32px;
+}

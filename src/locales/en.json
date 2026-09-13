@@ -53,6 +53,8 @@
     "files": "Files",
     "active": "Active",
     "noDownloadTitle": "No downloads",
-    "noDownloadDesc": "There are no downloads to show."
+    "noDownloadDesc": "There are no downloads to show.",
+    "complete": "Complete",
+    "failed": "Failed"
   }
 }
