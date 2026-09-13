@@ -1,4 +1,4 @@
-import '@/popup/i18n.js';
+import '@/i18n.js';
 import '@/styles/popup/index.css';
 import { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
