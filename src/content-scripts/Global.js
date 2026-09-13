@@ -1,10 +1,20 @@
+function appendLink(link) {
+  const target = document.head ?? document.documentElement;
+
+  if (target) {
+    target.appendChild(link);
+  } else {
+    document.addEventListener('DOMContentLoaded', () => document.head?.appendChild(link), { once: true });
+  }
+}
+
 /* Font Awesome */
 if (!document.querySelector('link[data-np-fa]')) {
   const faCss = document.createElement('link');
   faCss.rel = 'stylesheet';
   faCss.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css';
   faCss.setAttribute('data-np-fa', 'true');
-  document.head.appendChild(faCss);
+  appendLink(faCss);
 }
 
 /* Google Fonts preconnect links */
@@ -12,7 +22,7 @@ if (!document.querySelector('link[href*="fonts.googleapis.com"][rel="preconnect"
   const preconnect1 = document.createElement('link');
   preconnect1.rel = 'preconnect';
   preconnect1.href = 'https://fonts.googleapis.com';
-  document.head.appendChild(preconnect1);
+  appendLink(preconnect1);
 }
 
 if (!document.querySelector('link[href*="fonts.gstatic.com"][rel="preconnect"]')) {
@@ -20,7 +30,7 @@ if (!document.querySelector('link[href*="fonts.gstatic.com"][rel="preconnect"]')
   preconnect2.rel = 'preconnect';
   preconnect2.href = 'https://fonts.gstatic.com';
   preconnect2.crossOrigin = 'anonymous';
-  document.head.appendChild(preconnect2);
+  appendLink(preconnect2);
 }
 
 const fontUrls = [
@@ -38,6 +48,6 @@ fontUrls.forEach((url) => {
     const fontLink = document.createElement('link');
     fontLink.rel = 'stylesheet';
     fontLink.href = url;
-    document.head.appendChild(fontLink);
+    appendLink(fontLink);
   }
 });
