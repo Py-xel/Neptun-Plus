@@ -36,8 +36,8 @@ export default defineManifest({
       js: [
         'src/content-scripts/Global.js',
         'src/content-scripts/Status.ts',
-        'src/content-scripts/interface/DisableHeaders.js',
-        'src/content-scripts/interface/ItemList.js',
+        'src/content-scripts/interface/DisableHeaders.ts',
+        'src/content-scripts/interface/ItemList.ts',
         'src/content-scripts/interface/FileDownloader.ts',
       ],
       css: ['src/styles/content-scripts/status.css', 'src/styles/content-scripts/fileDownloader.css'],

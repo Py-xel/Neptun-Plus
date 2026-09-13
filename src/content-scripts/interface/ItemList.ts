@@ -1,11 +1,11 @@
-import { observeStorageChange, readStorageValue } from '@/utils/contentScriptStorage';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
+import { readSetting, subscribeToSetting } from '@/utils/settingsStore';
 import { observeMutations } from '@/utils/utility';
 
 const NEXT_VISIBLE_BUTTON_SELECTOR = 'button#next-visible-button';
 
 /* Add error handling */
-function applyItemListSetting(enabled) {
+function applyItemListSetting(enabled: boolean): void {
   document.querySelectorAll(NEXT_VISIBLE_BUTTON_SELECTOR).forEach((button) => {
     if (!(button instanceof HTMLElement)) {
       return;
@@ -25,23 +25,31 @@ function applyItemListSetting(enabled) {
   });
 }
 
-function ItemList() {
-  const update = async () => {
-    const enabled = await readStorageValue(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_FULL_ITEMLIST, false);
+function initializeItemList(): () => void {
+  const update = async (): Promise<void> => {
+    const enabled = await readSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_FULL_ITEMLIST, false);
 
     applyItemListSetting(Boolean(enabled));
   };
 
-  update();
-  observeMutations(update);
+  const mutationObserver = observeMutations(() => {
+    void update();
+  });
 
-  observeStorageChange(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_FULL_ITEMLIST, (newValue) => {
+  const unsubscribe = subscribeToSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_FULL_ITEMLIST, (newValue) => {
     applyItemListSetting(Boolean(newValue));
   });
+
+  void update();
+
+  return () => {
+    mutationObserver.disconnect();
+    unsubscribe();
+  };
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', ItemList, { once: true });
+  document.addEventListener('DOMContentLoaded', initializeItemList, { once: true });
 } else {
-  ItemList();
+  initializeItemList();
 }
