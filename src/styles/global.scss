@@ -40,6 +40,21 @@ $color_sea-green: #15803d;
 $color_jade-green: #34c77d;
 $color_alabaster-grey: #e9e9ea;
 
+/* TOAST COLORS */
+
+/* $color_toast-success-bg: #215533; */
+$color_toast-success-bg: $color_twilight-indigo;
+$color_toast-warning-bg: #535521;
+$color_toast-error-bg: #552121;
+
+$color_toast-success-hl: #47b88b;
+$color_toast-warning-hl: #b4b847;
+$color_toast-error-hl: #b84747;
+
+$color_toast-success-border: #89d1b5;
+$color_toast-warning-border: #b8ab47;
+$color_toast-error-border: #b84747;
+
 /* FONT-FAMILY */
 
 $fontFamily_primary: 'Source Sans 3', sans-serif;

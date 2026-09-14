@@ -1,0 +1,103 @@
+@use '../../global' as *;
+
+$toast-padding: 6px 8px;
+$toast-animation-duration: 180ms;
+$toast-border: 2px solid;
+
+.np-toast-container {
+  @include flex-center-row;
+
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+
+  width: fit-content;
+  height: auto;
+
+  gap: 5px;
+
+  padding: $toast-padding;
+
+  color: $color_white;
+
+  background-color: $color_twilight-indigo;
+
+  border-radius: 16px;
+
+  box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 20%);
+
+  /* 40ms delay for better UX */
+  animation: np-toast-enter $toast-animation-duration ease-in-out 40ms backwards;
+
+  &-closing {
+    animation: np-toast-exit $toast-animation-duration ease-in-out forwards;
+  }
+
+  &-error {
+    background-color: $color_toast-error-bg;
+
+    border: $toast-border $color_toast-error-border;
+
+    & .np-toast-icon {
+      color: $color_toast-error-hl;
+    }
+  }
+
+  &-warning {
+    background-color: $color_toast-warning-bg;
+
+    border: $toast-border $color_toast-warning-border;
+
+    & .np-toast-icon {
+      color: $color_toast-warning-hl;
+    }
+  }
+
+  &-success {
+    background-color: $color_toast-success-bg;
+
+    border: $toast-border $color_toast-success-border;
+
+    & .np-toast-icon {
+      color: $color_toast-success-hl;
+    }
+  }
+
+  & .np-toast-icon {
+    font-size: $fontSize_md;
+  }
+
+  & .np-toast-text {
+    font-family: $fontFamily_secondary;
+    font-size: $fontSize_md;
+    font-weight: 500;
+
+    color: $color_white;
+
+    margin: 0;
+  }
+}
+
+@keyframes np-toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes np-toast-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
