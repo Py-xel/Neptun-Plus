@@ -1,5 +1,5 @@
 import '@/styles/components/general/toast.css';
-import type { ToastType } from './ToastProvider';
+import type { ToastType } from '@/components/general/ToastProvider';
 
 type ToastProps = {
   message: string;
