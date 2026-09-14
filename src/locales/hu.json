@@ -1,11 +1,11 @@
 {
-  "Sidebar": {
-    "interface": "Kezelőfelület",
-    "system": "Rendszer",
-    "info": "Információ",
-    "settings": "Beállítások"
-  },
-  "Content": {
+  "Popup": {
+    "Sidebar": {
+      "interface": "Kezelőfelület",
+      "system": "Rendszer",
+      "info": "Információ",
+      "settings": "Beállítások"
+    },
     "Interface": {
       "general": "Általános",
       "unfilledSurvey": "Szalagcím értesítések elrejtése",
@@ -22,6 +22,7 @@
       "studentLogin": "Bejelentkezési adatok",
       "loginName": "Azonosító",
       "password": "Jelszó",
+      "credentialsRequired": "Mentés előtt add meg az azonosítót és a jelszót.",
       "warningTitle": "Figyelem!",
       "warningText": "A bejelentkezési adatok helyben kerülnek tárolásra, és <bold>nincsenek biztonságosan levédve</bold>.<br/><br/>Egy kompetens támadó, aki hozzáfér eszközéhez vagy böngészője adataihoz, képes lehet hozzáférni ezekhez az adatokhoz is.",
       "warningAccept": "Megértettem."
@@ -37,24 +38,33 @@
       "hideInfo": "Beállításokhoz tartozó tippek elrejtése",
       "resetLabel": "A bővítmény beállításainak visszaállítása alapértelmezettre.",
       "resetButton": "Beállítások visszaállítása"
+    },
+    "Toast": {
+      "saved": "Mentve!",
+      "deleted": "Törölve!",
+      "reset": "Sikeres visszaállítás!"
+    }
+  },
+  "Content_Script": {
+    "Status": {
+      "connected": "Kapcsolódva"
+    },
+    "FileDownloader": {
+      "downloads": "Letöltések",
+      "downloading": "Letöltés alatt",
+      "completed": "Befejezve",
+      "files": "Fájl",
+      "active": "Aktív",
+      "noDownloadTitle": "Nincsenek letöltések",
+      "noDownloadDesc": "Nincs megjeleníthető letöltés.",
+      "complete": "Befejezve",
+      "failed": "Sikertelen"
     }
   },
   "Error": {
-    "error": "Hiba történt!",
-    "errorConsole": "HIBA",
+    "title": "Váratlan hiba történt!",
     "refresh": "Bővítmény frissítése",
-    "details": "Részletek:"
-  },
-  "Content_Script": {
-    "connected": "Kapcsolódva",
-    "downloads": "Letöltések",
-    "downloading": "Letöltés alatt",
-    "completed": "Befejezve",
-    "files": "Fájl",
-    "active": "Aktív",
-    "noDownloadTitle": "Nincsenek letöltések",
-    "noDownloadDesc": "Nincs megjeleníthető letöltés.",
-    "complete": "Befejezve",
-    "failed": "Sikertelen"
+    "details": "Részletek:",
+    "errorConsole": "HIBA"
   }
 }

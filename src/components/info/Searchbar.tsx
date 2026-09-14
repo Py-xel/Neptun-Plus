@@ -19,7 +19,7 @@ export default function Searchbar({ onSearch }: SearchProps) {
 
   return (
     <div>
-      <InputField type="text" icon="fa-solid fa-magnifying-glass" placeholder={t('Content.Info.search')} value={value} onChange={handleChange} />
+      <InputField type="text" icon="fa-solid fa-magnifying-glass" placeholder={t('Popup.Info.search')} value={value} onChange={handleChange} />
     </div>
   );
 }

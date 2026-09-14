@@ -11,7 +11,7 @@ export default function Info() {
 
   return (
     <div>
-      <h1 className="np-title">{t('Content.Info.supportedUni')}</h1>
+      <h1 className="np-title">{t('Popup.Info.supportedUni')}</h1>
       <Searchbar onSearch={setSearch} />
       <UniList search={search} lang={lang} />
     </div>

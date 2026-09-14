@@ -1,8 +1,9 @@
 import AddButton from '@/components/general/AddButton';
+import DisableWrapper from '@/components/general/DisableWrapper';
 import InputField from '@/components/general/InputField';
+import { useToast } from '@/components/general/ToastProvider';
 import UniList_Dropdown, { getFirstSupportedUni } from '@/components/system/UniList_Dropdown';
 import universities from '@/data/universities.json';
-import DisableWrapper from '@/components/general/DisableWrapper';
 import '@/styles/components/system/autoLogin.css';
 import { CATEGORIES, KEYS, normalizeLanguage, type AutoLoginCredential } from '@/utils/dataSchema';
 import { useSettings } from '@/utils/useSettings';
@@ -33,6 +34,7 @@ const isStoredAutoLoginCards = (value: unknown): value is AutoLoginCredential[] 
 
 export default function AutoLogin({ disabled = false }: AutoLoginProps) {
   const { t, i18n } = useTranslation();
+  const { showToast } = useToast();
   const { value: credentials, setValue: setCredentials, loading } = useSettings(CATEGORIES.SYSTEM, KEYS.SYSTEM.CREDENTIALS, []);
   const [cards, setCards] = useState<AutoLoginCard[]>([]);
   const [editableCardIds, setEditableCardIds] = useState<Set<number>>(new Set());
@@ -65,6 +67,7 @@ export default function AutoLogin({ disabled = false }: AutoLoginProps) {
 
   const removeCard = async (cardId: number) => {
     setCards((prevCards) => prevCards.filter((card) => card.id !== cardId));
+    showToast(t('Popup.Toast.deleted'), { duration: 1200, type: 'success' });
 
     if (credentials.some((card) => card.id === cardId)) {
       await setCredentials(credentials.filter((card) => card.id !== cardId));
@@ -74,6 +77,7 @@ export default function AutoLogin({ disabled = false }: AutoLoginProps) {
   const saveCard = async (card: AutoLoginCard) => {
     if (!card.loginName.trim() || !card.password.trim()) {
       // TODO Add error handling
+      showToast(t('Popup.System.credentialsRequired'), { type: 'warning' });
       return;
     }
 
@@ -93,6 +97,7 @@ export default function AutoLogin({ disabled = false }: AutoLoginProps) {
 
     await setCredentials(nextCredentials);
     setEditableCardIds((prevIds) => {
+      showToast('Success!', { type: 'success' });
       const nextIds = new Set(prevIds);
       nextIds.delete(card.id);
       return nextIds;
@@ -128,14 +133,14 @@ export default function AutoLogin({ disabled = false }: AutoLoginProps) {
                   icon={'fa-regular fa-user'}
                   type="text"
                   value={card.loginName}
-                  placeholder={t('Content.System.loginName')}
+                  placeholder={t('Popup.System.loginName')}
                   onChange={(e) => updateCard(card.id, { loginName: e.target.value })}
                 />
                 <InputField
                   icon={'fa-regular fa-eye-slash'}
                   type="password"
                   value={card.password}
-                  placeholder={t('Content.System.password')}
+                  placeholder={t('Popup.System.password')}
                   onChange={(e) => updateCard(card.id, { password: e.target.value })}
                 />
               </div>
@@ -145,11 +150,7 @@ export default function AutoLogin({ disabled = false }: AutoLoginProps) {
               <button type="button" className="np-action-button-remove" onClick={() => void removeCard(card.id)}>
                 <i className="fa-solid fa-remove" />
               </button>
-              <button
-                type="button"
-                className="np-action-button-save"
-                disabled={isEditable && (!card.loginName.trim() || !card.password.trim())}
-                onClick={() => (isEditable ? void saveCard(card) : toggleCardEditing(card.id))}>
+              <button type="button" className="np-action-button-save" onClick={() => (isEditable ? void saveCard(card) : toggleCardEditing(card.id))}>
                 <i className={isEditable ? 'fa-solid fa-floppy-disk' : 'fa-solid fa-pen'} />
               </button>
             </div>

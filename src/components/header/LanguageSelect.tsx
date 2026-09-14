@@ -1,12 +1,23 @@
+import { useToast } from '@/components/general/ToastProvider';
 import '@/styles/components/header/languageSelect.css';
+import i18n from '@/i18n';
 import { CATEGORIES, KEYS, type Language } from '@/utils/dataSchema';
 import { useSettings } from '@/utils/useSettings';
+import { useTranslation } from 'react-i18next';
 
 export default function LanguageSelect() {
+  const { showToast } = useToast();
+  const { t } = useTranslation();
   const { value: selectedLanguage, setValue: setSelectedLanguage } = useSettings(CATEGORIES.EXTENSION_SETTINGS, KEYS.EXTENSION_SETTINGS.LANGUAGE, 'hu');
 
-  const handleLanguageSelect = (language: Language) => {
-    void setSelectedLanguage(language);
+  const handleLanguageSelect = async (language: Language) => {
+    if (language === selectedLanguage) {
+      return;
+    }
+
+    await setSelectedLanguage(language);
+    await i18n.changeLanguage(language);
+    showToast(i18n.t('Popup.Toast.saved'), { duration: 1200, type: 'success' });
   };
 
   return (

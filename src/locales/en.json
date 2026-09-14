@@ -1,11 +1,11 @@
 {
-  "Sidebar": {
-    "interface": "Interface",
-    "system": "System",
-    "info": "Info",
-    "settings": "Settings"
-  },
-  "Content": {
+  "Popup": {
+    "Sidebar": {
+      "interface": "Interface",
+      "system": "System",
+      "info": "Info",
+      "settings": "Settings"
+    },
     "Interface": {
       "general": "General",
       "unfilledSurvey": "Hide banner notifications",
@@ -22,6 +22,7 @@
       "studentLogin": "Login credentials",
       "loginName": "Login name",
       "password": "Password",
+      "credentialsRequired": "Enter a login name and password before saving.",
       "warningTitle": "Warning!",
       "warningText": "Saved credentials are stored locally and are <bold>not securely protected</bold>.<br/><br/>A competent threat actor with access to your device or browser data may be able to gain access to them.",
       "warningAccept": "I understand."
@@ -37,24 +38,33 @@
       "hideInfo": "Hide hints for settings",
       "resetLabel": "Reset extension settings to their original defaults.",
       "resetButton": "Reset settings"
+    },
+    "Toast": {
+      "saved": "Saved!",
+      "deleted": "Deleted!",
+      "reset": "Reset successful!"
+    }
+  },
+  "Content_Script": {
+    "Status": {
+      "connected": "Connected"
+    },
+    "FileDownloader": {
+      "downloads": "Downloads",
+      "downloading": "Downloading",
+      "completed": "Completed",
+      "files": "Files",
+      "active": "Active",
+      "noDownloadTitle": "No downloads",
+      "noDownloadDesc": "There are no downloads to show.",
+      "complete": "Complete",
+      "failed": "Failed"
     }
   },
   "Error": {
-    "error": "An error has occurred!",
-    "errorConsole": "ERROR",
+    "title": "An unexpected error occured!",
     "refresh": "Refresh extension",
-    "details": "Details:"
-  },
-  "Content_Script": {
-    "connected": "Connected",
-    "downloads": "Downloads",
-    "downloading": "Downloading",
-    "completed": "Completed",
-    "files": "Files",
-    "active": "Active",
-    "noDownloadTitle": "No downloads",
-    "noDownloadDesc": "There are no downloads to show.",
-    "complete": "Complete",
-    "failed": "Failed"
+    "details": "Details:",
+    "errorConsole": "ERROR"
   }
 }

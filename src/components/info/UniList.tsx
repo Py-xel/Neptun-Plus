@@ -27,8 +27,8 @@ export default function UniList({ search = '', lang = 'hu' }: UniListProps) {
       <table>
         <thead>
           <tr>
-            <th>{t('Content.Info.name')}</th>
-            <th>{t('Content.Info.supported')}</th>
+            <th>{t('Popup.Info.name')}</th>
+            <th>{t('Popup.Info.supported')}</th>
           </tr>
         </thead>
         <tbody>

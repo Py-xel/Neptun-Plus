@@ -13,13 +13,13 @@ export default function Interface() {
 
   return (
     <div>
-      <h1 className="np-title">{t('Content.Interface.general')}</h1>
-      <Toggle_Button label={t('Content.Interface.unfilledSurvey')} enabled={disableHeaders} setEnabled={setDisableHeaders} />
-      <Toggle_Button label={t('Content.Interface.itemList')} enabled={itemList} setEnabled={setItemList} />
-      <h1 className="np-title">{t('Content.Interface.fileDownload')}</h1>
-      <Toggle_Button label={t('Content.Interface.showDownload')} enabled={showDownload} setEnabled={setShowDownload} />
-      <h1 className="np-title">{t('Content.Interface.shortcuts')}</h1>
-      <Toggle_Button label={t('Content.Interface.customShortcuts')} enabled={customShortcut} setEnabled={setCustomShortcut} />
+      <h1 className="np-title">{t('Popup.Interface.general')}</h1>
+      <Toggle_Button label={t('Popup.Interface.unfilledSurvey')} enabled={disableHeaders} setEnabled={setDisableHeaders} />
+      <Toggle_Button label={t('Popup.Interface.itemList')} enabled={itemList} setEnabled={setItemList} />
+      <h1 className="np-title">{t('Popup.Interface.fileDownload')}</h1>
+      <Toggle_Button label={t('Popup.Interface.showDownload')} enabled={showDownload} setEnabled={setShowDownload} />
+      <h1 className="np-title">{t('Popup.Interface.shortcuts')}</h1>
+      <Toggle_Button label={t('Popup.Interface.customShortcuts')} enabled={customShortcut} setEnabled={setCustomShortcut} />
     </div>
   );
 }

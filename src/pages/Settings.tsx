@@ -11,8 +11,8 @@ export default function Settings() {
 
   return (
     <div>
-      <h1 className="np-title">{t('Content.Settings.extensionSettings')}</h1>
-      <Toggle_Button label={t('Content.Settings.hideInfo')} enabled={settingsInfo} setEnabled={setSettingsInfo} showInfo={false} />
+      <h1 className="np-title">{t('Popup.Settings.extensionSettings')}</h1>
+      <Toggle_Button label={t('Popup.Settings.hideInfo')} enabled={settingsInfo} setEnabled={setSettingsInfo} showInfo={false} />
       <ResetSettings />
     </div>
   );

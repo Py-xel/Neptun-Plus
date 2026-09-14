@@ -12,11 +12,11 @@ export default function Warning({ onAccept }: WarningProps) {
     <div className="np-warning-container">
       <div className="np-warning-header">
         <i className="fa-solid fa-triangle-exclamation" />
-        <h2 className="np-warning-title">{t('Content.System.warningTitle')}</h2>
+        <h2 className="np-warning-title">{t('Popup.System.warningTitle')}</h2>
       </div>
       <p className="np-warning-description">
         <Trans
-          i18nKey="Content.System.warningText"
+          i18nKey="Popup.System.warningText"
           components={{
             bold: <strong />,
             br: <br />,
@@ -24,7 +24,7 @@ export default function Warning({ onAccept }: WarningProps) {
         />
       </p>
       <button className="np-warning-accept" onClick={onAccept}>
-        {t('Content.System.warningAccept')}
+        {t('Popup.System.warningAccept')}
       </button>
     </div>
   );

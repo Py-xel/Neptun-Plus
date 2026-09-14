@@ -180,7 +180,7 @@ function createCard(downloadData: Download, isCompleted = false): CardEntry {
       fill.style.width = completed ? '100%' : width;
 
       if (completed) {
-        streamBytes.textContent = download.type === 'complete' ? `${i18n.t('Content_Script.complete')}` : `${i18n.t('Content_Script.failed')}`;
+        streamBytes.textContent = download.type === 'complete' ? `${i18n.t('Content_Script.FileDownloader.complete')}` : `${i18n.t('Content_Script.FileDownloader.failed')}`;
       } else {
         streamBytes.textContent = `${formatBytes(download.speed || 0)}/s`;
       }
@@ -211,9 +211,9 @@ function createDownloader(): DownloaderController | null {
 
   const container = createElement('div', 'np-download-container');
   const chevron = createElement('i', 'np-download-chevron fa-solid fa-chevron-up');
-  const currentTitle = createElement('p', 'np-download-content-title', i18n.t('Content_Script.downloading'));
+  const currentTitle = createElement('p', 'np-download-content-title', i18n.t('Content_Script.FileDownloader.downloading'));
   const currentContainer = createElement('div', 'np-download-content-current-container');
-  const completedTitle = createElement('p', 'np-download-content-title', i18n.t('Content_Script.completed'));
+  const completedTitle = createElement('p', 'np-download-content-title', i18n.t('Content_Script.FileDownloader.completed'));
   const completedContainer = createElement('div', 'np-download-content-completed-container');
   const footer = createElement('div', 'np-download-footer');
   const countContainer = createElement('div', 'np-download-count-container');
@@ -224,8 +224,8 @@ function createDownloader(): DownloaderController | null {
   const deleteAll = createElement('i', 'np-download-delete-all fa-solid fa-trash');
   const infoContainer = createElement('div', 'np-download-info-container');
   const infoIcon = createElement('i', 'np-download-info-icon fa-solid fa-circle-info');
-  const infoTitle = createElement('p', 'np-download-info-title', i18n.t('Content_Script.noDownloadTitle'));
-  const infoDesc = createElement('p', 'np-download-info-desc', i18n.t('Content_Script.noDownloadDesc'));
+  const infoTitle = createElement('p', 'np-download-info-title', i18n.t('Content_Script.FileDownloader.noDownloadTitle'));
+  const infoDesc = createElement('p', 'np-download-info-desc', i18n.t('Content_Script.FileDownloader.noDownloadDesc'));
 
   infoContainer.append(infoIcon, infoTitle, infoDesc);
   countContainer.append(countIcon, countTotal, countDivider, countActive);
@@ -253,8 +253,8 @@ function createDownloader(): DownloaderController | null {
     const activeCount = Object.keys(nextState.activeDownloads).length;
     const totalCount = activeCount + nextState.completedDownloads.length;
 
-    countTotal.textContent = `${totalCount} ${i18n.t('Content_Script.files')}`;
-    countActive.textContent = `${activeCount} ${i18n.t('Content_Script.active')}`;
+    countTotal.textContent = `${totalCount} ${i18n.t('Content_Script.FileDownloader.files')}`;
+    countActive.textContent = `${activeCount} ${i18n.t('Content_Script.FileDownloader.active')}`;
   }
 
   function updateInfoVisibility(nextState: DownloaderState): void {

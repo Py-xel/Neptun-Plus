@@ -66,11 +66,6 @@ $card-height: 95px;
         cursor: pointer;
       }
 
-      & > .np-action-button-save:disabled {
-        cursor: not-allowed;
-        opacity: 0.3;
-      }
-
       & > .np-action-button-remove {
         color: $color_hot-fuchsia;
       }

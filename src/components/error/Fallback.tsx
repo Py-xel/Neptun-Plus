@@ -25,7 +25,7 @@ export default function Fallback({ error }: FallbackProps) {
     <div className="np-error-container">
       <div className="np-error-header">
         <img src="/Neptun_Plus_Logo_White.png" className="np-vault-logo" />
-        <p className="np-error-title">{t('Error.error')}</p>
+        <p className="np-error-title">{t('Error.title')}</p>
         <button type="button" onClick={() => window.location.reload()}>
           {t('Error.refresh')}
         </button>

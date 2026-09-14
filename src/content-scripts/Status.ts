@@ -29,7 +29,7 @@ function createStatus(): void {
   const statusDot = createElement('span', 'np-status-dot');
   const statusPing = createElement('span', 'np-status-ping');
   const statusSolid = createElement('span', 'np-status-solid');
-  const statusText = createElement('span', 'np-status-text', i18n.t('Content_Script.connected'));
+  const statusText = createElement('span', 'np-status-text', i18n.t('Content_Script.Status.connected'));
 
   statusDot.append(statusPing, statusSolid);
   statusInner.append(statusDot, statusText);
