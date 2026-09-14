@@ -26,6 +26,8 @@ $toast-border: 2px solid;
 
   box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 20%);
 
+  z-index: $layer_global-overlay;
+
   /* 40ms delay for better UX */
   animation: np-toast-enter $toast-animation-duration ease-in-out 40ms backwards;
 
