@@ -47,12 +47,19 @@ export const normalizeLanguage = (language: string): Language => {
   return isLanguage(baseLanguage) ? baseLanguage : DEFAULT_LANGUAGE;
 };
 
+export type ShortcutItem = {
+  id: number;
+  icon: string;
+  name: string;
+  link: string;
+};
+
 export type SettingValueByKey = {
   [KEYS.INTERFACE.DISABLE_HEADERS]: boolean;
   [KEYS.INTERFACE.SHOW_FULL_ITEMLIST]: boolean;
   [KEYS.INTERFACE.SHOW_DOWNLOAD]: boolean;
   [KEYS.INTERFACE.USE_SHORTCUTS]: boolean;
-  [KEYS.INTERFACE.SHORTCUTS]: string[];
+  [KEYS.INTERFACE.SHORTCUTS]: ShortcutItem[];
 
   [KEYS.SYSTEM.INFINITE_SESSION]: boolean;
   [KEYS.SYSTEM.AUTO_LOGIN]: boolean;

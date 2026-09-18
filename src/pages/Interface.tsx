@@ -1,4 +1,5 @@
 import Toggle_Button from '@/components/general/Toggle_Button';
+import Shortcut from '@/components/interface/Shortcuts';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { useSettings } from '@/utils/useSettings';
 import { useTranslation } from 'react-i18next';
@@ -20,6 +21,7 @@ export default function Interface() {
       <Toggle_Button label={t('Popup.Interface.showDownload')} enabled={showDownload} setEnabled={setShowDownload} />
       <h1 className="np-title">{t('Popup.Interface.shortcuts')}</h1>
       <Toggle_Button label={t('Popup.Interface.customShortcuts')} enabled={customShortcut} setEnabled={setCustomShortcut} />
+      <Shortcut disabled={!customShortcut} />
     </div>
   );
 }

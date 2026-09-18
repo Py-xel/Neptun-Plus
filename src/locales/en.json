@@ -13,7 +13,10 @@
       "fileDownload": "File download",
       "showDownload": "Show file downloader",
       "shortcuts": "Shortcuts",
-      "customShortcuts": "Use custom shortcuts"
+      "name": "Name",
+      "link": "Link",
+      "customShortcuts": "Use custom shortcuts",
+      "shortcutRequired": "Enter a name and link before saving."
     },
     "System": {
       "general": "General",

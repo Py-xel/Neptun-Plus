@@ -1,0 +1,107 @@
+@use '../../global' as *;
+
+$picker_size: 1.6rem;
+$preview_size: 10.75rem;
+
+.np-icon-picker-container {
+  @include flex($justify: center, $align: center);
+
+  position: relative;
+
+  & .np-icon-picker-button {
+    @include flex($justify: center, $align: center);
+
+    width: $picker_size;
+    height: $picker_size;
+
+    border: 1px solid $color_pale-slate;
+    border-radius: 6px;
+
+    background-color: $color_ghost-white;
+
+    cursor: pointer;
+
+    @include transition-full-ease($property: all, $time: 0.2s);
+
+    &:hover {
+      border-color: $color_twilight-indigo;
+
+      background-color: $color_ghost-blue;
+
+      box-shadow: 0 1px 3px rgba(35, 45, 75, 0.08);
+    }
+  }
+
+  & .np-icon-picker-window {
+    display: grid;
+
+    grid-template-columns: repeat(5, minmax(24px, 1fr));
+
+    position: absolute;
+
+    left: 118px;
+    bottom: 35px;
+
+    width: $preview_size;
+    max-height: $preview_size;
+
+    gap: 5px;
+
+    padding: 8px;
+
+    overflow-y: auto;
+
+    border: solid 1px $color_twilight-indigo;
+    border-radius: 6px;
+
+    background-color: $color_white;
+
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.1),
+      0 6px 12px rgba(0, 0, 0, 0.1),
+      0 12px 24px rgba(0, 0, 0, 0.1),
+      0 24px 48px rgba(0, 0, 0, 0.1);
+
+    z-index: $layer_global-overlay;
+
+    opacity: 0;
+
+    transform-origin: bottom left;
+
+    animation: iconPickerFadeIn 0.2s ease forwards;
+
+    & .np-icon-option {
+      @include flex($justify: center, $align: center);
+
+      width: $picker_size;
+      height: $picker_size;
+
+      border: 1px solid transparent;
+      border-radius: 6px;
+
+      background-color: transparent;
+
+      cursor: pointer;
+
+      padding: 0;
+
+      &:hover,
+      &.selected {
+        border-color: $color_twilight-indigo;
+
+        background-color: $color_ghost-blue;
+      }
+    }
+  }
+}
+
+@keyframes iconPickerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

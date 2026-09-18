@@ -13,7 +13,10 @@
       "fileDownload": "Fájl letöltés",
       "showDownload": "Fájl-letöltő megjelenítése",
       "shortcuts": "Gyorsgombok",
-      "customShortcuts": "Egyéni gyorsgomb használata"
+      "name": "Név",
+      "link": "Hivatkozás",
+      "customShortcuts": "Egyéni gyorsgomb használata",
+      "shortcutRequired": "Mentés előtt add meg a nevet és a hivatkozást."
     },
     "System": {
       "general": "Általános",

@@ -1,0 +1,83 @@
+@use '../../global' as *;
+
+$card-height: 75px;
+
+.np-shortcuts-container {
+  @include flex($direction: column);
+
+  gap: 8px;
+
+  padding: 6px;
+
+  box-sizing: border-box;
+
+  border: 1px solid $color_twilight-indigo;
+  border-radius: 10px;
+
+  background-color: $color_ghost-white;
+
+  & .np-shortcut-card {
+    @include flex($justify: center);
+
+    height: $card-height;
+
+    padding: 10px;
+
+    gap: 10px;
+
+    box-sizing: border-box;
+
+    border: 1px solid $color_pale-slate;
+    border-radius: 8px;
+
+    background-color: $color_white;
+
+    box-shadow: 0 1px 3px rgba($color_space-indigo, 0.08);
+
+    &.disabled {
+      & > .np-icon-picker-container,
+      & > .np-shortcut-input-container {
+        opacity: 0.6;
+        pointer-events: none;
+      }
+    }
+
+    & .np-icon-picker-container {
+      @include flex($justify: center, $align: center);
+    }
+
+    & .np-shortcut-input-container {
+      @include flex-center-row;
+
+      width: 100%;
+
+      gap: 6px;
+    }
+
+    & .np-action-button-container {
+      @include flex-center-col;
+
+      gap: 15px;
+
+      & > .np-action-button-remove,
+      & > .np-action-button-save {
+        border: none;
+
+        background: transparent;
+
+        padding: 0;
+        margin: 0;
+
+        cursor: pointer;
+      }
+
+      & > .np-action-button-remove {
+        color: $color_hot-fuchsia;
+      }
+
+      & > .np-action-button-save {
+        color: $color_bright-indigo;
+      }
+    }
+  }
+}

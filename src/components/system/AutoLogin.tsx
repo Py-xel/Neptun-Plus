@@ -39,19 +39,46 @@ export default function AutoLogin({ disabled = false }: AutoLoginProps) {
   const [cards, setCards] = useState<AutoLoginCard[]>([]);
   const [editableCardIds, setEditableCardIds] = useState<Set<number>>(new Set());
   const nextCardId = useRef(1);
+  const storedCardIds = useRef<Set<number> | null>(null);
 
   useEffect(() => {
     if (loading || !isStoredAutoLoginCards(credentials)) {
       return;
     }
 
-    setCards(
-      credentials.map((credential) => ({
-        ...credential,
-        uni: Object.entries(universities).find(([, university]) => university.id === credential.universityId)?.[0] ?? getFirstSupportedUni(),
-      })),
-    );
-    setEditableCardIds(new Set());
+    const savedCards = credentials.map((credential) => ({
+      ...credential,
+      uni: Object.entries(universities).find(([, university]) => university.id === credential.universityId)?.[0] ?? getFirstSupportedUni(),
+    }));
+    const nextStoredCardIds = new Set(credentials.map((card) => card.id));
+
+    setCards((previousCards) => {
+      if (!storedCardIds.current) {
+        return savedCards;
+      }
+
+      const savedCardsById = new Map(savedCards.map((card) => [card.id, card]));
+      const mergedCards = previousCards.flatMap((card) => {
+        if (savedCardsById.has(card.id)) {
+          return [savedCardsById.get(card.id)!];
+        }
+
+        return storedCardIds.current?.has(card.id) ? [] : [card];
+      });
+
+      const currentCardIds = new Set(previousCards.map((card) => card.id));
+      return [...mergedCards, ...savedCards.filter((card) => !currentCardIds.has(card.id))];
+    });
+    setEditableCardIds((previousIds) => {
+      if (!storedCardIds.current) {
+        return new Set();
+      }
+
+      const nextIds = new Set(previousIds);
+      credentials.forEach((card) => nextIds.delete(card.id));
+      return nextIds;
+    });
+    storedCardIds.current = nextStoredCardIds;
     nextCardId.current = Math.max(0, ...credentials.map((card) => card.id)) + 1;
   }, [credentials, loading]);
 
