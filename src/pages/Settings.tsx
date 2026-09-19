@@ -1,4 +1,4 @@
-import Toggle_Button from '@/components/general/Toggle_Button';
+import ToggleButton from '@/components/general/ToggleButton';
 import ResetSettings from '@/components/settings/ResetSettings';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { useSettings } from '@/utils/useSettings';
@@ -12,7 +12,7 @@ export default function Settings() {
   return (
     <div>
       <h1 className="np-title">{t('Popup.Settings.extensionSettings')}</h1>
-      <Toggle_Button label={t('Popup.Settings.hideInfo')} enabled={settingsInfo} setEnabled={setSettingsInfo} showInfo={false} />
+      <ToggleButton label={t('Popup.Settings.hideInfo')} enabled={settingsInfo} setEnabled={setSettingsInfo} showInfo={false} />
       <ResetSettings />
     </div>
   );

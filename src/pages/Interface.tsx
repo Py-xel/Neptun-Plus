@@ -1,4 +1,4 @@
-import Toggle_Button from '@/components/general/Toggle_Button';
+import ToggleButton from '@/components/general/ToggleButton';
 import Shortcut from '@/components/interface/Shortcuts';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { useSettings } from '@/utils/useSettings';
@@ -15,12 +15,12 @@ export default function Interface() {
   return (
     <div>
       <h1 className="np-title">{t('Popup.Interface.general')}</h1>
-      <Toggle_Button label={t('Popup.Interface.unfilledSurvey')} enabled={disableHeaders} setEnabled={setDisableHeaders} />
-      <Toggle_Button label={t('Popup.Interface.itemList')} enabled={itemList} setEnabled={setItemList} />
+      <ToggleButton label={t('Popup.Interface.unfilledSurvey')} enabled={disableHeaders} setEnabled={setDisableHeaders} />
+      <ToggleButton label={t('Popup.Interface.itemList')} enabled={itemList} setEnabled={setItemList} />
       <h1 className="np-title">{t('Popup.Interface.fileDownload')}</h1>
-      <Toggle_Button label={t('Popup.Interface.showDownload')} enabled={showDownload} setEnabled={setShowDownload} />
+      <ToggleButton label={t('Popup.Interface.showDownload')} enabled={showDownload} setEnabled={setShowDownload} />
       <h1 className="np-title">{t('Popup.Interface.shortcuts')}</h1>
-      <Toggle_Button label={t('Popup.Interface.customShortcuts')} enabled={customShortcut} setEnabled={setCustomShortcut} />
+      <ToggleButton label={t('Popup.Interface.customShortcuts')} enabled={customShortcut} setEnabled={setCustomShortcut} />
       <Shortcut disabled={!customShortcut} />
     </div>
   );

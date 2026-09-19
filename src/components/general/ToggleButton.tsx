@@ -8,7 +8,7 @@ type ButtonProps = {
   showInfo?: boolean;
 };
 
-export default function Toggle_Button({ enabled, setEnabled, label, showInfo = true }: ButtonProps) {
+export default function ToggleButton({ enabled, setEnabled, label, showInfo = true }: ButtonProps) {
   const [showPreview, setShowPreview] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 

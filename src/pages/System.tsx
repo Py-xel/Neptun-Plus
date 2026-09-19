@@ -1,4 +1,4 @@
-import Toggle_Button from '@/components/general/Toggle_Button';
+import ToggleButton from '@/components/general/ToggleButton';
 import AutoLogin from '@/components/system/AutoLogin';
 import Warning from '@/components/system/Warning';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
@@ -15,8 +15,8 @@ export default function System() {
   return (
     <div>
       <h1 className="np-title">{t('Popup.System.general')}</h1>
-      <Toggle_Button label={t('Popup.System.infsession')} enabled={infsession} setEnabled={setInfsession} showInfo={false} />
-      <Toggle_Button label={t('Popup.System.autologin')} enabled={autoLogin} setEnabled={setAutoLogin} showInfo={false} />
+      <ToggleButton label={t('Popup.System.infsession')} enabled={infsession} setEnabled={setInfsession} showInfo={false} />
+      <ToggleButton label={t('Popup.System.autologin')} enabled={autoLogin} setEnabled={setAutoLogin} showInfo={false} />
       <AutoLogin disabled={!autoLogin} />
       {autoLogin && !warningAccepted && <Warning onAccept={() => setWarningAccepted(true)} />}
     </div>
