@@ -55,7 +55,7 @@ $accept-padding: 8px 12px;
   }
 
   & .np-warning-description {
-    font-family: $fontFamily_tertiary;
+    font-family: $fontFamily_secondary;
     font-size: $fontSize_md;
     font-weight: 500;
 
@@ -75,7 +75,7 @@ $accept-padding: 8px 12px;
   }
 
   & .np-warning-accept {
-    font-family: $fontFamily_tertiary;
+    font-family: $fontFamily_secondary;
     font-size: $fontSize_sm;
     font-weight: 600;
 

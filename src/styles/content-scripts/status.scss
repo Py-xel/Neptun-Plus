@@ -60,7 +60,7 @@ neptun-login-form > .login-right > neptun-language-dropdown.neptun-language-drop
     }
 
     & .np-status-title {
-      font-family: $fontFamily_tertiary;
+      font-family: $fontFamily_secondary;
       font-size: $fontSize_md;
       font-weight: 600;
 
@@ -122,7 +122,7 @@ neptun-login-form > .login-right > neptun-language-dropdown.neptun-language-drop
       }
 
       & .np-status-text {
-        font-family: $fontFamily_tertiary;
+        font-family: $fontFamily_secondary;
         font-size: 0.6rem;
         font-weight: 500;
 
