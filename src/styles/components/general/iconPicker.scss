@@ -1,7 +1,9 @@
 @use '../../global' as *;
 
-$picker_size: 1.6rem;
-$preview_size: 10.75rem;
+$picker_size: 2.2rem;
+$preview_size: 12rem;
+$icon_size: 1rem;
+$icon_color: $color_royal-azure;
 
 .np-icon-picker-container {
   @include flex($justify: center, $align: center);
@@ -23,12 +25,16 @@ $preview_size: 10.75rem;
 
     @include transition-full-ease($property: all, $time: 0.2s);
 
-    &:hover {
-      border-color: $color_twilight-indigo;
+    &:active,
+    &.open {
+      border-color: $color_cornflower-blue;
+      box-shadow: 0 0 0 1px $color_cornflower-blue;
+    }
 
-      background-color: $color_ghost-blue;
+    & > i {
+      font-size: $icon_size;
 
-      box-shadow: 0 1px 3px rgba(35, 45, 75, 0.08);
+      color: $icon_color;
     }
   }
 
@@ -39,28 +45,28 @@ $preview_size: 10.75rem;
 
     position: absolute;
 
-    left: 118px;
-    bottom: 35px;
+    left: 138px;
+    bottom: 32px;
 
     width: $preview_size;
     max-height: $preview_size;
 
-    gap: 5px;
-
     padding: 8px;
+
+    gap: 2px;
 
     overflow-y: auto;
 
-    border: solid 1px $color_twilight-indigo;
+    border: solid 1px $color_pale-slate;
     border-radius: 6px;
 
-    background-color: $color_white;
+    background-color: $color_ghost-blue;
 
     box-shadow:
-      0 2px 4px rgba(0, 0, 0, 0.1),
-      0 6px 12px rgba(0, 0, 0, 0.1),
-      0 12px 24px rgba(0, 0, 0, 0.1),
-      0 24px 48px rgba(0, 0, 0, 0.1);
+      0 2px 4px rgba(0, 0, 0, 0.05),
+      0 6px 12px rgba(0, 0, 0, 0.05),
+      0 12px 24px rgba(0, 0, 0, 0.05),
+      0 24px 48px rgba(0, 0, 0, 0.05);
 
     z-index: $layer_global-overlay;
 
@@ -87,9 +93,15 @@ $preview_size: 10.75rem;
 
       &:hover,
       &.selected {
-        border-color: $color_twilight-indigo;
+        border: 2px solid $color_cornflower-blue;
 
-        background-color: $color_ghost-blue;
+        background-color: rgba($color_cornflower-blue, 0.1);
+      }
+
+      & > i {
+        font-size: $icon_size;
+
+        color: $icon_color;
       }
     }
   }

@@ -1,5 +1,5 @@
 import icons from '@/data/shortcut_icons.json';
-import '@/styles/components/interface/iconPicker.css';
+import '@/styles/components/general/iconPicker.css';
 import { useEffect, useRef, useState } from 'react';
 
 type IconPickerProps = {
@@ -39,13 +39,13 @@ export default function IconPicker({ initialIcon = 'file-lines', onSelect }: Ico
 
   return (
     <div className="np-icon-picker-container" ref={containerRef}>
-      <button type="button" className="np-icon-picker-button" onClick={() => setIsOpen((prev) => !prev)}>
+      <button type="button" className={`np-icon-picker-button${isOpen ? ' open' : ''}`} onClick={() => setIsOpen((prev) => !prev)}>
         <i className={`fa-regular fa-${selectedIcon}`} />
       </button>
       {isOpen && (
         <div className="np-icon-picker-window">
           {iconList.map((icon) => (
-            <button key={icon} type="button" className={`np-icon-option ${selectedIcon === icon ? 'selected' : ''}`} onClick={() => handleSelect(icon)} title={icon}>
+            <button key={icon} type="button" className={`np-icon-option ${selectedIcon === icon ? 'selected' : ''}`} onClick={() => handleSelect(icon)}>
               <i className={`fa-regular fa-${icon}`} />
             </button>
           ))}
