@@ -1,5 +1,5 @@
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
-import { readSettings, subscribeToSetting } from '@/utils/settingsStore';
+import { readSetting, subscribeToSetting } from '@/utils/settingsStore';
 import { observeMutations } from '@/utils/utility';
 
 const HEADER_SELECTOR = 'neptun-notification-bar.notification-bar';
@@ -10,9 +10,8 @@ function applyHideHeader(enabled: boolean): void {
   });
 }
 
-async function initialize(): Promise<void> {
-  const settings = await readSettings();
-  let enabled = Boolean(settings[CATEGORIES.INTERFACE]?.[KEYS.INTERFACE.DISABLE_HEADERS]);
+export async function initializeDisableHeaders(): Promise<void> {
+  let enabled = Boolean(await readSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.DISABLE_HEADERS, false));
 
   applyHideHeader(enabled);
 
@@ -22,10 +21,4 @@ async function initialize(): Promise<void> {
     enabled = newValue ?? false;
     applyHideHeader(enabled);
   });
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initialize, { once: true });
-} else {
-  initialize();
 }

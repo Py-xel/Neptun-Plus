@@ -428,15 +428,14 @@ async function updateDownloader(settingValue?: boolean) {
 }
 
 let downloader: DownloaderController | null = null;
-subscribeToSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_DOWNLOAD, (newValue) => {
-  void updateDownloader(newValue);
-});
 
-async function initializeDownloader() {
+export async function initializeFileDownloader() {
   await updateDownloader();
 
   observeMutations(() => void updateDownloader());
   addNavigationListeners(() => void updateDownloader());
-}
 
-initializeDownloader();
+  subscribeToSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_DOWNLOAD, (newValue) => {
+    void updateDownloader(newValue);
+  });
+}

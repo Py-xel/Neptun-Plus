@@ -40,7 +40,7 @@ function createStatus(): void {
   return;
 }
 
-function initializeStatus(): void {
+export async function initializeStatus(): Promise<void> {
   if (!isSupportedURL(window.location.href)) {
     // TODO Add error handling
     return;
@@ -50,5 +50,3 @@ function initializeStatus(): void {
   observeMutations(createStatus);
   addNavigationListeners(createStatus);
 }
-
-initializeStatus();

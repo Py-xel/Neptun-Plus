@@ -111,17 +111,16 @@ async function updateAutoLogin(settingValue?: boolean, credentials?: AutoLoginCr
   }
 }
 
-async function initializeAutoLogin() {
+export async function initializeAutoLogin() {
   await updateAutoLogin();
 
   observeMutations(() => void updateAutoLogin());
   addNavigationListeners(() => void updateAutoLogin());
-}
 
-initializeAutoLogin();
-subscribeToSetting(CATEGORIES.SYSTEM, KEYS.SYSTEM.AUTO_LOGIN, (newValue) => {
-  void updateAutoLogin(newValue);
-});
-subscribeToSetting(CATEGORIES.SYSTEM, KEYS.SYSTEM.CREDENTIALS, (newValue) => {
-  void updateAutoLogin(undefined, newValue);
-});
+  subscribeToSetting(CATEGORIES.SYSTEM, KEYS.SYSTEM.AUTO_LOGIN, (newValue) => {
+    void updateAutoLogin(newValue);
+  });
+  subscribeToSetting(CATEGORIES.SYSTEM, KEYS.SYSTEM.CREDENTIALS, (newValue) => {
+    void updateAutoLogin(undefined, newValue);
+  });
+}

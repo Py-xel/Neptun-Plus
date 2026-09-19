@@ -125,3 +125,40 @@ export function observeMutations(callback: MutationCallback, options: MutationOb
 
   return observer;
 }
+
+/* Wait for DOM to be ready */
+export function waitForDOM(): Promise<void> {
+  if (document.readyState !== 'loading') {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve) => {
+    document.addEventListener('DOMContentLoaded', () => resolve(), { once: true });
+  });
+}
+
+/* Wait for Neptun to initialize => #loading-placeholder-index's display is set to none */
+export function waitForLoading(selector: string, display: string): Promise<void> {
+  const isReady = (): boolean => {
+    const element = document.querySelector<HTMLElement>(selector);
+    return element !== null && getComputedStyle(element).display === display;
+  };
+
+  if (isReady()) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve) => {
+    const observer = observeMutations(
+      () => {
+        if (!isReady()) {
+          return;
+        }
+
+        observer.disconnect();
+        resolve();
+      },
+      { attributes: true, attributeFilter: ['class', 'style'] },
+    );
+  });
+}

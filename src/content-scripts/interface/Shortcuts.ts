@@ -82,17 +82,16 @@ async function updateShortcuts(settingValue?: boolean, shortcutItems?: ShortcutI
   }
 }
 
-async function initializeShortcuts() {
+export async function initializeShortcuts() {
   await updateShortcuts();
 
   observeMutations(() => void updateShortcuts());
   addNavigationListeners(() => void updateShortcuts());
-}
 
-initializeShortcuts();
-subscribeToSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.USE_SHORTCUTS, (newValue) => {
-  void updateShortcuts(newValue);
-});
-subscribeToSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHORTCUTS, (newValue) => {
-  void updateShortcuts(undefined, newValue);
-});
+  subscribeToSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.USE_SHORTCUTS, (newValue) => {
+    void updateShortcuts(newValue);
+  });
+  subscribeToSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHORTCUTS, (newValue) => {
+    void updateShortcuts(undefined, newValue);
+  });
+}

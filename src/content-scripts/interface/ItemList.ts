@@ -25,31 +25,19 @@ function applyItemListSetting(enabled: boolean): void {
   });
 }
 
-function initializeItemList(): () => void {
-  const update = async (): Promise<void> => {
-    const enabled = await readSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_FULL_ITEMLIST, false);
+export async function initializeItemList(): Promise<void> {
+  let enabled = Boolean(await readSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_FULL_ITEMLIST, false));
 
-    applyItemListSetting(Boolean(enabled));
+  const updateItemListSetting = (): void => {
+    applyItemListSetting(enabled);
   };
 
-  const mutationObserver = observeMutations(() => {
-    void update();
+  updateItemListSetting();
+
+  observeMutations(updateItemListSetting);
+
+  subscribeToSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_FULL_ITEMLIST, (newValue) => {
+    enabled = Boolean(newValue);
+    updateItemListSetting();
   });
-
-  const unsubscribe = subscribeToSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.SHOW_FULL_ITEMLIST, (newValue) => {
-    applyItemListSetting(Boolean(newValue));
-  });
-
-  void update();
-
-  return () => {
-    mutationObserver.disconnect();
-    unsubscribe();
-  };
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeItemList, { once: true });
-} else {
-  initializeItemList();
 }

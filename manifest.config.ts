@@ -33,15 +33,7 @@ export default defineManifest({
     {
       matches: allURLs,
       world: 'ISOLATED',
-      js: [
-        'src/content-scripts/Global.js',
-        'src/content-scripts/Status.ts',
-        'src/content-scripts/interface/DisableHeaders.ts',
-        'src/content-scripts/interface/ItemList.ts',
-        'src/content-scripts/interface/FileDownloader.ts',
-        'src/content-scripts/interface/Shortcuts.ts',
-        'src/content-scripts/system/AutoLogin.ts',
-      ],
+      js: ['src/content-scripts/Global.js', 'src/content-scripts/Bootstrap.ts'],
       css: ['src/styles/content-scripts/status.css', 'src/styles/content-scripts/fileDownloader.css', 'src/styles/content-scripts/shortcuts.css', 'src/styles/content-scripts/autoLogin.css'],
       run_at: 'document_start',
     },
