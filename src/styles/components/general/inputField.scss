@@ -1,6 +1,6 @@
 @use '../../global' as *;
 
-$input-width: fit-content;
+$input-width: 100%;
 $input-height: 30px;
 $input-padding: 0px 7px;
 $input-placeholder-size: 0.8rem;
@@ -11,6 +11,8 @@ $input-placeholder-size: 0.8rem;
   width: $input-width;
   height: $input-height;
 
+  position: relative;
+
   padding: $input-padding;
 
   gap: 5px;
@@ -20,24 +22,58 @@ $input-placeholder-size: 0.8rem;
 
   background-color: $color_ghost-white;
 
-  & > i {
-    cursor: none;
-    pointer-events: none;
-  }
-
   &:active,
   &:focus-within {
     border-color: $color_cornflower-blue;
     box-shadow: 0 0 0 1px $color_cornflower-blue;
   }
 
+  & > i {
+    color: $color_twilight-indigo;
+
+    cursor: none;
+    pointer-events: none;
+  }
+
+  & .np-input-field-clear {
+    position: absolute;
+
+    right: 7px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    @include transition(opacity 80ms cubic-bezier(0.37, 0.7, 0.54, 0.91));
+
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+
+    color: $color_dusk-blue;
+
+    cursor: pointer;
+
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
   .np-input-field {
+    font-family: $fontFamily_primary;
+    font-size: $fontSize_md;
+    font-weight: 600;
+
     border: none;
     border-radius: 6px;
 
     width: 100%;
 
-    color: $color_carbon-black;
+    padding-right: 1.5rem;
+
+    color: $color_twilight-indigo;
     background-color: transparent;
 
     &:focus {
@@ -45,7 +81,9 @@ $input-placeholder-size: 0.8rem;
       box-shadow: none;
     }
     &::placeholder {
-      font-size: $input-placeholder-size;
+      font-family: $fontFamily_primary;
+      font-size: $fontSize_md;
+      font-weight: 500;
     }
   }
 }
