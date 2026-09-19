@@ -1,4 +1,5 @@
 import InputField from '@/components/general/InputField';
+import '@/styles/components/info/searchBar.css';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -18,7 +19,7 @@ export default function Searchbar({ onSearch }: SearchProps) {
   };
 
   return (
-    <div>
+    <div className="np-search-container">
       <InputField type="text" icon="fa-solid fa-magnifying-glass" placeholder={t('Popup.Info.search')} value={value} onChange={handleChange} />
     </div>
   );
