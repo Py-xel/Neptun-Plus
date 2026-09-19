@@ -1,9 +1,9 @@
 import AddButton from '@/components/general/AddButton';
 import Card from '@/components/general/Card';
 import DisableWrapper from '@/components/general/DisableWrapper';
+import Icon_Picker from '@/components/general/IconPicker';
 import InputField from '@/components/general/InputField';
 import { useToast } from '@/components/general/ToastProvider';
-import Icon_Picker from '@/components/interface/IconPicker';
 import '@/styles/components/interface/shortcuts.css';
 import { CATEGORIES, KEYS, type ShortcutItem } from '@/utils/dataSchema';
 import { useSettings } from '@/utils/useSettings';
