@@ -1,4 +1,5 @@
 import AddButton from '@/components/general/AddButton';
+import Card from '@/components/general/Card';
 import DisableWrapper from '@/components/general/DisableWrapper';
 import InputField from '@/components/general/InputField';
 import { useToast } from '@/components/general/ToastProvider';
@@ -153,8 +154,8 @@ export default function AutoLogin({ disabled = false }: AutoLoginProps) {
         const isEditable = editableCardIds.has(card.id);
 
         return (
-          <div key={card.id} className="np-credentials-card">
-            <div className={`np-credentials-leftSide${isEditable ? '' : ' disabled'}`}>
+          <Card key={card.id} isEditable={isEditable} onRemove={() => void removeCard(card.id)} onSave={() => (isEditable ? void saveCard(card) : toggleCardEditing(card.id))}>
+            <div className="np-credentials-leftSide">
               <div className="np-credentials-input-container">
                 <InputField
                   icon={'fa-regular fa-user'}
@@ -173,15 +174,7 @@ export default function AutoLogin({ disabled = false }: AutoLoginProps) {
               </div>
               <UniList_Dropdown lang={language} value={card.uni} onChange={(value) => updateCard(card.id, { uni: value })} />
             </div>
-            <div className="np-action-button-container">
-              <button type="button" className="np-action-button-remove" onClick={() => void removeCard(card.id)}>
-                <i className="fa-solid fa-remove" />
-              </button>
-              <button type="button" className="np-action-button-save" onClick={() => (isEditable ? void saveCard(card) : toggleCardEditing(card.id))}>
-                <i className={isEditable ? 'fa-solid fa-floppy-disk' : 'fa-solid fa-pen'} />
-              </button>
-            </div>
-          </div>
+          </Card>
         );
       })}
       <AddButton onClick={addCard} />

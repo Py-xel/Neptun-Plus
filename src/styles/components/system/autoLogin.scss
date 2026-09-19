@@ -1,7 +1,5 @@
 @use '../../global' as *;
 
-$card-height: 95px;
-
 .np-credentials-container {
   @include flex($direction: column);
 
@@ -16,63 +14,17 @@ $card-height: 95px;
 
   background-color: $color_ghost-white;
 
-  & > .np-credentials-card {
-    @include flex-center-row;
+  & .np-credentials-leftSide {
+    @include flex-center-col;
 
-    height: $card-height;
+    flex: 1 1 auto;
+    min-width: 0;
 
-    padding: 10px;
+    & .np-credentials-input-container {
+      @include flex-center-row($flex: 1);
 
-    gap: 10px;
-
-    box-sizing: border-box;
-
-    border: 1px solid $color_pale-slate;
-    border-radius: 8px;
-
-    background-color: $color_white;
-
-    box-shadow: 0 1px 3px rgba($color_space-indigo, 0.08);
-
-    & > .np-credentials-leftSide {
-      @include flex-center-col;
-
-      &.disabled {
-        opacity: 0.6;
-        pointer-events: none;
-      }
-
-      & > .np-credentials-input-container {
-        @include flex-center-row($flex: 1);
-
-        gap: 6px;
-      }
-    }
-
-    & > .np-action-button-container {
-      @include flex-center-col;
-
-      gap: 15px;
-
-      & > .np-action-button-remove,
-      & > .np-action-button-save {
-        border: none;
-
-        background: transparent;
-
-        padding: 0;
-        margin: 0;
-
-        cursor: pointer;
-      }
-
-      & > .np-action-button-remove {
-        color: $color_hot-fuchsia;
-      }
-
-      & > .np-action-button-save {
-        color: $color_bright-indigo;
-      }
+      width: 100%;
+      gap: 6px;
     }
   }
 }
