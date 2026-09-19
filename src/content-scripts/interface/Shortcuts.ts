@@ -1,7 +1,7 @@
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import type { ShortcutItem } from '@/utils/dataSchema';
 import { readSetting, subscribeToSetting } from '@/utils/settingsStore';
-import { addNavigationListeners, createElement, observeMutations } from '@/utils/utility';
+import { addNavigationListeners, createElement, isLoginPage, observeMutations } from '@/utils/utility';
 
 type ShortcutsController = {
   update: (shortcutItems: ShortcutItem[]) => void;
@@ -69,7 +69,7 @@ let shortcuts: ShortcutsController | null = null;
 async function updateShortcuts(settingValue?: boolean, shortcutItems?: ShortcutItem[]) {
   const enabled = settingValue ?? (await readSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.USE_SHORTCUTS, false));
 
-  if (!enabled) {
+  if (!enabled || isLoginPage(window.location.href)) {
     shortcuts?.destroy();
     shortcuts = null;
     return;

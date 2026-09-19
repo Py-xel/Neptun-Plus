@@ -40,8 +40,9 @@ export default defineManifest({
         'src/content-scripts/interface/ItemList.ts',
         'src/content-scripts/interface/FileDownloader.ts',
         'src/content-scripts/interface/Shortcuts.ts',
+        'src/content-scripts/system/AutoLogin.ts',
       ],
-      css: ['src/styles/content-scripts/status.css', 'src/styles/content-scripts/fileDownloader.css', 'src/styles/content-scripts/shortcuts.css'],
+      css: ['src/styles/content-scripts/status.css', 'src/styles/content-scripts/fileDownloader.css', 'src/styles/content-scripts/shortcuts.css', 'src/styles/content-scripts/autoLogin.css'],
       run_at: 'document_start',
     },
     {
