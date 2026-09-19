@@ -7,6 +7,9 @@ import manifest from './manifest.config.ts';
 import { name, version } from './package.json';
 
 export default defineConfig({
+  build: {
+    modulePreload: false,
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
