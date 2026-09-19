@@ -16,7 +16,7 @@ $card-slide-distance: 30px;
   height: $card-height;
   width: $card-width;
 
-  &:hover .np-card-top {
+  &.expanded .np-card-top {
     width: calc($card-width - $card-slide-distance);
 
     border-top-right-radius: 8px;
