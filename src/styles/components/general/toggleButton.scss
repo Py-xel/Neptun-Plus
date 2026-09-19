@@ -18,8 +18,14 @@ $preview-height: 97px;
 
     & > i {
       color: $color_twilight-indigo;
+
       font-size: $icon-size;
-      cursor: help;
+
+      cursor: pointer;
+
+      &:hover {
+        color: $color_royal-azure;
+      }
     }
 
     .np-switch {
@@ -89,7 +95,7 @@ $preview-height: 97px;
 
       right: 30px;
 
-      border: 1px solid $color_ocean-twilight;
+      border: 1px solid $color_dusk-blue;
       border-radius: 6px;
 
       opacity: 0;

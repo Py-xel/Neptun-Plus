@@ -1,4 +1,6 @@
 import '@/styles/components/general/toggleButton.css';
+import { CATEGORIES, KEYS } from '@/utils/dataSchema';
+import { useSettings } from '@/utils/useSettings';
 import { useEffect, useState } from 'react';
 
 type ButtonProps = {
@@ -11,6 +13,8 @@ type ButtonProps = {
 export default function ToggleButton({ enabled, setEnabled, label, showInfo = true }: ButtonProps) {
   const [showPreview, setShowPreview] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const { value: hideHints } = useSettings(CATEGORIES.EXTENSION_SETTINGS, KEYS.EXTENSION_SETTINGS.HIDE_HINTS, false);
+  const shouldShowInfo = showInfo && hideHints !== true;
 
   /* Reset isAnimating after 300ms */
   useEffect(() => {
@@ -41,8 +45,8 @@ export default function ToggleButton({ enabled, setEnabled, label, showInfo = tr
           <input type="checkbox" checked={enabled} onChange={handleToggle} />
           <span className={`np-slider${isAnimating ? ' np-slider-animated' : ''}`} />
         </label>
-        {showInfo && <i className="fa-regular fa-circle-question" onMouseEnter={() => setShowPreview(true)} onMouseLeave={() => setShowPreview(false)} />}
-        {showPreview && <div className="np-preview-window" />}
+        {shouldShowInfo && <i className="fa-solid fa-info" onMouseEnter={() => setShowPreview(true)} onMouseLeave={() => setShowPreview(false)} />}
+        {shouldShowInfo && showPreview && <div className="np-preview-window" />}
       </div>
     </div>
   );
