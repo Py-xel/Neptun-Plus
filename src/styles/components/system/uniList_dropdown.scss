@@ -20,9 +20,9 @@ $dropdown-padding-left: 16px;
 
     font-family: $fontFamily_secondary;
     font-size: $fontSize_sm;
-    font-weight: 400;
+    font-weight: 500;
 
-    color: $color_carbon-black;
+    color: $color_twilight-indigo;
 
     border-radius: 8px;
     border: 1px solid $color_pale-slate;
@@ -37,6 +37,12 @@ $dropdown-padding-left: 16px;
 
     cursor: pointer;
 
+    & > option {
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+    }
+
     &:open {
       border-color: $color_cornflower-blue;
       box-shadow: 0 0 0 1px $color_cornflower-blue;
@@ -47,9 +53,15 @@ $dropdown-padding-left: 16px;
     @include position-absolute($top: 50%, $right: 10px);
     transform: translateY(-50%);
 
+    transition: transform 100ms cubic-bezier(0.37, 0.7, 0.54, 0.91);
+
     color: $color_dusk-blue;
     font-size: $fontSize_sm;
 
     pointer-events: none;
+  }
+
+  &:has(> .np-uniList-dropdown:open) .np-uniList-dropdown-chevron {
+    transform: translateY(-50%) rotate(180deg);
   }
 }
