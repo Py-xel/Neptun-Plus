@@ -51,9 +51,16 @@ function setInputValue(selector: string, value: string): void {
   input.dispatchEvent(new Event('change', { bubbles: true }));
 }
 
+function clickLogin(): void {
+  const loginButton = document.getElementById('login-button');
+
+  loginButton?.click();
+}
+
 function fillLoginForm(credential: AutoLoginCredential): void {
   setInputValue('#userName', credential.loginName);
   setInputValue('#password-form-password', credential.password);
+  clickLogin();
 }
 
 function createCredentialButton(credential: AutoLoginCredential): HTMLButtonElement {
