@@ -1,4 +1,5 @@
 import AddButton from '@/components/general/AddButton';
+import Card from '@/components/general/Card';
 import DisableWrapper from '@/components/general/DisableWrapper';
 import InputField from '@/components/general/InputField';
 import { useToast } from '@/components/general/ToastProvider';
@@ -143,7 +144,7 @@ export default function Shortcut({ disabled = false }: ShortcutProps) {
         const isEditable = editableCardIds.has(card.id);
 
         return (
-          <div key={card.id} className={`np-shortcut-card${removingCardIds.includes(card.id) ? ' removing' : ''}${isEditable ? '' : ' disabled'}`}>
+          <Card isEditable={isEditable} onRemove={() => void removeCard(card.id)} onSave={() => (isEditable ? void saveCard(card.id) : toggleCardEditing(card.id))}>
             <Icon_Picker initialIcon={card.icon} onSelect={(icon) => updateCard(card.id, { icon })} />
             <div className="np-shortcut-input-container">
               <InputField
@@ -161,15 +162,7 @@ export default function Shortcut({ disabled = false }: ShortcutProps) {
                 onChange={(event) => updateCard(card.id, { link: event.target.value })}
               />
             </div>
-            <div className="np-action-button-container">
-              <button type="button" className="np-action-button-remove" onClick={() => void removeCard(card.id)}>
-                <i className="fa-solid fa-remove" />
-              </button>
-              <button type="button" className="np-action-button-save" onClick={() => (isEditable ? void saveCard(card.id) : toggleCardEditing(card.id))}>
-                <i className={isEditable ? 'fa-solid fa-floppy-disk' : 'fa-solid fa-pen'} />
-              </button>
-            </div>
-          </div>
+          </Card>
         );
       })}
       <AddButton onClick={addCard} />
