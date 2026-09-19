@@ -1,0 +1,134 @@
+@use '../../global' as *;
+
+$card-height: 95px;
+$card-width: 395px;
+$card-border-radius: 10px;
+$card-slide-distance: 30px;
+
+.np-card-container {
+  margin-top: 20px;
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+
+  height: $card-height;
+  width: $card-width;
+
+  &:hover .np-card-top {
+    width: calc($card-width - $card-slide-distance);
+
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  & .np-card-top,
+  & .np-card-bottom {
+    grid-column: 1;
+    grid-row: 1;
+
+    border-radius: $card-border-radius;
+
+    box-sizing: border-box;
+
+    justify-self: flex-start;
+  }
+
+  & .np-card-top {
+    @include flex-center-row;
+
+    height: $card-height;
+    width: $card-width;
+
+    padding: 10px;
+
+    border: 1px solid $color_pale-slate;
+
+    background-color: $color_white;
+
+    z-index: $layer_foreground;
+
+    @include transition(all 160ms cubic-bezier(0.37, 0.7, 0.54, 0.91));
+  }
+
+  & .np-card-bottom {
+    height: calc($card-height - 2px);
+    width: calc($card-width - 2px);
+
+    z-index: $layer_default;
+
+    & .np-card-action-container {
+      @include flex($justify: space-between, $align: flex-end, $direction: column);
+
+      height: inherit;
+      width: inherit;
+
+      z-index: inherit;
+
+      & .np-card-action-remove-container,
+      & .np-card-action-save-container {
+        @include flex($justify: flex-end, $align: center);
+
+        width: 100%;
+        height: 50%;
+
+        border: none;
+        padding: 0;
+
+        z-index: inherit;
+
+        border-radius: $card-border-radius;
+
+        cursor: pointer;
+
+        @include transition(all 160ms cubic-bezier(0.37, 0.7, 0.54, 0.91));
+      }
+
+      & .np-card-action-remove-container {
+        background-color: $color_action-remove;
+
+        border-bottom-right-radius: 0;
+
+        &:hover {
+          background-color: $color_action-remove-hover;
+        }
+
+        & .np-card-action-remove {
+          color: $color_ghost-red;
+        }
+      }
+
+      & .np-card-action-save-container {
+        background-color: $color_action-save;
+
+        border-top-right-radius: 0;
+
+        &:hover {
+          background-color: $color_action-save-hover;
+        }
+
+        & .np-card-action-save {
+          color: $color_ghost-blue;
+        }
+      }
+
+      & .np-card-action-remove,
+      & .np-card-action-save {
+        border: none;
+
+        background: transparent;
+
+        padding: 0;
+
+        margin-right: 6px;
+
+        cursor: pointer;
+
+        color: $color_white;
+      }
+    }
+  }
+}
