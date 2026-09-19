@@ -7,15 +7,16 @@
 
   padding: 6px;
 
-  box-sizing: border-box;
-
   border: 1px solid $color_twilight-indigo;
   border-radius: 8px;
 
   background-color: $color_ghost-white;
 
   & .np-shortcut-input-container {
-    @include flex-center-row;
+    @include flex($justify: center, $align: center, $direction: column);
+
+    padding-left: 10px;
+    padding-right: 10px;
 
     width: 100%;
 
