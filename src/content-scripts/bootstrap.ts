@@ -5,6 +5,7 @@ import { initializeHideNotifications } from '@/content-scripts/interface/HideNot
 import { initializeItemList } from '@/content-scripts/interface/ItemList';
 import { initializeShortcuts } from '@/content-scripts/interface/Shortcuts';
 import { initializeAutoLogin } from '@/content-scripts/system/AutoLogin';
+import { initializeInfSession } from '@/content-scripts/system/InfSession';
 import { waitForDOM, waitForLoading } from '@/utils/utility';
 
 async function bootstrap(): Promise<void> {
@@ -18,6 +19,7 @@ async function bootstrap(): Promise<void> {
   await initializeFileDownloader();
   await initializeShortcuts();
   await initializeAutoLogin();
+  await initializeInfSession();
 }
 
 void bootstrap();

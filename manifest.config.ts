@@ -39,6 +39,7 @@ export default defineManifest({
         'src/styles/content-scripts/interface/fileDownloader.css',
         'src/styles/content-scripts/interface/shortcuts.css',
         'src/styles/content-scripts/system/autoLogin.css',
+        'src/styles/content-scripts/system/infSession.css',
       ],
       run_at: 'document_start',
     },

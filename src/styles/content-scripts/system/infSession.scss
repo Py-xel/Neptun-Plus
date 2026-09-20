@@ -1,0 +1,58 @@
+@use '../../global' as *;
+
+$icon-size: 1.25rem;
+
+.np-inf-session-container {
+  @include flex($justify: center, $align: center);
+
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+
+  z-index: 1000;
+}
+
+.np-inf-session-icon-background {
+  @include flex($justify: center, $align: center);
+
+  position: relative;
+
+  width: $icon-size * 1.8;
+  aspect-ratio: 1;
+
+  background-color: $color_ghost-white;
+
+  border: 1px solid rgba($color_royal-azure, 0.4);
+
+  border-radius: 50%;
+
+  &::before {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    background-color: rgba($color_royal-azure, 0.4);
+
+    content: '';
+    animation: np-inf-session-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  & > i {
+    position: relative;
+
+    font-size: $icon-size;
+
+    color: rgba($color_royal-azure, 1);
+  }
+}
+
+@keyframes np-inf-session-ping {
+  75%,
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
