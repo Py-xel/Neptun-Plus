@@ -93,6 +93,8 @@ $cancel-size: 24px;
 
     font-size: $chevron-size;
 
+    color: $color_carbon-black;
+
     @include transition-full-ease($property: all, $time: 150ms);
 
     z-index: $layer_overlay;
