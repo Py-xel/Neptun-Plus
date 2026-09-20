@@ -132,7 +132,8 @@ $icon-slide-distance: 15px;
 
         margin-right: 6px;
 
-        cursor: pointer;
+        cursor: none;
+        pointer-events: none;
 
         color: $color_white;
 
@@ -144,12 +145,14 @@ $icon-slide-distance: 15px;
     }
   }
 
-  & .np-card-top:hover ~ .np-card-bottom,
-  & .np-card-bottom:hover {
+  &:hover .np-card-bottom {
     & .np-card-action-remove,
     & .np-card-action-save {
       opacity: 1;
       transform: translateX(0);
+
+      cursor: none;
+      pointer-events: none;
     }
   }
 }
