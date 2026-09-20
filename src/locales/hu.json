@@ -22,6 +22,7 @@
     "System": {
       "general": "Általános",
       "infsession": "Végtelen munkamenet",
+      "login": "Bejelentkezés",
       "autologin": "Bejelentkezési adatok automatikus kitöltése",
       "studentLogin": "Bejelentkezési adatok",
       "loginName": "Azonosító",

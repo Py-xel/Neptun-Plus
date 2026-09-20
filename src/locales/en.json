@@ -22,6 +22,7 @@
     "System": {
       "general": "General",
       "infsession": "Infinite session",
+      "login": "Login",
       "autologin": "Auto-fill login credentials",
       "studentLogin": "Login credentials",
       "loginName": "Login name",

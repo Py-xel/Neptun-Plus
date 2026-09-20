@@ -16,6 +16,7 @@ export default function System() {
     <div>
       <h1 className="np-title">{t('Popup.System.general')}</h1>
       <ToggleButton label={t('Popup.System.infsession')} enabled={infsession} setEnabled={setInfsession} showInfo={false} />
+      <h1 className="np-title">{t('Popup.System.login')}</h1>
       <ToggleButton label={t('Popup.System.autologin')} enabled={autoLogin} setEnabled={setAutoLogin} showInfo={false} />
       <AutoLogin disabled={!autoLogin} />
       {autoLogin && !warningAccepted && <Warning onAccept={() => setWarningAccepted(true)} />}
