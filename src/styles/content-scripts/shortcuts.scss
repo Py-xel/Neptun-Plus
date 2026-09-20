@@ -52,8 +52,10 @@ $font-size: 0.92rem;
 
     padding: 6px 7px;
 
+    box-sizing: border-box;
     width: $container-width;
     height: fit-content;
+    min-height: 55px;
 
     transform: translateX(calc(-100% + $collapsed-width));
     transition: transform $transition-duration cubic-bezier(0.37, 0.7, 0.54, 0.91);
@@ -79,8 +81,9 @@ $font-size: 0.92rem;
       color: $color_carbon-black;
       font-size: $chevron-size;
 
-      transform: translateY(-50%);
-      transition: opacity 120ms cubic-bezier(0.37, 0.7, 0.54, 0.91);
+      transition:
+        opacity 120ms cubic-bezier(0.37, 0.7, 0.54, 0.91),
+        transform 120ms cubic-bezier(0.37, 0.7, 0.54, 0.91);
 
       pointer-events: none;
     }
@@ -148,7 +151,7 @@ $font-size: 0.92rem;
     opacity: 1;
   }
 
-  &:hover .np-shortcuts-container .np-shortcuts-button,
+  &:hover .np-shortcuts-container .np-shortcuts-chevron,
   &:focus-within .np-shortcuts-container .np-shortcuts-chevron {
     opacity: 0;
   }
