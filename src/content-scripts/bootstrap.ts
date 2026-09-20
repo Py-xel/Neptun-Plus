@@ -1,6 +1,7 @@
 import { initializeStatus } from '@/content-scripts/Status';
 import { initializeDisableHeaders } from '@/content-scripts/interface/DisableHeaders';
 import { initializeFileDownloader } from '@/content-scripts/interface/FileDownloader';
+import { initializeHideNotifications } from '@/content-scripts/interface/HideNotifications';
 import { initializeItemList } from '@/content-scripts/interface/ItemList';
 import { initializeShortcuts } from '@/content-scripts/interface/Shortcuts';
 import { initializeAutoLogin } from '@/content-scripts/system/AutoLogin';
@@ -12,6 +13,7 @@ async function bootstrap(): Promise<void> {
 
   await initializeStatus();
   await initializeDisableHeaders();
+  await initializeHideNotifications();
   await initializeItemList();
   await initializeFileDownloader();
   await initializeShortcuts();

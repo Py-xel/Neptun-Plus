@@ -10,6 +10,7 @@
       "general": "General",
       "unfilledSurvey": "Hide banner notifications",
       "itemList": "Show all items in lists",
+      "hideNotifications": "Hide message notifications",
       "fileDownload": "File download",
       "showDownload": "Show file downloader",
       "shortcuts": "Shortcuts",

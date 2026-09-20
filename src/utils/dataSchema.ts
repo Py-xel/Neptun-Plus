@@ -10,6 +10,7 @@ export const KEYS = {
   INTERFACE: {
     DISABLE_HEADERS: 'disable-headers',
     SHOW_FULL_ITEMLIST: 'show-full-itemlist',
+    HIDE_NOTIFICATIONS: 'hide-notifications',
     SHOW_DOWNLOAD: 'show-download',
     USE_SHORTCUTS: 'use-shortcuts',
     SHORTCUTS: 'shortcuts',
@@ -57,6 +58,7 @@ export type ShortcutItem = {
 export type SettingValueByKey = {
   [KEYS.INTERFACE.DISABLE_HEADERS]: boolean;
   [KEYS.INTERFACE.SHOW_FULL_ITEMLIST]: boolean;
+  [KEYS.INTERFACE.HIDE_NOTIFICATIONS]: boolean;
   [KEYS.INTERFACE.SHOW_DOWNLOAD]: boolean;
   [KEYS.INTERFACE.USE_SHORTCUTS]: boolean;
   [KEYS.INTERFACE.SHORTCUTS]: ShortcutItem[];
