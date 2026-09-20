@@ -24,12 +24,10 @@ $font-size: 0.92rem;
     position: absolute;
 
     left: 0;
-    top: 50%;
+    top: -1rem;
+    bottom: -1rem;
 
     width: $hitbox-width;
-    height: 110%;
-
-    transform: translateY(-50%);
 
     /* border: 1px solid red; */
     border-top-right-radius: $container-border-radius;
