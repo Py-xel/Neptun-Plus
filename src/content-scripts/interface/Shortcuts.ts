@@ -23,7 +23,6 @@ function createShortcutButton(shortcut: ShortcutItem): HTMLButtonElement {
   const name = createElement('span', 'np-shortcut-name', shortcut.name);
 
   button.type = 'button';
-  button.title = shortcut.name;
   button.append(icon, name);
   button.addEventListener('click', () => {
     window.location.assign(shortcut.link);

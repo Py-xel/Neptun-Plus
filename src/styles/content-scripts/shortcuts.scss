@@ -78,6 +78,8 @@ $font-size: 0.92rem;
       top: 50%;
       right: 0.35rem;
 
+      transform: translate(0, -50%);
+
       color: $color_carbon-black;
       font-size: $chevron-size;
 
