@@ -1,5 +1,5 @@
 import i18n from '@/i18n';
-import actionBarStyles from '@/styles/content-scripts/actionBar.css?inline';
+import actionBarStyles from '@/styles/content-scripts/interface/actionBar.css?inline';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { readSetting, subscribeToSetting } from '@/utils/settingsStore';
 import { addNavigationListeners, createElement, formatBytes, getDownloadID, getIconPath, isLoginPage, isSupportedURL, observeMutations } from '@/utils/utility';

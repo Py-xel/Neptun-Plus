@@ -1,4 +1,4 @@
-@use '../global' as *;
+@use '../../global' as *;
 
 $circle-size: 40px;
 $dl-window-border-radius: 20px;
@@ -109,7 +109,7 @@ $cancel-size: 24px;
 
     font-family: $fontFamily_secondary;
     font-size: $fontSize_sm;
-    font-weight: 800;
+    font-weight: 700;
 
     color: $color_carbon-black;
 

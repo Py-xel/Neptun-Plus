@@ -34,7 +34,12 @@ export default defineManifest({
       matches: allURLs,
       world: 'ISOLATED',
       js: ['src/content-scripts/Global.js', 'src/content-scripts/Bootstrap.ts'],
-      css: ['src/styles/content-scripts/status.css', 'src/styles/content-scripts/fileDownloader.css', 'src/styles/content-scripts/shortcuts.css', 'src/styles/content-scripts/autoLogin.css'],
+      css: [
+        'src/styles/content-scripts/status.css',
+        'src/styles/content-scripts/interface/fileDownloader.css',
+        'src/styles/content-scripts/interface/shortcuts.css',
+        'src/styles/content-scripts/system/autoLogin.css',
+      ],
       run_at: 'document_start',
     },
     {
