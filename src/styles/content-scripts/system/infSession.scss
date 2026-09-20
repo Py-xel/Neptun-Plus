@@ -6,8 +6,8 @@ $icon-size: 1.25rem;
   @include flex($justify: center, $align: center);
 
   position: fixed;
-  right: 16px;
-  bottom: 16px;
+  right: 1rem;
+  bottom: 5rem;
 
   z-index: 1000;
 }
@@ -22,7 +22,7 @@ $icon-size: 1.25rem;
 
   background-color: $color_ghost-white;
 
-  border: 1px solid rgba($color_royal-azure, 0.4);
+  border: 1px solid rgba($color_digital-blue, 0.4);
 
   border-radius: 50%;
 
@@ -34,7 +34,7 @@ $icon-size: 1.25rem;
 
     border-radius: 50%;
 
-    background-color: rgba($color_royal-azure, 0.4);
+    background-color: rgba($color_digital-blue, 0.5);
 
     content: '';
     animation: np-inf-session-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
@@ -45,7 +45,7 @@ $icon-size: 1.25rem;
 
     font-size: $icon-size;
 
-    color: rgba($color_royal-azure, 1);
+    color: rgba($color_digital-blue, 1);
   }
 }
 
