@@ -62,6 +62,9 @@
       "noDownloadDesc": "Nincs megjeleníthető letöltés.",
       "complete": "Befejezve",
       "failed": "Sikertelen"
+    },
+    "AutoLogin": {
+      "savedCredentials": "Mentett bejelentkezési adatok"
     }
   },
   "Error": {

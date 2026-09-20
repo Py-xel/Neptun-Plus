@@ -1,41 +1,93 @@
 @use '../global' as *;
 
-.np-auto-login-container {
-  @include flex-center-row;
+$container_width: 100%;
+$container_height: fit-content;
+$card-width: 8rem;
+$card-height: 2rem;
 
-  position: fixed;
-  left: 0;
-  bottom: 30%;
+.np-auto-login-container {
+  @include flex-center-col;
+
+  position: relative;
+
+  width: $container_width;
+  height: $container_height;
+
+  margin-bottom: 25px;
 
   gap: 8px;
-  padding: 8px;
 
-  background-color: $color_white;
+  padding: 12px 8px;
 
-  border: 1px solid color-mix(in srgb, $color_twilight-indigo 20%, transparent);
-  border-radius: 0 8px 8px 0;
+  background-color: $color_ghost-white;
+
+  border: 1px solid color-mix(in srgb, $color_twilight-indigo 35%, transparent);
+  border-radius: 8px;
 
   box-shadow:
     0 4px 10px rgba($color_black, 0.05),
     0 2px 10px rgba($color_black, 0.03);
 
-  & .np-auto-login-button {
-    min-width: 2.5rem;
-    min-height: 2rem;
+  z-index: calc($layer_global-overlay + 1);
 
-    padding: 4px 8px;
+  & .np-auto-login-title-container {
+    @include flex-center-row;
+
+    gap: 2px;
+
+    & .np-auto-login-title {
+      font-family: $fontFamily_primary;
+      font-size: $fontSize_base;
+      font-weight: 700;
+
+      color: $color_twilight-indigo;
+    }
+
+    & > i {
+      font-size: $fontSize_xs;
+
+      color: $color_twilight-indigo;
+
+      margin-bottom: 1px;
+    }
+  }
+
+  & .np-auto-login-button {
+    @include flex($justify: center, $align: center, $direction: row);
+
+    position: relative;
+
+    font-family: $fontFamily_secondary;
+    font-size: $fontSize_md;
+    font-weight: 600;
+
+    width: $card-width;
+    height: $card-height;
+
+    padding: 4px 24px;
 
     border: 1px solid $color_pale-slate;
     border-radius: 6px;
 
     background-color: $color_white;
-    color: $color_space-indigo;
+
+    color: $color_twilight-indigo;
 
     cursor: pointer;
 
-    &:hover,
-    &:focus-visible {
-      background-color: color-mix(in srgb, $color_twilight-indigo 10%, transparent);
+    @include transition-full-ease(all 0.2s);
+
+    & > i {
+      position: absolute;
+      left: 8px;
+    }
+
+    &:hover {
+      background-color: $color_ghost-blue;
+
+      border-color: $color_cornflower-blue;
+
+      box-shadow: 0 0 0 1px $color_cornflower-blue;
     }
   }
 }

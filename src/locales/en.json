@@ -62,6 +62,9 @@
       "noDownloadDesc": "There are no downloads to show.",
       "complete": "Complete",
       "failed": "Failed"
+    },
+    "AutoLogin": {
+      "savedCredentials": "Saved credentials"
     }
   },
   "Error": {

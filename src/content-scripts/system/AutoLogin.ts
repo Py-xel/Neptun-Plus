@@ -1,4 +1,5 @@
 import universities from '@/data/universities.json';
+import i18n from '@/i18n';
 import { CATEGORIES, KEYS, type AutoLoginCredential } from '@/utils/dataSchema';
 import { readSetting, subscribeToSetting } from '@/utils/settingsStore';
 import { addNavigationListeners, createElement, isLoginPage, normalizeURL, observeMutations } from '@/utils/utility';
@@ -64,14 +65,16 @@ function fillLoginForm(credential: AutoLoginCredential): void {
 }
 
 function createCredentialButton(credential: AutoLoginCredential): HTMLButtonElement {
-  const button = createElement('button', 'np-auto-login-button', credential.loginName);
+  const button = createElement('button', 'np-auto-login-button');
+  const icon = createElement('i', 'fa-regular fa-user');
   button.type = 'button';
+  button.append(icon, document.createTextNode(credential.loginName));
   button.addEventListener('click', () => fillLoginForm(credential));
   return button;
 }
 
-function renderCredentials(container: HTMLDivElement, credentials: AutoLoginCredential[]): void {
-  container.replaceChildren(...getMatchingCredentials(credentials).map(createCredentialButton));
+function renderCredentials(container: HTMLDivElement, titleContainer: HTMLDivElement, credentials: AutoLoginCredential[]): void {
+  container.replaceChildren(titleContainer, ...getMatchingCredentials(credentials).map(createCredentialButton));
 }
 
 async function readCredentials(): Promise<AutoLoginCredential[]> {
@@ -80,19 +83,26 @@ async function readCredentials(): Promise<AutoLoginCredential[]> {
 }
 
 function createAutoLogin(credentials: AutoLoginCredential[]): AutoLoginController | null {
-  const body = document.body;
+  const loginContainer = document.querySelector('.login-right');
+  const loginForm = loginContainer?.querySelector<HTMLFormElement>('form');
+  const loginCaption = loginForm?.querySelector('h4.login-right__caption');
 
-  if (!body || !isLoginPage(window.location.href) || body.querySelector('.np-auto-login-container')) {
+  if (!loginForm || !loginCaption || !isLoginPage(window.location.href) || loginForm.querySelector('.np-auto-login-container')) {
+    // TODO Add error handling
     return null;
   }
 
   const container = createElement('div', 'np-auto-login-container');
-  renderCredentials(container, credentials);
-  body.append(container);
+  const titleContainer = createElement('div', 'np-auto-login-title-container');
+  const titleIcon = createElement('i', 'fa-solid fa-unlock');
+  const title = createElement('p', 'np-auto-login-title', i18n.t('Content_Script.AutoLogin.savedCredentials'));
+  titleContainer.append(titleIcon, title);
+  renderCredentials(container, titleContainer, credentials);
+  loginCaption.insertAdjacentElement('afterend', container);
 
   return {
     update(nextCredentials) {
-      renderCredentials(container, nextCredentials);
+      renderCredentials(container, titleContainer, nextCredentials);
     },
     destroy() {
       container.remove();
