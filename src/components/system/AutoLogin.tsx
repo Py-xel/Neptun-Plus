@@ -124,8 +124,8 @@ export default function AutoLogin({ disabled = false }: AutoLoginProps) {
     const nextCredentials = [...credentials.filter((storedCard) => storedCard.id !== card.id), savedCard];
 
     await setCredentials(nextCredentials);
+    showToast('Success!', { type: 'success' });
     setEditableCardIds((prevIds) => {
-      showToast('Success!', { type: 'success' });
       const nextIds = new Set(prevIds);
       nextIds.delete(card.id);
       return nextIds;
