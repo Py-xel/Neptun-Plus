@@ -1,7 +1,7 @@
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import type { ShortcutItem } from '@/utils/dataSchema';
 import { readSetting, subscribeToSetting } from '@/utils/settingsStore';
-import { addNavigationListeners, createElement, isLoginPage, observeMutations } from '@/utils/utility';
+import { addNavigationListeners, createElement, isLoginPage } from '@/utils/utility';
 
 type ShortcutsController = {
   update: (shortcutItems: ShortcutItem[]) => void;
@@ -32,8 +32,8 @@ function createShortcutButton(shortcut: ShortcutItem): HTMLButtonElement {
   return button;
 }
 
-function renderShortcuts(container: HTMLDivElement, shortcutItems: ShortcutItem[]): void {
-  container.replaceChildren(...shortcutItems.map(createShortcutButton));
+function renderShortcuts(container: HTMLDivElement, shortcutItems: ShortcutItem[], chevron: HTMLElement): void {
+  container.replaceChildren(...shortcutItems.map(createShortcutButton), chevron);
 }
 
 async function readShortcuts(): Promise<ShortcutItem[]> {
@@ -50,24 +50,31 @@ function createShortcuts(shortcutItems: ShortcutItem[]): ShortcutsController | n
     return null;
   }
 
+  const masterContainer = createElement('div', 'np-shortcuts-master-container');
   const container = createElement('div', 'np-shortcuts-container');
-  renderShortcuts(container, shortcutItems);
-  body.append(container);
+  const hitbox = createElement('div', 'np-shortcuts-hitbox');
+  const chevron = createElement('i', 'np-shortcuts-chevron fa-solid fa-chevron-right');
+
+  renderShortcuts(container, shortcutItems, chevron);
+  masterContainer.append(hitbox, container);
+  body.append(masterContainer);
 
   return {
     update(nextShortcutItems) {
-      renderShortcuts(container, nextShortcutItems);
+      renderShortcuts(container, nextShortcutItems, chevron);
     },
     destroy() {
-      container.remove();
+      masterContainer.remove();
     },
   };
 }
 
 let shortcuts: ShortcutsController | null = null;
+let shortcutsEnabled: boolean | null = null;
 
 async function updateShortcuts(settingValue?: boolean, shortcutItems?: ShortcutItem[]) {
-  const enabled = settingValue ?? (await readSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.USE_SHORTCUTS, false));
+  const enabled = settingValue ?? shortcutsEnabled ?? (await readSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.USE_SHORTCUTS, false));
+  shortcutsEnabled = enabled;
 
   if (!enabled || isLoginPage(window.location.href)) {
     shortcuts?.destroy();
@@ -85,7 +92,6 @@ async function updateShortcuts(settingValue?: boolean, shortcutItems?: ShortcutI
 export async function initializeShortcuts() {
   await updateShortcuts();
 
-  observeMutations(() => void updateShortcuts());
   addNavigationListeners(() => void updateShortcuts());
 
   subscribeToSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.USE_SHORTCUTS, (newValue) => {

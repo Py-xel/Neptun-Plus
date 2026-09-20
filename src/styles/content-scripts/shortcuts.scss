@@ -1,63 +1,155 @@
 @use '../global' as *;
 
-.np-shortcuts-container {
+$container-border-radius: 12px;
+$container-width: 11rem;
+$collapsed-width: 1.5rem;
+$hitbox-width: calc($container-width / 1.5);
+$transition-duration: 200ms;
+$chevron-size: 0.75rem;
+$icon-size: 0.95rem;
+$font-size: 0.92rem;
+
+.np-shortcuts-master-container {
   position: fixed;
-
   left: 0;
-  bottom: 35%;
+  top: 50%;
 
-  width: 10rem;
-  height: 20rem;
+  width: $container-width;
 
-  background-color: $color_white;
+  transform: translateY(-50%);
 
-  border: 1px solid color-mix(in srgb, $color_twilight-indigo 20%, transparent);
+  pointer-events: none;
 
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
+  & .np-shortcuts-hitbox {
+    position: absolute;
 
-  box-shadow:
-    0 4px 10px rgba($color_black, 0.05),
-    0 2px 10px rgba($color_black, 0.03);
+    left: 0;
+    top: 50%;
 
-  & .np-shortcut-button {
-    @include flex($align: center);
+    width: $hitbox-width;
+    height: 110%;
 
-    width: 100%;
-    min-height: 2.5rem;
+    transform: translateY(-50%);
 
-    gap: 8px;
-    padding: 6px 8px;
+    /* border: 1px solid red; */
+    border-top-right-radius: $container-border-radius;
+    border-bottom-right-radius: $container-border-radius;
 
-    border: 0;
-    border-radius: 6px;
+    pointer-events: auto;
+  }
 
-    background-color: transparent;
-    color: inherit;
+  &:hover .np-shortcuts-container,
+  &:focus-within .np-shortcuts-container {
+    transform: translateX(0);
+  }
 
-    cursor: pointer;
-    text-align: left;
+  & .np-shortcuts-container {
+    @include flex-center-col;
 
-    &:hover,
-    &:focus-visible {
-      background-color: color-mix(in srgb, $color_twilight-indigo 10%, transparent);
+    gap: 2px;
+
+    position: relative;
+
+    padding: 6px 7px;
+
+    width: $container-width;
+    height: fit-content;
+
+    transform: translateX(calc(-100% + $collapsed-width));
+    transition: transform $transition-duration cubic-bezier(0.37, 0.7, 0.54, 0.91);
+
+    pointer-events: auto;
+
+    background-color: $color_white;
+
+    border: 1px solid color-mix(in srgb, $color_twilight-indigo 20%, transparent);
+    border-top-right-radius: $container-border-radius;
+    border-bottom-right-radius: $container-border-radius;
+
+    box-shadow:
+      0 4px 10px rgba($color_black, 0.05),
+      0 2px 10px rgba($color_black, 0.03);
+
+    & .np-shortcuts-chevron {
+      position: absolute;
+
+      top: 50%;
+      right: 0.35rem;
+
+      color: $color_carbon-black;
+      font-size: $chevron-size;
+
+      transform: translateY(-50%);
+      transition: opacity 120ms cubic-bezier(0.37, 0.7, 0.54, 0.91);
+
+      pointer-events: none;
+    }
+
+    & .np-shortcut-button {
+      @include flex($justify: flex-start, $align: center);
+
+      width: 100%;
+      min-height: 2.5rem;
+
+      gap: 6px;
+      padding: 6px 8px 6px 8px;
+
+      box-sizing: border-box;
+
+      border-radius: 6px;
+
+      opacity: 0;
+      background-color: transparent;
+
+      color: inherit;
+
+      transition:
+        opacity 240ms cubic-bezier(0.37, 0.7, 0.54, 0.91),
+        box-shadow 70ms ease-in;
+
+      cursor: pointer;
+      text-align: left;
+
+      &:hover,
+      &:focus-visible {
+        background-color: $color_ghost-blue;
+
+        box-shadow: 0 0 0 2px $color_cornflower-blue;
+      }
+
+      & .np-shortcut-icon {
+        @include flex($justify: center, $align: center);
+
+        font-size: $icon-size;
+
+        text-align: center;
+      }
+
+      & .np-shortcut-name {
+        font-family: $fontFamily_primary;
+        font-size: $font-size;
+        font-weight: 700;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+        white-space: wrap;
+      }
+
+      & .np-shortcut-icon,
+      & .np-shortcut-name {
+        color: $color_twilight-indigo;
+      }
     }
   }
 
-  & .np-shortcut-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-
-    flex: 0 0 auto;
-
-    font-size: 1.25rem;
-    text-align: center;
+  &:hover .np-shortcuts-container .np-shortcut-button,
+  &:focus-within .np-shortcuts-container .np-shortcut-button {
+    opacity: 1;
   }
 
-  & .np-shortcut-name {
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  &:hover .np-shortcuts-container .np-shortcuts-button,
+  &:focus-within .np-shortcuts-container .np-shortcuts-chevron {
+    opacity: 0;
   }
 }
