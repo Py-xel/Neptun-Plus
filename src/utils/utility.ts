@@ -90,7 +90,13 @@ export function getDownloadID(downloadData: DownloadData = {}): string {
 }
 
 /* Listen for popstate and hashchange */
+const navigationCallbacks = new Set<() => void>();
+let navigationURL = window.location.href;
+let navigationWatcher: number | null = null;
+
 export function addNavigationListeners(callback: () => void): void {
+  navigationCallbacks.add(callback);
+
   for (const event of ['popstate', 'hashchange'] as const) {
     window.addEventListener(event, callback);
   }
@@ -103,6 +109,20 @@ export function addNavigationListeners(callback: () => void): void {
       callback();
       return result;
     };
+  }
+
+  /* listen for window.location.href */
+  if (navigationWatcher === null) {
+    navigationWatcher = window.setInterval(() => {
+      const currentURL = window.location.href;
+
+      if (currentURL === navigationURL) {
+        return;
+      }
+
+      navigationURL = currentURL;
+      navigationCallbacks.forEach((navigationCallback) => navigationCallback());
+    }, 100);
   }
 }
 
