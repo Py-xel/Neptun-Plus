@@ -1,5 +1,5 @@
-import '@/styles/components/general/toggleButton.css';
 import Hint from '@/components/general/Hint';
+import '@/styles/components/general/toggleButton.css';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { useSettings } from '@/utils/useSettings';
 import { useEffect, useState } from 'react';
