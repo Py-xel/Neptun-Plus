@@ -2,7 +2,7 @@ import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { readSetting, subscribeToSetting } from '@/utils/settingsStore';
 import { observeMutations } from '@/utils/utility';
 
-const NOTIFICATION_SELECTOR = 'neptun-badge--primary neptun-badge--secondary';
+const NOTIFICATION_SELECTOR = '.neptun-badge--primary, .neptun-badge--secondary';
 
 function applyHideNotifications(enabled: boolean): void {
   document.querySelectorAll<HTMLElement>(NOTIFICATION_SELECTOR).forEach((notification) => {
