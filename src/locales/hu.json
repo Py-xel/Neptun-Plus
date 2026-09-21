@@ -67,6 +67,9 @@
     },
     "AutoLogin": {
       "savedCredentials": "Mentett bejelentkezési adatok"
+    },
+    "InfSession": {
+      "enabled": "Végtelen munkamenet bekapcsolva"
     }
   },
   "Error": {

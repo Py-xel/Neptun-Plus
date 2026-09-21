@@ -67,6 +67,9 @@
     },
     "AutoLogin": {
       "savedCredentials": "Saved credentials"
+    },
+    "InfSession": {
+      "enabled": "Infinite session enabled"
     }
   },
   "Error": {

@@ -1,3 +1,4 @@
+import i18n from '@/i18n';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { readSetting, subscribeToSetting } from '@/utils/settingsStore';
 import { addNavigationListeners, createElement, isSupportedURL, observeMutations } from '@/utils/utility';
@@ -20,7 +21,7 @@ function createInfSession(): void {
   const iconBackground = createElement('span', 'np-inf-session-icon-background');
   const icon = createElement('i', 'fa-solid fa-shield-halved');
 
-  container.setAttribute('aria-label', 'Végtelen munkamenet bekapcsolva');
+  container.setAttribute('aria-label', i18n.t('Content_Script.InfSession.enabled'));
   iconBackground.append(icon);
   container.append(iconBackground);
   header.append(container);
