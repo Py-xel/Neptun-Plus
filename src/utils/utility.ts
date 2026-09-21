@@ -40,9 +40,13 @@ const SUPPORTED_SITE_ROOTS: string[] = Object.values(universities)
   });
 
 export function isSupportedURL(url: string): boolean {
+  return getSupportedSiteRoot(url) !== null;
+}
+
+export function getSupportedSiteRoot(url: string): string | null {
   const currentURL = normalizeURL(url);
 
-  return SUPPORTED_SITE_ROOTS.some((root) => currentURL == root || currentURL.startsWith(`${root}/`));
+  return SUPPORTED_SITE_ROOTS.find((root) => currentURL === root || currentURL.startsWith(`${root}/`)) ?? null;
 }
 
 /* Return lowercase file extension */

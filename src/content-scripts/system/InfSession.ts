@@ -1,10 +1,9 @@
 import i18n from '@/i18n';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { readSetting, subscribeToSetting } from '@/utils/settingsStore';
-import { addNavigationListeners, createElement, isSupportedURL, observeMutations } from '@/utils/utility';
+import { addNavigationListeners, createElement, getSupportedSiteRoot, observeMutations } from '@/utils/utility';
 
 const NEPTUN_HEADER = '#main-header-right';
-const TOKEN_ENDPOINT = '/hallgato/api/Account/GetNewTokens';
 const RETRY_DELAY = 25000; // 25s
 const REFRESH = 100000; // 100s
 const TIMER_JITTER = 0.1;
@@ -13,6 +12,17 @@ const SESSION_TIMEOUT = 30;
 
 let infSessionTimer: number | null = null;
 let infSessionRefreshInProgress = false;
+
+function getTokenEndpoint(): string | null {
+  const siteRoot = getSupportedSiteRoot(window.location.href);
+
+  if (!siteRoot) {
+    return null;
+  }
+
+  const sitePath = new URL(siteRoot).pathname.replace(/\/+$/, '');
+  return `${sitePath}/api/Account/GetNewTokens`;
+}
 
 function stopInfSession(): void {
   if (infSessionTimer !== null) {
@@ -63,6 +73,13 @@ async function refreshInfSession(): Promise<void> {
     return;
   }
 
+  const tokenEndpoint = getTokenEndpoint();
+
+  if (!tokenEndpoint) {
+    scheduleInfSession(true);
+    return;
+  }
+
   const expiration = Date.parse(sessionStorage.getItem('access_token_expiration_date') ?? '');
 
   if (Number.isFinite(expiration) && expiration - Date.now() > REFRESH) {
@@ -73,7 +90,7 @@ async function refreshInfSession(): Promise<void> {
   infSessionRefreshInProgress = true;
 
   try {
-    const response = await fetch(TOKEN_ENDPOINT, {
+    const response = await fetch(tokenEndpoint, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${oldToken}`,
@@ -145,7 +162,7 @@ function createInfSession(): void {
 
 async function updateInfSession(settingValue?: boolean): Promise<void> {
   const enabled = settingValue ?? (await readSetting(CATEGORIES.SYSTEM, KEYS.SYSTEM.INFINITE_SESSION, false));
-  const shouldEnable = Boolean(enabled && isSupportedURL(window.location.href));
+  const shouldEnable = Boolean(enabled && getSupportedSiteRoot(window.location.href));
 
   if (!shouldEnable) {
     document.querySelector('.np-inf-session-container')?.remove();
