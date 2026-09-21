@@ -1,9 +1,20 @@
 import '@/styles/components/sidebar.css';
+import { CATEGORIES, KEYS, SIDEBAR_PATHS, type SidebarPath } from '@/utils/dataSchema';
+import { useSettings } from '@/utils/useSettings';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 export default function Sidebar() {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+  const { value: lastPage, setValue: setLastPage, loading } = useSettings(CATEGORIES.EXTENSION_SETTINGS, KEYS.EXTENSION_SETTINGS.LAST_PAGE, '/');
+
+  useEffect(() => {
+    if (!loading && SIDEBAR_PATHS.includes(pathname as SidebarPath) && pathname !== lastPage) {
+      void setLastPage(pathname as SidebarPath);
+    }
+  }, [lastPage, loading, pathname, setLastPage]);
 
   return (
     <nav className="np-sidebar-root">

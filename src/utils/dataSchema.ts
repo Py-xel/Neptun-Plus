@@ -24,6 +24,7 @@ export const KEYS = {
   EXTENSION_SETTINGS: {
     LANGUAGE: 'language',
     HIDE_HINTS: 'hide-hints',
+    LAST_PAGE: 'last-page',
   },
 } as const;
 
@@ -33,6 +34,9 @@ export type SystemKey = (typeof KEYS.SYSTEM)[keyof typeof KEYS.SYSTEM];
 export type ExtensionSettingsKey = (typeof KEYS.EXTENSION_SETTINGS)[keyof typeof KEYS.EXTENSION_SETTINGS];
 
 export type StorageKey = InterfaceKey | SystemKey | ExtensionSettingsKey;
+
+export const SIDEBAR_PATHS = ['/', '/System', '/Info', '/Settings'] as const;
+export type SidebarPath = (typeof SIDEBAR_PATHS)[number];
 
 export const SUPPORTED_LANGUAGES = ['hu', 'en'] as const;
 export type Language = (typeof SUPPORTED_LANGUAGES)[number];
@@ -70,6 +74,7 @@ export type SettingValueByKey = {
 
   [KEYS.EXTENSION_SETTINGS.LANGUAGE]: Language;
   [KEYS.EXTENSION_SETTINGS.HIDE_HINTS]: boolean;
+  [KEYS.EXTENSION_SETTINGS.LAST_PAGE]: SidebarPath;
 };
 
 export type AutoLoginCredential = {
