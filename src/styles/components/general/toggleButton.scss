@@ -14,17 +14,23 @@ $preview-height: 90px;
   .np-switch-container {
     @include flex-center-row;
 
+    position: relative;
+
     gap: 5px;
 
-    & > i {
-      color: $color_twilight-indigo;
+    .np-hint-trigger {
+      position: relative;
 
-      font-size: $icon-size;
+      color: $color_twilight-indigo;
 
       cursor: pointer;
 
       &:hover {
         color: $color_royal-azure;
+      }
+
+      & > i {
+        font-size: $icon-size;
       }
     }
 
@@ -84,33 +90,6 @@ $preview-height: 90px;
           transform: translateX(20px);
         }
       }
-    }
-
-    .np-preview-window {
-      @include flex-center-row;
-      @include position-absolute;
-
-      width: $preview-width;
-      height: $preview-height;
-
-      right: 30px;
-
-      border: 1px solid $color_dusk-blue;
-      border-radius: 6px;
-
-      opacity: 0;
-
-      box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.1),
-        0 6px 12px rgba(0, 0, 0, 0.1),
-        0 12px 24px rgba(0, 0, 0, 0.1),
-        0 24px 48px rgba(0, 0, 0, 0.1);
-
-      pointer-events: none;
-
-      animation: fadeIn 0.2s ease forwards;
-
-      z-index: $layer_overlay;
     }
   }
 }

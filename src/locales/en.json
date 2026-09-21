@@ -44,6 +44,9 @@
       "resetLabel": "Reset extension settings to their original defaults.",
       "resetButton": "Reset settings"
     },
+    "Hints": {
+      "disableHeaders": "Hides banner notifications that appear at the top."
+    },
     "Toast": {
       "saved": "Saved!",
       "deleted": "Deleted!",

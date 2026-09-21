@@ -44,6 +44,9 @@
       "resetLabel": "A bővítmény beállításainak visszaállítása alapértelmezettre.",
       "resetButton": "Beállítások visszaállítása"
     },
+    "Hints": {
+      "disableHeaders": "Elrejti a képernyő tetején megjelenő értesítéseket"
+    },
     "Toast": {
       "saved": "Mentve!",
       "deleted": "Törölve!",
