@@ -1,15 +1,76 @@
 @use '../../global' as *;
 
-$icon-size: 1.25rem;
+$icon_size: 1.25rem;
+$tooltip_triangle_width: 1em;
+$tooltip_triangle-height: 0.7em;
+$tooltip_triangle_position: 50%; // where 50% is center
+$tooltip_height: 25px;
 
 .np-inf-session-container {
   @include flex($justify: center, $align: center);
 
-  position: fixed;
-  right: 1rem;
-  bottom: 5rem;
+  position: relative;
+
+  left: 6px;
+
+  /* places the element to the right side of #user-menu-button */
+  order: -1;
+
+  margin-bottom: 12px;
 
   z-index: 1000;
+
+  &::after {
+    @include flex-center-col;
+
+    font-family: $fontFamily_secondary;
+    font-size: $fontSize_sm;
+    font-weight: 600;
+
+    color: $color_white;
+
+    padding: 0px 7px;
+
+    position: absolute;
+
+    top: calc(100% + 8px);
+    left: 50%;
+
+    --b: #{$tooltip_triangle_width};
+    --h: #{$tooltip_triangle_height};
+    --p: #{$tooltip_triangle_position};
+
+    width: fit-content;
+    height: $tooltip_height;
+
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, min(100%, var(--p) + var(--b) / 2) 0, var(--p) calc(-1 * var(--h)), max(0%, var(--p) - var(--b) / 2) 0);
+
+    border-image-source: conic-gradient($color_digital-blue 0 0);
+    border-image-slice: fill 0;
+    border-image-width: 0;
+    border-image-outset: var(--h);
+
+    content: attr(aria-label);
+    text-align: center;
+    white-space: nowrap;
+
+    opacity: 0;
+    pointer-events: none;
+
+    visibility: hidden;
+
+    transform: translate(-50%, -2px);
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
 }
 
 .np-inf-session-icon-background {
@@ -17,7 +78,7 @@ $icon-size: 1.25rem;
 
   position: relative;
 
-  width: $icon-size * 1.8;
+  width: $icon_size * 1.8;
   aspect-ratio: 1;
 
   background-color: $color_ghost-white;
@@ -43,7 +104,7 @@ $icon-size: 1.25rem;
   & > i {
     position: relative;
 
-    font-size: $icon-size;
+    font-size: $icon_size;
 
     color: rgba($color_digital-blue, 1);
   }

@@ -2,10 +2,13 @@ import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { readSetting, subscribeToSetting } from '@/utils/settingsStore';
 import { addNavigationListeners, createElement, isSupportedURL, observeMutations } from '@/utils/utility';
 
-function createInfSession(): void {
-  const existingContainer = document.querySelector('.np-inf-session-container');
+const NEPTUN_HEADER = '#main-header-right';
 
-  if (!document.body) {
+function createInfSession(): void {
+  const header = document.querySelector(NEPTUN_HEADER);
+  const existingContainer = header?.querySelector('.np-inf-session-container');
+
+  if (!header) {
     return;
   }
 
@@ -17,9 +20,10 @@ function createInfSession(): void {
   const iconBackground = createElement('span', 'np-inf-session-icon-background');
   const icon = createElement('i', 'fa-solid fa-shield-halved');
 
+  container.setAttribute('aria-label', 'Végtelen munkamenet bekapcsolva');
   iconBackground.append(icon);
   container.append(iconBackground);
-  document.body.append(container);
+  header.append(container);
 }
 
 async function updateInfSession(settingValue?: boolean): Promise<void> {
