@@ -2,6 +2,8 @@ import { defineManifest } from '@crxjs/vite-plugin';
 import pkg from './package.json';
 import universities from './src/data/universities.json';
 
+const extensionVersion = `${pkg.version}.${pkg.universitiesVersion}`;
+
 // Dynamically load university links from json
 const allURLs = Object.values(universities)
   .filter((university) => university.supported)
@@ -17,7 +19,7 @@ const allURLs = Object.values(universities)
 export default defineManifest({
   manifest_version: 3,
   name: pkg.name,
-  version: pkg.version,
+  version: extensionVersion,
   icons: {
     48: 'Neptun_Plus_Logo.png',
   },

@@ -142,5 +142,7 @@ vite.config.ts.timestamp-*
 
 .vscode
 /release/
+.gecko-build/
 *.css
 *.css.map
+Neptun-Plus*
