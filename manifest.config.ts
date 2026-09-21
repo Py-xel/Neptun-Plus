@@ -21,7 +21,7 @@ export default defineManifest({
   icons: {
     48: 'Neptun_Plus_Logo.png',
   },
-  permissions: ['contentSettings', 'storage', 'scripting'],
+  permissions: ['storage', 'scripting'],
   host_permissions: allURLs,
   web_accessible_resources: [
     {
