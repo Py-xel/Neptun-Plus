@@ -48,12 +48,13 @@ $font-size: 0.6rem;
     @include flex-center-row;
     @include position-absolute($right: 0, $bottom: 0, $left: 0);
 
-    width: fit-content;
+    width: 100%;
     height: $description-height;
+    box-sizing: border-box;
 
     margin: 0;
 
-    padding: 1px 2px;
+    padding: 0px 2px;
 
     border-top: 1px solid $color_pale-slate;
 
