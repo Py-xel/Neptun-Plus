@@ -7,6 +7,7 @@ const NEPTUN_HEADER = '#main-header-right';
 const TOKEN_ENDPOINT = '/hallgato/api/Account/GetNewTokens';
 const RETRY_DELAY = 25000; // 25s
 const REFRESH = 100000; // 100s
+const TIMER_JITTER = 0.1;
 const TOKEN_TIMEOUT = 5;
 const SESSION_TIMEOUT = 30;
 
@@ -20,6 +21,11 @@ function stopInfSession(): void {
   }
 }
 
+function addTimerJitter(delay: number): number {
+  const variation = (Math.random() * 2 - 1) * TIMER_JITTER;
+  return Math.max(0, Math.round(delay * (1 + variation)));
+}
+
 function scheduleInfSession(retry = false): void {
   if (infSessionTimer !== null) {
     window.clearTimeout(infSessionTimer);
@@ -27,7 +33,8 @@ function scheduleInfSession(retry = false): void {
 
   const expiration = Date.parse(sessionStorage.getItem('access_token_expiration_date') ?? '');
   // retry sooner only when refresh data is unavailable
-  const delay = !retry && Number.isFinite(expiration) ? Math.max(0, expiration - Date.now() - REFRESH) : RETRY_DELAY;
+  const baseDelay = !retry && Number.isFinite(expiration) ? Math.max(0, expiration - Date.now() - REFRESH) : RETRY_DELAY;
+  const delay = addTimerJitter(baseDelay);
 
   infSessionTimer = window.setTimeout(() => {
     infSessionTimer = null;
