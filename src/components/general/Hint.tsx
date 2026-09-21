@@ -1,7 +1,9 @@
+import hintAutoLogin from '@/assets/images/hint_auto_login.png';
+import hintShowFileDownloader from '@/assets/images/hint_file_downloader.png';
 import hintHideHeaders from '@/assets/images/hint_hide_headers.png';
 import hintHideNotifications from '@/assets/images/hint_hide_notifications.png';
+import hintInfiniteSession from '@/assets/images/hint_infinite_session.png';
 import hintItemLists from '@/assets/images/hint_item_lists.png';
-import hintShowFileDownloader from '@/assets/images/hint_file_downloader.png';
 import hintShortcuts from '@/assets/images/hint_shortcuts.png';
 import '@/styles/components/general/hint.css';
 import { useTranslation } from 'react-i18next';
@@ -30,6 +32,14 @@ const hints: Record<string, { image: string; descriptionKey: string }> = {
   'use-shortcuts': {
     image: hintShortcuts,
     descriptionKey: 'Popup.Hints.shortcuts',
+  },
+  'infinite-session': {
+    image: hintInfiniteSession,
+    descriptionKey: 'Popup.Hints.infiniteSession',
+  },
+  'auto-login': {
+    image: hintAutoLogin,
+    descriptionKey: 'Popup.Hints.autoLogin',
   },
 };
 

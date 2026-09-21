@@ -49,7 +49,9 @@
       "hideNotifications": "Elrejti az összes üzenet értesítő jelvényt",
       "itemLists": "Automatikusan betölti a listák összes elemét",
       "showFileDownloader": "Hozzáad egy fájl-letöltőt az oldal aljára",
-      "shortcuts": "Hozzáad egy gyorsgomb kezelőt, használati utasítás github-on"
+      "shortcuts": "Hozzáad egy gyorsgomb kezelőt, használati utasítás github-on",
+      "infiniteSession": "Meghosszabbítja a munkamenetet határozatlan ideig",
+      "autoLogin": "Automatikusan kitölti az elmentett fiókok adatait és belép"
     },
     "Toast": {
       "saved": "Mentve!",

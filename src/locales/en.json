@@ -49,7 +49,9 @@
       "hideNotifications": "Hides all message notification badges",
       "itemLists": "Automatically loads all items in lists",
       "showFileDownloader": "Adds a file-downloader to the bottom",
-      "shortcuts": "Adds a shortcut manager, user guide on github"
+      "shortcuts": "Adds a shortcut manager, user guide on github",
+      "infiniteSession": "Extends user session indefinitely",
+      "autoLogin": "Auto-fills saved credentials and logs in"
     },
     "Toast": {
       "saved": "Saved!",
