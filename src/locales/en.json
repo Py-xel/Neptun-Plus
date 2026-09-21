@@ -45,9 +45,11 @@
       "resetButton": "Reset settings"
     },
     "Hints": {
-      "disableHeaders": "Hides banner notifications that appear at the top",
+      "disableHeaders": "Hides banner notifications that appear at the top of the page",
       "hideNotifications": "Hides all message notification badges",
-      "itemLists": "Automatically loads all items in lists"
+      "itemLists": "Automatically loads all items in lists",
+      "showFileDownloader": "Adds a file-downloader to the bottom",
+      "shortcuts": "Adds a shortcut manager, user guide on github"
     },
     "Toast": {
       "saved": "Saved!",

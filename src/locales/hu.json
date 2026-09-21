@@ -45,9 +45,11 @@
       "resetButton": "Beállítások visszaállítása"
     },
     "Hints": {
-      "disableHeaders": "Elrejti a képernyő tetején megjelenő értesítéseket",
+      "disableHeaders": "Elrejti az oldal tetején megjelenő értesítéseket",
       "hideNotifications": "Elrejti az összes üzenet értesítő jelvényt",
-      "itemLists": "Automatikusan betölti a listák összes elemét"
+      "itemLists": "Automatikusan betölti a listák összes elemét",
+      "showFileDownloader": "Hozzáad egy fájl-letöltőt az oldal aljára",
+      "shortcuts": "Hozzáad egy gyorsgomb kezelőt, használati utasítás github-on"
     },
     "Toast": {
       "saved": "Mentve!",

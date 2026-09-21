@@ -1,6 +1,8 @@
 import hintHideHeaders from '@/assets/images/hint_hide_headers.png';
 import hintHideNotifications from '@/assets/images/hint_hide_notifications.png';
 import hintItemLists from '@/assets/images/hint_item_lists.png';
+import hintShowFileDownloader from '@/assets/images/hint_file_downloader.png';
+import hintShortcuts from '@/assets/images/hint_shortcuts.png';
 import '@/styles/components/general/hint.css';
 import { useTranslation } from 'react-i18next';
 
@@ -20,6 +22,14 @@ const hints: Record<string, { image: string; descriptionKey: string }> = {
   'show-full-itemlist': {
     image: hintItemLists,
     descriptionKey: 'Popup.Hints.itemLists',
+  },
+  'show-download': {
+    image: hintShowFileDownloader,
+    descriptionKey: 'Popup.Hints.showFileDownloader',
+  },
+  'use-shortcuts': {
+    image: hintShortcuts,
+    descriptionKey: 'Popup.Hints.shortcuts',
   },
 };
 

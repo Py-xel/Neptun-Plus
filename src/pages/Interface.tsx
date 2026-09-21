@@ -20,9 +20,9 @@ export default function Interface() {
       <ToggleButton label={t('Popup.Interface.hideNotifications')} enabled={hideNotification} setEnabled={setHideNotification} hintId={KEYS.INTERFACE.HIDE_NOTIFICATIONS} />
       <ToggleButton label={t('Popup.Interface.itemList')} enabled={itemList} setEnabled={setItemList} hintId={KEYS.INTERFACE.SHOW_FULL_ITEMLIST} />
       <h1 className="np-title">{t('Popup.Interface.fileDownload')}</h1>
-      <ToggleButton label={t('Popup.Interface.showDownload')} enabled={showDownload} setEnabled={setShowDownload} />
+      <ToggleButton label={t('Popup.Interface.showDownload')} enabled={showDownload} setEnabled={setShowDownload} hintId={KEYS.INTERFACE.SHOW_DOWNLOAD} />
       <h1 className="np-title">{t('Popup.Interface.shortcuts')}</h1>
-      <ToggleButton label={t('Popup.Interface.customShortcuts')} enabled={customShortcut} setEnabled={setCustomShortcut} />
+      <ToggleButton label={t('Popup.Interface.customShortcuts')} enabled={customShortcut} setEnabled={setCustomShortcut} hintId={KEYS.INTERFACE.USE_SHORTCUTS} />
       <Shortcut disabled={!customShortcut} />
     </div>
   );
