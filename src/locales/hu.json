@@ -45,7 +45,9 @@
       "resetButton": "Beállítások visszaállítása"
     },
     "Hints": {
-      "disableHeaders": "Elrejti a képernyő tetején megjelenő értesítéseket"
+      "disableHeaders": "Elrejti a képernyő tetején megjelenő értesítéseket",
+      "hideNotifications": "Elrejti az összes üzenet értesítő jelvényt",
+      "itemLists": "Automatikusan betölti a listák összes elemét"
     },
     "Toast": {
       "saved": "Mentve!",

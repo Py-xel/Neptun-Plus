@@ -45,7 +45,9 @@
       "resetButton": "Reset settings"
     },
     "Hints": {
-      "disableHeaders": "Hides banner notifications that appear at the top."
+      "disableHeaders": "Hides banner notifications that appear at the top",
+      "hideNotifications": "Hides all message notification badges",
+      "itemLists": "Automatically loads all items in lists"
     },
     "Toast": {
       "saved": "Saved!",

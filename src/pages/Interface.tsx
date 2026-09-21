@@ -17,7 +17,7 @@ export default function Interface() {
     <div>
       <h1 className="np-title">{t('Popup.Interface.general')}</h1>
       <ToggleButton label={t('Popup.Interface.unfilledSurvey')} enabled={disableHeaders} setEnabled={setDisableHeaders} hintId={KEYS.INTERFACE.DISABLE_HEADERS} />
-      <ToggleButton label={t('Popup.Interface.hideNotifications')} enabled={hideNotification} setEnabled={setHideNotification} />
+      <ToggleButton label={t('Popup.Interface.hideNotifications')} enabled={hideNotification} setEnabled={setHideNotification} hintId={KEYS.INTERFACE.HIDE_NOTIFICATIONS} />
       <ToggleButton label={t('Popup.Interface.itemList')} enabled={itemList} setEnabled={setItemList} hintId={KEYS.INTERFACE.SHOW_FULL_ITEMLIST} />
       <h1 className="np-title">{t('Popup.Interface.fileDownload')}</h1>
       <ToggleButton label={t('Popup.Interface.showDownload')} enabled={showDownload} setEnabled={setShowDownload} />
