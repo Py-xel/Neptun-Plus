@@ -1,7 +1,7 @@
 import i18n from '@/i18n';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { readSetting, subscribeToSetting } from '@/utils/settingsStore';
-import { addNavigationListeners, createElement, getSupportedSiteRoot, observeMutations } from '@/utils/utility';
+import { addNavigationListeners, createElement, getSupportedSiteRoot, isLoginPage, observeMutations } from '@/utils/utility';
 
 const NEPTUN_HEADER = '#main-header-right';
 const RETRY_DELAY = 25000; // 25s
@@ -162,7 +162,7 @@ function createInfSession(): void {
 
 async function updateInfSession(settingValue?: boolean): Promise<void> {
   const enabled = settingValue ?? (await readSetting(CATEGORIES.SYSTEM, KEYS.SYSTEM.INFINITE_SESSION, false));
-  const shouldEnable = Boolean(enabled && getSupportedSiteRoot(window.location.href));
+  const shouldEnable = Boolean(enabled && !isLoginPage(window.location.href) && getSupportedSiteRoot(window.location.href));
 
   if (!shouldEnable) {
     document.querySelector('.np-inf-session-container')?.remove();
