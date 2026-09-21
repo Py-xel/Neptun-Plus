@@ -5,8 +5,8 @@ $switch-width: 44px;
 $switch-height: 24px;
 $slider-width: 20px;
 $slider-height: 20px;
-$preview-width: 172px;
-$preview-height: 97px;
+$preview-width: 160px;
+$preview-height: 90px;
 
 .np-toggle-container {
   @include flex($justify: space-between, $align: center, $direction: row);
