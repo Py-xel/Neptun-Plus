@@ -1,7 +1,6 @@
 import DisableWrapper from '@/components/general/DisableWrapper';
 import '@/styles/components/general/card.css';
 import type { ReactNode } from 'react';
-import { useEffect, useRef, useState } from 'react';
 
 type CardProps = {
   isEditable?: boolean;
