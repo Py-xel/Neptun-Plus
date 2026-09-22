@@ -13,8 +13,18 @@ export default function ResetSettings() {
     try {
       await reset();
       showToast(t('Popup.Toast.reset'), { duration: 1200, type: 'success' });
-    } catch {
-      // TODO Add error handling
+    } catch (error) {
+      void chrome.runtime
+        .sendMessage({
+          type: 'NP_ERROR',
+          errorType: 'error',
+          scope: 'reset_settings',
+          message: 'Could not reset settings!',
+        })
+        .catch((error: unknown) => {
+          console.error('Failed to dispatch error message', error);
+        });
+      showToast(t('Popup.Toast.resetFailed'), { type: 'error' });
     }
   };
 

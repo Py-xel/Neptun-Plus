@@ -60,6 +60,7 @@
       "saved": "Mentve!",
       "deleted": "Törölve!",
       "reset": "Sikeres visszaállítás!",
+      "resetFailed": "A beállítások visszaállítása sikertelen.",
       "logsExported": "Hibanapló exportálva!",
       "logsExportFailed": "A hibanapló exportálása sikertelen.",
       "logsCleared": "Hibanapló törölve!",

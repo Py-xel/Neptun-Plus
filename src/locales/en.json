@@ -60,6 +60,7 @@
       "saved": "Saved!",
       "deleted": "Deleted!",
       "reset": "Reset successful!",
+      "resetFailed": "Could not reset settings.",
       "logsExported": "Error log exported!",
       "logsExportFailed": "Could not export the error log.",
       "logsCleared": "Error log cleared!",
