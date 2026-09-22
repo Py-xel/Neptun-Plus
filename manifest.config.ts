@@ -3,6 +3,7 @@ import pkg from './package.json';
 import universities from './src/data/universities.json';
 
 const extensionVersion = `${pkg.version}.${pkg.universitiesVersion}`;
+const isGeckoBuild = process.env.npm_lifecycle_event === 'build:gecko';
 
 // Dynamically load university links from json
 const allURLs = Object.values(universities)
@@ -25,10 +26,14 @@ export default defineManifest({
   },
   permissions: ['storage', 'scripting'],
   host_permissions: allURLs,
-  background: {
-    service_worker: 'src/background.ts',
-    type: 'module',
-  },
+  background: isGeckoBuild
+    ? {
+        scripts: ['src/background.ts'],
+      }
+    : {
+        service_worker: 'src/background.ts',
+        type: 'module',
+      },
   web_accessible_resources: [
     {
       resources: ['*.png', 'shortcut_icons/*'],

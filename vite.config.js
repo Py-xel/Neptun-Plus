@@ -1,6 +1,7 @@
 import { crx } from '@crxjs/vite-plugin';
 import react from '@vitejs/plugin-react';
-import { readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { build as buildWithEsbuild } from 'esbuild';
+import { readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
@@ -28,6 +29,49 @@ function geckoManifestCompatibility() {
   };
 }
 
+/* background.ts must be declared as a classic script for gecko browsers */
+function geckoBackgroundBundle() {
+  const backgroundFileName = 'assets/background-gecko.js';
+
+  return {
+    name: 'gecko-background-bundle',
+    async writeBundle() {
+      const manifestPath = resolve(process.cwd(), buildDirectory, 'manifest.json');
+      const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+      const generatedBackground = manifest.background?.scripts?.[0];
+
+      await buildWithEsbuild({
+        absWorkingDir: process.cwd(),
+        alias: {
+          '@': resolve(process.cwd(), 'src'),
+        },
+        bundle: true,
+        entryPoints: ['src/background.ts'],
+        format: 'iife',
+        minify: true,
+        outfile: resolve(process.cwd(), buildDirectory, backgroundFileName),
+        platform: 'browser',
+        target: 'es2022',
+      });
+
+      const assetDirectory = resolve(process.cwd(), buildDirectory, 'assets');
+
+      if (generatedBackground) {
+        rmSync(resolve(process.cwd(), buildDirectory, generatedBackground), { force: true });
+      }
+
+      for (const fileName of readdirSync(assetDirectory)) {
+        if (fileName.startsWith('background.ts-')) {
+          rmSync(resolve(assetDirectory, fileName), { force: true });
+        }
+      }
+
+      manifest.background.scripts = [backgroundFileName];
+      writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+    },
+  };
+}
+
 export default defineConfig({
   build: {
     modulePreload: false,
@@ -46,7 +90,7 @@ export default defineConfig({
         standaloneFiles: ['src/content-scripts/Network.ts'],
       },
     }),
-    ...(extensionTarget === 'gecko' ? [geckoManifestCompatibility()] : []),
+    ...(extensionTarget === 'gecko' ? [geckoManifestCompatibility(), geckoBackgroundBundle()] : []),
     zip({
       inDir: buildDirectory,
       outDir: 'release',
