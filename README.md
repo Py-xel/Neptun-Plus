@@ -21,7 +21,7 @@ Egy könnyű, többplatformos böngészőbővítmény a **Neptun** egységes fel
 
 #### 1. Letöltés
 
-- A legújabb verzióért, [kattints ide](github.com/Py-xel/Neptun-Plus/releases/latest).
+- A legújabb verzióért, [kattints ide](https://github.com/Py-xel/Neptun-Plus/releases/latest).
 - Csomagold ki a `.zip` fájlt egy tetszőleges mappába.
 
 **2. Bővítmény betöltése**
@@ -37,7 +37,7 @@ Egy könnyű, többplatformos böngészőbővítmény a **Neptun** egységes fel
 
 **1. Letöltés**
 
-- A legújabb verzióért, [kattints ide](github.com/Py-xel/Neptun-Plus/releases/latest).
+- A legújabb verzióért, [kattints ide](https://github.com/Py-xel/Neptun-Plus/releases/latest).
 
 **2. Bővítmény betöltése**
 
