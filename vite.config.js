@@ -15,7 +15,7 @@ const buildDirectory = extensionTarget === 'chromium' ? releaseName : '.gecko-bu
 function geckoManifestCompatibility() {
   return {
     name: 'gecko-manifest-compatibility',
-    closeBundle() {
+    writeBundle() {
       const manifestPath = resolve(process.cwd(), buildDirectory, 'manifest.json');
       const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
 
@@ -40,7 +40,12 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    crx({ manifest }),
+    crx({
+      manifest,
+      contentScripts: {
+        standaloneFiles: ['src/content-scripts/Network.ts'],
+      },
+    }),
     ...(extensionTarget === 'gecko' ? [geckoManifestCompatibility()] : []),
     zip({
       inDir: buildDirectory,
