@@ -14,8 +14,18 @@ function clearInput(inputRef: RefObject<HTMLInputElement | null>, onChange: Chan
   const input = inputRef.current;
 
   if (!input) {
-    // TODO Add error handling
-    return;
+    void chrome.runtime
+      .sendMessage({
+        type: 'NP_ERROR',
+        errorType: 'error',
+        scope: 'input_field',
+        message: 'Could not resolve <input> reference!',
+      })
+      .catch((error: unknown) => {
+        console.error('Failed to dispatch error message', error);
+      });
+
+    throw new Error('Could not resolve <input> reference!');
   }
 
   input.value = '';

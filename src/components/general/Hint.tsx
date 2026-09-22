@@ -47,7 +47,20 @@ export default function Hint({ id }: HintProps) {
   const { t } = useTranslation();
   const hint = hints[id];
 
-  if (!hint) return null;
+  if (!hint) {
+    void chrome.runtime
+      .sendMessage({
+        type: 'NP_ERROR',
+        errorType: 'error',
+        scope: 'hint',
+        message: `Could not resolve hint with id ${id}!`,
+      })
+      .catch((error: unknown) => {
+        console.error('Failed to dispatch error message', error);
+      });
+
+    throw new Error(`Could not resolve hint with id '${id}'!`);
+  }
 
   return (
     <div className="np-hint-window">

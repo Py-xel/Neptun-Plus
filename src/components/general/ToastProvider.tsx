@@ -67,8 +67,18 @@ export function useToast(): ToastContextValue {
   const context = useContext(ToastContext);
 
   if (!context) {
-    // TODO Add error handling
-    throw new Error('useToast must be used within a ToastProvider!');
+    void chrome.runtime
+      .sendMessage({
+        type: 'NP_ERROR',
+        errorType: 'error',
+        scope: 'toast_provider',
+        message: 'useToast must be used within a <ToastProvider>!',
+      })
+      .catch((error: unknown) => {
+        console.error('Failed to dispatch error message', error);
+      });
+
+    throw new Error('useToast must be used within a <ToastProvider>!');
   }
 
   return context;
