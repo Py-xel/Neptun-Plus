@@ -42,7 +42,10 @@
       "extensionSettings": "Bővítmény beállítások",
       "hideInfo": "Beállításokhoz tartozó tippek elrejtése",
       "resetLabel": "A bővítmény beállításainak visszaállítása alapértelmezettre.",
-      "resetButton": "Beállítások visszaállítása"
+      "resetButton": "Beállítások visszaállítása",
+      "exportLabel": "A bővítmény hibanaplójának kezelése.",
+      "exportButton": "Hibanapló exportálása",
+      "clearButton": "Hibanapló törlése"
     },
     "Hints": {
       "disableHeaders": "Elrejti az oldal tetején megjelenő értesítéseket",
@@ -56,7 +59,11 @@
     "Toast": {
       "saved": "Mentve!",
       "deleted": "Törölve!",
-      "reset": "Sikeres visszaállítás!"
+      "reset": "Sikeres visszaállítás!",
+      "logsExported": "Hibanapló exportálva!",
+      "logsExportFailed": "A hibanapló exportálása sikertelen.",
+      "logsCleared": "Hibanapló törölve!",
+      "logsClearFailed": "A hibanapló törlése sikertelen."
     }
   },
   "Content_Script": {

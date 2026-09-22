@@ -5,10 +5,6 @@ $reset-padding: 6px 5px;
 .np-reset-container {
   @include flex($justify: center, $align: flex-start, $direction: column);
 
-  position: absolute;
-
-  bottom: 15px;
-
   gap: 4px;
 
   & > .np-reset-label {
@@ -39,7 +35,6 @@ $reset-padding: 6px 5px;
 
     &:hover {
       background-color: $color_hot-fuchsia;
-      border-color: $color_raspberry;
       box-shadow: 0 2px 6px rgba($color_twilight-red, 0.2);
     }
 

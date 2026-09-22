@@ -25,6 +25,10 @@ export default defineManifest({
   },
   permissions: ['storage', 'scripting'],
   host_permissions: allURLs,
+  background: {
+    service_worker: 'src/background.ts',
+    type: 'module',
+  },
   web_accessible_resources: [
     {
       resources: ['*.png', 'shortcut_icons/*'],

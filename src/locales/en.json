@@ -42,7 +42,10 @@
       "extensionSettings": "Extension settings",
       "hideInfo": "Hide hints for settings",
       "resetLabel": "Reset extension settings to their original defaults.",
-      "resetButton": "Reset settings"
+      "resetButton": "Reset settings",
+      "exportLabel": "Manage the extension's log file.",
+      "exportButton": "Export log file",
+      "clearButton": "Clear log file"
     },
     "Hints": {
       "disableHeaders": "Hides banner notifications that appear at the top of the page",
@@ -56,7 +59,11 @@
     "Toast": {
       "saved": "Saved!",
       "deleted": "Deleted!",
-      "reset": "Reset successful!"
+      "reset": "Reset successful!",
+      "logsExported": "Error log exported!",
+      "logsExportFailed": "Could not export the error log.",
+      "logsCleared": "Error log cleared!",
+      "logsClearFailed": "Could not clear the error log."
     }
   },
   "Content_Script": {
