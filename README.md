@@ -87,7 +87,7 @@ npm run build:release
 
 ---
 
-A `check-universities.mjs` helyileg is futtatható. A parancsokat a projekt gyökeréből indítsd.
+A `check-universities.mjs` helyileg is futtatható. A parancsokat az **`/src`** mappából lehet futtatni.
 
 > [!IMPORTANT]
 > A **`Playwright Chromium`** telepítése az első futtatás előtt szükséges.
