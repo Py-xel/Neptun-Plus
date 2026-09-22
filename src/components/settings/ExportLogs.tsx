@@ -1,6 +1,6 @@
 import { useToast } from '@/components/general/ToastProvider';
 import '@/styles/components/settings/exportLogs.css';
-import { exportErrorLog, clearErrorLog } from '@/utils/errorHandler';
+import { clearErrorLog, exportErrorLog } from '@/utils/errorHandler';
 import { useTranslation } from 'react-i18next';
 
 export default function ExportLogs() {

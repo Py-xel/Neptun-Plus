@@ -106,10 +106,31 @@ export default function Shortcut({ disabled = false }: ShortcutProps) {
     const card = cards.find((currentCard) => currentCard.id === cardId);
 
     if (!card) {
-      return;
+      void chrome.runtime
+        .sendMessage({
+          type: 'NP_ERROR',
+          errorType: 'error',
+          scope: 'shortcuts',
+          message: "Could not resolve 'card'!",
+        })
+        .catch((error: unknown) => {
+          console.error('Failed to dispatch error message', error);
+        });
+
+      throw new Error("Could not resolve 'card'!");
     }
 
     if (!card.name.trim() || !card.link.trim()) {
+      void chrome.runtime
+        .sendMessage({
+          type: 'NP_ERROR',
+          errorType: 'warning',
+          scope: 'shortcuts',
+          message: 'Attempted to save shortcut, but {card.name} and {card.link} cannot be empty strings.',
+        })
+        .catch((error: unknown) => {
+          console.error('Failed to dispatch error message', error);
+        });
       showToast(t('Popup.Interface.shortcutRequired'), { type: 'warning' });
       return;
     }

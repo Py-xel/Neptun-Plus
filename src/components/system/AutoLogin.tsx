@@ -41,6 +41,11 @@ export default function AutoLogin({ disabled = false }: AutoLoginProps) {
   const [editableCardIds, setEditableCardIds] = useState<Set<number>>(new Set());
   const nextCardId = useRef(1);
   const storedCardIds = useRef<Set<number> | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+
+  if (error) {
+    throw error;
+  }
 
   useEffect(() => {
     if (loading || !isStoredAutoLoginCards(credentials)) {
@@ -104,14 +109,36 @@ export default function AutoLogin({ disabled = false }: AutoLoginProps) {
 
   const saveCard = async (card: AutoLoginCard) => {
     if (!card.loginName.trim() || !card.password.trim()) {
-      // TODO Add error handling
+      void chrome.runtime
+        .sendMessage({
+          type: 'NP_ERROR',
+          errorType: 'warning',
+          scope: 'auto_login',
+          message: 'Attempted to save credentials, but {card.loginName} and {card.password} cannot be empty strings.',
+        })
+        .catch((error: unknown) => {
+          console.error('Failed to dispatch error message', error);
+        });
       showToast(t('Popup.System.credentialsRequired'), { type: 'warning' });
       return;
     }
 
+    const error = new Error("Could not resolve 'universityId'!");
+
     const universityId = universities[card.uni as keyof typeof universities]?.id;
     if (!universityId) {
-      // TODO Add error handling
+      void chrome.runtime
+        .sendMessage({
+          type: 'NP_ERROR',
+          errorType: 'error',
+          scope: 'auto_login',
+          message: error.message,
+        })
+        .catch((dispatchError: unknown) => {
+          console.error('Failed to dispatch error message', dispatchError);
+        });
+
+      setError(error);
       return;
     }
 
