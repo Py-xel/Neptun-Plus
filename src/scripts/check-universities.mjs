@@ -23,7 +23,7 @@ if (validate === discover) {
   throw new Error('[ERROR]: Use exactly one of --validate or --discover.');
 }
 
-const universitiesPath = new URL('../src/data/universities.json', import.meta.url);
+const universitiesPath = new URL('../data/universities.json', import.meta.url);
 const universities = JSON.parse(await readFile(universitiesPath, 'utf8'));
 
 function asUrls(website) {
