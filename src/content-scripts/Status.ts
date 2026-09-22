@@ -7,8 +7,21 @@ const HEADER = 'main-header-right';
 function createStatus(): void {
   const container = isLoginPage(window.location.href) ? document.getElementsByClassName(LANGUAGE_DROPDOWN)[0] : document.getElementById(HEADER);
 
-  if (!container || container.querySelector('.np-status-container')) {
-    // TODO Add error handling
+  if (container?.querySelector('.np-status-container')) {
+    return;
+  }
+
+  if (!container) {
+    void chrome.runtime
+      .sendMessage({
+        type: 'NP_ERROR',
+        errorType: 'warning',
+        scope: 'status',
+        message: `Could not find the status container for URL '${window.location.href}'.`,
+      })
+      .catch((error: unknown) => {
+        console.error('Failed to dispatch error message', error);
+      });
     return;
   }
 
@@ -42,7 +55,16 @@ function createStatus(): void {
 
 export async function initializeStatus(): Promise<void> {
   if (!isSupportedURL(window.location.href)) {
-    // TODO Add error handling
+    void chrome.runtime
+      .sendMessage({
+        type: 'NP_ERROR',
+        errorType: 'warning',
+        scope: 'status',
+        message: `Status was initialized on an unsupported URL: '${window.location.href}'.`,
+      })
+      .catch((error: unknown) => {
+        console.error('Failed to dispatch error message', error);
+      });
     return;
   }
 

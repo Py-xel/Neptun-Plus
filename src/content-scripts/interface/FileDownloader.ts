@@ -204,8 +204,21 @@ function createDownloader(): DownloaderController | null {
   const body = document.body;
   const appRoot = document.querySelector('app-root');
 
-  if (!body || !appRoot || body.querySelector('.np-download-container')) {
-    // TODO Add error handling
+  if (body?.querySelector('.np-download-container')) {
+    return null;
+  }
+
+  if (!body || !appRoot) {
+    void chrome.runtime
+      .sendMessage({
+        type: 'NP_ERROR',
+        errorType: 'warning',
+        scope: 'file_downloader',
+        message: 'Could not find the document body or app root.',
+      })
+      .catch((error: unknown) => {
+        console.error('Failed to dispatch error message', error);
+      });
     return null;
   }
 

@@ -100,14 +100,12 @@ async function refreshInfSession(): Promise<void> {
     });
 
     if (!response.ok) {
-      // TODO Add error handling
       throw new Error(`GetNewTokens failed: HTTP ${response.status}`);
     }
 
     const data: { accessToken?: unknown; sessionTimeoutInMinutes?: unknown } = await response.json();
 
     if (typeof data.accessToken !== 'string' || !data.accessToken) {
-      // TODO Add error handling
       throw new Error('GetNewTokens response did not contain accessToken.');
     }
 
@@ -121,7 +119,17 @@ async function refreshInfSession(): Promise<void> {
     sessionStorage.setItem('access_token_expiration_date', new Date(now + TOKEN_TIMEOUT * 60_000).toISOString());
     resetInfSessionCountdown();
     scheduleInfSession();
-  } catch {
+  } catch (error) {
+    void chrome.runtime
+      .sendMessage({
+        type: 'NP_ERROR',
+        errorType: 'error',
+        scope: 'infinite_session',
+        message: error instanceof Error ? error.message : String(error),
+      })
+      .catch((dispatchError: unknown) => {
+        console.error('Failed to dispatch error message', dispatchError);
+      });
     scheduleInfSession(true);
     return;
   } finally {

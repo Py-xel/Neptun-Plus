@@ -13,7 +13,6 @@ function getRootElement(): HTMLElement {
   const rootElement = document.getElementById('root');
 
   if (!rootElement) {
-    // TODO Add error handling
     throw new Error('Root element not found');
   }
 

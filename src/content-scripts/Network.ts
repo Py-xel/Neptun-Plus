@@ -90,8 +90,17 @@ function getFileName(url: string, contentDisposition: string): string {
   if (utf8Match) {
     try {
       return decodeURIComponent(utf8Match[1]);
-    } catch {
-      // TODO Add error handling
+    } catch (error) {
+      void chrome.runtime
+        .sendMessage({
+          type: 'NP_ERROR',
+          errorType: 'warning',
+          scope: 'network',
+          message: `Could not decode the download filename: ${String(error)}`,
+        })
+        .catch((dispatchError: unknown) => {
+          console.error('Failed to dispatch error message', dispatchError);
+        });
     }
   }
   /* extract filename and remove optional wrapping quotes */

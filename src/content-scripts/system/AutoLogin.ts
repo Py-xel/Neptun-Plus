@@ -87,8 +87,21 @@ function createAutoLogin(credentials: AutoLoginCredential[]): AutoLoginControlle
   const loginForm = loginContainer?.querySelector<HTMLFormElement>('form');
   const loginCaption = loginForm?.querySelector('h4.login-right__caption');
 
-  if (!loginForm || !loginCaption || !isLoginPage(window.location.href) || loginForm.querySelector('.np-auto-login-container')) {
-    // TODO Add error handling
+  if (loginForm?.querySelector('.np-auto-login-container')) {
+    return null;
+  }
+
+  if (!loginForm || !loginCaption || !isLoginPage(window.location.href)) {
+    void chrome.runtime
+      .sendMessage({
+        type: 'NP_ERROR',
+        errorType: 'warning',
+        scope: 'auto_login',
+        message: 'Could not find the login form or caption on the login page.',
+      })
+      .catch((error: unknown) => {
+        console.error('Failed to dispatch error message', error);
+      });
     return null;
   }
 

@@ -44,8 +44,21 @@ function createShortcuts(shortcutItems: ShortcutItem[]): ShortcutsController | n
   const body = document.body;
   const appRoot = document.querySelector('app-root');
 
-  if (!body || !appRoot || body.querySelector('.np-shortcuts-container')) {
-    // TODO Add error handling
+  if (body?.querySelector('.np-shortcuts-container')) {
+    return null;
+  }
+
+  if (!body || !appRoot) {
+    void chrome.runtime
+      .sendMessage({
+        type: 'NP_ERROR',
+        errorType: 'warning',
+        scope: 'shortcuts',
+        message: 'Could not find the document body or app root.',
+      })
+      .catch((error: unknown) => {
+        console.error('Failed to dispatch error message', error);
+      });
     return null;
   }
 
