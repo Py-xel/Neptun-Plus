@@ -75,7 +75,7 @@
     "id": "FI82314"
   },
   "Budapesti Metropolitan Egyetem": {
-    "website": ["https://neptunweb1.metropolitan.hu/hallgato/", "https://neptunweb1.metropolitan.hu/hallgato/"],
+    "website": ["https://neptunweb1.metropolitan.hu/hallgato/", "https://neptunweb2.metropolitan.hu/hallgato/"],
     "supported": true,
     "en_name": "Budapest Metropolitan University",
     "id": "FI33842"
@@ -267,7 +267,12 @@
     "id": "FI12904"
   },
   "Pannon Egyetem": {
-    "website": ["https://neptun-ws01.uni-pannon.hu/hallgato/", "https://neptun-ws02.uni-pannon.hu/hallgato/", "https://neptun-ws03.uni-pannon.hu/hallgato/"],
+    "website": [
+      "https://neptun-ws01.uni-pannon.hu/hallgato/",
+      "https://neptun-ws02.uni-pannon.hu/hallgato/",
+      "https://neptun-ws03.uni-pannon.hu/hallgato/",
+      "https://neptun-ws10.uni-pannon.hu/hallgato/"
+    ],
     "supported": true,
     "en_name": "Pannon University",
     "id": "FI80554"
