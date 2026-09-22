@@ -20,7 +20,7 @@ export default function ToggleButton({ enabled, setEnabled, label, showInfo = tr
 
   /* Reset isAnimating after 300ms */
   useEffect(() => {
-    if (!isAnimating) return undefined; // TODO Add error handling
+    if (!isAnimating) return undefined;
 
     const timeoutId = window.setTimeout(() => {
       setIsAnimating(false);
