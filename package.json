@@ -8,13 +8,14 @@
     "dev": "vite",
     "build:chromium": "npm run build:css && vite build",
     "build:gecko": "npm run build:css && vite build",
-    "release": "npm run build:chromium && npm run build:gecko",
-    "check:universities": "node scripts/check-universities.mjs",
+    "build:release": "npm run build:chromium && npm run build:gecko",
+    "server-check:validate": "node src/scripts/check-universities.mjs --validate",
+    "server-check:discover": "node src/scripts/check-universities.mjs --discover",
+    "build:css": "sass --no-source-map --style=compressed src/styles:src/styles",
+    "watch:css": "sass --watch --no-source-map --style=compressed src/styles:src/styles",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "i18n:check": "i18n-check --locales src/locales --source en --format i18next",
-    "build:css": "sass --no-source-map --style=compressed src/styles:src/styles",
-    "watch:css": "sass --watch --no-source-map --style=compressed src/styles:src/styles"
+    "i18n:check": "i18n-check --locales src/locales --source en --format i18next"
   },
   "dependencies": {
     "i18next": "^26.3.6",
@@ -31,6 +32,7 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.7.0",
+    "esbuild": "^0.28.2",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.4",
     "globals": "^17.11.0",
