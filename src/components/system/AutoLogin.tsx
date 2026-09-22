@@ -114,7 +114,7 @@ export default function AutoLogin({ disabled = false }: AutoLoginProps) {
           type: 'NP_ERROR',
           errorType: 'warning',
           scope: 'auto_login',
-          message: 'Attempted to save credentials, but {card.loginName} and {card.password} cannot be empty strings.',
+          message: 'Attempted to save credentials with an empty login name or password.',
         })
         .catch((error: unknown) => {
           console.error('Failed to dispatch error message', error);
@@ -123,10 +123,9 @@ export default function AutoLogin({ disabled = false }: AutoLoginProps) {
       return;
     }
 
-    const error = new Error("Could not resolve 'universityId'!");
-
     const universityId = universities[card.uni as keyof typeof universities]?.id;
     if (!universityId) {
+      const error = new Error(`Could not resolve universityId for university '${card.uni}'!`);
       void chrome.runtime
         .sendMessage({
           type: 'NP_ERROR',

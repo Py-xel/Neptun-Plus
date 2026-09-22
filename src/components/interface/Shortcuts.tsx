@@ -37,6 +37,11 @@ export default function Shortcut({ disabled = false }: ShortcutProps) {
   const [removingCardIds, setRemovingCardIds] = useState<number[]>([]);
   const nextCardId = useRef(1);
   const storedCardIds = useRef<Set<number> | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+
+  if (error) {
+    throw error;
+  }
 
   useEffect(() => {
     if (loading || !isStoredShortcuts(savedShortcuts)) {
@@ -111,13 +116,14 @@ export default function Shortcut({ disabled = false }: ShortcutProps) {
           type: 'NP_ERROR',
           errorType: 'error',
           scope: 'shortcuts',
-          message: "Could not resolve 'card'!",
+          message: `Could not resolve shortcut card with id '${cardId}'!`,
         })
         .catch((error: unknown) => {
           console.error('Failed to dispatch error message', error);
         });
 
-      throw new Error("Could not resolve 'card'!");
+      setError(new Error(`Could not resolve shortcut card with id '${cardId}'!`));
+      return;
     }
 
     if (!card.name.trim() || !card.link.trim()) {
@@ -126,7 +132,7 @@ export default function Shortcut({ disabled = false }: ShortcutProps) {
           type: 'NP_ERROR',
           errorType: 'warning',
           scope: 'shortcuts',
-          message: 'Attempted to save shortcut, but {card.name} and {card.link} cannot be empty strings.',
+          message: 'Attempted to save a shortcut with an empty name or link.',
         })
         .catch((error: unknown) => {
           console.error('Failed to dispatch error message', error);

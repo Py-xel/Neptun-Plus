@@ -25,7 +25,7 @@ function clearInput(inputRef: RefObject<HTMLInputElement | null>, onChange: Chan
         console.error('Failed to dispatch error message', error);
       });
 
-    throw new Error('Could not resolve <input> reference!');
+    return;
   }
 
   input.value = '';

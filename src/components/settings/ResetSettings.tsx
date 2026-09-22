@@ -14,12 +14,13 @@ export default function ResetSettings() {
       await reset();
       showToast(t('Popup.Toast.reset'), { duration: 1200, type: 'success' });
     } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
       void chrome.runtime
         .sendMessage({
           type: 'NP_ERROR',
           errorType: 'error',
           scope: 'reset_settings',
-          message: 'Could not reset settings!',
+          message: `Could not reset settings: ${message}`,
         })
         .catch((error: unknown) => {
           console.error('Failed to dispatch error message', error);

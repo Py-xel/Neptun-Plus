@@ -53,7 +53,7 @@ export default function Hint({ id }: HintProps) {
         type: 'NP_ERROR',
         errorType: 'error',
         scope: 'hint',
-        message: `Could not resolve hint with id ${id}!`,
+        message: `Could not resolve hint with id '${id}'!`,
       })
       .catch((error: unknown) => {
         console.error('Failed to dispatch error message', error);
