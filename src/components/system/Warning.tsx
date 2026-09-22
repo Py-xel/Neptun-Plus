@@ -1,5 +1,5 @@
 import '@/styles/components/system/warning.css';
-import { useTranslation, Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 type WarningProps = {
   onAccept: () => void | Promise<void>;
