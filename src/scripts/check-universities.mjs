@@ -6,7 +6,7 @@ const REQUEST_TIMEOUT_MS = 10000;
 const RENDER_TIMEOUT_MS = 10000;
 const DISCOVERY_MIN = 1;
 const DISCOVERY_MAX = 20;
-const USER_AGENT = 'neptun-plus-university-check | (+https://github.com/Py-xel/Neptun-Plus)';
+const USER_AGENT = '';
 const ANSI = {
   reset: '\u001b[0m',
   green: '\u001b[32m',
