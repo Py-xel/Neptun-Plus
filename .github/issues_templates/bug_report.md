@@ -1,0 +1,34 @@
+name: Bug report
+description: Create a bug report to help improve the project.
+body:
+
+- type: textarea
+  attributes:
+  label: Bug description
+  description: Describe how you discovered the bug.
+  validations:
+  required: true
+- type: input
+  attributes:
+  label: Browser
+  description: What browser did you experience the bug in?
+  placeholder: Google Chrome, Opera, Firefox etc.
+  validations:
+  required: true
+- type: input
+  attributes:
+  label: Extension
+  description: What version of the extension did you use? The version number can be found in the top right corner of the popup.
+  placeholder: v1.2.3-u4
+  validations:
+  required: true
+- type: textarea
+  attributes:
+  label: Screenshots or videos
+  description: Add screenshots or videos that show the bug here.
+  placeholder: Drag and drop the screenshots/videos into this box.
+- type: textarea
+  attributes:
+  label: Logs
+  description: Provide the log.txt file. It can be exported from `Settings`.
+  placeholder: Drag and drop the log.txt into this box.
