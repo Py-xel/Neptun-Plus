@@ -9,6 +9,13 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    attributes:
+      label: Engine
+      options:
+        - Chromium
+        - Gecko
+
   - type: input
     attributes:
       label: Browser
