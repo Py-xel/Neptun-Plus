@@ -72,7 +72,7 @@ function geckoBackgroundBundle() {
   };
 }
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   build: {
     modulePreload: false,
     outDir: buildDirectory,
@@ -102,9 +102,14 @@ export default defineConfig({
       },
     }),
   ],
-  server: {
-    cors: {
-      origin: [/chrome-extension:\/\//],
-    },
-  },
-});
+  ...(mode === 'dev'
+    ? {
+        server: {
+          cors: {
+            origin: true,
+          },
+          origin: 'http://localhost:5173',
+        },
+      }
+    : {}),
+}));

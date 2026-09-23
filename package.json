@@ -5,7 +5,7 @@
   "universitiesVersion": 0,
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "npm run build:css && vite --mode dev",
     "build:chromium": "npm run build:css && vite build",
     "build:gecko": "npm run build:css && vite build",
     "build:release": "npm run build:chromium && npm run build:gecko",
