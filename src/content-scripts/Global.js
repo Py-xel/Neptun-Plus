@@ -1,18 +1,13 @@
-function appendLink(link) {
-  const target = document.head ?? document.documentElement;
+import fontAwesomeCss from '@/styles/icons/fontawesome.css?inline';
 
-  if (target) {
-    target.appendChild(link);
-  } else {
-    document.addEventListener('DOMContentLoaded', () => document.head?.appendChild(link), { once: true });
-  }
-}
+const styleId = 'np-fontawesome-styles';
+const extensionAssetUrl = (path) => chrome.runtime.getURL(path.replace(/^\/+/, ''));
+// Replaces relative urls to to absolute extension url
+const pageSafeFontAwesomeCss = fontAwesomeCss.replace(/url\((['"]?)(\/?assets\/[^)"']+)\1\)/g, (_match, _quote, path) => `url("${extensionAssetUrl(path)}")`);
 
-/* Font Awesome */
-if (!document.querySelector('link[data-np-fa]')) {
-  const faCss = document.createElement('link');
-  faCss.rel = 'stylesheet';
-  faCss.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css';
-  faCss.setAttribute('data-np-fa', 'true');
-  appendLink(faCss);
+if (!document.getElementById(styleId)) {
+  const style = document.createElement('style');
+  style.id = styleId;
+  style.textContent = pageSafeFontAwesomeCss;
+  (document.head ?? document.documentElement)?.appendChild(style);
 }

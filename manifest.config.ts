@@ -36,7 +36,7 @@ export default defineManifest({
       },
   web_accessible_resources: [
     {
-      resources: ['*.png', 'shortcut_icons/*'],
+      resources: ['*.png', 'shortcut_icons/*', 'assets/*.woff2'],
       matches: ['https://*/*'],
     },
   ],
