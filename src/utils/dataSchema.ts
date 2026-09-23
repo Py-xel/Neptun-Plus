@@ -18,7 +18,7 @@ export const KEYS = {
   SYSTEM: {
     INFINITE_SESSION: 'infinite-session',
     AUTO_LOGIN: 'auto-login',
-    ACCEPTED_WARNING: 'accepted-warning',
+    ACCEPTED_WARNING__AUTO_LOGIN: 'accepted-warning__auto-login',
     CREDENTIALS: 'credentials',
   },
   EXTENSION_SETTINGS: {
@@ -69,7 +69,7 @@ export type SettingValueByKey = {
 
   [KEYS.SYSTEM.INFINITE_SESSION]: boolean;
   [KEYS.SYSTEM.AUTO_LOGIN]: boolean;
-  [KEYS.SYSTEM.ACCEPTED_WARNING]: boolean;
+  [KEYS.SYSTEM.ACCEPTED_WARNING__AUTO_LOGIN]: boolean;
   [KEYS.SYSTEM.CREDENTIALS]: AutoLoginCredential[];
 
   [KEYS.EXTENSION_SETTINGS.LANGUAGE]: Language;

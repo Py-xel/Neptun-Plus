@@ -67,6 +67,8 @@
       "warning": "Figyelem!",
       "info": "Információ",
       "accept": "Megértettem.",
+      "back": "Vissza",
+      "infSession": "A <bold>végtelen munkamenet</bold> működéséhez, a bővítménynek szüksége van néhány nélkülözhetetlen adat továbbítására a Neptun szerverei felé.<br/><br/><bold>[ ip cím, sütik, accessToken ]</bold> stb.<br/><br/>Részletes leírás a Github-on található.<br/><br/><bold>A funkció bekapcsolávásal elismeri és tudomásul veszi a fent leírtakat, illetve hozzájárul, hogy a bővítmény a szükséges adatait továbbítsa.</bold>",
       "autoLogin": "A bejelentkezési adatok helyben kerülnek tárolásra, és <bold>nincsenek biztonságosan levédve</bold>.<br/><br/>Egy kompetens támadó, aki hozzáfér eszközéhez vagy böngészője adataihoz, képes lehet hozzáférni ezekhez az adatokhoz is."
     }
   },

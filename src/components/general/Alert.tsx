@@ -6,9 +6,10 @@ type AlertProps = {
   type: 'warning' | 'info';
   message: string;
   onAccept: () => void | Promise<void>;
+  onBack?: () => void | Promise<void>;
 };
 
-export default function Alert({ type, message, onAccept }: AlertProps) {
+export default function Alert({ type, message, onAccept, onBack }: AlertProps) {
   const { t } = useTranslation();
 
   const iconByType = {
@@ -38,9 +39,16 @@ export default function Alert({ type, message, onAccept }: AlertProps) {
             }}
           />
         </p>
-        <button type="button" className={`np-alert-accept-${type}`} onClick={onAccept}>
-          {t('Popup.Alert.accept')}
-        </button>
+        <div className="np-alert-actions">
+          {onBack && (
+            <button type="button" className={`np-alert-back-${type}`} onClick={onBack}>
+              {t('Popup.Alert.back')}
+            </button>
+          )}
+          <button type="button" className={`np-alert-accept-${type}`} onClick={onAccept}>
+            {t('Popup.Alert.accept')}
+          </button>
+        </div>
       </div>
     </>
   );

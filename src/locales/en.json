@@ -67,6 +67,8 @@
       "warning": "Warning!",
       "info": "Information",
       "accept": "I understand.",
+      "back": "Back",
+      "infSession": "For <bold>infinite session</bold> to work, the extension needs to send some necessary data to the Neptun servers.<br/><br/><bold>[ ip address, cookies, accessToken ]</bold> etc.<br/><br/> A detailed description can be found on Github.<br/><br/><bold>By enabling this feature, you acknowledge and accept the above, and consent to the extension transmitting the necessary data.</bold>",
       "autoLogin": "Saved credentials are stored locally and are <bold>not securely protected</bold>.<br/><br/>A competent threat actor with access to your device or browser data may be able to gain access to them."
     }
   },
