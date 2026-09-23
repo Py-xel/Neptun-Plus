@@ -86,7 +86,6 @@ let shortcutsEnabled: boolean | null = null;
 
 async function updateShortcuts(settingValue?: boolean, shortcutItems?: ShortcutItem[]) {
   const enabled = settingValue ?? shortcutsEnabled ?? (await readSetting(CATEGORIES.INTERFACE, KEYS.INTERFACE.USE_SHORTCUTS, false)) ?? false;
-  shortcutsEnabled = enabled;
 
   if (!enabled || isLoginPage(window.location.href)) {
     shortcuts?.destroy();
