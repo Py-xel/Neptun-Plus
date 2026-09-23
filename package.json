@@ -18,6 +18,11 @@
     "i18n:check": "i18n-check --locales src/locales --source en --format i18next"
   },
   "dependencies": {
+    "@fontsource/figtree": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/lato": "^5.3.0",
+    "@fontsource/roboto": "^5.3.0",
+    "@fontsource/source-sans-3": "^5.3.0",
     "i18next": "^26.3.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
