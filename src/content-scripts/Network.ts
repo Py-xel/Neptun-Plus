@@ -121,6 +121,12 @@ function getFileName(url: string, contentDisposition: string): string {
 function isSupportedDownloadExtension(extension: string): boolean {
   return SUPPORTED_FILE_EXTENSIONS.includes(extension.toLowerCase());
 }
+/* exclude institute image blob otherwise the downloader shows progress for a split second before .destroy() */
+function isIgnoredDownload(fileName: string, url: string, contentType: string): boolean {
+  const isJpeg = contentType.split(';')[0].trim().toLowerCase() === 'image/jpeg';
+
+  return isJpeg && (fileName.toLowerCase() === 'institute' || url.toLowerCase().startsWith('blob:'));
+}
 
 function isDownload(url: string, contentType: string, contentDisposition: string): boolean {
   const fileNameExtension = getFileExtensionFromName(getFileName(url, contentDisposition));
@@ -164,12 +170,12 @@ window.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Res
   const contentType = response.headers.get('content-type') || '';
   const contentLength = parseInt(response.headers.get('content-length') || '0', 10);
   const contentDisposition = response.headers.get('content-disposition') || '';
+  const fileName = getFileName(url, contentDisposition);
 
-  if (!response.body || !isDownload(url, contentType, contentDisposition)) {
+  if (!response.body || !isDownload(url, contentType, contentDisposition) || isIgnoredDownload(fileName, url, contentType)) {
     return response;
   }
 
-  const fileName = getFileName(url, contentDisposition);
   const downloadId = `fetch:${url}:${fileName}`;
   const totalBytes = Number.isFinite(contentLength) ? contentLength : 0;
 
@@ -239,6 +245,11 @@ xhrPrototype.send = function (...args: any[]): void {
     }
 
     const fileName = getFileName(requestInfo.url, contentDisposition);
+
+    if (isIgnoredDownload(fileName, requestInfo.url, contentType)) {
+      return;
+    }
+
     const downloadId = `xhr:${requestInfo.url}:${fileName}`;
     const contentLength = parseInt(xhr.getResponseHeader('content-length') || '0', 10);
     const totalBytes = Number.isFinite(contentLength) ? contentLength : 0;
