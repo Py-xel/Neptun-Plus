@@ -31,6 +31,8 @@ Egy könnyű, többplatformos böngészőbővítmény a **Neptun** egységes fel
 - Ugyanitt, navigálj a `Load unpacked` gombra
 - Keresd meg a kicsomagolt mappát, majd kattints a megnyitás gombra
 
+---
+
 ### Gecko alapú böngészőkre
 
 <picture>![Firefox](https://img.shields.io/badge/Firefox-3e3e3e?style=for-the-badge&logo=firefoxbrowser&logoColor=FF7139) ![Zen](https://img.shields.io/badge/Zen-3e3e3e?style=for-the-badge&logo=zenbrowser&logoColor=F76F53)</picture>
@@ -71,7 +73,7 @@ npm run build:css
 npm run dev
 ```
 
-Az SCSS-fájlok módosításainak automatikus fordításához a fejlesztői terminál mellett egy másikban futtasd:
+Az `.scss` fájlok módosításainak automatikus fordításához a fejlesztői terminál mellett egy másikban futtasd:
 
 ```bash
 npm run watch:css
@@ -87,10 +89,10 @@ npm run build:release
 
 ---
 
-A `check-universities.mjs` helyileg is futtatható. A parancsokat az **`/src`** mappából lehet futtatni.
+A `check-universities.mjs` helyileg is futtatható. A parancsokat az `/src` mappából lehet futtatni.
 
 > [!IMPORTANT]
-> A **`Playwright Chromium`** telepítése az első futtatás előtt szükséges.
+> A **`playwright chromium`** telepítése az első futtatás előtt szükséges.
 
 **WebSzerver hitelesítés**
 
@@ -111,3 +113,5 @@ A projekthez történő hozzájárulás, visszajelzés vagy hibabejelentés mene
 ## Licensz és Adatvédelem
 
 A projektre az [MIT License](/LICENSE) feltételei vonatkoznak. A teljes forráskód nyílt terjedelmű, melyet szabadon felhasználhatsz, módosíthatsz vagy továbbíthatsz. **Minden felelősség a felhasználót érinti.**
+
+A bővítmény **nem tárol** személyes, érzékeny vagy egyéb adatokat külső szervereken. A Neptun szerverekkel való kommunikáció kizárólag a felhasználó hozzájárulásával történik. Minden más funkció a felhasználó böngészőjében, **helyileg fut**.
