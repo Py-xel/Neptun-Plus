@@ -11,7 +11,7 @@ Neptun Plus
 
 [Magyar](README.md) | [English](README.en.md)
 
-Egy könnyű, többplatformos böngészőbővítmény a **Neptun** egységes felsőoktatási platformhoz. Célja a felület használatának megkönnyítése és az alapvető, hiányzó funkciók hozzáadása.
+Egy könnyű, többplatformos böngészőbővítmény a **Neptun** egységes felsőoktatási platformhoz, melynek célja a felület használatának megkönnyítése és az alapvető, hiányzó funkciók hozzáadása.
 
 ## Telepítés
 
@@ -26,10 +26,10 @@ Egy könnyű, többplatformos böngészőbővítmény a **Neptun** egységes fel
 
 **2. Bővítmény betöltése**
 
-- A böngésződ címsorába írd be: `about://extensions`
-- Engedélyezd a fejlesztői módot
-- Ugyanitt, navigálj a `Load unpacked` gombra
-- Keresd meg a kicsomagolt mappát, majd kattints a megnyitás gombra
+- A böngésződ címsorába írd be: `about://extensions`.
+- Engedélyezd a fejlesztői módot.
+- Ugyanitt, navigálj a `Load unpacked` gombra.
+- Keresd meg a kicsomagolt mappát, majd kattints a megnyitás gombra.
 
 ---
 
@@ -43,9 +43,9 @@ Egy könnyű, többplatformos böngészőbővítmény a **Neptun** egységes fel
 
 **2. Bővítmény betöltése**
 
-- A böngésződ címsorába írd be: `about:debugging#/runtime/this-firefox`
-- Ugyanitt, navigálj a `Load Temporary Add-on...` gombra
-- Keresd meg a `.zip`-et, majd kattints a megnyitás gombra
+- A böngésződ címsorába írd be: `about:debugging#/runtime/this-firefox`.
+- Ugyanitt, navigálj a `Load Temporary Add-on...` gombra.
+- Keresd meg a `.zip`-et, majd kattints a megnyitás gombra.
 
 ## Funkciók és használat
 
@@ -89,7 +89,7 @@ npm run build:release
 
 ---
 
-A `check-universities.mjs` helyileg is futtatható. A parancsokat az `/src` mappából lehet futtatni.
+A `check-universities.mjs` fájl helyileg is futtatható az `/src` mappából.
 
 > [!IMPORTANT]
 > A **`playwright chromium`** telepítése az első futtatás előtt szükséges.
