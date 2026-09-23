@@ -89,7 +89,7 @@ npm run build:release
 
 ---
 
-The `check-universities.mjs` file can be run locally from the `/src` directory.
+The `check-universities.mjs` file can be run locally from the `/scripts` directory.
 
 > [!IMPORTANT]
 > The installation of **`playwright chromium`** is mandatory before running.

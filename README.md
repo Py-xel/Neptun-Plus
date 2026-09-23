@@ -89,7 +89,7 @@ npm run build:release
 
 ---
 
-A `check-universities.mjs` fájl helyileg is futtatható az `/src` mappából.
+A `check-universities.mjs` fájl helyileg is futtatható a `/scripts` mappából.
 
 > [!IMPORTANT]
 > A **`playwright chromium`** telepítése az első futtatás előtt szükséges.
