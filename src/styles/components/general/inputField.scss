@@ -4,6 +4,7 @@ $input-width: 100%;
 $input-height: 30px;
 $input-padding: 0px 7px;
 $input-placeholder-size: 0.8rem;
+$input-icon-size: 0.75rem;
 
 .np-input-container {
   @include flex-center-row;
@@ -30,6 +31,9 @@ $input-placeholder-size: 0.8rem;
 
   & > i {
     color: $color_twilight-indigo;
+
+    width: $input-icon-size;
+    height: $input-icon-size;
 
     cursor: none;
     pointer-events: none;
