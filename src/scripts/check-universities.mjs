@@ -1,9 +1,18 @@
-import { readFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 
-const REQUEST_DELAY_MS = 3000;
-const REQUEST_TIMEOUT_MS = 10000;
-const RENDER_TIMEOUT_MS = 10000;
+const TIMING = {
+  validate: {
+    delayMs: 1000,
+    requestTimeoutMs: 10000,
+    renderTimeoutMs: 5000,
+  },
+  discover: {
+    delayMs: 150,
+    requestTimeoutMs: 2000,
+    renderTimeoutMs: 2500,
+  },
+};
 const DISCOVERY_MIN = 1;
 const DISCOVERY_MAX = 20;
 const USER_AGENT = '';
@@ -17,7 +26,9 @@ const ANSI = {
 const options = new Set(process.argv.slice(2));
 const validate = options.has('--validate');
 const discover = options.has('--discover');
-const delayMs = REQUEST_DELAY_MS;
+const timing = TIMING[validate ? 'validate' : 'discover'];
+const jsonOutputOption = [...options].find((option) => option.startsWith('--json-output='));
+const jsonOutputPath = jsonOutputOption?.slice('--json-output='.length);
 
 if (validate === discover) {
   throw new Error('[ERROR]: Use exactly one of --validate or --discover.');
@@ -55,13 +66,13 @@ function createDiscoveryUrls(url) {
 async function checkUrl(page, url) {
   try {
     const response = await page.goto(url, {
-      timeout: REQUEST_TIMEOUT_MS,
+      timeout: timing.requestTimeoutMs,
       waitUntil: 'domcontentloaded',
     });
     let angularLoaded = false;
 
     try {
-      await page.waitForSelector('app-root[ng-version]', { timeout: RENDER_TIMEOUT_MS, state: 'attached' });
+      await page.waitForSelector('app-root[ng-version]', { timeout: timing.renderTimeoutMs, state: 'attached' });
       angularLoaded = true;
     } catch {
       // a reachable page can still fail the Angular check if it never renders the expected marker
@@ -131,7 +142,7 @@ if (discover) {
 const checksToRun = checks.filter(({ discovered }) => (validate ? !discovered : discovered));
 
 const modeLabel = validate ? 'Validating' : 'Discovering';
-console.log(`[SERVER CHECK] - ${modeLabel} ${checksToRun.length} servers with ${delayMs}ms of delay.\n`);
+console.log(`[SERVER CHECK] - ${modeLabel} ${checksToRun.length} servers with ${timing.delayMs}ms of delay.\n`);
 
 const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({ userAgent: USER_AGENT });
@@ -142,17 +153,19 @@ const summary = {
   unreached: 0,
   discovered: 0,
 };
+const results = [];
 
 try {
   for (const [index, check] of checksToRun.entries()) {
     if (index > 0) {
-      await new Promise((resolve) => setTimeout(resolve, delayMs));
+      await new Promise((resolve) => setTimeout(resolve, timing.delayMs));
     }
 
     const result = await checkUrl(page, check.url);
     const isDiscovered = check.discovered && result.confirmed;
     const status = isDiscovered ? 'discovered' : result.state === 'confirmed' ? 'confirmed' : result.state === 'reachable-not-confirmed' ? 'reached - not confirmed' : 'unreachable';
     const statusStyle = isDiscovered ? [ANSI.blue, '+'] : status === 'confirmed' ? [ANSI.green, '✓'] : status === 'reached - not confirmed' ? [ANSI.yellow, '?'] : [ANSI.red, '✗'];
+    results.push({ university: check.university, ...result, status });
 
     if (isDiscovered) {
       summary.discovered += 1;
@@ -172,8 +185,16 @@ try {
 }
 
 console.log('\n[SUMMARY]\n');
-console.log(`From a total of ${checksToRun.length} hosts:`);
-console.log(`• Successfully validated: ${ANSI.green}${summary.validated}${ANSI.reset} ${ANSI.green}✓${ANSI.reset}`);
-console.log(`• Reached but not validated: ${ANSI.yellow}${summary.reachedUnconfirmed}${ANSI.reset} ${ANSI.yellow}?${ANSI.reset}`);
-console.log(`• Unreachable: ${ANSI.red}${summary.unreached}${ANSI.reset} ${ANSI.red}✗${ANSI.reset}`);
-console.log(`• Discovered: ${ANSI.blue}${summary.discovered}${ANSI.reset} ${ANSI.blue}+${ANSI.reset}`);
+console.log(`• Total: ${checksToRun.length}`);
+if (validate) {
+  console.log(`• Successfully validated: ${ANSI.green}${summary.validated}${ANSI.reset} ${ANSI.green}✓${ANSI.reset}`);
+  console.log(`• Reached but not validated: ${ANSI.yellow}${summary.reachedUnconfirmed}${ANSI.reset} ${ANSI.yellow}?${ANSI.reset}`);
+  console.log(`• Unreachable: ${ANSI.red}${summary.unreached}${ANSI.reset} ${ANSI.red}✗${ANSI.reset}`);
+} else {
+  console.log(`• Discovered: ${ANSI.blue}${summary.discovered}${ANSI.reset} ${ANSI.blue}+${ANSI.reset}`);
+  console.log(`• Unreachable: ${ANSI.red}${summary.unreached}${ANSI.reset} ${ANSI.red}✗${ANSI.reset}`);
+}
+
+if (jsonOutputPath) {
+  await writeFile(jsonOutputPath, `${JSON.stringify({ mode: modeLabel, total: checksToRun.length, summary, results }, null, 2)}\n`);
+}
