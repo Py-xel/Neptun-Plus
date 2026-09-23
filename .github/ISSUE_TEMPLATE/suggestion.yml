@@ -1,12 +1,7 @@
 name: Suggestion
 description: Share a feature idea or improvement suggestion.
+labels: suggestion
 body:
-  - type: input
-    attributes:
-      label: Title
-    validations:
-      required: true
-
   - type: textarea
     attributes:
       label: Description
