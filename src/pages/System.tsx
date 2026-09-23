@@ -1,6 +1,6 @@
+import Alert from '@/components/general/Alert';
 import ToggleButton from '@/components/general/ToggleButton';
 import AutoLogin from '@/components/system/AutoLogin';
-import Warning from '@/components/system/Warning';
 import { CATEGORIES, KEYS } from '@/utils/dataSchema';
 import { useSettings } from '@/utils/useSettings';
 import { useTranslation } from 'react-i18next';
@@ -19,7 +19,7 @@ export default function System() {
       <h1 className="np-title">{t('Popup.System.login')}</h1>
       <ToggleButton label={t('Popup.System.autologin')} enabled={autoLogin} setEnabled={setAutoLogin} hintId={KEYS.SYSTEM.AUTO_LOGIN} />
       <AutoLogin disabled={!autoLogin} />
-      {autoLogin && !warningAccepted && <Warning onAccept={() => setWarningAccepted(true)} />}
+      {autoLogin && !warningAccepted && <Alert type={'warning'} message={'Popup.Alert.autoLogin'} onAccept={() => setWarningAccepted(true)} />}
     </div>
   );
 }

@@ -27,10 +27,7 @@
       "studentLogin": "Bejelentkezési adatok",
       "loginName": "Azonosító",
       "password": "Jelszó",
-      "credentialsRequired": "Mentés előtt add meg az azonosítót és a jelszót.",
-      "warningTitle": "Figyelem!",
-      "warningText": "A bejelentkezési adatok helyben kerülnek tárolásra, és <bold>nincsenek biztonságosan levédve</bold>.<br/><br/>Egy kompetens támadó, aki hozzáfér eszközéhez vagy böngészője adataihoz, képes lehet hozzáférni ezekhez az adatokhoz is.",
-      "warningAccept": "Megértettem."
+      "credentialsRequired": "Mentés előtt add meg az azonosítót és a jelszót."
     },
     "Info": {
       "supportedUni": "Támogatott egyetemek listája",
@@ -65,6 +62,12 @@
       "logsExportFailed": "A hibanapló exportálása sikertelen.",
       "logsCleared": "Hibanapló törölve!",
       "logsClearFailed": "A hibanapló törlése sikertelen."
+    },
+    "Alert": {
+      "warning": "Figyelem!",
+      "info": "Információ",
+      "accept": "Megértettem.",
+      "autoLogin": "A bejelentkezési adatok helyben kerülnek tárolásra, és <bold>nincsenek biztonságosan levédve</bold>.<br/><br/>Egy kompetens támadó, aki hozzáfér eszközéhez vagy böngészője adataihoz, képes lehet hozzáférni ezekhez az adatokhoz is."
     }
   },
   "Content_Script": {

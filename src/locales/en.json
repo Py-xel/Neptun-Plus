@@ -27,10 +27,7 @@
       "studentLogin": "Login credentials",
       "loginName": "Login name",
       "password": "Password",
-      "credentialsRequired": "Enter a login name and password before saving.",
-      "warningTitle": "Warning!",
-      "warningText": "Saved credentials are stored locally and are <bold>not securely protected</bold>.<br/><br/>A competent threat actor with access to your device or browser data may be able to gain access to them.",
-      "warningAccept": "I understand."
+      "credentialsRequired": "Enter a login name and password before saving."
     },
     "Info": {
       "supportedUni": "List of supported universities",
@@ -65,6 +62,12 @@
       "logsExportFailed": "Could not export the error log.",
       "logsCleared": "Error log cleared!",
       "logsClearFailed": "Could not clear the error log."
+    },
+    "Alert": {
+      "warning": "Warning!",
+      "info": "Information",
+      "accept": "I understand.",
+      "autoLogin": "Saved credentials are stored locally and are <bold>not securely protected</bold>.<br/><br/>A competent threat actor with access to your device or browser data may be able to gain access to them."
     }
   },
   "Content_Script": {
