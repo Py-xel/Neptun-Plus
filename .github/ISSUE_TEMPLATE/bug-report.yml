@@ -15,8 +15,6 @@ body:
       options:
         - Chromium
         - Gecko
-      validations:
-        required: true
 
   - type: input
     attributes:
