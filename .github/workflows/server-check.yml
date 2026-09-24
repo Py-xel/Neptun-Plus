@@ -8,12 +8,16 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: server-check
+  cancel-in-progress: false
+
 jobs:
-  server-check:
+  validate:
+    name: Validate configured servers
     runs-on: ubuntu-24.04
-    concurrency:
-      group: server-check
-      cancel-in-progress: false
+    outputs:
+      outcome: ${{ steps.validate.outcome }}
 
     steps:
       - name: Check out repository
@@ -36,20 +40,89 @@ jobs:
         continue-on-error: true
         run: npm run server-check:validate -- --json-output=validate-results.json
 
+      - name: Upload validation results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validate-results
+          path: validate-results.json
+          if-no-files-found: ignore
+
+  evaluate:
+    name: Evaluate validation pass rate
+    needs: validate
+    if: always()
+    runs-on: ubuntu-24.04
+    outputs:
+      passed: ${{ steps.evaluate.outputs.passed }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Download validation results
+        uses: actions/download-artifact@v5
+        with:
+          name: validate-results
+
       - name: Evaluate validation pass rate
         id: evaluate
-        if: always()
         run: node src/scripts/evaluate-server-check.mjs
+
+  discover:
+    name: Discover additional servers
+    needs: evaluate
+    if: always()
+    runs-on: ubuntu-24.04
+    outputs:
+      outcome: ${{ steps.discover.outcome }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
 
       - name: Discover additional servers
         id: discover
-        if: always()
         continue-on-error: true
         run: npm run server-check:discover -- --json-output=discovery-results.json
 
-      - name: Add discovered servers
-        id: update
+      - name: Upload discovery results
         if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-results
+          path: discovery-results.json
+          if-no-files-found: ignore
+
+  update:
+    name: Add discovered servers
+    needs: discover
+    if: always()
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Download discovery results
+        continue-on-error: true
+        uses: actions/download-artifact@v5
+        with:
+          name: discovery-results
+
+      - name: Add discovered servers
         shell: bash
         run: |
           if [[ ! -f discovery-results.json ]]; then
@@ -70,19 +143,41 @@ jobs:
           git commit -m "chore: add discovered Neptun servers"
           git push
 
+  report:
+    name: Publish server check report
+    needs: [validate, evaluate, discover, update]
+    if: always()
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Download validation results
+        continue-on-error: true
+        uses: actions/download-artifact@v5
+        with:
+          name: validate-results
+
+      - name: Download discovery results
+        continue-on-error: true
+        uses: actions/download-artifact@v5
+        with:
+          name: discovery-results
+
       - name: Publish server check report
-        if: always()
-        env:
-          VALIDATE_OUTCOME: ${{ steps.validate.outcome }}
-          EVALUATE_OUTCOME: ${{ steps.evaluate.outcome }}
-          DISCOVER_OUTCOME: ${{ steps.discover.outcome }}
-          UPDATE_OUTCOME: ${{ steps.update.outcome }}
         run: node src/scripts/create-server-check-report.mjs
 
+  finish:
+    name: Check server-check result
+    needs: [validate, evaluate, discover, update, report]
+    if: always()
+    runs-on: ubuntu-24.04
+
+    steps:
       - name: Fail if checks did not pass
-        if: always()
         shell: bash
         run: |
-          if [[ "${{ steps.evaluate.outputs.passed }}" != "true" || "${{ steps.validate.outcome }}" != "success" || "${{ steps.discover.outcome }}" != "success" || "${{ steps.update.outcome }}" != "success" ]]; then
+          if [[ "${{ needs.evaluate.outputs.passed }}" != "true" || "${{ needs.validate.outputs.outcome }}" != "success" || "${{ needs.discover.outputs.outcome }}" != "success" || "${{ needs.update.result }}" != "success" ]]; then
             exit 1
           fi

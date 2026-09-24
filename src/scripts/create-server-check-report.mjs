@@ -8,24 +8,7 @@ if (!summaryPath) {
 const now = new Date();
 const runDate = `${now.getUTCFullYear()}.${String(now.getUTCMonth() + 1).padStart(2, '0')}.${String(now.getUTCDate()).padStart(2, '0')} - ${String(now.getUTCHours()).padStart(2, '0')}:${String(now.getUTCMinutes()).padStart(2, '0')}`;
 const escapeTableCell = (value) => String(value).replaceAll('|', '\\|');
-const outcomeLabel = (outcome) => (outcome === 'success' ? ':heavy_check_mark: Passed' : outcome === 'skipped' ? ':fast_forward: Skipped' : `:x: ${outcome || 'Unknown'}`);
-const lines = [
-  '# Neptun WebServer check',
-  '',
-  `**Run date:** ${runDate}`,
-  '',
-  '### Workflow steps',
-  '',
-  '| Step | Outcome |',
-  '| :--------------------------- | :---------------------- |',
-  `| Validate configured servers | ${outcomeLabel(process.env.VALIDATE_OUTCOME)} |`,
-  `| Evaluate validation pass rate | ${outcomeLabel(process.env.EVALUATE_OUTCOME)} |`,
-  `| Discover additional servers | ${outcomeLabel(process.env.DISCOVER_OUTCOME)} |`,
-  `| Add discovered servers | ${outcomeLabel(process.env.UPDATE_OUTCOME)} |`,
-  '',
-  '### Validation',
-  '',
-];
+const lines = ['# Neptun WebServer check', '', `**Run date:** ${runDate}`, '', '### Validation', ''];
 
 try {
   const results = JSON.parse(readFileSync('validate-results.json', 'utf8'));
