@@ -72,6 +72,11 @@ jobs:
 
       - name: Publish server check report
         if: always()
+        env:
+          VALIDATE_OUTCOME: ${{ steps.validate.outcome }}
+          EVALUATE_OUTCOME: ${{ steps.evaluate.outcome }}
+          DISCOVER_OUTCOME: ${{ steps.discover.outcome }}
+          UPDATE_OUTCOME: ${{ steps.update.outcome }}
         run: node src/scripts/create-server-check-report.mjs
 
       - name: Fail if checks did not pass
