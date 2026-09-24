@@ -1,13 +1,11 @@
-<p align="center">
+<div align="center">
   <img width="140" alt="Neptun Plus logo" src="public/Neptun_Plus_Logo.png">
-</p>
 
-<h1 align="center">
-Neptun Plus
-  
+# Neptun Plus
+
 [![Status](https://img.shields.io/badge/Status-active-0db556)](https://github.com/Py-xel/Neptun-Plus/releases) [![Chromium](https://img.shields.io/badge/Chromium-supported-0db556?logo=googlechrome)](https://www.google.com/chrome/) [![Firefox](https://img.shields.io/badge/Firefox-supported-0db556?logo=firefoxbrowser)](https://www.mozilla.org/firefox/) [![University](https://img.shields.io/badge/Supported_Universities-47-8A2BE2?style=flat)](src/data/universities.json) [![Locales](https://img.shields.io/badge/Locales-multiple-EC4899?style=flat)](src/locales/)
 
-</h1>
+</div>
 
 [Magyar](README.md) | [English](README.en.md)
 
