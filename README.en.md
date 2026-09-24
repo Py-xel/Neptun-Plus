@@ -17,12 +17,12 @@ A lightweight, cross-platform browser extension for the unified higher education
 
 [![Chrome](https://img.shields.io/badge/Chrome-3e3e3e?style=for-the-badge&logo=googlechrome&logoColor=4285F4)](https://www.google.com/chrome/) [![Opera](https://img.shields.io/badge/Opera-3e3e3e?style=for-the-badge&logo=opera&logoColor=FF1B2D)](https://www.opera.com/) [![OperaGX](https://img.shields.io/badge/Opera_GX-3e3e3e?style=for-the-badge&logo=operagx&logoColor=EE2950)](https://www.opera.com/gx) [![Brave](https://img.shields.io/badge/Brave-3e3e3e?style=for-the-badge&logo=brave&logoColor=FB542B)](https://brave.com/) [![Vivaldi](https://img.shields.io/badge/Vivaldi-3e3e3e?style=for-the-badge&logo=vivaldi&logoColor=EF3939)](https://vivaldi.com/)
 
-#### 1. Download
+**Download**
 
 - For the latest version, [click here](https://github.com/Py-xel/Neptun-Plus/releases/latest).
 - Exctract the `.zip` file into a folder of your choice.
 
-**2. Loading the extension**
+**Loading the extension**
 
 - In the address bar, type: `about://extensions`.
 - Enable developer mode.
@@ -35,11 +35,11 @@ A lightweight, cross-platform browser extension for the unified higher education
 
 [![Firefox](https://img.shields.io/badge/Firefox-3e3e3e?style=for-the-badge&logo=firefoxbrowser&logoColor=FF7139)](https://www.mozilla.org/firefox/) [![Zen](https://img.shields.io/badge/Zen-3e3e3e?style=for-the-badge&logo=zenbrowser&logoColor=F76F53)](https://zen-browser.app/)
 
-**1. Download**
+**Download**
 
 - For the latest release, [click here](https://github.com/Py-xel/Neptun-Plus/releases/latest).
 
-**2. Loading the extension**
+**Loading the extension**
 
 - In the address bar, type: `about:debugging#/runtime/this-firefox`.
 - In the same location, click the `Load Temporary Add-on...` button.
