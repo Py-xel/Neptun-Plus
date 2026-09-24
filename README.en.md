@@ -5,7 +5,7 @@
 <h1 align="center">
 Neptun Plus
   
-<picture>![Status](https://img.shields.io/badge/Status-active-0db556) ![Chromium](https://img.shields.io/badge/Chromium-supported-0db556?logo=googlechrome) ![Firefox](https://img.shields.io/badge/Firefox-supported-0db556?logo=firefoxbrowser) ![University](https://img.shields.io/badge/Supported_Universities-47-8A2BE2?style=flat) ![Locales](https://img.shields.io/badge/Locales-multiple-EC4899?style=flat)</picture>
+[![Status](https://img.shields.io/badge/Status-active-0db556)](https://github.com/Py-xel/Neptun-Plus/releases) [![Chromium](https://img.shields.io/badge/Chromium-supported-0db556?logo=googlechrome)](https://www.google.com/chrome/) [![Firefox](https://img.shields.io/badge/Firefox-supported-0db556?logo=firefoxbrowser)](https://www.mozilla.org/firefox/) [![University](https://img.shields.io/badge/Supported_Universities-47-8A2BE2?style=flat)](src/data/universities.json) [![Locales](https://img.shields.io/badge/Locales-multiple-EC4899?style=flat)](src/locales/)
 
 </h1>
 
@@ -17,7 +17,7 @@ A lightweight, cross-platform browser extension for the unified higher education
 
 ### Chromium based browsers
 
-<picture>![Chrome](https://img.shields.io/badge/Chrome-3e3e3e?style=for-the-badge&logo=googlechrome&logoColor=4285F4) ![Opera](https://img.shields.io/badge/Opera-3e3e3e?style=for-the-badge&logo=opera&logoColor=FF1B2D) ![OperaGX](https://img.shields.io/badge/Opera_GX-3e3e3e?style=for-the-badge&logo=operagx&logoColor=EE2950) ![Brave](https://img.shields.io/badge/Brave-3e3e3e?style=for-the-badge&logo=brave&logoColor=FB542B) ![Vivaldi](https://img.shields.io/badge/Vivaldi-3e3e3e?style=for-the-badge&logo=vivaldi&logoColor=EF3939)</picture>
+[![Chrome](https://img.shields.io/badge/Chrome-3e3e3e?style=for-the-badge&logo=googlechrome&logoColor=4285F4)](https://www.google.com/chrome/) [![Opera](https://img.shields.io/badge/Opera-3e3e3e?style=for-the-badge&logo=opera&logoColor=FF1B2D)](https://www.opera.com/) [![OperaGX](https://img.shields.io/badge/Opera_GX-3e3e3e?style=for-the-badge&logo=operagx&logoColor=EE2950)](https://www.opera.com/gx) [![Brave](https://img.shields.io/badge/Brave-3e3e3e?style=for-the-badge&logo=brave&logoColor=FB542B)](https://brave.com/) [![Vivaldi](https://img.shields.io/badge/Vivaldi-3e3e3e?style=for-the-badge&logo=vivaldi&logoColor=EF3939)](https://vivaldi.com/)
 
 #### 1. Download
 
@@ -35,7 +35,7 @@ A lightweight, cross-platform browser extension for the unified higher education
 
 ### Gecko based browsers
 
-<picture>![Firefox](https://img.shields.io/badge/Firefox-3e3e3e?style=for-the-badge&logo=firefoxbrowser&logoColor=FF7139) ![Zen](https://img.shields.io/badge/Zen-3e3e3e?style=for-the-badge&logo=zenbrowser&logoColor=F76F53)</picture>
+[![Firefox](https://img.shields.io/badge/Firefox-3e3e3e?style=for-the-badge&logo=firefoxbrowser&logoColor=FF7139)](https://www.mozilla.org/firefox/) [![Zen](https://img.shields.io/badge/Zen-3e3e3e?style=for-the-badge&logo=zenbrowser&logoColor=F76F53)](https://zen-browser.app/)
 
 **1. Download**
 
