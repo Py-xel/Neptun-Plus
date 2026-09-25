@@ -8,7 +8,7 @@ import { initializeAutoLogin } from '@/content-scripts/system/AutoLogin';
 import { initializeInfSession } from '@/content-scripts/system/InfSession';
 import { waitForDOM, waitForLoading } from '@/utils/utility';
 
-async function bootstrap(): Promise<void> {
+async function Bootstrap(): Promise<void> {
   await waitForDOM();
   await waitForLoading('#loading-placeholder-index', 'none');
 
@@ -22,4 +22,4 @@ async function bootstrap(): Promise<void> {
   await initializeInfSession();
 }
 
-void bootstrap();
+void Bootstrap();
