@@ -141,7 +141,8 @@ export default function Shortcut({ disabled = false }: ShortcutProps) {
       return;
     }
 
-    const nextSavedShortcuts = [...savedShortcuts.filter((savedCard) => savedCard.id !== card.id), card];
+    const savedCardIndex = savedShortcuts.findIndex((savedCard) => savedCard.id === card.id);
+    const nextSavedShortcuts = savedCardIndex === -1 ? [...savedShortcuts, card] : savedShortcuts.map((savedCard, index) => (index === savedCardIndex ? card : savedCard));
     await setSavedShortcuts(nextSavedShortcuts);
     setEditableCardIds((prevIds) => {
       const nextIds = new Set(prevIds);
@@ -171,7 +172,7 @@ export default function Shortcut({ disabled = false }: ShortcutProps) {
         const isEditable = editableCardIds.has(card.id);
 
         return (
-          <Card isEditable={isEditable} onRemove={() => void removeCard(card.id)} onSave={() => (isEditable ? void saveCard(card.id) : toggleCardEditing(card.id))}>
+          <Card key={card.id} isEditable={isEditable} onRemove={() => void removeCard(card.id)} onSave={() => (isEditable ? void saveCard(card.id) : toggleCardEditing(card.id))}>
             <Icon_Picker initialIcon={card.icon} onSelect={(icon) => updateCard(card.id, { icon })} />
             <div className="np-shortcut-input-container">
               <InputField
