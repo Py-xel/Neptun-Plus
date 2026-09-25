@@ -2,13 +2,11 @@
 
 $container_width: 100%;
 $container_height: fit-content;
-$card-width: 8rem;
+$card-width: fit-content;
 $card-height: 2rem;
 
 .np-auto-login-container {
   @include flex-center-col;
-
-  position: relative;
 
   width: $container_width;
   height: $container_height;
@@ -55,16 +53,16 @@ $card-height: 2rem;
   & .np-auto-login-button {
     @include flex($justify: center, $align: center, $direction: row);
 
-    position: relative;
-
     font-family: $fontFamily_secondary;
     font-size: $fontSize_md;
     font-weight: 600;
 
+    gap: 4px;
+
     width: $card-width;
     height: $card-height;
 
-    padding: 4px 24px;
+    padding: 4px 16px 4px 6px;
 
     border: 1px solid $color_pale-slate;
     border-radius: 6px;
@@ -78,8 +76,13 @@ $card-height: 2rem;
     @include transition-full-ease(all 0.2s);
 
     & > i {
-      position: absolute;
-      left: 8px;
+      @include flex($justify: center, $align: center);
+
+      left: 2px;
+
+      margin-right: 4px;
+
+      position: relative;
     }
 
     &:hover {
