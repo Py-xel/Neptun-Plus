@@ -1,6 +1,6 @@
 name: Help
 description: Request help or ask a question.
-labels: suggestion
+labels: help/question
 body:
   - type: textarea
     attributes:
