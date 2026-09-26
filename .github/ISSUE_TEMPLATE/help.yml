@@ -1,0 +1,11 @@
+name: Help
+description: Request help or ask a question.
+labels: suggestion
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: Describe what you need help with, or what your question is about.
+      placeholder: Explain your problem or ask your question.
+    validations:
+      required: true
