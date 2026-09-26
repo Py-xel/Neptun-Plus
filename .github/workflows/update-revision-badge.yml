@@ -31,8 +31,7 @@ jobs:
         shell: bash
         run: |
           cd wiki
-          current_revision_count=$(git rev-list --count HEAD)
-          badge_count=$((current_revision_count + 1))
+          badge_count=$(git log --format='%H' --invert-grep --grep='^chore: update wiki badges$' | awk 'END { print NR }')
           last_updated=$(date -u +%Y.%m.%d)
           last_updated=${last_updated//./%2E}
           sed -E -i "s/(Revisions-)[^-)]*/\\1${badge_count}/" Home.md
