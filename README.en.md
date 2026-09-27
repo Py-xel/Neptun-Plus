@@ -49,7 +49,7 @@ A lightweight, cross-platform browser extension for the unified higher education
 
 It is recommended to pin the extension, as all settings are found there. Most browsers let you do that from a dropdown window, usually found in the top right corner, next to the address bar.
 
-To read more about settings, features and all other documentation, visit the [wiki]().
+To read more about settings, features and all other documentation, visit the [wiki](https://github.com/Py-xel/Neptun-Plus/wiki).
 
 ## For developers
 

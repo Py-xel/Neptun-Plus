@@ -49,7 +49,7 @@ Egy könnyű, többplatformos böngészőbővítmény a **Neptun** egységes fel
 
 A használathoz javasolt a bővítmény kitűzése, mivel minden beállítás ott érhető el. A böngészők nagyrésze egy lenyíló ablakból engedi ezt elvégezni, melyet általában a jobbfelső sarokban lehet megtalálni, a címsor mellett.
 
-A beállításokról, funkciókról és minden más dokumentációról a [wikin]() olvashatsz részletesebben.
+A beállításokról, funkciókról és minden más dokumentációról a [wikin](https://github.com/Py-xel/Neptun-Plus/wiki) olvashatsz részletesebben.
 
 ## Fejlesztőknek
 
