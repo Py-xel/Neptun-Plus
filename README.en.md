@@ -7,7 +7,7 @@
 
 </div>
 
-[Magyar](README.md) | [English](README.en.md)
+**[Magyar](README.md)** | **[English](README.en.md)**
 
 A lightweight, cross-platform browser extension for the unified higher education platform **Neptun**, with the goal of making the platform easier to use, and adding missing features.
 

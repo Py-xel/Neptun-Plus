@@ -7,7 +7,7 @@
 
 </div>
 
-[Magyar](README.md) | [English](README.en.md)
+**[Magyar](README.md)** | **[English](README.en.md)**
 
 Egy könnyű, többplatformos böngészőbővítmény a **Neptun** egységes felsőoktatási platformhoz, melynek célja a felület használatának megkönnyítése és az alapvető, hiányzó funkciók hozzáadása.
 
