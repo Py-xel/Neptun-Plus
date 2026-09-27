@@ -10,7 +10,7 @@ A projekthez való közreműködéshez érdemes legalább alapvető `React` és 
 
 A projekt verziószámozása a **[SemVer](https://semver.org)** szabványt követi. A `universities.json` fájl saját verziószámot használ a következő formában:
 
-- `v#` → például: `v1.2.3-u4`
+- `u#` → például: `v1.2.3-u4`
 
 ## Visszajelzés
 

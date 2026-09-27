@@ -10,7 +10,7 @@ It is recommended to have at least basic knowledge of `React` and `TypeScript` b
 
 The project follows the **[SemVer](https://semver.org)** versioning standard. The `universities.json` file uses its own version number in the following format:
 
-- `v#` → for example: `v1.2.3-u4`
+- `u#` → for example: `v1.2.3-u4`
 
 ## Feedback
 
