@@ -1,7 +1,7 @@
 import { crx } from '@crxjs/vite-plugin';
 import react from '@vitejs/plugin-react';
 import { build as buildWithEsbuild } from 'esbuild';
-import { readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
@@ -72,6 +72,23 @@ function geckoBackgroundBundle() {
   };
 }
 
+/* zip files in parent directory for chromium releases */
+function prepareChromiumRelease() {
+  const stagingDirectory = '.chromium-zip-staging';
+
+  return {
+    name: 'prepare-chromium-zip-directory',
+    closeBundle() {
+      rmSync(stagingDirectory, { recursive: true, force: true });
+
+      const targetDirectory = resolve(process.cwd(), stagingDirectory, buildDirectory);
+
+      mkdirSync(stagingDirectory, { recursive: true });
+      cpSync(buildDirectory, targetDirectory, { recursive: true });
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => ({
   build: {
     modulePreload: false,
@@ -90,14 +107,28 @@ export default defineConfig(({ mode }) => ({
         standaloneFiles: ['src/content-scripts/Network.ts'],
       },
     }),
+
     ...(extensionTarget === 'gecko' ? [geckoManifestCompatibility(), geckoBackgroundBundle()] : []),
+
+    ...(extensionTarget === 'chromium' ? [prepareChromiumRelease()] : []),
+
     zip({
-      inDir: buildDirectory,
+      inDir: extensionTarget === 'chromium' ? '.chromium-zip-staging' : buildDirectory,
       outDir: 'release',
       outFileName: `${releaseName}.zip`,
       done: (error) => {
+        if (extensionTarget === 'chromium') {
+          rmSync(resolve(process.cwd(), '.chromium-zip-staging'), {
+            recursive: true,
+            force: true,
+          });
+        }
+
         if (!error && extensionTarget === 'gecko') {
-          rmSync(resolve(process.cwd(), buildDirectory), { recursive: true, force: true });
+          rmSync(resolve(process.cwd(), buildDirectory), {
+            recursive: true,
+            force: true,
+          });
         }
       },
     }),
