@@ -32,8 +32,7 @@ $input-icon-size: 0.75rem;
   & > i {
     color: $color_twilight-indigo;
 
-    width: $input-icon-size;
-    height: $input-icon-size;
+    font-size: $input-icon-size;
 
     cursor: none;
     pointer-events: none;
