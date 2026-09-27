@@ -1,6 +1,6 @@
 # Contributing and feedback
 
-[Magyar](CONTRIBUTING.md) | [English](CONTRIBUTING.en.md)
+**[Magyar](CONTRIBUTING.md)** | **[English](CONTRIBUTING.en.md)**
 
 > Thank you for considering contributing to **Neptun Plus**.
 

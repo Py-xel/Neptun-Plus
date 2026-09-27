@@ -1,6 +1,6 @@
 # Hozzájárulás és visszajelzés
 
-[Magyar](CONTRIBUTING.md) | [English](CONTRIBUTING.en.md)
+**[Magyar](CONTRIBUTING.md)** | **[English](CONTRIBUTING.en.md)**
 
 > Köszönjük, hogy megfontolod a **Neptun Plus** projekthez való hozzájárulást.
 
