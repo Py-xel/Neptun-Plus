@@ -84,8 +84,6 @@ npm run i18n:check
 npm run build:release
 ```
 
----
-
 ## Hozzájárulás / Visszajelzés
 
 A projekthez történő hozzájárulás, visszajelzés vagy hibabejelentés menetéről és formájáról [itt](https://github.com/Py-xel/Neptun-Plus/blob/main/.github/CONTRIBUTING.md) tudhatsz meg többet.

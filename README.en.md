@@ -84,8 +84,6 @@ npm run i18n:check
 npm run build:release
 ```
 
----
-
 ## Contribution / Feedback
 
 To find out more about the format and process for contributing to the project, providing feedback, or reporting bugs [click here](https://github.com/Py-xel/Neptun-Plus/blob/main/.github/CONTRIBUTING.en.md).
