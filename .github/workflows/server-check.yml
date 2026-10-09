@@ -38,7 +38,7 @@ jobs:
       - name: Validate configured servers
         id: validate
         continue-on-error: true
-        run: npm run server-check:validate -- --json-output=validate-results.json
+        run: npm run server-check:validate -- --json-output=true
 
       - name: Upload validation results
         if: always()
@@ -96,7 +96,7 @@ jobs:
       - name: Discover additional servers
         id: discover
         continue-on-error: true
-        run: npm run server-check:discover -- --json-output=discovery-results.json
+        run: npm run server-check:discover -- --json-output=true
 
       - name: Upload discovery results
         if: always()
