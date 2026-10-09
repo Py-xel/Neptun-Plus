@@ -9,8 +9,6 @@
     "build:chromium": "npm run build:css && vite build",
     "build:gecko": "npm run build:css && vite build",
     "build:release": "npm run build:chromium && npm run build:gecko",
-    "server-check:validate": "node src/scripts/check-universities.mjs --validate --json-output=true",
-    "server-check:discover": "node src/scripts/check-universities.mjs --discover --json-output=true",
     "build:css": "sass --no-source-map --style=compressed src/styles:src/styles",
     "watch:css": "sass --watch --no-source-map --style=compressed src/styles:src/styles",
     "lint": "eslint .",
