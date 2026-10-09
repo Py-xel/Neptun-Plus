@@ -53,8 +53,9 @@ try {
     '### Discovery',
     '',
     '| Metric | Count |',
-    '| -------------- | ------------------: |',
+    '| :-------------- | :------------------ |',
     `| Unreachable | ${results.summary.unreached} :x: |`,
+    `| Reached - not confirmed | ${results.summary.reachedUnconfirmed} :question: |`,
     `| Discovered | ${results.summary.discovered} :heavy_plus_sign: |`,
     `| :pencil: Total | ${results.total} |`,
     '',
@@ -65,7 +66,7 @@ try {
   if (reportable.length === 0) {
     lines.push('No hosts were reached or discovered.', '');
   } else {
-    lines.push('| University | Webserver | Result |', '| :------------- | -------------------: | :---------------------- |');
+    lines.push('| University | Webserver | Result |', '| :------------- | :------------------- | :---------------------- |');
     for (const result of reportable) {
       lines.push(`| ${escapeTableCell(result.university)} | ${escapeTableCell(result.url)} | ${escapeTableCell(result.status)} |`);
     }
