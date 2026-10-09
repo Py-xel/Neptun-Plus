@@ -45,7 +45,7 @@ try {
 
 try {
   const results = JSON.parse(readFileSync('discovery-results.json', 'utf8'));
-  const discovered = results.results.filter(({ status }) => status === 'discovered');
+  const reportable = results.results.filter(({ status }) => status === 'discovered' || status === 'reached - not confirmed');
 
   lines.push(
     '---',
@@ -58,16 +58,16 @@ try {
     `| Discovered | ${results.summary.discovered} :heavy_plus_sign: |`,
     `| :pencil: Total | ${results.total} |`,
     '',
-    '#### New hosts',
+    '#### Reached or discovered hosts',
     '',
   );
 
-  if (discovered.length === 0) {
-    lines.push('No new webserver discovered.', '');
+  if (reportable.length === 0) {
+    lines.push('No hosts were reached or discovered.', '');
   } else {
-    lines.push('| University | Webserver |', '| :------------- | -------------------: |');
-    for (const result of discovered) {
-      lines.push(`| ${escapeTableCell(result.university)} | ${escapeTableCell(result.url)} |`);
+    lines.push('| University | Webserver | Result |', '| :------------- | -------------------: | :---------------------- |');
+    for (const result of reportable) {
+      lines.push(`| ${escapeTableCell(result.university)} | ${escapeTableCell(result.url)} | ${escapeTableCell(result.status)} |`);
     }
     lines.push('');
   }
