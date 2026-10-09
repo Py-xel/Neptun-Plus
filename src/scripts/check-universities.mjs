@@ -1,21 +1,25 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 
+const universitiesPath = new URL('../data/universities.json', import.meta.url);
+const universities = JSON.parse(await readFile(universitiesPath, 'utf8'));
+
 const TIMING = {
   validate: {
     delayMs: 1000,
     requestTimeoutMs: 20000,
-    renderTimeoutMs: 5000,
+    renderTimeoutMs: 10000,
   },
   discover: {
     delayMs: 150,
-    requestTimeoutMs: 2000,
-    renderTimeoutMs: 2500,
+    requestTimeoutMs: 5000,
+    renderTimeoutMs: 3000,
   },
 };
+
 const DISCOVERY_MIN = 1;
 const DISCOVERY_MAX = 20;
-const USER_AGENT = '';
+
 const ANSI = {
   reset: '\u001b[0m',
   green: '\u001b[32m',
@@ -23,19 +27,42 @@ const ANSI = {
   red: '\u001b[31m',
   blue: '\u001b[34m',
 };
+
 const options = new Set(process.argv.slice(2));
 const validate = options.has('--validate');
 const discover = options.has('--discover');
 const timing = TIMING[validate ? 'validate' : 'discover'];
+
 const jsonOutputOption = [...options].find((option) => option.startsWith('--json-output='));
-const jsonOutputPath = jsonOutputOption?.slice('--json-output='.length);
+const jsonOutputValue = jsonOutputOption?.slice('--json-output='.length);
+const jsonOutputEnabled = jsonOutputValue === 'true';
+const jsonOutputPath = validate ? 'validate-results.json' : 'discovery-results.json';
+
+const targetOption = [...options].find((option) => option.startsWith('--target='));
+const targetUrl = targetOption?.slice('--target='.length);
 
 if (validate === discover) {
   throw new Error('[ERROR]: Use exactly one of --validate or --discover.');
 }
 
-const universitiesPath = new URL('../data/universities.json', import.meta.url);
-const universities = JSON.parse(await readFile(universitiesPath, 'utf8'));
+if (jsonOutputOption && !['true', 'false'].includes(jsonOutputValue)) {
+  throw new Error('[ERROR]: --json-output= must be set to true or false.');
+}
+
+if (targetOption && !validate) {
+  throw new Error('[ERROR]: --target= can only be used with --validate.');
+}
+
+if (targetOption) {
+  if (!targetUrl) {
+    throw new Error('[ERROR]: --target= requires a URL.');
+  }
+
+  const parsedTargetUrl = new URL(targetUrl);
+  if (!['http:', 'https:'].includes(parsedTargetUrl.protocol)) {
+    throw new Error('[ERROR]: --target= must be an HTTP or HTTPS URL.');
+  }
+}
 
 function asUrls(website) {
   return Array.isArray(website) ? website : [website];
@@ -67,7 +94,7 @@ async function checkUrl(page, url) {
   try {
     const response = await page.goto(url, {
       timeout: timing.requestTimeoutMs,
-      waitUntil: 'domcontentloaded',
+      waitUntil: 'commit',
     });
     let angularLoaded = false;
 
@@ -80,14 +107,15 @@ async function checkUrl(page, url) {
 
     const title = (await page.title()).trim();
     const titleMatches = title === 'Neptun Web';
-    const confirmed = angularLoaded && titleMatches;
     const httpStatus = response?.status() ?? null;
+    const httpSuccess = response?.ok() ?? false;
+    const confirmed = angularLoaded && titleMatches && httpSuccess;
 
     return {
       url,
       finalUrl: page.url(),
       httpStatus,
-      state: confirmed ? 'confirmed' : response?.ok() ? 'reachable-not-confirmed' : 'http-error',
+      state: confirmed ? 'confirmed' : httpSuccess ? 'reachable-not-confirmed' : response ? 'http-error' : 'unreachable',
       appRoot: angularLoaded,
       title: titleMatches,
       confirmed,
@@ -140,13 +168,13 @@ if (discover) {
   }
 }
 
-const checksToRun = checks.filter(({ discovered }) => (validate ? !discovered : discovered));
+const checksToRun = targetUrl ? [{ university: 'Custom target', url: targetUrl, discovered: false }] : checks.filter(({ discovered }) => (validate ? !discovered : discovered));
 
 const modeLabel = validate ? 'Validating' : 'Discovering';
 console.log(`[SERVER CHECK] - ${modeLabel} ${checksToRun.length} servers with ${timing.delayMs}ms of delay.\n`);
 
 const browser = await chromium.launch({ headless: true });
-const context = await browser.newContext({ userAgent: USER_AGENT });
+const context = await browser.newContext();
 const page = await context.newPage();
 const summary = {
   validated: 0,
@@ -164,7 +192,8 @@ try {
 
     const result = await checkUrl(page, check.url);
     const isDiscovered = check.discovered && result.confirmed;
-    const status = isDiscovered ? 'discovered' : result.state === 'confirmed' ? 'confirmed' : result.state === 'reachable-not-confirmed' ? 'reached - not confirmed' : 'unreachable';
+    const reached = result.state === 'reachable-not-confirmed' || (result.state === 'http-error' && result.httpStatus !== null);
+    const status = isDiscovered ? 'discovered' : result.state === 'confirmed' ? 'confirmed' : reached ? 'reached - not confirmed' : 'unreachable';
     const statusStyle = isDiscovered ? [ANSI.blue, '+'] : status === 'confirmed' ? [ANSI.green, '✓'] : status === 'reached - not confirmed' ? [ANSI.yellow, '?'] : [ANSI.red, '✗'];
     results.push({ university: check.university, ...result, status });
 
@@ -196,6 +225,6 @@ if (validate) {
   console.log(`• Unreachable: ${ANSI.red}${summary.unreached}${ANSI.reset} ${ANSI.red}✗${ANSI.reset}`);
 }
 
-if (jsonOutputPath) {
+if (jsonOutputEnabled) {
   await writeFile(jsonOutputPath, `${JSON.stringify({ mode: modeLabel, total: checksToRun.length, summary, results }, null, 2)}\n`);
 }
