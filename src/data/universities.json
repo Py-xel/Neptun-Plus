@@ -267,12 +267,7 @@
     "id": "FI12904"
   },
   "Pannon Egyetem": {
-    "website": [
-      "https://neptun-ws01.uni-pannon.hu/hallgato/",
-      "https://neptun-ws02.uni-pannon.hu/hallgato/",
-      "https://neptun-ws03.uni-pannon.hu/hallgato/",
-      "https://neptun-ws10.uni-pannon.hu/hallgato/"
-    ],
+    "website": ["https://neptun-ws01.uni-pannon.hu/hallgato/", "https://neptun-ws03.uni-pannon.hu/hallgato/", "https://neptun-ws10.uni-pannon.hu/hallgato/"],
     "supported": true,
     "en_name": "Pannon University",
     "id": "FI80554"
@@ -284,7 +279,13 @@
     "id": "FI27751"
   },
   "Pázmány Péter Katolikus Egyetem": {
-    "website": ["https://neptun2.ppke.hu/hallgato2_uj/", "https://neptun3.ppke.hu/hallgato2_uj/", "https://neptun3.ppke.hu/hallgato3_uj/"],
+    "website": [
+      "https://neptun2.ppke.hu/hallgato_uj/",
+      "https://neptun2.ppke.hu/hallgato2_uj/",
+      "https://neptun3.ppke.hu/hallgato_uj/",
+      "https://neptun3.ppke.hu/hallgato2_uj/",
+      "https://neptun3.ppke.hu/hallgato3_uj/"
+    ],
     "supported": true,
     "en_name": "Pázmány Péter Catholic University",
     "id": "FI79633"
@@ -296,13 +297,7 @@
     "id": "FI63810"
   },
   "Pécsi Tudományegyetem": {
-    "website": [
-      "https://neptun-web1.tr.pte.hu/hallgato/",
-      "https://neptun-web2.tr.pte.hu/hallgato/",
-      "https://neptun-web3.tr.pte.hu/hallgato/",
-      "https://neptun-web4.tr.pte.hu/hallgato/",
-      "https://neptun-web5.tr.pte.hu/hallgato/"
-    ],
+    "website": ["https://neptun-web1.tr.pte.hu/hallgato/", "https://neptun-web2.tr.pte.hu/hallgato/", "https://neptun-web3.tr.pte.hu/hallgato/", "https://neptun-web4.tr.pte.hu/hallgato/"],
     "supported": true,
     "en_name": "University of Pécs",
     "id": "FI58544"
