@@ -61,7 +61,6 @@ The project was made using **Vite**, **React** and **CRXJS**. The developer envi
 git clone https://github.com/Py-xel/Neptun-Plus.git
 cd Neptun-Plus
 npm install
-npx playwright install chromium
 ```
 
 **Developer environment**
@@ -86,23 +85,6 @@ npm run build:release
 ```
 
 ---
-
-The `check-universities.mjs` file can be run locally from the `/scripts` directory.
-
-> [!IMPORTANT]
-> The installation of **`playwright chromium`** is mandatory before running.
-
-**WebServer validation**
-
-```bash
-npm run server-check:validate
-```
-
-**WebServer discovery**
-
-```bash
-npm run server-check:discover
-```
 
 ## Contribution / Feedback
 

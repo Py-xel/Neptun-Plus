@@ -61,7 +61,6 @@ A projekt **Vite**, **React** és **CRXJS** segítségével készült. Fejleszt�
 git clone https://github.com/Py-xel/Neptun-Plus.git
 cd Neptun-Plus
 npm install
-npx playwright install chromium
 ```
 
 **Fejlesztői környezet**
@@ -86,23 +85,6 @@ npm run build:release
 ```
 
 ---
-
-A `check-universities.mjs` fájl helyileg is futtatható a `/scripts` mappából.
-
-> [!IMPORTANT]
-> A **`playwright chromium`** telepítése az első futtatás előtt szükséges.
-
-**WebSzerver hitelesítés**
-
-```bash
-npm run server-check:validate
-```
-
-**WebSzerver felfedezés**
-
-```bash
-npm run server-check:discover
-```
 
 ## Hozzájárulás / Visszajelzés
 
