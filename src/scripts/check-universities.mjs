@@ -4,7 +4,7 @@ import { chromium } from 'playwright';
 const TIMING = {
   validate: {
     delayMs: 1000,
-    requestTimeoutMs: 10000,
+    requestTimeoutMs: 20000,
     renderTimeoutMs: 5000,
   },
   discover: {
@@ -81,12 +81,12 @@ async function checkUrl(page, url) {
     const title = (await page.title()).trim();
     const titleMatches = title === 'Neptun Web';
     const confirmed = angularLoaded && titleMatches;
-    const statusCode = response?.status() ?? 0;
+    const httpStatus = response?.status() ?? null;
 
     return {
       url,
       finalUrl: page.url(),
-      status: statusCode,
+      httpStatus,
       state: confirmed ? 'confirmed' : response?.ok() ? 'reachable-not-confirmed' : 'http-error',
       appRoot: angularLoaded,
       title: titleMatches,
@@ -96,6 +96,7 @@ async function checkUrl(page, url) {
     return {
       url,
       state: error.name === 'AbortError' ? 'timeout' : 'unreachable',
+      httpStatus: null,
       error: error instanceof Error ? error.message : String(error),
     };
   }
